@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Ofertas moda</title>
+<style>
+:root { --bg:#f6f4f1; --card:#fff; --txt:#2b2522; --suave:#7a6f69; --borde:#e6e0da;
+         --acento:#e4913a; --rojo:#c8372d; --tag:#f1ece6;
+         --ok:#2e7d4f; --r20:#1b5e37; --hist:#a66a00; --min90:#0f766e;
+         --flash:#be185d; --cupon:#2f6db5; --sns:#6d28d9; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#1b1917; --card:#26231f; --txt:#eee8e2; --suave:#a89d95; --borde:#3a3530; --tag:#332e29;
+           --ok:#3f9e68; --r20:#2f8a55; --hist:#c98a1a; --min90:#14a098;
+           --flash:#db2777; --cupon:#4a86cf; --sns:#8b5cf6; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--txt);
+        font:15px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif; }
+header { position:sticky; top:0; z-index:5; background:var(--bg); border-bottom:1px solid var(--borde);
+          padding:14px 20px; display:flex; flex-wrap:wrap; gap:10px 16px; align-items:center; }
+h1 { font-size:19px; margin:0; }
+.sub { color:var(--suave); font-size:13px; }
+.ctrl { margin-left:auto; display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+input, select, button { font:inherit; padding:7px 10px; border-radius:8px;
+          border:1px solid var(--borde); background:var(--card); color:var(--txt); }
+#dtomin { width:70px; }
+.chips { flex-basis:100%; display:flex; flex-wrap:wrap; gap:6px; }
+.chip { --c:var(--suave); background:var(--card); color:var(--txt); border:1.5px solid var(--c);
+         border-radius:999px; padding:4px 12px; font-weight:500; font-size:13px; }
+.chip span { opacity:.7; }
+.chip.on { background:var(--c); color:#fff; }
+button { background:var(--acento); border-color:var(--acento); color:#fff; font-weight:600; cursor:pointer; }
+button:disabled { opacity:.5; cursor:default; }
+button.sec { background:var(--card); color:var(--txt); border-color:var(--borde); font-weight:500; }
+#contador { color:var(--suave); font-size:13px; }
+main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); }
+.card { background:var(--card); border:1px solid var(--borde); border-radius:12px; overflow:hidden;
+         display:flex; flex-direction:column; position:relative;
+         content-visibility:auto; contain-intrinsic-size:auto 460px; }
+.card[hidden] { display:none; }
+.card.sel { outline:3px solid var(--acento); }
+.pick { position:absolute; top:8px; right:8px; z-index:2; background:var(--card); border-radius:6px;
+         padding:3px 7px; font-size:13px; cursor:pointer; border:1px solid var(--borde); }
+.foto { display:block; background:#fff; aspect-ratio:1; position:relative; }
+.foto img { width:100%; height:100%; object-fit:contain; padding:14px; }
+.dto { position:absolute; top:8px; left:8px; background:var(--rojo); color:#fff; font-weight:700;
+        padding:3px 8px; border-radius:6px; }
+.info { padding:12px; display:flex; flex-direction:column; gap:8px; flex:1; }
+.titulo { color:var(--txt); text-decoration:none; display:-webkit-box; -webkit-line-clamp:3;
+           -webkit-box-orient:vertical; overflow:hidden; }
+.titulo:hover { text-decoration:underline; }
+.precio b { font-size:20px; } .precio s { color:var(--suave); margin-left:6px; }
+.tags { display:flex; flex-wrap:wrap; gap:5px; }
+.tag { background:var(--tag); border-radius:5px; padding:2px 7px; font-size:12px; }
+.tag.ok, .chip.m-ok { --c:var(--ok); } .tag.ok { background:var(--ok); color:#fff; } .tag.r20, .chip.m-r20 { --c:var(--r20); } .tag.r20 { background:var(--r20); color:#fff; } .tag.hist, .chip.m-hist { --c:var(--hist); } .tag.hist { background:var(--hist); color:#fff; } .tag.min90, .chip.m-min90 { --c:var(--min90); } .tag.min90 { background:var(--min90); color:#fff; } .tag.flash, .chip.m-flash { --c:var(--flash); } .tag.flash { background:var(--flash); color:#fff; } .tag.cupon, .chip.m-cupon { --c:var(--cupon); } .tag.cupon { background:var(--cupon); color:#fff; } .tag.sns, .chip.m-sns { --c:var(--sns); } .tag.sns { background:var(--sns); color:#fff; } 
+.pie { margin-top:auto; color:var(--suave); font-size:12px; }
+@media (max-width:600px) { header { padding:12px 16px; } main { padding:16px; gap:12px;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); } .ctrl { margin-left:0; } }
+</style></head><body>
+<header>
+  <div><h1>Ofertas moda</h1>
+  <div class="sub">91 ofertas · 28/09/2026 20:08</div></div>
+  <div class="ctrl">
+    <input type="search" id="q" placeholder="Filtrar…">
+    <select id="cat"><option value="">Todas las categorías</option><option value="Relojes y joyería">Relojes y joyería (7)</option><option value="Maletas y viaje">Maletas y viaje (2)</option><option value="Moda infantil">Moda infantil (13)</option><option value="Moda mujer">Moda mujer (38)</option><option value="Moda hombre">Moda hombre (19)</option><option value="Moda">Moda (9)</option><option value="Salud y cuidado personal">Salud y cuidado personal (1)</option><option value="Deportes">Deportes (2)</option></select>
+    
+    <label>Dto. mín. <input type="number" id="dtomin" min="0" max="100" step="5" value="0"></label>
+    <select id="orden">
+      <option value="dto">Más descuento</option>
+      <option value="asc">Precio más bajo</option>
+      <option value="desc">Precio más alto</option>
+    </select>
+    <button id="limpiar" class="sec" type="button">Quitar filtros</button>
+    <span id="contador"></span>
+    <button id="copiar" disabled>Copiar ASIN (0)</button>
+  </div>
+  <div class="chips"><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>65</span></button><button type="button" class="chip m-r20" data-m="r20">Bajada real ≥ 20% <span>47</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>64</span></button><button type="button" class="chip m-min90" data-m="min90">Mínimo 3 meses <span>81</span></button><button type="button" class="chip m-flash" data-m="flash">Oferta flash <span>91</span></button><button type="button" class="chip m-cupon" data-m="cupon">Cupón <span>2</span></button></div>
+</header>
+<main id="lista">
+<article class="card" data-dto="75" data-precio="29.99" data-grupo="Ropa y zapatos"
+         data-cat="Relojes y joyería" data-marcas=" cupon flash hist min90 ok r20 "
+         data-texto="1.83&quot; hd reloj inteligente hombre mujer, smartwatch con llamadas bluetooth | batería de 1000mah, 20 días autonomía, impermeable ip68, 110+ modos deportivos, reloj deportivo para android/ios b0h4q98tyh ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0H4Q98TYH"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H4Q98TYH?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-75%</span>
+    <img src="https://m.media-amazon.com/images/I/61aEp9cqQiL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H4Q98TYH?tag=telegramlaordenada-21" target="_blank" rel="noopener">1.83&quot; HD Reloj Inteligente Hombre Mujer, Smartwatch con Llamadas Bluetooth | Batería de 1000mAh, 20 Días Autonomía, Impermeable IP68, 110+ Modos Deportivos, Reloj Deportivo para Android/iOS</a>
+    <div class="precio"><b>29,99 €</b> <s>99,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag cupon">Con cupón 25,49 €</span><span class="tag ok">Bajada real: -75% vs mín. 30 días (99,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0H4Q98TYH</code></div>
+  </div>
+</article>
+<article class="card" data-dto="73" data-precio="39.99" data-grupo="Ropa y zapatos"
+         data-cat="Relojes y joyería" data-marcas=" flash hist min90 ok r20 "
+         data-texto="aoybwk reloj inteligente mujer hombre, 1.85&quot; smartwatch con llamadas bluetooth, 140+ modos deportivos con spo2/pulsómetro/monitor de sueño/podómetro, impermeable ip68 para android ios b0hdz992jx ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0HDZ992JX"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HDZ992JX?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-73%</span>
+    <img src="https://m.media-amazon.com/images/I/71Ck-HPpQWL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HDZ992JX?tag=telegramlaordenada-21" target="_blank" rel="noopener">AOYBWK Reloj Inteligente Mujer Hombre, 1.85&quot; Smartwatch con Llamadas Bluetooth, 140+ Modos Deportivos con SpO2/Pulsómetro/Monitor de Sueño/Podómetro, Impermeable IP68 para Android iOS</a>
+    <div class="precio"><b>39,99 €</b> <s>149,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -73% vs mín. 30 días (149,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0HDZ992JX</code></div>
+  </div>
+</article>
+<article class="card" data-dto="72" data-precio="12.82" data-grupo="Ropa y zapatos"
+         data-cat="Moda infantil" data-marcas=" flash hist min90 "
+         data-texto="crocs classic iam horse clog t, zuecos unisex niños b0dnd74vqs ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DND74VQS"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DND74VQS?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-72%</span>
+    <img src="https://m.media-amazon.com/images/I/71SparRgA2L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DND74VQS?tag=telegramlaordenada-21" target="_blank" rel="noopener">Crocs Classic IAM Horse Clog T, Zuecos Unisex niños</a>
+    <div class="precio"><b>12,82 €</b> <s>44,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (13,62 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DND74VQS</code></div>
+  </div>
+</article>
+<article class="card" data-dto="72" data-precio="35.99" data-grupo="Ropa y zapatos"
+         data-cat="Relojes y joyería" data-marcas=" flash hist min90 ok r20 "
+         data-texto="taopodo reloj inteligente mujer, 1.83&quot; smartwatch mujer pulgadas con llamadas, ip68 impermeable, 120+ modos deportivos con hd pantalla táctil, podómetro, monitor de sueño, para android ios b0h3tn1xqp ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0H3TN1XQP"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H3TN1XQP?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-72%</span>
+    <img src="https://m.media-amazon.com/images/I/81spcbQBjHL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H3TN1XQP?tag=telegramlaordenada-21" target="_blank" rel="noopener">taopodo Reloj Inteligente Mujer, 1.83&quot; Smartwatch Mujer Pulgadas con Llamadas, IP68 Impermeable, 120+ Modos Deportivos con HD Pantalla Táctil, Podómetro, Monitor de Sueño, para Android iOS</a>
+    <div class="precio"><b>35,99 €</b> <s>129,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -72% vs mín. 30 días (129,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0H3TN1XQP</code></div>
+  </div>
+</article>
+<article class="card" data-dto="69" data-precio="6.89" data-grupo="Ropa y zapatos"
+         data-cat="Moda infantil" data-marcas=" flash hist min90 ok r20 "
+         data-texto="vaschy vestidos de niña, vestido manga larga corta impreso vestido unicornio princesa mariposa sirena vestidos ropa algodón fiesta de verano vestido festivo 3-10 años b0dcbytvcd ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DCBYTVCD"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DCBYTVCD?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-69%</span>
+    <img src="https://m.media-amazon.com/images/I/81O5SBsMeeL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DCBYTVCD?tag=telegramlaordenada-21" target="_blank" rel="noopener">VASCHY Vestidos de Niña, Vestido Manga Larga Corta Impreso Vestido Unicornio Princesa Mariposa Sirena Vestidos Ropa Algodón Fiesta de Verano Vestido Festivo 3-10 años</a>
+    <div class="precio"><b>6,89 €</b> <s>21,89 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ok">Bajada real: -69% vs mín. 30 días (21,89 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DCBYTVCD</code></div>
+  </div>
+</article>
+<article class="card" data-dto="69" data-precio="28.16" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 ok r20 "
+         data-texto="morgan 261-rois vestido mujer b0fmylsc1m ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0FMYLSC1M"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FMYLSC1M?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-69%</span>
+    <img src="https://m.media-amazon.com/images/I/71cZm+eDyhL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FMYLSC1M?tag=telegramlaordenada-21" target="_blank" rel="noopener">Morgan 261-rois Vestido Mujer</a>
+    <div class="precio"><b>28,16 €</b> <s>90,00 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -58% vs mín. 30 días (67,37 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0FMYLSC1M</code></div>
+  </div>
+</article>
+<article class="card" data-dto="68" data-precio="47.55" data-grupo="Ropa y zapatos"
+         data-cat="Moda hombre" data-marcas=" flash hist min90 ok r20 "
+         data-texto="jack &amp; jones jjemelton wool coat sn abrigo de lana hombre (pack de 1) b0clds3tr2 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0CLDS3TR2"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CLDS3TR2?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-68%</span>
+    <img src="https://m.media-amazon.com/images/I/812UG+OdyQL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CLDS3TR2?tag=telegramlaordenada-21" target="_blank" rel="noopener">JACK &amp; JONES Jjemelton Wool Coat Sn Abrigo de lana Hombre (Pack de 1)</a>
+    <div class="precio"><b>47,55 €</b> <s>149,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -27% vs mín. 30 días (65,31 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0CLDS3TR2</code></div>
+  </div>
+</article>
+<article class="card" data-dto="67" data-precio="6.89" data-grupo="Ropa y zapatos"
+         data-cat="Moda infantil" data-marcas=" flash hist min90 ok r20 "
+         data-texto="vaschy vestidos de niña, vestido manga corta vestido unicornio princesa mariposa sirena vestidos ropa tul fiesta de verano vestido festivo 2-10 años b0c247pr2r ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0C247PR2R"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0C247PR2R?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-67%</span>
+    <img src="https://m.media-amazon.com/images/I/617q1hrmulL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0C247PR2R?tag=telegramlaordenada-21" target="_blank" rel="noopener">VASCHY Vestidos de Niña, Vestido Manga Corta Vestido Unicornio Princesa Mariposa Sirena Vestidos Ropa Tul Fiesta de Verano Vestido Festivo 2-10 años</a>
+    <div class="precio"><b>6,89 €</b> <s>20,89 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -67% vs mín. 30 días (20,89 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0C247PR2R</code></div>
+  </div>
+</article>
+<article class="card" data-dto="66" data-precio="16.99" data-grupo="Ropa y zapatos"
+         data-cat="Salud y cuidado personal" data-marcas=" flash hist min90 ok r20 "
+         data-texto="tapones oidos ruido dormir, tapones oidos silicona reducción de ruido 45 db | tapones dormir reutilizables blandos en 4 tamaños (xs/s/m/l), tapones ideales para dormir, viajar, concentrarse y conciertos b0hfn2vt45 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0HFN2VT45"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HFN2VT45?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-66%</span>
+    <img src="https://m.media-amazon.com/images/I/51dGbDnkhuL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HFN2VT45?tag=telegramlaordenada-21" target="_blank" rel="noopener">Tapones Oidos Ruido Dormir, Tapones Oidos Silicona Reducción de Ruido 45 dB | Tapones Dormir Reutilizables Blandos en 4 Tamaños (XS/S/M/L), Tapones Ideales para Dormir, Viajar, Concentrarse y Conciertos</a>
+    <div class="precio"><b>16,99 €</b> <s>49,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ok">Bajada real: -66% vs mín. 30 días (49,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0HFN2VT45</code></div>
+  </div>
+</article>
+<article class="card" data-dto="66" data-precio="20.57" data-grupo="Ropa y zapatos"
+         data-cat="Moda infantil" data-marcas=" flash hist min90 ok "
+         data-texto="munich mini track vco 120 zapatillasunisex niños b0dvcghvn3 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DVCGHVN3"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DVCGHVN3?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-66%</span>
+    <img src="https://m.media-amazon.com/images/I/718taQzZO0L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DVCGHVN3?tag=telegramlaordenada-21" target="_blank" rel="noopener">Munich Mini Track VCO 120 ZapatillasUnisex niños</a>
+    <div class="precio"><b>20,57 €</b> <s>60,00 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -18% vs mín. 30 días (25,13 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DVCGHVN3</code></div>
+  </div>
+</article>
+<article class="card" data-dto="66" data-precio="23.71" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash "
+         data-texto="gioseppo okabena, zapatos planos mary jane mujer b0dtywjj5r ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DTYWJJ5R"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DTYWJJ5R?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-66%</span>
+    <img src="https://m.media-amazon.com/images/I/41pBQ8Q4UNL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DTYWJJ5R?tag=telegramlaordenada-21" target="_blank" rel="noopener">GIOSEPPO Okabena, Zapatos Planos Mary Jane Mujer</a>
+    <div class="precio"><b>23,71 €</b> <s>69,95 €</s></div>
+    <div class="tags"><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (24,96 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DTYWJJ5R</code></div>
+  </div>
+</article>
+<article class="card" data-dto="66" data-precio="30.16" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash ok r20 "
+         data-texto="caroll 232p-pgautier - pantalón mujer b0cqrg5pzy ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0CQRG5PZY"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CQRG5PZY?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-66%</span>
+    <img src="https://m.media-amazon.com/images/I/51j6nYK0zGL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CQRG5PZY?tag=telegramlaordenada-21" target="_blank" rel="noopener">Caroll 232p-pgautier - Pantalón Mujer</a>
+    <div class="precio"><b>30,16 €</b> <s>90,00 €</s></div>
+    <div class="tags"><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -26% vs mín. 30 días (40,82 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0CQRG5PZY</code></div>
+  </div>
+</article>
+<article class="card" data-dto="65" data-precio="15.6" data-grupo="Ropa y zapatos"
+         data-cat="Moda infantil" data-marcas=" flash hist min90 ok "
+         data-texto="crocs classic iam horse clog t, zuecos unisex niños b0dnd6bkm7 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DND6BKM7"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DND6BKM7?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-65%</span>
+    <img src="https://m.media-amazon.com/images/I/71SparRgA2L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DND6BKM7?tag=telegramlaordenada-21" target="_blank" rel="noopener">Crocs Classic IAM Horse Clog T, Zuecos Unisex niños</a>
+    <div class="precio"><b>15,60 €</b> <s>44,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -12% vs mín. 30 días (17,78 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DND6BKM7</code></div>
+  </div>
+</article>
+<article class="card" data-dto="64" data-precio="18.04" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" cupon flash hist min90 ok r20 "
+         data-texto="3 piezas leggins deportivos mujer,leggins anticeluliticos mujer 3d | leggings compresivos lipedema cintura alta leggins anti celulitis push up mallas compresión anticelulitis adelgazante b0hfn249t3 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0HFN249T3"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HFN249T3?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-64%</span>
+    <img src="https://m.media-amazon.com/images/I/816Gxe2VONL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HFN249T3?tag=telegramlaordenada-21" target="_blank" rel="noopener">3 Piezas Leggins Deportivos Mujer,Leggins Anticeluliticos Mujer 3D | Leggings Compresivos Lipedema Cintura Alta Leggins Anti Celulitis Push Up Mallas Compresión Anticelulitis Adelgazante</a>
+    <div class="precio"><b>18,04 €</b> <s>24,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag cupon">Con cupón 9,02 €</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -50% vs mín. 30 días (18,04 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0HFN249T3</code></div>
+  </div>
+</article>
+<article class="card" data-dto="62" data-precio="32.53" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 ok r20 "
+         data-texto="morgan 242-rpepper vestido mujer (pack de 1) b0d3f5f44g ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0D3F5F44G"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0D3F5F44G?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-62%</span>
+    <img src="https://m.media-amazon.com/images/I/61ZzKj789bL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0D3F5F44G?tag=telegramlaordenada-21" target="_blank" rel="noopener">Morgan 242-rpepper Vestido Mujer (Pack de 1)</a>
+    <div class="precio"><b>32,53 €</b> <s>85,00 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -41% vs mín. 30 días (55,30 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0D3F5F44G</code></div>
+  </div>
+</article>
+<article class="card" data-dto="62" data-precio="38.21" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 ok "
+         data-texto="tommy hilfiger ess linen ss shirt ww0ww48925 camisa s/s mujer (pack de 1) b0fdcj2gy8 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0FDCJ2GY8"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FDCJ2GY8?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-62%</span>
+    <img src="https://m.media-amazon.com/images/I/71KUzishg9L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FDCJ2GY8?tag=telegramlaordenada-21" target="_blank" rel="noopener">Tommy Hilfiger ESS Linen SS Shirt Ww0ww48925 Camisa S/S Mujer (Pack de 1)</a>
+    <div class="precio"><b>38,21 €</b> <s>99,90 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -13% vs mín. 30 días (43,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0FDCJ2GY8</code></div>
+  </div>
+</article>
+<article class="card" data-dto="62" data-precio="41.38" data-grupo="Ropa y zapatos"
+         data-cat="Moda" data-marcas=" flash hist min90 "
+         data-texto="munich massana, zapatillas unisex adulto, negro 432, 39 eu b08dp2bh55 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B08DP2BH55"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B08DP2BH55?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-62%</span>
+    <img src="https://m.media-amazon.com/images/I/81QcvftN6KS._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B08DP2BH55?tag=telegramlaordenada-21" target="_blank" rel="noopener">Munich Massana, Zapatillas Unisex adulto, Negro 432, 39 EU</a>
+    <div class="precio"><b>41,38 €</b> <s>110,00 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (43,95 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B08DP2BH55</code></div>
+  </div>
+</article>
+<article class="card" data-dto="62" data-precio="49.99" data-grupo="Ropa y zapatos"
+         data-cat="Relojes y joyería" data-marcas=" flash hist min90 ok r20 "
+         data-texto="uaue reloj inteligente para mujer y hombre, gps, impermeabilización 3tm | rastreador de fitness con más de 100 modos de ejercicio y función telefónica, frecuencia cardíaca, sueño, podómetro b0h9xrk6q3 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0H9XRK6Q3"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H9XRK6Q3?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-62%</span>
+    <img src="https://m.media-amazon.com/images/I/71vPlqHeb4L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H9XRK6Q3?tag=telegramlaordenada-21" target="_blank" rel="noopener">uaue Reloj Inteligente para Mujer y Hombre, GPS, Impermeabilización 3TM | Rastreador de Fitness Con Más de 100 Modos de ejercicio y Función Telefónica, Frecuencia Cardíaca, Sueño, Podómetro</a>
+    <div class="precio"><b>49,99 €</b> <s>129,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ok">Bajada real: -62% vs mín. 30 días (129,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0H9XRK6Q3</code></div>
+  </div>
+</article>
+<article class="card" data-dto="60" data-precio="36.05" data-grupo="Ropa y zapatos"
+         data-cat="Moda" data-marcas=" flash hist min90 "
+         data-texto="carmela 162430 sneakersmujer b0fcsrgb6g ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0FCSRGB6G"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FCSRGB6G?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-60%</span>
+    <img src="https://m.media-amazon.com/images/I/71zm-Ei4gVL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FCSRGB6G?tag=telegramlaordenada-21" target="_blank" rel="noopener">Carmela 162430 SNEAKERSMujer</a>
+    <div class="precio"><b>36,05 €</b> <s>89,95 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-9% vs mín. 30 días (39,67 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0FCSRGB6G</code></div>
+  </div>
+</article>
+<article class="card" data-dto="58" data-precio="37.99" data-grupo="Ropa y zapatos"
+         data-cat="Moda hombre" data-marcas=" flash min90 ok r20 "
+         data-texto="leif nelson vaqueros para hombre pantalones jeans ln-9285 b07f173b3b ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B07F173B3B"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07F173B3B?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-58%</span>
+    <img src="https://m.media-amazon.com/images/I/61EoMf0hSYL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07F173B3B?tag=telegramlaordenada-21" target="_blank" rel="noopener">Leif Nelson Vaqueros para Hombre Pantalones Jeans LN-9285</a>
+    <div class="precio"><b>37,99 €</b> <s>89,99 €</s></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ok">Bajada real: -58% vs mín. 30 días (89,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B07F173B3B</code></div>
+  </div>
+</article>
+<article class="card" data-dto="58" data-precio="38.25" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 ok "
+         data-texto="caroll 232p-pgautier - pantalón mujer b0cqrcwhnk ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0CQRCWHNK"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CQRCWHNK?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-58%</span>
+    <img src="https://m.media-amazon.com/images/I/41JhnSx5xzL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CQRCWHNK?tag=telegramlaordenada-21" target="_blank" rel="noopener">Caroll 232p-pgautier - Pantalón Mujer</a>
+    <div class="precio"><b>38,25 €</b> <s>90,00 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -15% vs mín. 30 días (45,00 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0CQRCWHNK</code></div>
+  </div>
+</article>
+<article class="card" data-dto="57" data-precio="30.0" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 ok r20 "
+         data-texto="revolutionrace canyon full-zip pile fleece para mujer, chaqueta de forro polar para exteriores b0g4nbt1fv ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0G4NBT1FV"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0G4NBT1FV?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-57%</span>
+    <img src="https://m.media-amazon.com/images/I/813oONbgwNL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0G4NBT1FV?tag=telegramlaordenada-21" target="_blank" rel="noopener">RevolutionRace Canyon Full-Zip Pile Fleece para Mujer, Chaqueta de Forro Polar para Exteriores</a>
+    <div class="precio"><b>30,00 €</b> <s>69,00 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Finaliza en</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -49% vs mín. 30 días (59,00 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0G4NBT1FV</code></div>
+  </div>
+</article>
+<article class="card" data-dto="56" data-precio="6.64" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 "
+         data-texto="stoeury calcetines deportivos mujer, mezcla de bambú y algodón, transpirables y absorben la humedad, corte invisible (35-38 / 39-42) b0gf1qrd1n ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0GF1QRD1N"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GF1QRD1N?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-56%</span>
+    <img src="https://m.media-amazon.com/images/I/711uCcVFXbL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GF1QRD1N?tag=telegramlaordenada-21" target="_blank" rel="noopener">Stoeury Calcetines Deportivos Mujer, Mezcla de Bambú y Algodón, Transpirables y Absorben la Humedad, Corte Invisible (35-38 / 39-42)</a>
+    <div class="precio"><b>6,64 €</b> <s>14,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (6,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0GF1QRD1N</code></div>
+  </div>
+</article>
+<article class="card" data-dto="55" data-precio="20.08" data-grupo="Ropa y zapatos"
+         data-cat="Moda infantil" data-marcas=" flash "
+         data-texto="crocs classic iam horse clog t, zuecos unisex niños b0dnd7mvyc ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DND7MVYC"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DND7MVYC?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-55%</span>
+    <img src="https://m.media-amazon.com/images/I/71SparRgA2L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DND7MVYC?tag=telegramlaordenada-21" target="_blank" rel="noopener">Crocs Classic IAM Horse Clog T, Zuecos Unisex niños</a>
+    <div class="precio"><b>20,08 €</b> <s>44,99 €</s></div>
+    <div class="tags"><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-10% vs mín. 30 días (22,25 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DND7MVYC</code></div>
+  </div>
+</article>
+<article class="card" data-dto="55" data-precio="22.49" data-grupo="Ropa y zapatos"
+         data-cat="Moda" data-marcas=" flash hist min90 "
+         data-texto="saguaro unisex zapatillas barefoot minimalistas luck ⅰ, puntera ancha y drop cero suela antideslizante, gr.36-46 b0fkgqyltc ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0FKGQYLTC"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FKGQYLTC?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-55%</span>
+    <img src="https://m.media-amazon.com/images/I/81HpC+mAeEL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FKGQYLTC?tag=telegramlaordenada-21" target="_blank" rel="noopener">SAGUARO Unisex Zapatillas Barefoot Minimalistas Luck Ⅰ, Puntera Ancha y Drop Cero Suela Antideslizante, Gr.36-46</a>
+    <div class="precio"><b>22,49 €</b> <s>49,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (23,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0FKGQYLTC</code></div>
+  </div>
+</article>
+<article class="card" data-dto="55" data-precio="44.95" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 ok "
+         data-texto="tommy hilfiger halter rp op uw0uw06356 traje de baño de inmersión mujer (pack de 1) b0fdh2g9cx ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0FDH2G9CX"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FDH2G9CX?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-55%</span>
+    <img src="https://m.media-amazon.com/images/I/71DBg-3HFRL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FDH2G9CX?tag=telegramlaordenada-21" target="_blank" rel="noopener">Tommy Hilfiger Halter Rp Op Uw0uw06356 Traje de baño de inmersión Mujer (Pack de 1)</a>
+    <div class="precio"><b>44,95 €</b> <s>99,90 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -13% vs mín. 30 días (51,96 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0FDH2G9CX</code></div>
+  </div>
+</article>
+<article class="card" data-dto="54" data-precio="19.95" data-grupo="Ropa y zapatos"
+         data-cat="Moda" data-marcas=" flash min90 ok r20 "
+         data-texto="danish endurance calcetines algodón orgánico, transpirables, 6 pack b0djmsbx3v ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DJMSBX3V"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DJMSBX3V?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-54%</span>
+    <img src="https://m.media-amazon.com/images/I/71RCJ4t-qxL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DJMSBX3V?tag=telegramlaordenada-21" target="_blank" rel="noopener">DANISH ENDURANCE Calcetines Algodón Orgánico, Transpirables, 6 Pack</a>
+    <div class="precio"><b>19,95 €</b> <s>42,95 €</s></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -50% vs mín. 30 días (39,95 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DJMSBX3V</code></div>
+  </div>
+</article>
+<article class="card" data-dto="54" data-precio="19.99" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 ok r20 "
+         data-texto="mishansha sandalias de trekking mujer | transpirables, antideslizantes, cerradas b0gfdvg5sg ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0GFDVG5SG"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GFDVG5SG?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-54%</span>
+    <img src="https://m.media-amazon.com/images/I/614RYH9l05L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GFDVG5SG?tag=telegramlaordenada-21" target="_blank" rel="noopener">Mishansha Sandalias de Trekking Mujer | Transpirables, Antideslizantes, Cerradas</a>
+    <div class="precio"><b>19,99 €</b> <s>42,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -38% vs mín. 30 días (31,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0GFDVG5SG</code></div>
+  </div>
+</article>
+<article class="card" data-dto="54" data-precio="27.58" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 "
+         data-texto="refresh - botín mujer - calzado cómodo y versátil - moda casual b0fr1fchkq ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0FR1FCHKQ"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FR1FCHKQ?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-54%</span>
+    <img src="https://m.media-amazon.com/images/I/61sC1m5OsaL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FR1FCHKQ?tag=telegramlaordenada-21" target="_blank" rel="noopener">REFRESH - Botín Mujer - Calzado Cómodo y Versátil - Moda casual</a>
+    <div class="precio"><b>27,58 €</b> <s>59,95 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-7% vs mín. 30 días (29,68 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0FR1FCHKQ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="54" data-precio="41.65" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 ok "
+         data-texto="morgan 261-rois vestido mujer b0fmync6z9 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0FMYNC6Z9"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FMYNC6Z9?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-54%</span>
+    <img src="https://m.media-amazon.com/images/I/71xldt772UL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FMYNC6Z9?tag=telegramlaordenada-21" target="_blank" rel="noopener">Morgan 261-rois Vestido Mujer</a>
+    <div class="precio"><b>41,65 €</b> <s>90,00 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -15% vs mín. 30 días (49,00 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0FMYNC6Z9</code></div>
+  </div>
+</article>
+<article class="card" data-dto="54" data-precio="45.41" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash ok r20 "
+         data-texto="morgan 252-gpoli chaquetas de temporada media mujer b0dyf4wttx ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DYF4WTTX"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DYF4WTTX?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-54%</span>
+    <img src="https://m.media-amazon.com/images/I/51Devntls6L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DYF4WTTX?tag=telegramlaordenada-21" target="_blank" rel="noopener">Morgan 252-gpoli Chaquetas de temporada media Mujer</a>
+    <div class="precio"><b>45,41 €</b> <s>99,00 €</s></div>
+    <div class="tags"><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -34% vs mín. 30 días (69,30 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DYF4WTTX</code></div>
+  </div>
+</article>
+<article class="card" data-dto="54" data-precio="73.51" data-grupo="Ropa y zapatos"
+         data-cat="Moda" data-marcas=" flash hist min90 ok r20 "
+         data-texto="morgan - chaqueta de plumas, marfil m, 38 b0f2g7l6db ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0F2G7L6DB"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0F2G7L6DB?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-54%</span>
+    <img src="https://m.media-amazon.com/images/I/41TX6RuRoeL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0F2G7L6DB?tag=telegramlaordenada-21" target="_blank" rel="noopener">Morgan - Chaqueta de plumas, MARFIL M, 38</a>
+    <div class="precio"><b>73,51 €</b> <s>160,00 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -20% vs mín. 30 días (91,98 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0F2G7L6DB</code></div>
+  </div>
+</article>
+<article class="card" data-dto="53" data-precio="6.99" data-grupo="Ropa y zapatos"
+         data-cat="Moda" data-marcas=" flash hist min90 ok r20 "
+         data-texto="kimorn gafas de sol retro de la sra. gafas de protección de conducción retro marco cuadrado estrecho protección uv400 b0dttpwcty ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DTTPWCTY"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DTTPWCTY?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-53%</span>
+    <img src="https://m.media-amazon.com/images/I/51Z0ln+HioL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DTTPWCTY?tag=telegramlaordenada-21" target="_blank" rel="noopener">kimorn Gafas de sol retro de la Sra. gafas de protección de conducción retro marco cuadrado estrecho protección uv400</a>
+    <div class="precio"><b>6,99 €</b> <s>14,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -53% vs mín. 30 días (14,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DTTPWCTY</code></div>
+  </div>
+</article>
+<article class="card" data-dto="53" data-precio="9.49" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 "
+         data-texto="gyabnw camiseta manga corta mujer cuello v malla calada | manga corta, tejido de malla calada, cuello v, estilo de camiseta de manga corta, para verano, estilo ligero y femenino b0gccqvqhp ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0GCCQVQHP"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GCCQVQHP?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-53%</span>
+    <img src="https://m.media-amazon.com/images/I/71AtOlPrdbL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GCCQVQHP?tag=telegramlaordenada-21" target="_blank" rel="noopener">Gyabnw Camiseta Manga Corta Mujer Cuello V Malla Calada | Manga corta, tejido de malla calada, cuello V, estilo de camiseta de manga corta, para verano, estilo ligero y femenino</a>
+    <div class="precio"><b>9,49 €</b> <s>19,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (9,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0GCCQVQHP</code></div>
+  </div>
+</article>
+<article class="card" data-dto="53" data-precio="14.24" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash "
+         data-texto="icereco bragas mujer algodon altas elástico pack de 5 | bragas reductoras mujer, braguitas postparto, ropa interior mujer talle alto b0dtjtfdwk ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DTJTFDWK"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DTJTFDWK?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-53%</span>
+    <img src="https://m.media-amazon.com/images/I/619QDKdzeDL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DTJTFDWK?tag=telegramlaordenada-21" target="_blank" rel="noopener">IceReco Bragas Mujer Algodon Altas Elástico Pack de 5 | Bragas Reductoras Mujer, Braguitas Postparto, Ropa Interior Mujer Talle Alto</a>
+    <div class="precio"><b>14,24 €</b> <s>29,99 €</s></div>
+    <div class="tags"><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (14,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DTJTFDWK</code></div>
+  </div>
+</article>
+<article class="card" data-dto="53" data-precio="25.78" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 "
+         data-texto="morgan 261-shich.f - pantalones de mujer mujer b0fmylz2v3 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0FMYLZ2V3"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FMYLZ2V3?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-53%</span>
+    <img src="https://m.media-amazon.com/images/I/71ngW1UnvDL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FMYLZ2V3?tag=telegramlaordenada-21" target="_blank" rel="noopener">Morgan 261-shich.f - Pantalones de Mujer Mujer</a>
+    <div class="precio"><b>25,78 €</b> <s>55,00 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (27,14 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0FMYLZ2V3</code></div>
+  </div>
+</article>
+<article class="card" data-dto="53" data-precio="27.95" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash min90 "
+         data-texto="crocs brooklyn 4u, sandalia mujer b0cxfzlgrh ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0CXFZLGRH"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CXFZLGRH?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-53%</span>
+    <img src="https://m.media-amazon.com/images/I/71QrepavDvL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CXFZLGRH?tag=telegramlaordenada-21" target="_blank" rel="noopener">Crocs Brooklyn 4u, Sandalia Mujer</a>
+    <div class="precio"><b>27,95 €</b> <s>59,99 €</s></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-7% vs mín. 30 días (30,00 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0CXFZLGRH</code></div>
+  </div>
+</article>
+<article class="card" data-dto="52" data-precio="18.39" data-grupo="Ropa y zapatos"
+         data-cat="Moda hombre" data-marcas=" flash hist min90 ok r20 "
+         data-texto="oralidera chaleco de pesca para hombres chaquetas sin mangas al aire libre chaleco de caza fotografía viajes chaleco deportes de trabajo con multibolsillos b095ltrff4 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B095LTRFF4"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B095LTRFF4?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-52%</span>
+    <img src="https://m.media-amazon.com/images/I/710NvWi0OWL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B095LTRFF4?tag=telegramlaordenada-21" target="_blank" rel="noopener">Oralidera Chaleco de Pesca para Hombres Chaquetas sin Mangas al Aire Libre Chaleco de Caza Fotografía Viajes Chaleco Deportes de Trabajo con Multibolsillos</a>
+    <div class="precio"><b>18,39 €</b> <s>37,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -20% vs mín. 30 días (22,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B095LTRFF4</code></div>
+  </div>
+</article>
+<article class="card" data-dto="52" data-precio="19.11" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 ok "
+         data-texto="crocs classic womens cross strap, sandalias mujer b0dnd8x72x ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DND8X72X"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DND8X72X?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-52%</span>
+    <img src="https://m.media-amazon.com/images/I/61WvUI3NPhL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DND8X72X?tag=telegramlaordenada-21" target="_blank" rel="noopener">Crocs Classic Womens Cross Strap, Sandalias Mujer</a>
+    <div class="precio"><b>19,11 €</b> <s>39,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -10% vs mín. 30 días (21,30 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DND8X72X</code></div>
+  </div>
+</article>
+<article class="card" data-dto="52" data-precio="19.19" data-grupo="Ropa y zapatos"
+         data-cat="Moda hombre" data-marcas=" flash min90 ok r20 "
+         data-texto="yukirtiq hombres chaleco de pesca senderismo chaleco tipo safari de fotografía viajes bolsillos chaquetas sin mangas para trabajo chaleco de caza b0b5pbt2bn ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0B5PBT2BN"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0B5PBT2BN?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-52%</span>
+    <img src="https://m.media-amazon.com/images/I/71wpc0ezowL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0B5PBT2BN?tag=telegramlaordenada-21" target="_blank" rel="noopener">Yukirtiq Hombres Chaleco de Pesca Senderismo Chaleco Tipo Safari de Fotografía Viajes Bolsillos Chaquetas sin Mangas para Trabajo Chaleco de Caza</a>
+    <div class="precio"><b>19,19 €</b> <s>39,99 €</s></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -20% vs mín. 30 días (23,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0B5PBT2BN</code></div>
+  </div>
+</article>
+<article class="card" data-dto="52" data-precio="29.0" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 ok "
+         data-texto="tommy hilfiger camiseta de manga larga mujer new cody slim cuello barco b0c2j8lds4 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0C2J8LDS4"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0C2J8LDS4?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-52%</span>
+    <img src="https://m.media-amazon.com/images/I/71PK8rcfRoL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0C2J8LDS4?tag=telegramlaordenada-21" target="_blank" rel="noopener">Tommy Hilfiger Camiseta de manga larga Mujer New Cody Slim cuello barco</a>
+    <div class="precio"><b>29,00 €</b> <s>59,90 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -12% vs mín. 30 días (32,93 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0C2J8LDS4</code></div>
+  </div>
+</article>
+<article class="card" data-dto="52" data-precio="43.07" data-grupo="Ropa y zapatos"
+         data-cat="Relojes y joyería" data-marcas=" flash min90 "
+         data-texto="thomas sabo collar de mujer con plata de ley 925, 45 cm b079vdlcqd ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B079VDLCQD"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B079VDLCQD?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-52%</span>
+    <img src="https://m.media-amazon.com/images/I/61PjW0Gcv2L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B079VDLCQD?tag=telegramlaordenada-21" target="_blank" rel="noopener">Thomas Sabo Collar de Mujer con Plata de Ley 925, 45 cm</a>
+    <div class="precio"><b>43,07 €</b> <s>89,00 €</s></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (45,74 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B079VDLCQD</code></div>
+  </div>
+</article>
+<article class="card" data-dto="51" data-precio="13.67" data-grupo="Ropa y zapatos"
+         data-cat="Moda hombre" data-marcas=" flash min90 "
+         data-texto="uniexcosm pijama de hombre manga larga con bolsillo ropa de casa de cuello redonde cuadros algodón suave para casual hogar b0c7vc9hth ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0C7VC9HTH"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0C7VC9HTH?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-51%</span>
+    <img src="https://m.media-amazon.com/images/I/613dzJcnzdL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0C7VC9HTH?tag=telegramlaordenada-21" target="_blank" rel="noopener">Uniexcosm Pijama de Hombre Manga Larga con Bolsillo Ropa de Casa de Cuello Redonde Cuadros Algodón Suave para Casual Hogar</a>
+    <div class="precio"><b>13,67 €</b> <s>27,99 €</s></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (14,39 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0C7VC9HTH</code></div>
+  </div>
+</article>
+<article class="card" data-dto="51" data-precio="24.32" data-grupo="Ropa y zapatos"
+         data-cat="Moda hombre" data-marcas=" flash ok r20 "
+         data-texto="puma ess logo pants tr op srl - pantalones hombre b0916976p4 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0916976P4"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0916976P4?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-51%</span>
+    <img src="https://m.media-amazon.com/images/I/51eaazkJaWL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0916976P4?tag=telegramlaordenada-21" target="_blank" rel="noopener">Puma ESS Logo Pants TR Op SRL - Pantalones Hombre</a>
+    <div class="precio"><b>24,32 €</b> <s>49,95 €</s></div>
+    <div class="tags"><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -48% vs mín. 30 días (47,19 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0916976P4</code></div>
+  </div>
+</article>
+<article class="card" data-dto="51" data-precio="42.0" data-grupo="Ropa y zapatos"
+         data-cat="Deportes" data-marcas=" flash hist min90 ok r20 "
+         data-texto="revolutionrace explor backpack para unisexo, mochila de senderismo, mud, 18l b0bf5y3bkd ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0BF5Y3BKD"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0BF5Y3BKD?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-51%</span>
+    <img src="https://m.media-amazon.com/images/I/91v-C6HSiSL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0BF5Y3BKD?tag=telegramlaordenada-21" target="_blank" rel="noopener">RevolutionRace Explor Backpack para Unisexo, Mochila de Senderismo, Mud, 18L</a>
+    <div class="precio"><b>42,00 €</b> <s>85,00 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Finaliza en</span><span class="tag ok">Bajada real: -51% vs mín. 30 días (85,00 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0BF5Y3BKD</code></div>
+  </div>
+</article>
+<article class="card" data-dto="50" data-precio="6.0" data-grupo="Ropa y zapatos"
+         data-cat="Moda infantil" data-marcas=" flash hist min90 ok r20 "
+         data-texto="calzitaly leggings para niña | mallas de niña en microfibra | rosa, blanco, negro | 50 den | 4/6 años, 8/10 años | 100% made in italy | b07c5qd97x ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B07C5QD97X"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07C5QD97X?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-50%</span>
+    <img src="https://m.media-amazon.com/images/I/61Jy+9nNYsL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07C5QD97X?tag=telegramlaordenada-21" target="_blank" rel="noopener">CALZITALY Leggings para Niña | Mallas de Niña en Microfibra | Rosa, Blanco, Negro | 50 DEN | 4/6 Años, 8/10 Años | 100% Made in Italy |</a>
+    <div class="precio"><b>6,00 €</b> <s>11,95 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ok">Bajada real: -50% vs mín. 30 días (11,95 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B07C5QD97X</code></div>
+  </div>
+</article>
+<article class="card" data-dto="50" data-precio="9.99" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 ok r20 "
+         data-texto="senbatu camiseta de manga corta con cuello en v para mujer, estilo informal de verano, con bordado de ojales, corte holgado b0gfn155m9 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0GFN155M9"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GFN155M9?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-50%</span>
+    <img src="https://m.media-amazon.com/images/I/81CdH13zdsL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GFN155M9?tag=telegramlaordenada-21" target="_blank" rel="noopener">SENBATU Camiseta de Manga Corta con Cuello en V para Mujer, Estilo Informal de Verano, con Bordado de Ojales, Corte Holgado</a>
+    <div class="precio"><b>9,99 €</b> <s>19,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ok">Bajada real: -50% vs mín. 30 días (19,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0GFN155M9</code></div>
+  </div>
+</article>
+<article class="card" data-dto="50" data-precio="12.99" data-grupo="Ropa y zapatos"
+         data-cat="Maletas y viaje" data-marcas=" flash hist min90 ok r20 "
+         data-texto="bagzy maleta 40x20x25 cm ryanair 2pcs bolso de viaje maletas de viaje cabina plegable bolsa de viaje neceser viaje bolsa de hombro de gimnasio bolsa deportiva mano maleta de viaje (gris) b0c1nd39ft ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0C1ND39FT"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0C1ND39FT?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-50%</span>
+    <img src="https://m.media-amazon.com/images/I/71TZNIkHhPL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0C1ND39FT?tag=telegramlaordenada-21" target="_blank" rel="noopener">BAGZY Maleta 40x20x25 cm Ryanair 2PCS Bolso de Viaje Maletas de Viaje Cabina Plegable Bolsa de Viaje Neceser Viaje Bolsa de Hombro de Gimnasio Bolsa Deportiva Mano Maleta de Viaje (Gris)</a>
+    <div class="precio"><b>12,99 €</b> <s>25,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -54% vs mín. 30 días (27,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0C1ND39FT</code></div>
+  </div>
+</article>
+<article class="card" data-dto="50" data-precio="16.58" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 ok "
+         data-texto="ekouaer camisones de mujer 2 piezas sexy camisón tirantes de encaje dormir verano sin mangas v cuello ropa de descanso suave s-xxl b0g69msnbg ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0G69MSNBG"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0G69MSNBG?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-50%</span>
+    <img src="https://m.media-amazon.com/images/I/61CCKyq3f-L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0G69MSNBG?tag=telegramlaordenada-21" target="_blank" rel="noopener">Ekouaer Camisones de Mujer 2 Piezas Sexy Camisón Tirantes de Encaje Dormir Verano Sin Mangas V Cuello Ropa de Descanso Suave S-XXL</a>
+    <div class="precio"><b>16,58 €</b> <s>32,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -17% vs mín. 30 días (19,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0G69MSNBG</code></div>
+  </div>
+</article>
+<article class="card" data-dto="50" data-precio="16.87" data-grupo="Ropa y zapatos"
+         data-cat="Moda hombre" data-marcas=" flash hist min90 "
+         data-texto="tacvasen camiseta henley hombre de algodón de manga larga básica con solapa de botones corte regular camisa casual b0flp1y2h3 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0FLP1Y2H3"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FLP1Y2H3?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-50%</span>
+    <img src="https://m.media-amazon.com/images/I/71E5mFA+miL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FLP1Y2H3?tag=telegramlaordenada-21" target="_blank" rel="noopener">TACVASEN Camiseta Henley Hombre de Algodón de Manga Larga Básica con Solapa de Botones Corte Regular Camisa Casual</a>
+    <div class="precio"><b>16,87 €</b> <s>33,98 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (17,76 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0FLP1Y2H3</code></div>
+  </div>
+</article>
+<article class="card" data-dto="50" data-precio="18.04" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 "
+         data-texto="libin pantalones cargo térmicos mujer yoga invierno | campana corte sports leggings impermeable térmicos senderismo montaña esquí deportivos trabajo bootcut chándal con bolsillos b0fkmkj6zn ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0FKMKJ6ZN"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FKMKJ6ZN?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-50%</span>
+    <img src="https://m.media-amazon.com/images/I/61+7HbZGpbL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FKMKJ6ZN?tag=telegramlaordenada-21" target="_blank" rel="noopener">Libin Pantalones Cargo Térmicos Mujer Yoga Invierno | Campana Corte Sports Leggings Impermeable Térmicos Senderismo Montaña Esquí Deportivos Trabajo Bootcut Chándal Con Bolsillos</a>
+    <div class="precio"><b>18,04 €</b> <s>35,98 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (18,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0FKMKJ6ZN</code></div>
+  </div>
+</article>
+<article class="card" data-dto="50" data-precio="19.95" data-grupo="Ropa y zapatos"
+         data-cat="Moda hombre" data-marcas=" flash hist min90 ok "
+         data-texto="tommy hilfiger brand love mono stack tee mw0mw42365 camiseta s/s hombre (pack de 1) b0fdl7lmvv ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0FDL7LMVV"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FDL7LMVV?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-50%</span>
+    <img src="https://m.media-amazon.com/images/I/71Fa4aTaCEL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FDL7LMVV?tag=telegramlaordenada-21" target="_blank" rel="noopener">Tommy Hilfiger Brand Love Mono Stack tee Mw0mw42365 Camiseta S/S Hombre (Pack de 1)</a>
+    <div class="precio"><b>19,95 €</b> <s>39,90 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -11% vs mín. 30 días (22,43 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0FDL7LMVV</code></div>
+  </div>
+</article>
+<article class="card" data-dto="50" data-precio="19.99" data-grupo="Ropa y zapatos"
+         data-cat="Moda hombre" data-marcas=" flash min90 ok r20 "
+         data-texto="leif nelson camiseta de verano para hombre, cuello redondo, corte ajustado, camiseta básica blanca y negra, camiseta básica para hombre, cuello redondo, camiseta de manga corta, cuello redondo, manga b08cbf45mc ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B08CBF45MC"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B08CBF45MC?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-50%</span>
+    <img src="https://m.media-amazon.com/images/I/814mJA7m-jL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B08CBF45MC?tag=telegramlaordenada-21" target="_blank" rel="noopener">Leif Nelson Camiseta de verano para hombre, cuello redondo, corte ajustado, camiseta básica blanca y negra, camiseta básica para hombre, cuello redondo, camiseta de manga corta, cuello redondo, manga</a>
+    <div class="precio"><b>19,99 €</b> <s>39,99 €</s></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ok">Bajada real: -50% vs mín. 30 días (39,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B08CBF45MC</code></div>
+  </div>
+</article>
+<article class="card" data-dto="50" data-precio="24.0" data-grupo="Ropa y zapatos"
+         data-cat="Relojes y joyería" data-marcas=" flash hist min90 ok r20 "
+         data-texto="leafael collar piedra de los deseos mujer con cristal natal | collar piedra de los deseos mujer con cristal natal; colgante con cadena ajustable de 18+2 pulgadas. b077gkjwt5 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B077GKJWT5"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B077GKJWT5?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-50%</span>
+    <img src="https://m.media-amazon.com/images/I/71cEC2cCn1L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B077GKJWT5?tag=telegramlaordenada-21" target="_blank" rel="noopener">Leafael Collar Piedra de los Deseos Mujer con Cristal Natal | Collar Piedra de los Deseos Mujer con Cristal Natal; colgante con cadena ajustable de 18+2 pulgadas.</a>
+    <div class="precio"><b>24,00 €</b> <s>48,00 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -50% vs mín. 30 días (48,00 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B077GKJWT5</code></div>
+  </div>
+</article>
+<article class="card" data-dto="50" data-precio="24.95" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 ok "
+         data-texto="tommy hilfiger camiseta de manga corta mujer new slim cody v-neck cuello de pico b0fddv2khr ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0FDDV2KHR"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FDDV2KHR?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-50%</span>
+    <img src="https://m.media-amazon.com/images/I/81kWyPkQb8L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FDDV2KHR?tag=telegramlaordenada-21" target="_blank" rel="noopener">Tommy Hilfiger Camiseta de Manga Corta Mujer New Slim Cody V-Neck Cuello de Pico</a>
+    <div class="precio"><b>24,95 €</b> <s>49,90 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -14% vs mín. 30 días (28,91 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0FDDV2KHR</code></div>
+  </div>
+</article>
+<article class="card" data-dto="50" data-precio="99.46" data-grupo="Ropa y zapatos"
+         data-cat="Moda hombre" data-marcas=" flash min90 ok r20 "
+         data-texto="panama jack fedro igloo - botas estilo motero hombre b0081jgwm2 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0081JGWM2"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0081JGWM2?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-50%</span>
+    <img src="https://m.media-amazon.com/images/I/51DDaCZrmrL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0081JGWM2?tag=telegramlaordenada-21" target="_blank" rel="noopener">Panama Jack Fedro Igloo - Botas Estilo Motero Hombre</a>
+    <div class="precio"><b>99,46 €</b> <s>199,00 €</s></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -27% vs mín. 30 días (136,94 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0081JGWM2</code></div>
+  </div>
+</article>
+<article class="card" data-dto="49" data-precio="10.18" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 ok r20 "
+         data-texto="gyabnw camiseta manga corta mujer cuello v malla calada | manga corta, tejido de malla calada, cuello v, estilo de camiseta de manga corta, para verano, estilo ligero y femenino b0gccr46z9 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0GCCR46Z9"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GCCR46Z9?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-49%</span>
+    <img src="https://m.media-amazon.com/images/I/81yy4FnlHpL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GCCR46Z9?tag=telegramlaordenada-21" target="_blank" rel="noopener">Gyabnw Camiseta Manga Corta Mujer Cuello V Malla Calada | Manga corta, tejido de malla calada, cuello V, estilo de camiseta de manga corta, para verano, estilo ligero y femenino</a>
+    <div class="precio"><b>10,18 €</b> <s>19,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -22% vs mín. 30 días (12,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0GCCR46Z9</code></div>
+  </div>
+</article>
+<article class="card" data-dto="49" data-precio="19.99" data-grupo="Ropa y zapatos"
+         data-cat="Moda hombre" data-marcas=" flash hist min90 ok r20 "
+         data-texto="yukirtiq chaleco de mezclilla para hombre chaqueta sin manga de jeans denim casual chaleco de tela vaquera multibolsillos b0b4jnkbjn ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0B4JNKBJN"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0B4JNKBJN?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-49%</span>
+    <img src="https://m.media-amazon.com/images/I/81hmdknbOZL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0B4JNKBJN?tag=telegramlaordenada-21" target="_blank" rel="noopener">Yukirtiq Chaleco de Mezclilla para Hombre Chaqueta Sin Manga de Jeans Denim Casual Chaleco de Tela Vaquera Multibolsillos</a>
+    <div class="precio"><b>19,99 €</b> <s>38,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -23% vs mín. 30 días (25,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0B4JNKBJN</code></div>
+  </div>
+</article>
+<article class="card" data-dto="49" data-precio="19.99" data-grupo="Ropa y zapatos"
+         data-cat="Moda hombre" data-marcas=" flash min90 ok r20 "
+         data-texto="ktwolen chaleco de pesca hombre multibolsillos chaqueta sin mangas fotografia algodón chaleco deportivo de trabajo safari b0b8stkpdm ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0B8STKPDM"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0B8STKPDM?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-49%</span>
+    <img src="https://m.media-amazon.com/images/I/71XtrM+UlaL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0B8STKPDM?tag=telegramlaordenada-21" target="_blank" rel="noopener">KTWOLEN Chaleco de Pesca Hombre Multibolsillos Chaqueta Sin Mangas Fotografia Algodón Chaleco Deportivo de Trabajo Safari</a>
+    <div class="precio"><b>19,99 €</b> <s>38,99 €</s></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -20% vs mín. 30 días (24,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0B8STKPDM</code></div>
+  </div>
+</article>
+<article class="card" data-dto="49" data-precio="22.99" data-grupo="Ropa y zapatos"
+         data-cat="Moda hombre" data-marcas=" flash min90 ok r20 "
+         data-texto="leif nelson suéter de jersey de punto fino de cuello redondo de los hombres de ln-1840 b07jgm44jz ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B07JGM44JZ"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07JGM44JZ?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-49%</span>
+    <img src="https://m.media-amazon.com/images/I/A12ETwiQUPL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07JGM44JZ?tag=telegramlaordenada-21" target="_blank" rel="noopener">Leif Nelson suéter de Jersey de Punto Fino de Cuello Redondo de los Hombres de LN-1840</a>
+    <div class="precio"><b>22,99 €</b> <s>44,99 €</s></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ok">Bajada real: -49% vs mín. 30 días (44,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B07JGM44JZ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="49" data-precio="32.99" data-grupo="Ropa y zapatos"
+         data-cat="Moda hombre" data-marcas=" flash min90 ok r20 "
+         data-texto="leif nelson vaqueros para hombre pantalones jeans ln-301 b011a2lvwm ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B011A2LVWM"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B011A2LVWM?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-49%</span>
+    <img src="https://m.media-amazon.com/images/I/51L6Ryux2DL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B011A2LVWM?tag=telegramlaordenada-21" target="_blank" rel="noopener">Leif Nelson Vaqueros para Hombre Pantalones Jeans LN-301</a>
+    <div class="precio"><b>32,99 €</b> <s>64,99 €</s></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ok">Bajada real: -49% vs mín. 30 días (64,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B011A2LVWM</code></div>
+  </div>
+</article>
+<article class="card" data-dto="49" data-precio="35.69" data-grupo="Ropa y zapatos"
+         data-cat="Moda" data-marcas=" flash hist min90 ok "
+         data-texto="carmela 163158 sandaliamujer b0gfdvmyc9 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0GFDVMYC9"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GFDVMYC9?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-49%</span>
+    <img src="https://m.media-amazon.com/images/I/51ZeMKtsUkL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GFDVMYC9?tag=telegramlaordenada-21" target="_blank" rel="noopener">Carmela 163158 SandaliaMujer</a>
+    <div class="precio"><b>35,69 €</b> <s>69,95 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -10% vs mín. 30 días (39,87 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0GFDVMYC9</code></div>
+  </div>
+</article>
+<article class="card" data-dto="49" data-precio="40.95" data-grupo="Ropa y zapatos"
+         data-cat="Moda hombre" data-marcas=" flash min90 ok r20 "
+         data-texto="danish endurance boxer de bambú hombre | calzoncillos tipo bóxer de bambú con abertura, antiolores y transpirables, sin rozaduras, para uso diario, trabajo y viajes b0dhz6w2qg ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DHZ6W2QG"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DHZ6W2QG?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-49%</span>
+    <img src="https://m.media-amazon.com/images/I/71fiP+CGCLL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DHZ6W2QG?tag=telegramlaordenada-21" target="_blank" rel="noopener">DANISH ENDURANCE Boxer de Bambú Hombre | Calzoncillos tipo bóxer de bambú con abertura, antiolores y transpirables, sin rozaduras, para uso diario, trabajo y viajes</a>
+    <div class="precio"><b>40,95 €</b> <s>79,95 €</s></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -38% vs mín. 30 días (65,95 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DHZ6W2QG</code></div>
+  </div>
+</article>
+<article class="card" data-dto="49" data-precio="76.04" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 ok r20 "
+         data-texto="morgan 252-gapi parka mujer (pack de 1) b0fgdspwpb ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0FGDSPWPB"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FGDSPWPB?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-49%</span>
+    <img src="https://m.media-amazon.com/images/I/61YhIEkwkRL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FGDSPWPB?tag=telegramlaordenada-21" target="_blank" rel="noopener">Morgan 252-gapi Parka Mujer (Pack de 1)</a>
+    <div class="precio"><b>76,04 €</b> <s>150,00 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -20% vs mín. 30 días (94,94 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0FGDSPWPB</code></div>
+  </div>
+</article>
+<article class="card" data-dto="48" data-precio="6.23" data-grupo="Ropa y zapatos"
+         data-cat="Relojes y joyería" data-marcas=" flash hist min90 "
+         data-texto="suonie plata amor corazón 26 letra inicial alfabeto a-z pulsera joyería regalo ajustable para hija hijo hermanas amigos madre colega amante cumpleaños navidad b0dsflnntm ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DSFLNNTM"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DSFLNNTM?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-48%</span>
+    <img src="https://m.media-amazon.com/images/I/41VsBURJHOL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DSFLNNTM?tag=telegramlaordenada-21" target="_blank" rel="noopener">Suonie Plata Amor Corazón 26 Letra Inicial Alfabeto A-Z Pulsera Joyería Regalo Ajustable Para Hija Hijo Hermanas Amigos Madre Colega Amante Cumpleaños Navidad</a>
+    <div class="precio"><b>6,23 €</b> <s>11,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Finaliza en</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (6,56 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DSFLNNTM</code></div>
+  </div>
+</article>
+<article class="card" data-dto="48" data-precio="7.52" data-grupo="Ropa y zapatos"
+         data-cat="Moda infantil" data-marcas=" flash min90 ok r20 "
+         data-texto="zapatos de agua niños verano secado rápido aqua calzado ligeros transpirable zapatillas snorkel bucear swim piscina playa yoga b07wfd2xxs ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B07WFD2XXS"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07WFD2XXS?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-48%</span>
+    <img src="https://m.media-amazon.com/images/I/710mMICD5-L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07WFD2XXS?tag=telegramlaordenada-21" target="_blank" rel="noopener">Zapatos de Agua Niños Verano Secado Rápido Aqua Calzado Ligeros Transpirable Zapatillas Snorkel Bucear Swim Piscina Playa Yoga</a>
+    <div class="precio"><b>7,52 €</b> <s>14,39 €</s></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -25% vs mín. 30 días (9,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B07WFD2XXS</code></div>
+  </div>
+</article>
+<article class="card" data-dto="48" data-precio="10.48" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 ok "
+         data-texto="aottori camiseta mujer manga tres cuartos tejido acanalado con cuello barco | slim fit, diseño de capa base, estilo casual, para verano, acabado liso, para uso casual, uso diario b0gxw3hjrn ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0GXW3HJRN"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GXW3HJRN?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-48%</span>
+    <img src="https://m.media-amazon.com/images/I/81NZyTXDLhL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GXW3HJRN?tag=telegramlaordenada-21" target="_blank" rel="noopener">Aottori Camiseta Mujer Manga Tres Cuartos Tejido Acanalado con Cuello Barco | Slim Fit, Diseño de Capa Base, Estilo Casual, para Verano, Acabado Liso, para Uso Casual, Uso Diario</a>
+    <div class="precio"><b>10,48 €</b> <s>19,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -18% vs mín. 30 días (12,74 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0GXW3HJRN</code></div>
+  </div>
+</article>
+<article class="card" data-dto="48" data-precio="10.49" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 "
+         data-texto="aottori camiseta mujer manga corta para verano canalé elástico cuello barco | punto acanalado, corte ajustado, diseño de capa base, tejido ligero, estilo casual, acabado liso b0g64812ls ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0G64812LS"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0G64812LS?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-48%</span>
+    <img src="https://m.media-amazon.com/images/I/81ows4ObxUL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0G64812LS?tag=telegramlaordenada-21" target="_blank" rel="noopener">Aottori Camiseta Mujer Manga Corta para Verano Canalé Elástico Cuello Barco | Punto Acanalado, Corte Ajustado, Diseño de Capa Base, Tejido Ligero, Estilo Casual, Acabado Liso</a>
+    <div class="precio"><b>10,49 €</b> <s>19,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (11,04 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0G64812LS</code></div>
+  </div>
+</article>
+<article class="card" data-dto="48" data-precio="11.88" data-grupo="Ropa y zapatos"
+         data-cat="Moda infantil" data-marcas=" flash hist min90 ok "
+         data-texto="uizuooy calcetines niño algodón deporte anual 9 pares | algodón suave,elástico y cómodo,ideal para colegio,deporte y uso diario b0h11948cr ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0H11948CR"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H11948CR?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-48%</span>
+    <img src="https://m.media-amazon.com/images/I/71tbNC0U0OL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H11948CR?tag=telegramlaordenada-21" target="_blank" rel="noopener">Uizuooy Calcetines Niño Algodón Deporte Anual 9 Pares | Algodón suave,elástico y cómodo,Ideal para colegio,deporte y uso diario</a>
+    <div class="precio"><b>11,88 €</b> <s>22,98 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -17% vs mín. 30 días (14,23 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0H11948CR</code></div>
+  </div>
+</article>
+<article class="card" data-dto="48" data-precio="11.99" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 "
+         data-texto="joligiao vestido de verano mujer vestidos manga corta cuello v de lino algodón con botones vestido camisero escote en v mini vestido corte a rectos sueltos casual vestidos la playa b0gf24hv7m ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0GF24HV7M"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GF24HV7M?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-48%</span>
+    <img src="https://m.media-amazon.com/images/I/61a-8SYuGgL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GF24HV7M?tag=telegramlaordenada-21" target="_blank" rel="noopener">Joligiao Vestido de Verano Mujer Vestidos Manga Corta Cuello V de Lino Algodón con Botones Vestido Camisero Escote en V Mini Vestido Corte A Rectos Sueltos Casual Vestidos la Playa</a>
+    <div class="precio"><b>11,99 €</b> <s>22,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-8% vs mín. 30 días (12,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0GF24HV7M</code></div>
+  </div>
+</article>
+<article class="card" data-dto="48" data-precio="23.99" data-grupo="Ropa y zapatos"
+         data-cat="Moda" data-marcas=" flash hist min90 "
+         data-texto="saguaro barefoot zapatillas minimalista ligera zapatillas de trail running para zero drop soles, gr.36-48 b0dr6wm1bw ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DR6WM1BW"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DR6WM1BW?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-48%</span>
+    <img src="https://m.media-amazon.com/images/I/715ENApNKjL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DR6WM1BW?tag=telegramlaordenada-21" target="_blank" rel="noopener">SAGUARO Barefoot Zapatillas Minimalista Ligera Zapatillas de Trail Running para Zero Drop Soles, Gr.36-48</a>
+    <div class="precio"><b>23,99 €</b> <s>45,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (25,49 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DR6WM1BW</code></div>
+  </div>
+</article>
+<article class="card" data-dto="48" data-precio="36.05" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash min90 ok "
+         data-texto="sneakers beige tipo espadrille con cuña para mujer coinches b0b6pzq5zw ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0B6PZQ5ZW"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0B6PZQ5ZW?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-48%</span>
+    <img src="https://m.media-amazon.com/images/I/51PjJL1uhPL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0B6PZQ5ZW?tag=telegramlaordenada-21" target="_blank" rel="noopener">Sneakers Beige Tipo Espadrille con cuña para Mujer coinches</a>
+    <div class="precio"><b>36,05 €</b> <s>69,95 €</s></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -17% vs mín. 30 días (43,52 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0B6PZQ5ZW</code></div>
+  </div>
+</article>
+<article class="card" data-dto="48" data-precio="62.1" data-grupo="Ropa y zapatos"
+         data-cat="Moda hombre" data-marcas=" flash ok r20 "
+         data-texto="tommy hilfiger linen essential gingham rf shirt mw0mw42401 camisa s/s hombre (pack de 1) b0fdl5138n ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0FDL5138N"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FDL5138N?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-48%</span>
+    <img src="https://m.media-amazon.com/images/I/71syRjkJp5L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FDL5138N?tag=telegramlaordenada-21" target="_blank" rel="noopener">Tommy Hilfiger Linen Essential Gingham RF Shirt Mw0mw42401 Camisa S/S Hombre (Pack de 1)</a>
+    <div class="precio"><b>62,10 €</b> <s>119,90 €</s></div>
+    <div class="tags"><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -21% vs mín. 30 días (78,80 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0FDL5138N</code></div>
+  </div>
+</article>
+<article class="card" data-dto="47" data-precio="11.99" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 ok r20 "
+         data-texto="bresdk pijama corto mujer algodón con cuello henley y manga corta verano | mezcla de algodón suave, cintura con cordón y bolsillos, para dormir y relajarse en casa b0gc35hrdf ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0GC35HRDF"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GC35HRDF?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-47%</span>
+    <img src="https://m.media-amazon.com/images/I/81PUnNKEQaL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GC35HRDF?tag=telegramlaordenada-21" target="_blank" rel="noopener">Bresdk Pijama Corto Mujer Algodón con Cuello Henley y Manga Corta Verano | Mezcla de algodón suave, cintura con cordón y bolsillos, para dormir y relajarse en casa</a>
+    <div class="precio"><b>11,99 €</b> <s>22,72 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -20% vs mín. 30 días (14,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0GC35HRDF</code></div>
+  </div>
+</article>
+<article class="card" data-dto="47" data-precio="14.24" data-grupo="Ropa y zapatos"
+         data-cat="Moda hombre" data-marcas=" flash hist min90 "
+         data-texto="zoxoz pantalones deportivos pantalones hombre casual pantalones de chándal algodón cintura elástica b09jg526kx ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B09JG526KX"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B09JG526KX?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-47%</span>
+    <img src="https://m.media-amazon.com/images/I/41E90a59caL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B09JG526KX?tag=telegramlaordenada-21" target="_blank" rel="noopener">ZOXOZ Pantalones Deportivos Pantalones Hombre Casual Pantalones de Chándal Algodón Cintura Elástica</a>
+    <div class="precio"><b>14,24 €</b> <s>26,98 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (14,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B09JG526KX</code></div>
+  </div>
+</article>
+<article class="card" data-dto="47" data-precio="15.99" data-grupo="Ropa y zapatos"
+         data-cat="Maletas y viaje" data-marcas=" flash hist min90 ok r20 "
+         data-texto="youngoa bolsa de viaje grande para hombre y mujer, 110l bolsos viaje plegable e impermeable, bolsa deporte ligera para el fin de semana, azul b0fx1wtfyj ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0FX1WTFYJ"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FX1WTFYJ?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-47%</span>
+    <img src="https://m.media-amazon.com/images/I/91Vy-jhvR6L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FX1WTFYJ?tag=telegramlaordenada-21" target="_blank" rel="noopener">YOUNGOA Bolsa de Viaje Grande para Hombre y Mujer, 110L Bolsos Viaje Plegable e Impermeable, Bolsa Deporte Ligera para el Fin de Semana, Azul</a>
+    <div class="precio"><b>15,99 €</b> <s>29,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -20% vs mín. 30 días (19,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0FX1WTFYJ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="47" data-precio="17.99" data-grupo="Ropa y zapatos"
+         data-cat="Moda infantil" data-marcas=" flash hist min90 ok r20 "
+         data-texto="mishansha sandalias niño niña trekking con puntera cerrada | transpirables, antideslizantes b0gl7k4gr2 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0GL7K4GR2"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GL7K4GR2?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-47%</span>
+    <img src="https://m.media-amazon.com/images/I/71p0bcCbGDL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GL7K4GR2?tag=telegramlaordenada-21" target="_blank" rel="noopener">Mishansha Sandalias Niño Niña Trekking con Puntera Cerrada | Transpirables, Antideslizantes</a>
+    <div class="precio"><b>17,99 €</b> <s>33,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -47% vs mín. 30 días (33,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0GL7K4GR2</code></div>
+  </div>
+</article>
+<article class="card" data-dto="47" data-precio="19.99" data-grupo="Ropa y zapatos"
+         data-cat="Moda infantil" data-marcas=" flash hist min90 ok r20 "
+         data-texto="mishansha zapatillas de senderismo niños niñas | ligero, transpirable, cómodos b0dm19pr6m ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DM19PR6M"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DM19PR6M?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-47%</span>
+    <img src="https://m.media-amazon.com/images/I/71FuJSx+3QL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DM19PR6M?tag=telegramlaordenada-21" target="_blank" rel="noopener">Mishansha Zapatillas de Senderismo Niños Niñas | Ligero, Transpirable, Cómodos</a>
+    <div class="precio"><b>19,99 €</b> <s>37,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -42% vs mín. 30 días (34,19 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DM19PR6M</code></div>
+  </div>
+</article>
+<article class="card" data-dto="47" data-precio="21.17" data-grupo="Ropa y zapatos"
+         data-cat="Moda hombre" data-marcas=" flash "
+         data-texto="refresh - zapato hombre - calzado cómodo y versátil - moda casual b0frvzk6pc ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0FRVZK6PC"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FRVZK6PC?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-47%</span>
+    <img src="https://m.media-amazon.com/images/I/51QMIrulKSL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FRVZK6PC?tag=telegramlaordenada-21" target="_blank" rel="noopener">REFRESH - Zapato Hombre - Calzado Cómodo y Versátil - Moda Casual</a>
+    <div class="precio"><b>21,17 €</b> <s>39,95 €</s></div>
+    <div class="tags"><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-7% vs mín. 30 días (22,88 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0FRVZK6PC</code></div>
+  </div>
+</article>
+<article class="card" data-dto="47" data-precio="22.99" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 ok "
+         data-texto="mishansha sandalias de trekking mujer | transpirables, antideslizantes, cerradas b0gfdwlyz8 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0GFDWLYZ8"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GFDWLYZ8?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-47%</span>
+    <img src="https://m.media-amazon.com/images/I/61cRjZhsldL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GFDWLYZ8?tag=telegramlaordenada-21" target="_blank" rel="noopener">Mishansha Sandalias de Trekking Mujer | Transpirables, Antideslizantes, Cerradas</a>
+    <div class="precio"><b>22,99 €</b> <s>42,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -18% vs mín. 30 días (27,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0GFDWLYZ8</code></div>
+  </div>
+</article>
+<article class="card" data-dto="47" data-precio="28.55" data-grupo="Ropa y zapatos"
+         data-cat="Moda infantil" data-marcas=" flash "
+         data-texto="munich g-3 kid vco profit - zapatillas de deporte unisex niños b07p88fxtn ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B07P88FXTN"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07P88FXTN?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-47%</span>
+    <img src="https://m.media-amazon.com/images/I/61-kXaAnPgL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07P88FXTN?tag=telegramlaordenada-21" target="_blank" rel="noopener">Munich G-3 Kid VCO Profit - Zapatillas de Deporte Unisex Niños</a>
+    <div class="precio"><b>28,55 €</b> <s>54,00 €</s></div>
+    <div class="tags"><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-8% vs mín. 30 días (31,05 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B07P88FXTN</code></div>
+  </div>
+</article>
+<article class="card" data-dto="47" data-precio="31.82" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 "
+         data-texto="refresh - botín mujer - calzado cómodo y versátil - moda casual b0fr13tql7 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0FR13TQL7"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FR13TQL7?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-47%</span>
+    <img src="https://m.media-amazon.com/images/I/61sC1m5OsaL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FR13TQL7?tag=telegramlaordenada-21" target="_blank" rel="noopener">REFRESH - Botín Mujer - Calzado Cómodo y Versátil - Moda casual</a>
+    <div class="precio"><b>31,82 €</b> <s>59,95 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-10% vs mín. 30 días (35,28 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0FR13TQL7</code></div>
+  </div>
+</article>
+<article class="card" data-dto="47" data-precio="40.0" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 ok r20 "
+         data-texto="revolutionrace rambler lightweight pro shorts para mujer, pantalones cortos de senderismo ligeros b0cryz6r6h ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0CRYZ6R6H"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CRYZ6R6H?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-47%</span>
+    <img src="https://m.media-amazon.com/images/I/715sIAmwa2L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CRYZ6R6H?tag=telegramlaordenada-21" target="_blank" rel="noopener">RevolutionRace Rambler Lightweight Pro Shorts para Mujer, Pantalones Cortos de Senderismo Ligeros</a>
+    <div class="precio"><b>40,00 €</b> <s>75,00 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Finaliza en</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -22% vs mín. 30 días (51,00 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0CRYZ6R6H</code></div>
+  </div>
+</article>
+<article class="card" data-dto="46" data-precio="4.34" data-grupo="Ropa y zapatos"
+         data-cat="Moda infantil" data-marcas=" flash min90 ok "
+         data-texto="puma kids&#x27; bwt sneaker - trainer socks (3 pack) calcetines unisex niños (pack de 3) b08519tsmx ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B08519TSMX"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B08519TSMX?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-46%</span>
+    <img src="https://m.media-amazon.com/images/I/61bB50iC6yL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B08519TSMX?tag=telegramlaordenada-21" target="_blank" rel="noopener">PUMA Kids&#x27; Bwt Sneaker - Trainer Socks (3 Pack) calcetines Unisex niños (Pack de 3)</a>
+    <div class="precio"><b>4,34 €</b> <s>7,99 €</s></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -13% vs mín. 30 días (5,00 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B08519TSMX</code></div>
+  </div>
+</article>
+<article class="card" data-dto="46" data-precio="14.99" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash min90 ok r20 "
+         data-texto="glacspyg blusa señoras elegante casual trabajo camisa blusa 100% algodón señoras blusas verano camisa corta tops blusa b0dr7z79c9 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DR7Z79C9"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DR7Z79C9?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-46%</span>
+    <img src="https://m.media-amazon.com/images/I/51y1ykwfrRL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DR7Z79C9?tag=telegramlaordenada-21" target="_blank" rel="noopener">Glacspyg Blusa Señoras Elegante Casual Trabajo Camisa Blusa 100% Algodón Señoras Blusas Verano Camisa Corta Tops Blusa</a>
+    <div class="precio"><b>14,99 €</b> <s>27,99 €</s></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -46% vs mín. 30 días (27,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DR7Z79C9</code></div>
+  </div>
+</article>
+<article class="card" data-dto="46" data-precio="43.54" data-grupo="Ropa y zapatos"
+         data-cat="Moda hombre" data-marcas=" flash min90 "
+         data-texto="tommy hilfiger polo s/s para hombre b0fdghkybk ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0FDGHKYBK"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FDGHKYBK?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-46%</span>
+    <img src="https://m.media-amazon.com/images/I/812kMS8MHfL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FDGHKYBK?tag=telegramlaordenada-21" target="_blank" rel="noopener">Tommy Hilfiger Polo S/S para Hombre</a>
+    <div class="precio"><b>43,54 €</b> <s>79,90 €</s></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-9% vs mín. 30 días (47,95 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0FDGHKYBK</code></div>
+  </div>
+</article>
+<article class="card" data-dto="45" data-precio="9.98" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash ok r20 "
+         data-texto="gyabnw camiseta de tirantes deportiva mujer cuello redondo racerback ligera | tirantes deportivos, diseño sin mangas, tejido ligero, cuello redondo, espalda racerback, para deporte y entrenamiento b0dq416pv6 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DQ416PV6"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DQ416PV6?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-45%</span>
+    <img src="https://m.media-amazon.com/images/I/81S23uVy1ZL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DQ416PV6?tag=telegramlaordenada-21" target="_blank" rel="noopener">Gyabnw Camiseta de Tirantes Deportiva Mujer Cuello Redondo Racerback Ligera | Tirantes deportivos, diseño sin mangas, tejido ligero, cuello redondo, espalda racerback, para deporte y entrenamiento</a>
+    <div class="precio"><b>9,98 €</b> <s>17,99 €</s></div>
+    <div class="tags"><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -45% vs mín. 30 días (17,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DQ416PV6</code></div>
+  </div>
+</article>
+<article class="card" data-dto="45" data-precio="12.74" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 ok r20 "
+         data-texto="bresdk camisón mujer algodón tallas grandes con botones 3/4 | ropa de dormir holgada con corte femenino y apertura frontal, cómoda para dormir, descansar y relajarse en casa b0b8zd26y2 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0B8ZD26Y2"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0B8ZD26Y2?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-45%</span>
+    <img src="https://m.media-amazon.com/images/I/81lDrLTcUcL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0B8ZD26Y2?tag=telegramlaordenada-21" target="_blank" rel="noopener">Bresdk Camisón Mujer Algodón Tallas Grandes con Botones 3/4 | Ropa de dormir holgada con corte femenino y apertura frontal, cómoda para dormir, descansar y relajarse en casa</a>
+    <div class="precio"><b>12,74 €</b> <s>22,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -45% vs mín. 30 días (22,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0B8ZD26Y2</code></div>
+  </div>
+</article>
+<article class="card" data-dto="45" data-precio="14.24" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marcas=" flash hist min90 ok r20 "
+         data-texto="hotouch vestido de playa informal con cuello en redondo y correa sin mangas verano vestidos para mujer flores impresas con bolsillos s-xxl b0dk9g7nlq ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DK9G7NLQ"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DK9G7NLQ?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-45%</span>
+    <img src="https://m.media-amazon.com/images/I/81orfeOQyML._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DK9G7NLQ?tag=telegramlaordenada-21" target="_blank" rel="noopener">Hotouch Vestido de Playa Informal con Cuello en Redondo y Correa Sin Mangas Verano Vestidos para Mujer Flores Impresas con Bolsillos S-XXL</a>
+    <div class="precio"><b>14,24 €</b> <s>25,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ok">Bajada real: -45% vs mín. 30 días (25,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DK9G7NLQ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="45" data-precio="23.0" data-grupo="Ropa y zapatos"
+         data-cat="Moda" data-marcas=" flash hist min90 ok "
+         data-texto="sudadera global tour km0 roja b0gp13r1th ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0GP13R1TH"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GP13R1TH?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-45%</span>
+    <img src="https://m.media-amazon.com/images/I/61DZxgGhdIL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GP13R1TH?tag=telegramlaordenada-21" target="_blank" rel="noopener">Sudadera Global Tour KM0 Roja</a>
+    <div class="precio"><b>23,00 €</b> <s>41,99 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta Prime limitada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -13% vs mín. 30 días (26,57 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0GP13R1TH</code></div>
+  </div>
+</article>
+<article class="card" data-dto="45" data-precio="143.99" data-grupo="Ropa y zapatos"
+         data-cat="Deportes" data-marcas=" flash hist min90 "
+         data-texto="salewa alptrek 65+10 l pro mochila b09hkp92d4 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B09HKP92D4"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B09HKP92D4?tag=telegramlaordenada-21" target="_blank" rel="noopener"><span class="dto">-45%</span>
+    <img src="https://m.media-amazon.com/images/I/81ku7LJ7PPL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B09HKP92D4?tag=telegramlaordenada-21" target="_blank" rel="noopener">SALEWA Alptrek 65+10 L Pro Mochila</a>
+    <div class="precio"><b>143,99 €</b> <s>260,00 €</s></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag flash">⚡ Oferta flash</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-9% vs mín. 30 días (159,04 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B09HKP92D4</code></div>
+  </div>
+</article></main>
+<script>
+const lista = document.getElementById('lista');
+const cards = [...lista.querySelectorAll('.card')];
+const btn = document.getElementById('copiar');
+const $ = id => document.getElementById(id);
+function elegidos() { return cards.filter(c => c.querySelector('input').checked); }
+function filtrar() {
+  const q = $('q').value.toLowerCase().trim();
+  const g = $('grupo') ? $('grupo').value : '';
+  const d = +$('dtomin').value || 0;
+  const cat = $('cat') ? $('cat').value : '';
+  const marcas = [...document.querySelectorAll('.chip.on')].map(b => ` ${b.dataset.m} `);
+  let n = 0;
+  cards.forEach(c => {
+    const ver = (!q || c.dataset.texto.includes(q))
+      && marcas.every(m => c.dataset.marcas.includes(m))
+      && (!cat || c.dataset.cat === cat)
+      && (!g || c.dataset.grupo.split('|').map(s => s.trim()).includes(g))
+      && +c.dataset.dto >= d;
+    c.hidden = !ver; if (ver) n++;
+  });
+  $('contador').textContent = `${n} de ${cards.length}`;
+}
+lista.addEventListener('change', e => {
+  e.target.closest('.card').classList.toggle('sel', e.target.checked);
+  const n = elegidos().length; btn.textContent = `Copiar ASIN (${n})`; btn.disabled = !n;
+});
+btn.onclick = async () => {
+  const txt = elegidos().map(c => c.querySelector('input').value).join('\n');
+  try { await navigator.clipboard.writeText(txt); }
+  catch (e) { const t = document.createElement('textarea'); t.value = txt; document.body.append(t);
+               t.select(); document.execCommand('copy'); t.remove(); }
+  const antes = btn.textContent; btn.textContent = '¡Copiados! Pégalos en la columna ASIN';
+  setTimeout(() => btn.textContent = antes, 2500);
+};
+document.querySelectorAll('.chip').forEach(b => b.onclick = () => {
+  b.classList.toggle('on'); filtrar();
+});
+['q', 'cat', 'grupo', 'dtomin'].forEach(id => {
+  if (!$(id)) return;
+  $(id).addEventListener('input', filtrar);
+  $(id).addEventListener('change', filtrar);
+});
+$('limpiar').onclick = () => {
+  $('q').value = ''; $('dtomin').value = 0;
+  ['cat', 'grupo'].forEach(id => $(id) && ($(id).value = ''));
+  document.querySelectorAll('.chip.on').forEach(b => b.classList.remove('on'));
+  filtrar(); window.scrollTo(0, 0);
+};
+$('orden').onchange = e => {
+  const k = e.target.value;
+  cards.sort((a, b) => k === 'dto' ? b.dataset.dto - a.dataset.dto
+    : k === 'asc' ? a.dataset.precio - b.dataset.precio : b.dataset.precio - a.dataset.precio)
+    .forEach(c => lista.append(c));
+};
+filtrar();
+</script>
+</body></html>
