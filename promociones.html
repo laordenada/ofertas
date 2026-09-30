@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Promociones Amazon</title>
+<style>
+:root { --bg:#f6f4f1; --card:#fff; --txt:#2b2522; --suave:#7a6f69; --borde:#e6e0da;
+         --acento:#e4913a; --rojo:#c8372d; --tag:#f1ece6;
+         --ok:#2e7d4f; --r20:#1b5e37; --hist:#a66a00; --min90:#be185d;
+         --cupon:#2f6db5; --sns:#6d28d9; --prime:#00a8e1; --top:#111111; --rep:#64748b; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#1b1917; --card:#26231f; --txt:#eee8e2; --suave:#a89d95; --borde:#3a3530; --tag:#332e29;
+           --ok:#3f9e68; --r20:#2f8a55; --hist:#c98a1a; --min90:#db2777;
+           --cupon:#4a86cf; --sns:#8b5cf6; --prime:#00a8e1; --top:#f2f2f2; --rep:#7c8aa0; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--txt);
+        font:15px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif; }
+header { position:sticky; top:0; z-index:5; background:var(--bg); border-bottom:1px solid var(--borde);
+          padding:14px 20px; display:flex; flex-wrap:wrap; gap:10px 16px; align-items:center; }
+h1 { font-size:19px; margin:0; }
+.sub { color:var(--suave); font-size:13px; }
+.ctrl { margin-left:auto; display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+input, select, button { font:inherit; padding:7px 10px; border-radius:8px;
+          border:1px solid var(--borde); background:var(--card); color:var(--txt); }
+#dtomin { width:70px; }
+.chips { flex-basis:100%; display:flex; flex-wrap:wrap; gap:6px; }
+.chip { --c:var(--suave); background:var(--card); color:var(--txt); border:1.5px solid var(--c);
+         border-radius:999px; padding:4px 12px; font-weight:500; font-size:13px; }
+.chip span { opacity:.7; }
+.chip.on { background:var(--c); color:#fff; }
+.chip.off { border-style:dashed; color:var(--suave); text-decoration:line-through; }
+.chip.off::before { content:"Sin "; text-decoration:none; display:inline-block; margin-right:3px; }
+.multi { position:relative; }
+.multi summary { list-style:none; cursor:pointer; padding:7px 28px 7px 10px; border-radius:8px;
+                  border:1px solid var(--borde); background:var(--card); white-space:nowrap; position:relative; }
+.multi summary::-webkit-details-marker { display:none; }
+.multi summary::after { content:"▾"; position:absolute; right:10px; color:var(--suave); }
+.multi.activo summary { border-color:var(--acento); font-weight:600; }
+.multi .opciones { position:absolute; z-index:10; top:calc(100% + 4px); left:0; min-width:230px;
+                    max-height:60vh; overflow:auto; background:var(--card); border:1px solid var(--borde);
+                    border-radius:8px; padding:6px; box-shadow:0 6px 20px rgba(0,0,0,.15); }
+.multi .opciones label { display:flex; gap:8px; align-items:center; padding:5px 6px; border-radius:6px;
+                          cursor:pointer; white-space:nowrap; }
+.multi .opciones label:hover { background:var(--tag); }
+.multi .opciones span { color:var(--suave); }
+button { background:var(--acento); border-color:var(--acento); color:#fff; font-weight:600; cursor:pointer; }
+button:disabled { opacity:.5; cursor:default; }
+button.sec { background:var(--card); color:var(--txt); border-color:var(--borde); font-weight:500; }
+#contador { color:var(--suave); font-size:13px; }
+main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); }
+.card { background:var(--card); border:1px solid var(--borde); border-radius:12px; overflow:hidden;
+         display:flex; flex-direction:column; position:relative;
+         content-visibility:auto; contain-intrinsic-size:auto 460px; }
+.card[hidden] { display:none; }
+.card.sel { outline:3px solid var(--acento); }
+.pick { position:absolute; top:8px; right:8px; z-index:2; background:var(--card); border-radius:6px;
+         padding:3px 7px; font-size:13px; cursor:pointer; border:1px solid var(--borde); }
+.foto { display:block; background:#fff; aspect-ratio:1; position:relative; }
+.foto img { width:100%; height:100%; object-fit:contain; padding:14px; }
+.dto { position:absolute; top:8px; left:8px; background:var(--rojo); color:#fff; font-weight:700;
+        padding:3px 8px; border-radius:6px; }
+.info { padding:12px; display:flex; flex-direction:column; gap:8px; flex:1; }
+.titulo { color:var(--txt); text-decoration:none; display:-webkit-box; -webkit-line-clamp:3;
+           -webkit-box-orient:vertical; overflow:hidden; }
+.titulo:hover { text-decoration:underline; }
+.precio b { font-size:20px; } .precio s { color:var(--suave); margin-left:6px; }
+.tags { display:flex; flex-wrap:wrap; gap:5px; }
+.tag { background:var(--tag); border-radius:5px; padding:2px 7px; font-size:12px; }
+.resenas { font-size:13px; color:var(--suave); margin:-2px 0 6px; }
+.resenas .estrellas { color:#f5a623; letter-spacing:1px; }
+.resenas .vendidos { white-space:nowrap; }
+.tag.talla { background:transparent; border:1px solid var(--suave); font-weight:600; }
+.tag.top, .chip.m-top { --c:var(--top); } .tag.top { background:var(--top); color:#fff; } .tag.ok, .chip.m-ok { --c:var(--ok); } .tag.ok { background:var(--ok); color:#fff; } .tag.hist, .chip.m-hist { --c:var(--hist); } .tag.hist { background:var(--hist); color:#fff; } .tag.min90, .chip.m-min90 { --c:var(--min90); } .tag.min90 { background:var(--min90); color:#fff; } .tag.prime, .chip.m-prime { --c:var(--prime); } .tag.prime { background:var(--prime); color:#fff; } .tag.cupon, .chip.m-cupon { --c:var(--cupon); } .tag.cupon { background:var(--cupon); color:#fff; } .tag.sns, .chip.m-sns { --c:var(--sns); } .tag.sns { background:var(--sns); color:#fff; } .tag.rep, .chip.m-rep { --c:var(--rep); } .tag.rep { background:var(--rep); color:#fff; } 
+.tag.prime, .chip.m-prime.on { color:#062a3a; }  /* azul Prime claro: texto oscuro para que se lea */
+.tag.top, .chip.m-top.on { color:var(--bg); font-weight:600; }  /* marca top: negro (blanco en modo oscuro) */
+.pie { margin-top:auto; color:var(--suave); font-size:12px; }
+@media (max-width:600px) { header { padding:12px 16px; } main { padding:16px; gap:12px;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); } .ctrl { margin-left:0; } }
+</style></head><body>
+<header>
+  <div><h1>Promociones Amazon</h1>
+  <div class="sub">17 promociones · 6 productos de muestra de cada una · 30/09/2026 16:01</div></div>
+  <div class="ctrl">
+    <input type="search" id="q" placeholder="Filtrar…">
+    <details class="multi" id="cat" data-todas="Todas las categorías"><summary>Todas las categorías</summary><div class="opciones"><label><input type="checkbox" value="Gastando un mínimo"> Gastando un mínimo <span>(6)</span></label><label><input type="checkbox" value="Otras"> Otras <span>(18)</span></label><label><input type="checkbox" value="Por unidades"> Por unidades <span>(66)</span></label></div></details>
+    
+    <select id="grupo"><option value="">Todas las búsquedas</option><option value="Ahorra 0,72 € en cada 2 o más">Ahorra 0,72 € en cada 2 o más</option><option value="Ahorra 10 % en cada 4 o más">Ahorra 10 % en cada 4 o más</option><option value="Ahorra 30 % en 1 al comprar 2">Ahorra 30 % en 1 al comprar 2</option><option value="Ahorra 5 % en cada 2 o más">Ahorra 5 % en cada 2 o más</option><option value="Ahorra 5 % en cada 4 o más">Ahorra 5 % en cada 4 o más</option><option value="Ahorra 50 % en 1 al comprar 2">Ahorra 50 % en 1 al comprar 2</option><option value="Ahorra 7 % en cada 3 o más">Ahorra 7 % en cada 3 o más</option><option value="Ahorra un 5 % comprando al menos 100€ de productos elegibles">Ahorra un 5 % comprando al menos 100€ de productos elegibles</option><option value="Ahorra un 5% al comprar 6 unidad">Ahorra un 5% al comprar 6 unidad</option><option value="Bonificación Añade un enchufe inteligente por 5€">Bonificación Añade un enchufe inteligente por 5€</option><option value="Consigue este producto gratis al comprar 2 en productos seleccionados">Consigue este producto gratis al comprar 2 en productos seleccionados</option><option value="Hasta 15 % de descuento si cumples los requisitos">Hasta 15 % de descuento si cumples los requisitos</option><option value="Hasta 8 % de descuento si cumples los requisitos">Hasta 8 % de descuento si cumples los requisitos</option><option value="Producto adicional gratis al comprar 2 en productos seleccionados">Producto adicional gratis al comprar 2 en productos seleccionados</option></select>
+    <label>Dto. mín. <input type="number" id="dtomin" min="0" max="100" step="5" value="0"></label>
+    <select id="orden">
+      <option value="dto">Más descuento</option>
+      <option value="asc">Precio más bajo</option>
+      <option value="desc">Precio más alto</option>
+      <option value="vend">Más vendidos</option>
+      <option value="opi">Más opiniones</option>
+      <option value="val">Mejor valorados</option>
+    </select>
+    <button id="limpiar" class="sec" type="button">Quitar filtros</button>
+    <span id="contador"></span>
+    <button id="copiar" disabled>Copiar ASIN (0)</button>
+  </div>
+  <div class="chips"><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>61</span></button></div>
+</header>
+<main id="lista">
+<article class="card" data-dto="0" data-precio="12.69" data-val="4.6" data-opi="38259" data-vend="0" data-grupo="Ahorra un 5 % comprando al menos 100€ de productos elegibles"
+         data-cat="Gastando un mínimo" data-marca="" data-marcas=" ok "
+         data-texto="flexi® classic s | 5 m correa retractilable de cinta | perros máx. 15 kg b00o3b2rg2 ahorra un 5 % comprando al menos 100€ de productos elegibles · ver todos: amazon.es/promotion/psp/a1romrz4qcx5m">
+  <label class="pick"><input type="checkbox" value="B00O3B2RG2"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B00O3B2RG2?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/31m0Y+9yhDS._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B00O3B2RG2?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">flexi® Classic S | 5 m Correa retractilable de Cinta | Perros máx. 15 kg</a>
+    <div class="precio"><b>12,69 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (38.259)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra un 5 % comprando al menos 100€ de productos elegibles</span><span class="tag ">Gastando un mínimo</span></div>
+    <div class="pie">Ahorra un 5 % comprando al menos 100€ de productos elegibles · ver todos: amazon.es/promotion/psp/A1ROMRZ4QCX5M · <code>B00O3B2RG2</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="13.19" data-val="4.6" data-opi="31043" data-vend="0" data-grupo="Ahorra un 5 % comprando al menos 100€ de productos elegibles"
+         data-cat="Gastando un mínimo" data-marca="" data-marcas=" ok "
+         data-texto="correa de adiestramiento para perros halti | tamaño l, negro | correa multifunción con doble enganche, ideal para antitirones entrenamiento canino. apta para perros pequeños y cachorros b00589g9yy ahorra un 5 % comprando al menos 100€ de productos elegibles · ver todos: amazon.es/promotion/psp/a1romrz4qcx5m">
+  <label class="pick"><input type="checkbox" value="B00589G9YY"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B00589G9YY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41NytHvGyjL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B00589G9YY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Correa de adiestramiento para Perros Halti | Tamaño L, Negro | Correa multifunción con doble enganche, ideal para antitirones Entrenamiento canino. Apta para perros pequeños y cachorros</a>
+    <div class="precio"><b>13,19 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (31.043)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra un 5 % comprando al menos 100€ de productos elegibles</span><span class="tag ">Gastando un mínimo</span></div>
+    <div class="pie">Ahorra un 5 % comprando al menos 100€ de productos elegibles · ver todos: amazon.es/promotion/psp/A1ROMRZ4QCX5M · <code>B00589G9YY</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="12.49" data-val="4.2" data-opi="25037" data-vend="0" data-grupo="Ahorra un 5 % comprando al menos 100€ de productos elegibles"
+         data-cat="Gastando un mínimo" data-marca="" data-marcas=" ok "
+         data-texto="biokat&#x27;s diamond care fresh, con fragancia - arena fina con carbón activo y aloe vera 1 saco (1 x 10 l) b07cpk4t22 ahorra un 5 % comprando al menos 100€ de productos elegibles · ver todos: amazon.es/promotion/psp/a1romrz4qcx5m">
+  <label class="pick"><input type="checkbox" value="B07CPK4T22"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07CPK4T22?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41+mpIaYpFL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07CPK4T22?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Biokat&#x27;s Diamond Care Fresh, con fragancia - Arena fina con carbón activo y aloe vera 1 saco (1 x 10 l)</a>
+    <div class="precio"><b>12,49 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (25.037)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra un 5 % comprando al menos 100€ de productos elegibles</span><span class="tag ">Gastando un mínimo</span></div>
+    <div class="pie">Ahorra un 5 % comprando al menos 100€ de productos elegibles · ver todos: amazon.es/promotion/psp/A1ROMRZ4QCX5M · <code>B07CPK4T22</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="7.49" data-val="4.0" data-opi="21775" data-vend="0" data-grupo="Ahorra un 5 % comprando al menos 100€ de productos elegibles"
+         data-cat="Gastando un mínimo" data-marca="" data-marcas=" ok "
+         data-texto="sanicat - arena para gatos aglomerante sin perfume | hecha de minerales con control de olor garantizado | absorbe la humedad y facilita la limpieza | 10 l de capacidad b00o4b8isw ahorra un 5 % comprando al menos 100€ de productos elegibles · ver todos: amazon.es/promotion/psp/a1romrz4qcx5m">
+  <label class="pick"><input type="checkbox" value="B00O4B8ISW"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B00O4B8ISW?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41dr81tijfL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B00O4B8ISW?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Sanicat - Arena para Gatos Aglomerante Sin Perfume | Hecha de minerales con Control de Olor garantizado | Absorbe la Humedad y facilita la Limpieza | 10 L de Capacidad</a>
+    <div class="precio"><b>7,49 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,0 (21.775)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra un 5 % comprando al menos 100€ de productos elegibles</span><span class="tag ">Gastando un mínimo</span></div>
+    <div class="pie">Ahorra un 5 % comprando al menos 100€ de productos elegibles · ver todos: amazon.es/promotion/psp/A1ROMRZ4QCX5M · <code>B00O4B8ISW</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="5.69" data-val="4.4" data-opi="18656" data-vend="0" data-grupo="Ahorra un 5 % comprando al menos 100€ de productos elegibles"
+         data-cat="Gastando un mínimo" data-marca="" data-marcas=" ok "
+         data-texto="vet&#x27;s best toallitas dentales para dedo. 50 toallitas desechables | reduce la placa y refresca el aliento. toallitas dentales para perros b073v4srbz ahorra un 5 % comprando al menos 100€ de productos elegibles · ver todos: amazon.es/promotion/psp/a1romrz4qcx5m">
+  <label class="pick"><input type="checkbox" value="B073V4SRBZ"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B073V4SRBZ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41H0tfqWLQL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B073V4SRBZ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Vet&#x27;s Best Toallitas dentales para dedo. 50 toallitas desechables | Reduce la placa y refresca el aliento. Toallitas dentales para perros</a>
+    <div class="precio"><b>5,69 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (18.656)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra un 5 % comprando al menos 100€ de productos elegibles</span><span class="tag ">Gastando un mínimo</span></div>
+    <div class="pie">Ahorra un 5 % comprando al menos 100€ de productos elegibles · ver todos: amazon.es/promotion/psp/A1ROMRZ4QCX5M · <code>B073V4SRBZ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="15.49" data-val="4.6" data-opi="8597" data-vend="0" data-grupo="Ahorra un 5 % comprando al menos 100€ de productos elegibles"
+         data-cat="Gastando un mínimo" data-marca="" data-marcas=" ok "
+         data-texto="iams alimento seco para gatitos de 1-12 meses, pollo, 3 kg | para gatitos junior | para gatitos (1-12 meses) | con pollo fresco b07h5k9sys ahorra un 5 % comprando al menos 100€ de productos elegibles · ver todos: amazon.es/promotion/psp/a1romrz4qcx5m">
+  <label class="pick"><input type="checkbox" value="B07H5K9SYS"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07H5K9SYS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41XnCLIIzWL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07H5K9SYS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">IAMS Alimento Seco para Gatitos de 1-12 meses, Pollo, 3 kg | Para gatitos junior | Para Gatitos (1-12 Meses) | Con pollo fresco</a>
+    <div class="precio"><b>15,49 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (8.597)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra un 5 % comprando al menos 100€ de productos elegibles</span><span class="tag ">Gastando un mínimo</span></div>
+    <div class="pie">Ahorra un 5 % comprando al menos 100€ de productos elegibles · ver todos: amazon.es/promotion/psp/A1ROMRZ4QCX5M · <code>B07H5K9SYS</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="29.99" data-val="4.7" data-opi="192527" data-vend="0" data-grupo="Bonificación Añade un enchufe inteligente por 5€"
+         data-cat="Otras" data-marca="" data-marcas=" ok "
+         data-texto="echo dot (última generación) | altavoz inteligente wifi y bluetooth, con sonido más potente y de mayor amplitud | azul marino, con acceso anticipado a alexa+ b09b8rf4py bonificación añade un enchufe inteligente por 5€ · ver todos: amazon.es/promotion/psp/a24oytp9dwophe">
+  <label class="pick"><input type="checkbox" value="B09B8RF4PY"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B09B8RF4PY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/21ZuBaP6HiL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B09B8RF4PY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Echo Dot (Última generación) | Altavoz inteligente wifi y Bluetooth, con sonido más potente y de mayor amplitud | Azul marino, con Acceso Anticipado a Alexa+</a>
+    <div class="precio"><b>29,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,7 (192.527)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Bonificación Añade un enchufe inteligente por 5€</span><span class="tag ">Otras</span></div>
+    <div class="pie">Bonificación Añade un enchufe inteligente por 5€ · ver todos: amazon.es/promotion/psp/A24OYTP9DWOPHE · <code>B09B8RF4PY</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="23.89" data-val="4.6" data-opi="1780" data-vend="0" data-grupo="Bonificación Añade un enchufe inteligente por 5€"
+         data-cat="Otras" data-marca="" data-marcas=" ok "
+         data-texto="tapo p100ma - enchufe inteligente wifi, programar la conexión/desconexión | programa horarios y temporizadores. monitorización de energía. modo ausente. control app tapo. control voz alexa/google. b0db884zrz bonificación añade un enchufe inteligente por 5€ · ver todos: amazon.es/promotion/psp/a24oytp9dwophe">
+  <label class="pick"><input type="checkbox" value="B0DB884ZRZ"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DB884ZRZ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/3155rT5ETYL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DB884ZRZ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Tapo P100MA - Enchufe inteligente WiFi, programar la conexión/desconexión | Programa Horarios y Temporizadores. Monitorización de Energía. Modo Ausente. Control App Tapo. Control Voz Alexa/Google.</a>
+    <div class="precio"><b>23,89 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (1.780)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Bonificación Añade un enchufe inteligente por 5€</span><span class="tag ">Otras</span></div>
+    <div class="pie">Bonificación Añade un enchufe inteligente por 5€ · ver todos: amazon.es/promotion/psp/A24OYTP9DWOPHE · <code>B0DB884ZRZ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="59.99" data-val="4.2" data-opi="25504" data-vend="0" data-grupo="Bonificación Añade un enchufe inteligente por 5€"
+         data-cat="Otras" data-marca="" data-marcas=" ok "
+         data-texto="echo show 5 (última generación) | pantalla táctil inteligente diseñada para controlar tus dispositivos de hogar digital y más | gris azulado, con acceso anticipado a alexa+ b09b2r276z bonificación añade un enchufe inteligente por 5€ · ver todos: amazon.es/promotion/psp/a24oytp9dwophe">
+  <label class="pick"><input type="checkbox" value="B09B2R276Z"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B09B2R276Z?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41pnqYQ3E3L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B09B2R276Z?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Echo Show 5 (Última generación) | Pantalla táctil inteligente diseñada para controlar tus dispositivos de Hogar digital y más | Gris azulado, con Acceso Anticipado a Alexa+</a>
+    <div class="precio"><b>59,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (25.504)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Bonificación Añade un enchufe inteligente por 5€</span><span class="tag ">Otras</span></div>
+    <div class="pie">Bonificación Añade un enchufe inteligente por 5€ · ver todos: amazon.es/promotion/psp/A24OYTP9DWOPHE · <code>B09B2R276Z</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="49.99" data-val="4.6" data-opi="22595" data-vend="0" data-grupo="Bonificación Añade un enchufe inteligente por 5€"
+         data-cat="Otras" data-marca="" data-marcas=" ok "
+         data-texto="amazon echo spot (última generación) | despertador inteligente con sonido de calidad| negro, con acceso anticipado a alexa+ b0c2s2j7jp bonificación añade un enchufe inteligente por 5€ · ver todos: amazon.es/promotion/psp/a24oytp9dwophe">
+  <label class="pick"><input type="checkbox" value="B0C2S2J7JP"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0C2S2J7JP?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41AspHVgzsL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0C2S2J7JP?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Amazon Echo Spot (última generación) | Despertador inteligente con sonido de calidad| Negro, con Acceso Anticipado a Alexa+</a>
+    <div class="precio"><b>49,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (22.595)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Bonificación Añade un enchufe inteligente por 5€</span><span class="tag ">Otras</span></div>
+    <div class="pie">Bonificación Añade un enchufe inteligente por 5€ · ver todos: amazon.es/promotion/psp/A24OYTP9DWOPHE · <code>B0C2S2J7JP</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="134.99" data-val="4.2" data-opi="3520" data-vend="0" data-grupo="Bonificación Añade un enchufe inteligente por 5€"
+         data-cat="Otras" data-marca="" data-marcas=" ok "
+         data-texto="amazon echo show 8 (última generación): pantalla hd de 8,7&quot; con audio espacial (blanco), con acceso anticipado a alexa+ b0dtqwyzff bonificación añade un enchufe inteligente por 5€ · ver todos: amazon.es/promotion/psp/a24oytp9dwophe">
+  <label class="pick"><input type="checkbox" value="B0DTQWYZFF"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DTQWYZFF?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/21D5d4qzWPL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DTQWYZFF?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Amazon Echo Show 8 (última generación): pantalla HD de 8,7&quot; con audio espacial (blanco), con Acceso Anticipado a Alexa+</a>
+    <div class="precio"><b>134,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (3.520)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Bonificación Añade un enchufe inteligente por 5€</span><span class="tag ">Otras</span></div>
+    <div class="pie">Bonificación Añade un enchufe inteligente por 5€ · ver todos: amazon.es/promotion/psp/A24OYTP9DWOPHE · <code>B0DTQWYZFF</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="64.99" data-val="4.3" data-opi="3476" data-vend="0" data-grupo="Bonificación Añade un enchufe inteligente por 5€"
+         data-cat="Otras" data-marca="" data-marcas=" ok "
+         data-texto="amazon echo dot max (última generación): altavoz con sonido envolvente y controlador de hogar digital integrado, amatista, con acceso anticipado a alexa+ b0dkldmhyb bonificación añade un enchufe inteligente por 5€ · ver todos: amazon.es/promotion/psp/a24oytp9dwophe">
+  <label class="pick"><input type="checkbox" value="B0DKLDMHYB"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DKLDMHYB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/31JcS4N79lL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DKLDMHYB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Amazon Echo Dot Max (última generación): altavoz con sonido envolvente y controlador de Hogar digital integrado, Amatista, con Acceso Anticipado a Alexa+</a>
+    <div class="precio"><b>64,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (3.476)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Bonificación Añade un enchufe inteligente por 5€</span><span class="tag ">Otras</span></div>
+    <div class="pie">Bonificación Añade un enchufe inteligente por 5€ · ver todos: amazon.es/promotion/psp/A24OYTP9DWOPHE · <code>B0DKLDMHYB</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="13.95" data-val="4.4" data-opi="38223" data-vend="0" data-grupo="Hasta 15 % de descuento si cumples los requisitos"
+         data-cat="Otras" data-marca="" data-marcas="  "
+         data-texto="medicube collagen jelly cream | crema facial con colágeno hidrolizado, hidratación y glow 24 horas, piel más rellena y firme, 50 ml b0dgpszvw3 hasta 15 % de descuento si cumples los requisitos · ver todos: amazon.es/promotion/psp/a18cime3oawxeu">
+  <label class="pick"><input type="checkbox" value="B0DGPSZVW3"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DGPSZVW3?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/31As19qSjUL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DGPSZVW3?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">medicube Collagen Jelly Cream | Crema Facial con Colágeno Hidrolizado, Hidratación y Glow 24 Horas, Piel Más Rellena y Firme, 50 ml</a>
+    <div class="precio"><b>13,95 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (38.223)</div>
+    <div class="tags"><span class="tag ">🎁 Hasta 15 % de descuento si cumples los requisitos</span><span class="tag ">Otras</span></div>
+    <div class="pie">Hasta 15 % de descuento si cumples los requisitos · ver todos: amazon.es/promotion/psp/A18CIME3OAWXEU · <code>B0DGPSZVW3</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="14.7" data-val="4.4" data-opi="38223" data-vend="0" data-grupo="Hasta 15 % de descuento si cumples los requisitos"
+         data-cat="Otras" data-marca="" data-marcas="  "
+         data-texto="medicube jelly cream with hyaluronic acid | crema hidratante de uso diario, hidratación de larga duración, ácido hialurónico y péptidos para una piel equilibrada, 50ml b0fpq3z16s hasta 15 % de descuento si cumples los requisitos · ver todos: amazon.es/promotion/psp/a18cime3oawxeu">
+  <label class="pick"><input type="checkbox" value="B0FPQ3Z16S"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FPQ3Z16S?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41P-wzDZUUL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FPQ3Z16S?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">medicube Jelly Cream with Hyaluronic Acid | Crema Hidratante de Uso Diario, Hidratación de Larga Duración, Ácido Hialurónico y Péptidos para una Piel Equilibrada, 50ml</a>
+    <div class="precio"><b>14,70 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (38.223)</div>
+    <div class="tags"><span class="tag ">🎁 Hasta 15 % de descuento si cumples los requisitos</span><span class="tag ">Otras</span></div>
+    <div class="pie">Hasta 15 % de descuento si cumples los requisitos · ver todos: amazon.es/promotion/psp/A18CIME3OAWXEU · <code>B0FPQ3Z16S</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="17.15" data-val="4.7" data-opi="32386" data-vend="0" data-grupo="Hasta 15 % de descuento si cumples los requisitos"
+         data-cat="Otras" data-marca="" data-marcas="  "
+         data-texto="medicube toner pads zero pore pad 2.0 | discos tónicos de doble textura para exfoliación y poros con aha y bha, todo tipo de piel, cosmética coreana, 70 discos b09v7z4tjg hasta 15 % de descuento si cumples los requisitos · ver todos: amazon.es/promotion/psp/a18cime3oawxeu">
+  <label class="pick"><input type="checkbox" value="B09V7Z4TJG"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B09V7Z4TJG?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41qQINR8-SL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B09V7Z4TJG?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">medicube Toner Pads Zero Pore Pad 2.0 | Discos Tónicos de Doble Textura para Exfoliación y Poros con AHA y BHA, Todo Tipo de Piel, Cosmética Coreana, 70 Discos</a>
+    <div class="precio"><b>17,15 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,7 (32.386)</div>
+    <div class="tags"><span class="tag ">🎁 Hasta 15 % de descuento si cumples los requisitos</span><span class="tag ">Otras</span></div>
+    <div class="pie">Hasta 15 % de descuento si cumples los requisitos · ver todos: amazon.es/promotion/psp/A18CIME3OAWXEU · <code>B09V7Z4TJG</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="18.9" data-val="4.6" data-opi="28038" data-vend="0" data-grupo="Hasta 15 % de descuento si cumples los requisitos"
+         data-cat="Otras" data-marca="" data-marcas="  "
+         data-texto="medicube capsule cream with deep vitamin c | crema con cápsulas de vitamina c, luminosidad y piel de aspecto más uniforme, textura gel hidratante, cosmética coreana, 55 g b0d2z3ggcy hasta 15 % de descuento si cumples los requisitos · ver todos: amazon.es/promotion/psp/a18cime3oawxeu">
+  <label class="pick"><input type="checkbox" value="B0D2Z3GGCY"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0D2Z3GGCY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41PlfOqU16L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0D2Z3GGCY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">medicube Capsule Cream with Deep Vitamin C | Crema con Cápsulas de Vitamina C, Luminosidad y Piel de Aspecto Más Uniforme, Textura Gel Hidratante, Cosmética Coreana, 55 g</a>
+    <div class="precio"><b>18,90 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (28.038)</div>
+    <div class="tags"><span class="tag ">🎁 Hasta 15 % de descuento si cumples los requisitos</span><span class="tag ">Otras</span></div>
+    <div class="pie">Hasta 15 % de descuento si cumples los requisitos · ver todos: amazon.es/promotion/psp/A18CIME3OAWXEU · <code>B0D2Z3GGCY</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="20.79" data-val="4.6" data-opi="28038" data-vend="0" data-grupo="Hasta 15 % de descuento si cumples los requisitos"
+         data-cat="Otras" data-marca="" data-marcas="  "
+         data-texto="medicube capsule cream with kojic acid &amp; turmeric for uneven skin tone | renueva el tono y aporta luminosidad a la piel con imperfecciones, cúrcuma, ácido kójico y vitamina c, 55 ml b0fr91fpfs hasta 15 % de descuento si cumples los requisitos · ver todos: amazon.es/promotion/psp/a18cime3oawxeu">
+  <label class="pick"><input type="checkbox" value="B0FR91FPFS"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FR91FPFS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/415M1uJNNKL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FR91FPFS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">medicube Capsule Cream with Kojic Acid &amp; Turmeric for Uneven Skin Tone | Renueva el Tono y Aporta Luminosidad a la Piel con Imperfecciones, Cúrcuma, Ácido Kójico y Vitamina C, 55 ml</a>
+    <div class="precio"><b>20,79 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (28.038)</div>
+    <div class="tags"><span class="tag ">🎁 Hasta 15 % de descuento si cumples los requisitos</span><span class="tag ">Otras</span></div>
+    <div class="pie">Hasta 15 % de descuento si cumples los requisitos · ver todos: amazon.es/promotion/psp/A18CIME3OAWXEU · <code>B0FR91FPFS</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="18.9" data-val="4.6" data-opi="28038" data-vend="0" data-grupo="Hasta 15 % de descuento si cumples los requisitos"
+         data-cat="Otras" data-marca="" data-marcas="  "
+         data-texto="medicube capsule cream with hyaluronic acid | hidratación hasta 120 horas, crema hidratante calmante, todo tipo de piel,con pantenol y ceramidas, cosmética coreana, 60 ml b0fq4k6845 hasta 15 % de descuento si cumples los requisitos · ver todos: amazon.es/promotion/psp/a18cime3oawxeu">
+  <label class="pick"><input type="checkbox" value="B0FQ4K6845"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FQ4K6845?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/416mSSUnKpL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FQ4K6845?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">medicube Capsule Cream with Hyaluronic Acid | Hidratación Hasta 120 Horas, Crema Hidratante Calmante, Todo Tipo de Piel,con Pantenol y Ceramidas, Cosmética Coreana, 60 ml</a>
+    <div class="precio"><b>18,90 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (28.038)</div>
+    <div class="tags"><span class="tag ">🎁 Hasta 15 % de descuento si cumples los requisitos</span><span class="tag ">Otras</span></div>
+    <div class="pie">Hasta 15 % de descuento si cumples los requisitos · ver todos: amazon.es/promotion/psp/A18CIME3OAWXEU · <code>B0FQ4K6845</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="16.99" data-val="4.4" data-opi="22381" data-vend="0" data-grupo="Hasta 8 % de descuento si cumples los requisitos"
+         data-cat="Otras" data-marca="" data-marcas=" ok "
+         data-texto="cambivo rodillera adjustable x2, cinta rotuliana, rodilleras menisco y ligamento con correa para tendón rotuliano, correr, saltar, gym, alivio de la tendinitis, estabilización de la articulación b07rbjbsnq hasta 8 % de descuento si cumples los requisitos · ver todos: amazon.es/promotion/psp/a32ongbvovky8q">
+  <label class="pick"><input type="checkbox" value="B07RBJBSNQ"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07RBJBSNQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/410A7rEKfKL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07RBJBSNQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">CAMBIVO Rodillera Adjustable x2, Cinta Rotuliana, Rodilleras Menisco y Ligamento con Correa para Tendón Rotuliano, Correr, Saltar, Gym, Alivio de la Tendinitis, Estabilización de la Articulación</a>
+    <div class="precio"><b>16,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (22.381)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Hasta 8 % de descuento si cumples los requisitos</span><span class="tag ">Otras</span></div>
+    <div class="pie">Hasta 8 % de descuento si cumples los requisitos · ver todos: amazon.es/promotion/psp/A32ONGBVOVKY8Q · <code>B07RBJBSNQ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="19.99" data-val="4.4" data-opi="1457" data-vend="0" data-grupo="Hasta 8 % de descuento si cumples los requisitos"
+         data-cat="Otras" data-marca="" data-marcas=" ok "
+         data-texto="gymcope leggins deportivos mujer, mallas deporte cintura alta, leggings push up pantalones yoga pants elásticos control de barriga con bolsillo para pilates, gym, fitness, danza, gimnasio, running b0cx15pphj hasta 8 % de descuento si cumples los requisitos · ver todos: amazon.es/promotion/psp/a32ongbvovky8q">
+  <label class="pick"><input type="checkbox" value="B0CX15PPHJ"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CX15PPHJ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/31hbOVX76ML._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CX15PPHJ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">GymCope Leggins Deportivos Mujer, Mallas Deporte Cintura Alta, Leggings Push up Pantalones Yoga Pants Elásticos Control de Barriga con Bolsillo para Pilates, Gym, Fitness, Danza, Gimnasio, Running</a>
+    <div class="precio"><b>19,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (1.457)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Hasta 8 % de descuento si cumples los requisitos</span><span class="tag ">Otras</span></div>
+    <div class="pie">Hasta 8 % de descuento si cumples los requisitos · ver todos: amazon.es/promotion/psp/A32ONGBVOVKY8Q · <code>B0CX15PPHJ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="19.99" data-val="4.4" data-opi="1194" data-vend="0" data-grupo="Hasta 8 % de descuento si cumples los requisitos"
+         data-cat="Otras" data-marca="" data-marcas=" ok "
+         data-texto="yogaration mallas deportivas mujer cintura alta push up bolsillos | leggings yoga opacos elásticos y suaves para fitness, running, gimnasio, pilates y uso diario b0d8b77y4n hasta 8 % de descuento si cumples los requisitos · ver todos: amazon.es/promotion/psp/a32ongbvovky8q">
+  <label class="pick"><input type="checkbox" value="B0D8B77Y4N"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0D8B77Y4N?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/31FutsuYMYL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0D8B77Y4N?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Yogaration Mallas Deportivas Mujer Cintura Alta Push Up Bolsillos | Leggings Yoga Opacos Elásticos y Suaves para Fitness, Running, Gimnasio, Pilates y Uso Diario</a>
+    <div class="precio"><b>19,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (1.194)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Hasta 8 % de descuento si cumples los requisitos</span><span class="tag ">Otras</span></div>
+    <div class="pie">Hasta 8 % de descuento si cumples los requisitos · ver todos: amazon.es/promotion/psp/A32ONGBVOVKY8Q · <code>B0D8B77Y4N</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="16.99" data-val="4.3" data-opi="8002" data-vend="0" data-grupo="Hasta 8 % de descuento si cumples los requisitos"
+         data-cat="Otras" data-marca="" data-marcas=" ok "
+         data-texto="cambivo medias de compresión mujer y hombre 2 pares, calcetines compresion running 20-30mmhg, compression socks para enfermera, ciclismo, futbol, viaje avion, deporte b0cc5mwbvq hasta 8 % de descuento si cumples los requisitos · ver todos: amazon.es/promotion/psp/a32ongbvovky8q">
+  <label class="pick"><input type="checkbox" value="B0CC5MWBVQ"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CC5MWBVQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41OJqVvw0HL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CC5MWBVQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">CAMBIVO Medias de Compresión Mujer y Hombre 2 Pares, Calcetines Compresion Running 20-30mmHg, Compression Socks para Enfermera, Ciclismo, Futbol, Viaje Avion, Deporte</a>
+    <div class="precio"><b>16,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (8.002)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Hasta 8 % de descuento si cumples los requisitos</span><span class="tag ">Otras</span></div>
+    <div class="pie">Hasta 8 % de descuento si cumples los requisitos · ver todos: amazon.es/promotion/psp/A32ONGBVOVKY8Q · <code>B0CC5MWBVQ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="19.99" data-val="4.5" data-opi="6590" data-vend="0" data-grupo="Hasta 8 % de descuento si cumples los requisitos"
+         data-cat="Otras" data-marca="" data-marcas=" ok "
+         data-texto="cambivo mallas deporte mujer, leggins deportivos cintura alta, leggings mallas push up, pantalones yoga con bolsillos para yoga pilates gimnasio deporte gym running b07vb7qm92 hasta 8 % de descuento si cumples los requisitos · ver todos: amazon.es/promotion/psp/a32ongbvovky8q">
+  <label class="pick"><input type="checkbox" value="B07VB7QM92"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07VB7QM92?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/31Hnt+5DcML._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07VB7QM92?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">CAMBIVO Mallas Deporte Mujer, Leggins Deportivos Cintura Alta, Leggings Mallas Push up, Pantalones Yoga con Bolsillos para Yoga Pilates Gimnasio Deporte Gym Running</a>
+    <div class="precio"><b>19,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (6.590)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Hasta 8 % de descuento si cumples los requisitos</span><span class="tag ">Otras</span></div>
+    <div class="pie">Hasta 8 % de descuento si cumples los requisitos · ver todos: amazon.es/promotion/psp/A32ONGBVOVKY8Q · <code>B07VB7QM92</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="11.99" data-val="4.3" data-opi="3215" data-vend="0" data-grupo="Hasta 8 % de descuento si cumples los requisitos"
+         data-cat="Otras" data-marca="" data-marcas=" ok "
+         data-texto="cambivo 2x codera epicondilitis hombre y mujer, coderas compresion ajustable y antideslizante, cincha epicondilitis brazalete para tendinitis, alivio del dolor, codo tenista, gym, fitness b0cy4hb9y4 hasta 8 % de descuento si cumples los requisitos · ver todos: amazon.es/promotion/psp/a32ongbvovky8q">
+  <label class="pick"><input type="checkbox" value="B0CY4HB9Y4"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CY4HB9Y4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41HlVvVOlNL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CY4HB9Y4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">CAMBIVO 2x Codera Epicondilitis Hombre y Mujer, Coderas Compresion Ajustable y Antideslizante, Cincha Epicondilitis Brazalete para Tendinitis, Alivio del Dolor, Codo Tenista, Gym, Fitness</a>
+    <div class="precio"><b>11,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (3.215)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Hasta 8 % de descuento si cumples los requisitos</span><span class="tag ">Otras</span></div>
+    <div class="pie">Hasta 8 % de descuento si cumples los requisitos · ver todos: amazon.es/promotion/psp/A32ONGBVOVKY8Q · <code>B0CY4HB9Y4</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="2.9" data-val="3.8" data-opi="636" data-vend="0" data-grupo="Ahorra 0,72 € en cada 2 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="smileat galletas de espelta y fruta para peques 10+ meses, 220 g | con aceite de oliva virgen extra y textura crujiente; para tomar enteras, mojadas o acompañadas b09gs9854h ahorra 0,72 € en cada 2 o más · ver todos: amazon.es/promotion/psp/a349adcj0kwar9">
+  <label class="pick"><input type="checkbox" value="B09GS9854H"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B09GS9854H?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41Tti0dHWuL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B09GS9854H?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Smileat Galletas de Espelta y Fruta para Peques 10+ Meses, 220 g | Con aceite de oliva virgen extra y textura crujiente; para tomar enteras, mojadas o acompañadas</a>
+    <div class="precio"><b>2,90 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 3,8 (636)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 0,72 € en cada 2 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 0,72 € en cada 2 o más · ver todos: amazon.es/promotion/psp/A349ADCJ0KWAR9 · <code>B09GS9854H</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="5.99" data-val="4.3" data-opi="8440" data-vend="0" data-grupo="Ahorra 10 % en cada 4 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="nirvanashape toalla de microfibra | 14 colores | 8 dimensiones | toalla de viaje ligera, absorbente y de secado rápido | toalla de baño para viajes | ideal para playa, camping, yoga y sauna b082xjgqw8 ahorra 10 % en cada 4 o más · ver todos: amazon.es/promotion/psp/a3b0ifhyibo4pf">
+  <label class="pick"><input type="checkbox" value="B082XJGQW8"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B082XJGQW8?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/4147Lq1RXIL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B082XJGQW8?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">NirvanaShape Toalla de Microfibra | 14 Colores | 8 Dimensiones | Toalla de Viaje Ligera, Absorbente y de Secado Rápido | Toalla de Baño para Viajes | Ideal para Playa, Camping, Yoga y Sauna</a>
+    <div class="precio"><b>5,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (8.440)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 10 % en cada 4 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 10 % en cada 4 o más · ver todos: amazon.es/promotion/psp/A3B0IFHYIBO4PF · <code>B082XJGQW8</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="22.99" data-val="4.4" data-opi="6532" data-vend="0" data-grupo="Ahorra 10 % en cada 4 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="nirvanashape toallas de microfibra | absorbentes, ligeras, de secado rápido | toallas de baño, toalla de viaje, toallas deportivas | ideales para viajar, ir al gimnasio, la playa, practicar yoga b07lb7ykry ahorra 10 % en cada 4 o más · ver todos: amazon.es/promotion/psp/a3b0ifhyibo4pf">
+  <label class="pick"><input type="checkbox" value="B07LB7YKRY"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07LB7YKRY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/517QRxoZTvL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07LB7YKRY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">NirvanaShape Toallas de Microfibra | Absorbentes, Ligeras, de Secado rápido | Toallas de baño, Toalla de Viaje, Toallas Deportivas | Ideales para Viajar, IR al Gimnasio, la Playa, Practicar Yoga</a>
+    <div class="precio"><b>22,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (6.532)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 10 % en cada 4 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 10 % en cada 4 o más · ver todos: amazon.es/promotion/psp/A3B0IFHYIBO4PF · <code>B07LB7YKRY</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="55.98" data-val="4.6" data-opi="1512" data-vend="0" data-grupo="Ahorra 10 % en cada 4 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="nirvanashape toalla de yoga antideslizante | toalla de hot yoga con botones antideslizantes | toalla de yoga higiénica de microfibra [ 185 x 63 cm ] (paquete de 2) b0hfkdwd2h ahorra 10 % en cada 4 o más · ver todos: amazon.es/promotion/psp/a3b0ifhyibo4pf">
+  <label class="pick"><input type="checkbox" value="B0HFKDWD2H"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HFKDWD2H?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/313UP7C5reL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HFKDWD2H?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">NirvanaShape Toalla de Yoga Antideslizante | Toalla de Hot Yoga con Botones Antideslizantes | Toalla de Yoga higiénica de Microfibra [ 185 x 63 cm ] (Paquete de 2)</a>
+    <div class="precio"><b>55,98 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (1.512)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 10 % en cada 4 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 10 % en cada 4 o más · ver todos: amazon.es/promotion/psp/A3B0IFHYIBO4PF · <code>B0HFKDWD2H</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="9.99" data-val="4.1" data-opi="1118" data-vend="0" data-grupo="Ahorra 10 % en cada 4 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="microfibra toallas de enfriamiento - toalla deporte gimnasio para hombre &amp; mujer - ice towel/cooling towel/toalla refrescante ideal para correr, yoga, golf y senderismo - gym sudor toalla b082xjyhhl ahorra 10 % en cada 4 o más · ver todos: amazon.es/promotion/psp/a3b0ifhyibo4pf">
+  <label class="pick"><input type="checkbox" value="B082XJYHHL"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B082XJYHHL?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/5106FY+3TzL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B082XJYHHL?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Microfibra Toallas De Enfriamiento - Toalla Deporte Gimnasio para Hombre &amp; Mujer - Ice Towel/Cooling Towel/Toalla Refrescante Ideal para Correr, Yoga, Golf y Senderismo - Gym Sudor Toalla</a>
+    <div class="precio"><b>9,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,1 (1.118)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 10 % en cada 4 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 10 % en cada 4 o más · ver todos: amazon.es/promotion/psp/A3B0IFHYIBO4PF · <code>B082XJYHHL</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="19.99" data-val="4.5" data-opi="996" data-vend="0" data-grupo="Ahorra 10 % en cada 4 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="nirvanashape toalla de gimnasio | toalla de microfibra resistente con clip magnético | elegante y funcional | ultra absorbente y compacta | toalla de deporte gimnasio b0874wzbbt ahorra 10 % en cada 4 o más · ver todos: amazon.es/promotion/psp/a3b0ifhyibo4pf">
+  <label class="pick"><input type="checkbox" value="B0874WZBBT"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0874WZBBT?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41gTG17302L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0874WZBBT?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">NirvanaShape Toalla de Gimnasio | Toalla de Microfibra Resistente con Clip Magnético | Elegante y Funcional | Ultra Absorbente y Compacta | Toalla de Deporte Gimnasio</a>
+    <div class="precio"><b>19,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (996)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 10 % en cada 4 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 10 % en cada 4 o más · ver todos: amazon.es/promotion/psp/A3B0IFHYIBO4PF · <code>B0874WZBBT</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="29.99" data-val="4.4" data-opi="714" data-vend="0" data-grupo="Ahorra 10 % en cada 4 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="nirvanashape toalla poncho 2 en 1 de microfibra para adultos – albornoz de secado rápido y ayuda para cambiarse, ideal para viaje, surf, camping, sauna y playa b082xjnk8m ahorra 10 % en cada 4 o más · ver todos: amazon.es/promotion/psp/a3b0ifhyibo4pf">
+  <label class="pick"><input type="checkbox" value="B082XJNK8M"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B082XJNK8M?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41peWrDCEnL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B082XJNK8M?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">NirvanaShape Toalla Poncho 2 en 1 de Microfibra para Adultos – Albornoz de Secado Rápido y Ayuda para Cambiarse, Ideal para Viaje, Surf, Camping, Sauna y Playa</a>
+    <div class="precio"><b>29,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (714)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 10 % en cada 4 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 10 % en cada 4 o más · ver todos: amazon.es/promotion/psp/A3B0IFHYIBO4PF · <code>B082XJNK8M</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="26.99" data-val="4.5" data-opi="2585" data-vend="0" data-grupo="Ahorra 30 % en 1 al comprar 2"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="nature&#x27;s variety no grain pienso para gatos esterilizados con pollo - 3kg b08y73nm8n ahorra 30 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/a8v3s6wj6fin2">
+  <label class="pick"><input type="checkbox" value="B08Y73NM8N"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B08Y73NM8N?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41qfFHVAlGL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B08Y73NM8N?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Nature&#x27;s Variety No Grain Pienso para Gatos Esterilizados con Pollo - 3kg</a>
+    <div class="precio"><b>26,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (2.585)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 30 % en 1 al comprar 2</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 30 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/A8V3S6WJ6FIN2 · <code>B08Y73NM8N</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="11.29" data-val="4.6" data-opi="648" data-vend="0" data-grupo="Ahorra 30 % en 1 al comprar 2"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="whimzees palitos m 14 piezas – talla m | golosinas para perros medianos, de larga duración, naturales y sin cereales, vegetarianas, sin azúcares añadidos b01j5qtc1w ahorra 30 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/a8v3s6wj6fin2">
+  <label class="pick"><input type="checkbox" value="B01J5QTC1W"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B01J5QTC1W?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41TUyJPglHL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B01J5QTC1W?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">WHIMZEES Palitos M 14 Piezas – Talla M | Golosinas para Perros Medianos, de Larga Duración, Naturales y Sin Cereales, Vegetarianas, Sin Azúcares Añadidos</a>
+    <div class="precio"><b>11,29 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (648)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 30 % en 1 al comprar 2</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 30 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/A8V3S6WJ6FIN2 · <code>B01J5QTC1W</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="12.54" data-val="4.6" data-opi="466" data-vend="0" data-grupo="Ahorra 30 % en 1 al comprar 2"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="lacer pdl – pack de pasta dentífrica 125 ml + 200 ml gratis acción antiplaca, anticaries, antimicrobiana, combate la flora que causa las caries, fortalece el esmalte y la dentina, protección integral b00ngld63i ahorra 30 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/a8v3s6wj6fin2">
+  <label class="pick"><input type="checkbox" value="B00NGLD63I"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B00NGLD63I?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41mIDU38j8L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B00NGLD63I?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Lacer PDL – Pack de Pasta Dentífrica 125 ml + 200 ml Gratis Acción Antiplaca, Anticaries, Antimicrobiana, Combate la Flora que Causa las Caries, Fortalece el Esmalte y la Dentina, Protección Integral</a>
+    <div class="precio"><b>12,54 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (466)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 30 % en 1 al comprar 2</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 30 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/A8V3S6WJ6FIN2 · <code>B00NGLD63I</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="21.99" data-val="4.2" data-opi="155" data-vend="0" data-grupo="Ahorra 30 % en 1 al comprar 2"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="greenies snack dental regular para perros de 11kg a 22kg (340g) b07gz1wjdq ahorra 30 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/a8v3s6wj6fin2">
+  <label class="pick"><input type="checkbox" value="B07GZ1WJDQ"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07GZ1WJDQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/51sE1J4MLLL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07GZ1WJDQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Greenies Snack Dental Regular para Perros de 11kg a 22kg (340g)</a>
+    <div class="precio"><b>21,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (155)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 30 % en 1 al comprar 2</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 30 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/A8V3S6WJ6FIN2 · <code>B07GZ1WJDQ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="5.5" data-val="4.1" data-opi="119" data-vend="0" data-grupo="Ahorra 30 % en 1 al comprar 2"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="josera - pienso gatos - 400 g - receta léger - mascota adulta esterilizada - bajo en calorías - para gatos con sobrepeso - ave de corral, maíz y arroz b07wv22q4l ahorra 30 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/a8v3s6wj6fin2">
+  <label class="pick"><input type="checkbox" value="B07WV22Q4L"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07WV22Q4L?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41McVsNNgdL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07WV22Q4L?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Josera - Pienso Gatos - 400 g - Receta Léger - Mascota Adulta Esterilizada - Bajo en Calorías - Para Gatos con Sobrepeso - Ave de Corral, Maíz y Arroz</a>
+    <div class="precio"><b>5,50 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,1 (119)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 30 % en 1 al comprar 2</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 30 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/A8V3S6WJ6FIN2 · <code>B07WV22Q4L</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="24.99" data-val="4.7" data-opi="110" data-vend="0" data-grupo="Ahorra 30 % en 1 al comprar 2"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="natura diet ibérico &amp; rice 0.5kg comida para mascotas - 3000 gr b07s2dwb85 ahorra 30 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/a8v3s6wj6fin2">
+  <label class="pick"><input type="checkbox" value="B07S2DWB85"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07S2DWB85?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/413NDRRF53L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07S2DWB85?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Natura Diet Ibérico &amp; Rice 0.5Kg Comida para Mascotas - 3000 gr</a>
+    <div class="precio"><b>24,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,7 (110)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 30 % en 1 al comprar 2</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 30 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/A8V3S6WJ6FIN2 · <code>B07S2DWB85</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="22.49" data-val="4.6" data-opi="23760" data-vend="0" data-grupo="Ahorra 5 % en cada 2 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="omega 3 2000mg - 240 perlas aceite pescado ifos* (660mg epa + 440mg dha) | ácidos grasos omega 3 de anchoa para 4 meses - sin ogm, sin gluten, sin lactosa b084g5xc29 ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/a1ic0afz92eyqr">
+  <label class="pick"><input type="checkbox" value="B084G5XC29"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B084G5XC29?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41-vuYTp-+L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B084G5XC29?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Omega 3 2000mg - 240 Perlas Aceite Pescado IFOS* (660mg EPA + 440mg DHA) | Ácidos Grasos Omega 3 de Anchoa para 4 Meses - Sin OGM, Sin Gluten, Sin Lactosa</a>
+    <div class="precio"><b>22,49 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (23.760)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 5 % en cada 2 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/A1IC0AFZ92EYQR · <code>B084G5XC29</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="18.99" data-val="4.6" data-opi="15720" data-vend="0" data-grupo="Ahorra 5 % en cada 2 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="colágeno marino hidrolizado 100% puro 1200 mg, suministro para 2 meses | 120 cápsulas de péptidos de colágeno de pescado hidrolizado tipo i y iii - sin gluten y sin ogm b079c336y3 ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/a1ic0afz92eyqr">
+  <label class="pick"><input type="checkbox" value="B079C336Y3"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B079C336Y3?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41g8aB5XBGL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B079C336Y3?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Colágeno Marino Hidrolizado 100% Puro 1200 mg, Suministro para 2 Meses | 120 Cápsulas de Péptidos de Colágeno de Pescado Hidrolizado Tipo I y III - Sin Gluten y Sin OGM</a>
+    <div class="precio"><b>18,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (15.720)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 5 % en cada 2 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/A1IC0AFZ92EYQR · <code>B079C336Y3</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="9.99" data-val="4.6" data-opi="11541" data-vend="0" data-grupo="Ahorra 5 % en cada 2 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="bisglicinato de zinc 25mg, 400 comprimidos, +1 año de suministro, vegano | contribuye al funcionamiento normal del sistema inmune (efsa), sin estearato de magnesio ni ogm b08gg9t6sw ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/a1ic0afz92eyqr">
+  <label class="pick"><input type="checkbox" value="B08GG9T6SW"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B08GG9T6SW?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41l3Fr-zPpL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B08GG9T6SW?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Bisglicinato de Zinc 25mg, 400 Comprimidos, +1 Año de Suministro, Vegano | Contribuye al Funcionamiento Normal del Sistema Inmune (EFSA), Sin Estearato de Magnesio ni OGM</a>
+    <div class="precio"><b>9,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (11.541)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 5 % en cada 2 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/A1IC0AFZ92EYQR · <code>B08GG9T6SW</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="25.49" data-val="4.5" data-opi="10241" data-vend="0" data-grupo="Ahorra 5 % en cada 2 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="creatina monohidratada 3000mg, 270 comprimidos, 3 meses de suministro | suplemento deportivo apto para veganos, 3 comprimidos al día, sin ogm ni estearato de magnesio b0924pfyn9 ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/a1ic0afz92eyqr">
+  <label class="pick"><input type="checkbox" value="B0924PFYN9"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0924PFYN9?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41eH4UD8TjL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0924PFYN9?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Creatina Monohidratada 3000mg, 270 Comprimidos, 3 Meses de Suministro | Suplemento Deportivo Apto para Veganos, 3 Comprimidos al Día, Sin OGM ni Estearato de Magnesio</a>
+    <div class="precio"><b>25,49 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (10.241)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 5 % en cada 2 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/A1IC0AFZ92EYQR · <code>B0924PFYN9</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="9.99" data-val="4.7" data-opi="9882" data-vend="0" data-grupo="Ahorra 5 % en cada 2 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="vitamina d3 2000 ui alta potencia, 400 comprimidos, +1 año de suministro | colecalciferol vegetariano, la vitamina d contribuye a la función normal del sistema inmunológico (efsa) sin ogm ni gluten b08j48dncn ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/a1ic0afz92eyqr">
+  <label class="pick"><input type="checkbox" value="B08J48DNCN"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B08J48DNCN?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41RUJwe+pHL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B08J48DNCN?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Vitamina D3 2000 UI Alta Potencia, 400 Comprimidos, +1 Año de Suministro | Colecalciferol Vegetariano, La Vitamina D contribuye a la función normal del sistema inmunológico (EFSA) Sin OGM ni Gluten</a>
+    <div class="precio"><b>9,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,7 (9.882)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 5 % en cada 2 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/A1IC0AFZ92EYQR · <code>B08J48DNCN</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="16.99" data-val="4.4" data-opi="6162" data-vend="0" data-grupo="Ahorra 5 % en cada 2 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="ashwagandha gominolas 1200mg - 120 gomitas veganas con sabor a frambuesa | suplemento ayurveda de la withania somnifera, sin gluten ni ogm para 2 meses de suministro b095sm7tw6 ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/a1ic0afz92eyqr">
+  <label class="pick"><input type="checkbox" value="B095SM7TW6"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B095SM7TW6?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41oc7qpI9mL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B095SM7TW6?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Ashwagandha Gominolas 1200mg - 120 Gomitas Veganas con Sabor a Frambuesa | Suplemento Ayurveda de la Withania Somnifera, Sin Gluten ni OGM para 2 Meses de Suministro</a>
+    <div class="precio"><b>16,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (6.162)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 5 % en cada 2 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/A1IC0AFZ92EYQR · <code>B095SM7TW6</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="5.99" data-val="4.3" data-opi="8439" data-vend="0" data-grupo="Ahorra 5 % en cada 2 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="nirvanashape toalla de microfibra | 14 colores | 8 dimensiones | toalla de viaje ligera, absorbente y de secado rápido | toalla de baño para viajes | ideal para playa, camping, yoga y sauna b082xjgqw8 ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/a1jsy2jg0qi4vc">
+  <label class="pick"><input type="checkbox" value="B082XJGQW8"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B082XJGQW8?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/4147Lq1RXIL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B082XJGQW8?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">NirvanaShape Toalla de Microfibra | 14 Colores | 8 Dimensiones | Toalla de Viaje Ligera, Absorbente y de Secado Rápido | Toalla de Baño para Viajes | Ideal para Playa, Camping, Yoga y Sauna</a>
+    <div class="precio"><b>5,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (8.439)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 5 % en cada 2 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/A1JSY2JG0QI4VC · <code>B082XJGQW8</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="22.99" data-val="4.4" data-opi="6532" data-vend="0" data-grupo="Ahorra 5 % en cada 2 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="nirvanashape toallas de microfibra | absorbentes, ligeras, de secado rápido | toallas de baño, toalla de viaje, toallas deportivas | ideales para viajar, ir al gimnasio, la playa, practicar yoga b07lb7ykry ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/a1jsy2jg0qi4vc">
+  <label class="pick"><input type="checkbox" value="B07LB7YKRY"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07LB7YKRY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/517QRxoZTvL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07LB7YKRY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">NirvanaShape Toallas de Microfibra | Absorbentes, Ligeras, de Secado rápido | Toallas de baño, Toalla de Viaje, Toallas Deportivas | Ideales para Viajar, IR al Gimnasio, la Playa, Practicar Yoga</a>
+    <div class="precio"><b>22,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (6.532)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 5 % en cada 2 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/A1JSY2JG0QI4VC · <code>B07LB7YKRY</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="55.98" data-val="4.6" data-opi="1512" data-vend="0" data-grupo="Ahorra 5 % en cada 2 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="nirvanashape toalla de yoga antideslizante | toalla de hot yoga con botones antideslizantes | toalla de yoga higiénica de microfibra [ 185 x 63 cm ] (paquete de 2) b0hfkdwd2h ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/a1jsy2jg0qi4vc">
+  <label class="pick"><input type="checkbox" value="B0HFKDWD2H"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HFKDWD2H?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/313UP7C5reL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HFKDWD2H?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">NirvanaShape Toalla de Yoga Antideslizante | Toalla de Hot Yoga con Botones Antideslizantes | Toalla de Yoga higiénica de Microfibra [ 185 x 63 cm ] (Paquete de 2)</a>
+    <div class="precio"><b>55,98 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (1.512)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 5 % en cada 2 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/A1JSY2JG0QI4VC · <code>B0HFKDWD2H</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="9.99" data-val="4.1" data-opi="1118" data-vend="0" data-grupo="Ahorra 5 % en cada 2 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="microfibra toallas de enfriamiento - toalla deporte gimnasio para hombre &amp; mujer - ice towel/cooling towel/toalla refrescante ideal para correr, yoga, golf y senderismo - gym sudor toalla b082xjyhhl ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/a1jsy2jg0qi4vc">
+  <label class="pick"><input type="checkbox" value="B082XJYHHL"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B082XJYHHL?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/5106FY+3TzL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B082XJYHHL?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Microfibra Toallas De Enfriamiento - Toalla Deporte Gimnasio para Hombre &amp; Mujer - Ice Towel/Cooling Towel/Toalla Refrescante Ideal para Correr, Yoga, Golf y Senderismo - Gym Sudor Toalla</a>
+    <div class="precio"><b>9,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,1 (1.118)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 5 % en cada 2 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/A1JSY2JG0QI4VC · <code>B082XJYHHL</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="19.99" data-val="4.5" data-opi="996" data-vend="0" data-grupo="Ahorra 5 % en cada 2 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="nirvanashape toalla de gimnasio | toalla de microfibra resistente con clip magnético | elegante y funcional | ultra absorbente y compacta | toalla de deporte gimnasio b0874wzbbt ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/a1jsy2jg0qi4vc">
+  <label class="pick"><input type="checkbox" value="B0874WZBBT"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0874WZBBT?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41gTG17302L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0874WZBBT?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">NirvanaShape Toalla de Gimnasio | Toalla de Microfibra Resistente con Clip Magnético | Elegante y Funcional | Ultra Absorbente y Compacta | Toalla de Deporte Gimnasio</a>
+    <div class="precio"><b>19,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (996)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 5 % en cada 2 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/A1JSY2JG0QI4VC · <code>B0874WZBBT</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="29.99" data-val="4.4" data-opi="714" data-vend="0" data-grupo="Ahorra 5 % en cada 2 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="nirvanashape toalla poncho 2 en 1 de microfibra para adultos – albornoz de secado rápido y ayuda para cambiarse, ideal para viaje, surf, camping, sauna y playa b082xjnk8m ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/a1jsy2jg0qi4vc">
+  <label class="pick"><input type="checkbox" value="B082XJNK8M"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B082XJNK8M?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41peWrDCEnL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B082XJNK8M?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">NirvanaShape Toalla Poncho 2 en 1 de Microfibra para Adultos – Albornoz de Secado Rápido y Ayuda para Cambiarse, Ideal para Viaje, Surf, Camping, Sauna y Playa</a>
+    <div class="precio"><b>29,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (714)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 5 % en cada 2 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/A1JSY2JG0QI4VC · <code>B082XJNK8M</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="22.49" data-val="4.6" data-opi="23762" data-vend="0" data-grupo="Ahorra 5 % en cada 2 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="omega 3 2000mg - 240 perlas aceite pescado ifos* (660mg epa + 440mg dha) | ácidos grasos omega 3 de anchoa para 4 meses - sin ogm, sin gluten, sin lactosa b084g5xc29 ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/a1cc1aoz2lvwr0">
+  <label class="pick"><input type="checkbox" value="B084G5XC29"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B084G5XC29?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41-vuYTp-+L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B084G5XC29?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Omega 3 2000mg - 240 Perlas Aceite Pescado IFOS* (660mg EPA + 440mg DHA) | Ácidos Grasos Omega 3 de Anchoa para 4 Meses - Sin OGM, Sin Gluten, Sin Lactosa</a>
+    <div class="precio"><b>22,49 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (23.762)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 5 % en cada 2 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/A1CC1AOZ2LVWR0 · <code>B084G5XC29</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="18.99" data-val="4.6" data-opi="15723" data-vend="0" data-grupo="Ahorra 5 % en cada 2 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="colágeno marino hidrolizado 100% puro 1200 mg, suministro para 2 meses | 120 cápsulas de péptidos de colágeno de pescado hidrolizado tipo i y iii - sin gluten y sin ogm b079c336y3 ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/a1cc1aoz2lvwr0">
+  <label class="pick"><input type="checkbox" value="B079C336Y3"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B079C336Y3?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41g8aB5XBGL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B079C336Y3?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Colágeno Marino Hidrolizado 100% Puro 1200 mg, Suministro para 2 Meses | 120 Cápsulas de Péptidos de Colágeno de Pescado Hidrolizado Tipo I y III - Sin Gluten y Sin OGM</a>
+    <div class="precio"><b>18,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (15.723)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 5 % en cada 2 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/A1CC1AOZ2LVWR0 · <code>B079C336Y3</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="19.99" data-val="4.6" data-opi="12794" data-vend="0" data-grupo="Ahorra 5 % en cada 2 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="citrato de magnesio 240 cápsulas veganas - 444mg de magnesio puro | provenientes de 1480mg del citrato, para 4 meses,contribuye a la reducción del cansancio y la fatiga (efsa),sin gluten ni ogm b08btxfq4f ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/a1cc1aoz2lvwr0">
+  <label class="pick"><input type="checkbox" value="B08BTXFQ4F"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B08BTXFQ4F?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41CmN8-yVGL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B08BTXFQ4F?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Citrato de Magnesio 240 Cápsulas Veganas - 444mg de Magnesio Puro | Provenientes de 1480mg del Citrato, Para 4 Meses,Contribuye a la Reducción del Cansancio y la Fatiga (EFSA),Sin Gluten ni OGM</a>
+    <div class="precio"><b>19,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (12.794)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 5 % en cada 2 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/A1CC1AOZ2LVWR0 · <code>B08BTXFQ4F</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="25.49" data-val="4.5" data-opi="10244" data-vend="0" data-grupo="Ahorra 5 % en cada 2 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="creatina monohidratada 3000mg, 270 comprimidos, 3 meses de suministro | suplemento deportivo apto para veganos, 3 comprimidos al día, sin ogm ni estearato de magnesio b0924pfyn9 ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/a1cc1aoz2lvwr0">
+  <label class="pick"><input type="checkbox" value="B0924PFYN9"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0924PFYN9?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41eH4UD8TjL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0924PFYN9?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Creatina Monohidratada 3000mg, 270 Comprimidos, 3 Meses de Suministro | Suplemento Deportivo Apto para Veganos, 3 Comprimidos al Día, Sin OGM ni Estearato de Magnesio</a>
+    <div class="precio"><b>25,49 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (10.244)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 5 % en cada 2 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/A1CC1AOZ2LVWR0 · <code>B0924PFYN9</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="14.99" data-val="4.6" data-opi="8743" data-vend="0" data-grupo="Ahorra 5 % en cada 2 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="biotina pura 12000 mcg vegana (365 comprimidos) - suplemento de vitamina b7 | para mujer y hombre, contribuye al mantenimiento normal del cabello (efsa), para 1 año, sin ogm ni estearato de magnesio b0817wbxkf ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/a1cc1aoz2lvwr0">
+  <label class="pick"><input type="checkbox" value="B0817WBXKF"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0817WBXKF?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41Z5nbtNNaL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0817WBXKF?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Biotina Pura 12000 mcg Vegana (365 Comprimidos) - Suplemento de Vitamina B7 | Para Mujer y Hombre, Contribuye al Mantenimiento Normal del Cabello (EFSA), Para 1 Año, Sin OGM ni Estearato de Magnesio</a>
+    <div class="precio"><b>14,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (8.743)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 5 % en cada 2 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/A1CC1AOZ2LVWR0 · <code>B0817WBXKF</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="15.99" data-val="4.4" data-opi="6148" data-vend="0" data-grupo="Ahorra 5 % en cada 2 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="carbón activado 2000mg de potencia 180 cápsulas veganas - ideal para gases e hinchazón adultos, carbón vegetal activado de origen 100% natural, vegano y sin estearato de magnesio b01n673us9 ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/a1cc1aoz2lvwr0">
+  <label class="pick"><input type="checkbox" value="B01N673US9"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B01N673US9?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41-f-WYK7mL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B01N673US9?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Carbón Activado 2000mg de Potencia 180 Cápsulas Veganas - Ideal para Gases e Hinchazón Adultos, Carbón Vegetal Activado de Origen 100% Natural, Vegano y Sin Estearato de Magnesio</a>
+    <div class="precio"><b>15,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (6.148)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 5 % en cada 2 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 5 % en cada 2 o más · ver todos: amazon.es/promotion/psp/A1CC1AOZ2LVWR0 · <code>B01N673US9</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="14.39" data-val="4.6" data-opi="853213" data-vend="0" data-grupo="Ahorra 5 % en cada 4 o más"
+         data-cat="Por unidades" data-marca="" data-marcas="  "
+         data-texto="amazon basics - paquete de 36 pilas alcalinas aaa de alto rendimiento, 1,5 voltios, vida útil de 10 años b00lh3dmuo ahorra 5 % en cada 4 o más · ver todos: amazon.es/promotion/psp/a2ol7rhtlfc3yf">
+  <label class="pick"><input type="checkbox" value="B00LH3DMUO"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B00LH3DMUO?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41VtUi6pMDL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B00LH3DMUO?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Amazon Basics - Paquete de 36 pilas alcalinas AAA de alto rendimiento, 1,5 voltios, vida útil de 10 años</a>
+    <div class="precio"><b>14,39 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (853.213)</div>
+    <div class="tags"><span class="tag ">🎁 Ahorra 5 % en cada 4 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 5 % en cada 4 o más · ver todos: amazon.es/promotion/psp/A2OL7RHTLFC3YF · <code>B00LH3DMUO</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="14.52" data-val="4.6" data-opi="187944" data-vend="0" data-grupo="Ahorra 5 % en cada 4 o más"
+         data-cat="Por unidades" data-marca="" data-marcas="  "
+         data-texto="sandisk ultra 32 gb usb flash drive usb 3.0 up to 130 mb/s read, black b00dqg9oz2 ahorra 5 % en cada 4 o más · ver todos: amazon.es/promotion/psp/a2ol7rhtlfc3yf">
+  <label class="pick"><input type="checkbox" value="B00DQG9OZ2"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B00DQG9OZ2?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/315vLm4T1OL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B00DQG9OZ2?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SanDisk Ultra 32 GB USB Flash Drive USB 3.0 Up to 130 MB/s Read, Black</a>
+    <div class="precio"><b>14,52 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (187.944)</div>
+    <div class="tags"><span class="tag ">🎁 Ahorra 5 % en cada 4 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 5 % en cada 4 o más · ver todos: amazon.es/promotion/psp/A2OL7RHTLFC3YF · <code>B00DQG9OZ2</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="3.59" data-val="4.7" data-opi="132411" data-vend="0" data-grupo="Ahorra 5 % en cada 4 o más"
+         data-cat="Por unidades" data-marca="" data-marcas="  "
+         data-texto="duracell n pilas alcalinas especiales (paquete de 2) 1.5v, e90/lr1 | diseñadas para su uso en linternas, calculadoras y luces de bicicleta b00h8ljqsq ahorra 5 % en cada 4 o más · ver todos: amazon.es/promotion/psp/a2ol7rhtlfc3yf">
+  <label class="pick"><input type="checkbox" value="B00H8LJQSQ"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B00H8LJQSQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41QrUZGC0ML._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B00H8LJQSQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">DURACELL N Pilas Alcalinas Especiales (Paquete de 2) 1.5V, E90/LR1 | Diseñadas para su uso en linternas, calculadoras y luces de bicicleta</a>
+    <div class="precio"><b>3,59 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,7 (132.411)</div>
+    <div class="tags"><span class="tag ">🎁 Ahorra 5 % en cada 4 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 5 % en cada 4 o más · ver todos: amazon.es/promotion/psp/A2OL7RHTLFC3YF · <code>B00H8LJQSQ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="9.99" data-val="4.8" data-opi="84635" data-vend="0" data-grupo="Ahorra 5 % en cada 4 o más"
+         data-cat="Por unidades" data-marca="" data-marcas="  "
+         data-texto="mattel games juego de cartas uno, 7+ años, 2-10 jugadores | clásico juego uno de colores y números para niños, adolescentes y noches de juego en familia w2087 b005i5m2f8 ahorra 5 % en cada 4 o más · ver todos: amazon.es/promotion/psp/a2ol7rhtlfc3yf">
+  <label class="pick"><input type="checkbox" value="B005I5M2F8"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B005I5M2F8?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/51RXvOulYZL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B005I5M2F8?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Mattel Games Juego de Cartas UNO, 7+ años, 2-10 Jugadores | Clásico juego UNO de colores y números para niños, adolescentes y noches de juego en familia W2087</a>
+    <div class="precio"><b>9,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,8 (84.635)</div>
+    <div class="tags"><span class="tag ">🎁 Ahorra 5 % en cada 4 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 5 % en cada 4 o más · ver todos: amazon.es/promotion/psp/A2OL7RHTLFC3YF · <code>B005I5M2F8</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="19.99" data-val="4.4" data-opi="61745" data-vend="0" data-grupo="Ahorra 5 % en cada 4 o más"
+         data-cat="Por unidades" data-marca="" data-marcas="  "
+         data-texto="cofit guantes de moto, pantalla táctil en los dedos, guantes de moto de carreras, para bicicleta atv bmx mtb, escalada, motocross y otros deportes al aire libre b07wr99szn ahorra 5 % en cada 4 o más · ver todos: amazon.es/promotion/psp/a2ol7rhtlfc3yf">
+  <label class="pick"><input type="checkbox" value="B07WR99SZN"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07WR99SZN?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/51CRdQL+cOL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07WR99SZN?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">COFIT Guantes de Moto, Pantalla Táctil en los Dedos, Guantes de Moto de Carreras, para Bicicleta ATV BMX MTB, Escalada, Motocross y Otros Deportes al Aire Libre</a>
+    <div class="precio"><b>19,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (61.745)</div>
+    <div class="tags"><span class="tag ">🎁 Ahorra 5 % en cada 4 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 5 % en cada 4 o más · ver todos: amazon.es/promotion/psp/A2OL7RHTLFC3YF · <code>B07WR99SZN</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="19.99" data-val="4.5" data-opi="61593" data-vend="0" data-grupo="Ahorra 5 % en cada 4 o más"
+         data-cat="Por unidades" data-marca="" data-marcas="  "
+         data-texto="utopia bedding juego de sabanas 4 piezas, 150x200cm, gris | sábana bajera, sábana plana y 2 fundas de almohada 50x75 - cama 150 - oeko-tex certificado - poliéster microfibra cepillada b075jjrfvv ahorra 5 % en cada 4 o más · ver todos: amazon.es/promotion/psp/a2ol7rhtlfc3yf">
+  <label class="pick"><input type="checkbox" value="B075JJRFVV"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B075JJRFVV?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41e7oMGw5LL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B075JJRFVV?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Utopia Bedding Juego de Sabanas 4 Piezas, 150x200cm, Gris | Sábana Bajera, Sábana Plana y 2 Fundas de Almohada 50x75 - Cama 150 - Oeko-Tex Certificado - Poliéster Microfibra Cepillada</a>
+    <div class="precio"><b>19,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (61.593)</div>
+    <div class="tags"><span class="tag ">🎁 Ahorra 5 % en cada 4 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 5 % en cada 4 o más · ver todos: amazon.es/promotion/psp/A2OL7RHTLFC3YF · <code>B075JJRFVV</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="22.92" data-val="4.6" data-opi="2870" data-vend="0" data-grupo="Ahorra 50 % en 1 al comprar 2"
+         data-cat="Por unidades" data-marca="" data-marcas="  "
+         data-texto="felix fantastic comida húmeda gato 44x85 g b08wsysqvl ahorra 50 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/a3h5x8c0wf0d5l">
+  <label class="pick"><input type="checkbox" value="B08WSYSQVL"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B08WSYSQVL?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41e2xJCpMkL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B08WSYSQVL?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Felix Fantastic comida húmeda gato 44x85 g</a>
+    <div class="precio"><b>22,92 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (2.870)</div>
+    <div class="tags"><span class="tag ">🎁 Ahorra 50 % en 1 al comprar 2</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 50 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/A3H5X8C0WF0D5L · <code>B08WSYSQVL</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="7.31" data-val="4.7" data-opi="2123" data-vend="0" data-grupo="Ahorra 50 % en 1 al comprar 2"
+         data-cat="Por unidades" data-marca="" data-marcas="  "
+         data-texto="vitakraft menu vital, comida para conejos enanos, con alfalfa, con manzana, con calabaza, enriquecida con hierbas, sin azúcar añadido ni cereales (1x 3kg) b002sfj69g ahorra 50 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/a3h5x8c0wf0d5l">
+  <label class="pick"><input type="checkbox" value="B002SFJ69G"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B002SFJ69G?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/51YOMwJ320L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B002SFJ69G?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Vitakraft Menu Vital, Comida para Conejos Enanos, con Alfalfa, con Manzana, con Calabaza, enriquecida con Hierbas, sin azúcar añadido ni Cereales (1x 3kg)</a>
+    <div class="precio"><b>7,31 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,7 (2.123)</div>
+    <div class="tags"><span class="tag ">🎁 Ahorra 50 % en 1 al comprar 2</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 50 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/A3H5X8C0WF0D5L · <code>B002SFJ69G</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="3.99" data-val="4.7" data-opi="1766" data-vend="0" data-grupo="Ahorra 50 % en 1 al comprar 2"
+         data-cat="Por unidades" data-marca="" data-marcas="  "
+         data-texto="johnson&#x27;s kids acondicionador brillo y fuerza, para niños, 500 ml | con aceite de argán y proteínas de seda, fórmula no llores más y no más tirones, peinado fácil, hipoalergénico b07zfzwjxp ahorra 50 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/a3h5x8c0wf0d5l">
+  <label class="pick"><input type="checkbox" value="B07ZFZWJXP"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07ZFZWJXP?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/31gT1OB6MCL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07ZFZWJXP?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Johnson&#x27;s Kids Acondicionador Brillo y Fuerza, Para Niños, 500 ml | Con Aceite de Argán y Proteínas de Seda, Fórmula No Llores Más y No Más Tirones, Peinado Fácil, Hipoalergénico</a>
+    <div class="precio"><b>3,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,7 (1.766)</div>
+    <div class="tags"><span class="tag ">🎁 Ahorra 50 % en 1 al comprar 2</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 50 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/A3H5X8C0WF0D5L · <code>B07ZFZWJXP</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="3.28" data-val="4.5" data-opi="1650" data-vend="0" data-grupo="Ahorra 50 % en 1 al comprar 2"
+         data-cat="Por unidades" data-marca="" data-marcas="  "
+         data-texto="lactovit - gel de ducha reparador lactourea urea prolactic10 - 750 ml | repara desde el interior y fortalece la barrera cutánea de la piel seca y extra seca, avalado por dermatólogos b0bydxszmg ahorra 50 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/a3h5x8c0wf0d5l">
+  <label class="pick"><input type="checkbox" value="B0BYDXSZMG"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0BYDXSZMG?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/31zpyV2xSEL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0BYDXSZMG?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Lactovit - Gel de Ducha Reparador Lactourea Urea ProLactic10 - 750 ml | Repara desde el interior y fortalece la barrera cutánea de la piel seca y extra seca, avalado por dermatólogos</a>
+    <div class="precio"><b>3,28 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (1.650)</div>
+    <div class="tags"><span class="tag ">🎁 Ahorra 50 % en 1 al comprar 2</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 50 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/A3H5X8C0WF0D5L · <code>B0BYDXSZMG</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="16.29" data-val="4.6" data-opi="1644" data-vend="0" data-grupo="Ahorra 50 % en 1 al comprar 2"
+         data-cat="Por unidades" data-marca="" data-marcas="  "
+         data-texto="ultima pienso para gatos senior esterilizados con pollo - 2,5kg b0dzd5qv2j ahorra 50 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/a3h5x8c0wf0d5l">
+  <label class="pick"><input type="checkbox" value="B0DZD5QV2J"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DZD5QV2J?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/414Aux0sPbL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DZD5QV2J?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Ultima Pienso para Gatos Senior Esterilizados con Pollo - 2,5kg</a>
+    <div class="precio"><b>16,29 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (1.644)</div>
+    <div class="tags"><span class="tag ">🎁 Ahorra 50 % en 1 al comprar 2</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 50 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/A3H5X8C0WF0D5L · <code>B0DZD5QV2J</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="22.17" data-val="4.7" data-opi="1578" data-vend="0" data-grupo="Ahorra 50 % en 1 al comprar 2"
+         data-cat="Por unidades" data-marca="" data-marcas="  "
+         data-texto="nescafé dolce gusto café cortado 90 cápsulas (3x30) b01amayrhy ahorra 50 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/a3h5x8c0wf0d5l">
+  <label class="pick"><input type="checkbox" value="B01AMAYRHY"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B01AMAYRHY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41gqW5iXipL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B01AMAYRHY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">NESCAFÉ Dolce Gusto Café Cortado 90 cápsulas (3x30)</a>
+    <div class="precio"><b>22,17 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,7 (1.578)</div>
+    <div class="tags"><span class="tag ">🎁 Ahorra 50 % en 1 al comprar 2</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 50 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/A3H5X8C0WF0D5L · <code>B01AMAYRHY</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="11.49" data-val="4.5" data-opi="27026" data-vend="0" data-grupo="Ahorra 50 % en 1 al comprar 2"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="joma camiseta deportiva manga corta hombre, 6xs - 3xl - ligera y transpirable, óptima para running y gym - combi b07h32lp3b ahorra 50 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/a1rxgpsg289fr5">
+  <label class="pick"><input type="checkbox" value="B07H32LP3B"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07H32LP3B?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/31zWpIKII0L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07H32LP3B?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Joma Camiseta Deportiva Manga Corta Hombre, 6XS - 3XL - Ligera y Transpirable, Óptima para Running y Gym - Combi</a>
+    <div class="precio"><b>11,49 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (27.026)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 50 % en 1 al comprar 2</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 50 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/A1RXGPSG289FR5 · <code>B07H32LP3B</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="16.71" data-val="4.4" data-opi="12872" data-vend="0" data-grupo="Ahorra 50 % en 1 al comprar 2"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="joma - short deportivo hombre , 6xs - 3xl - bolsillos y cintura elástica con cordón - drive b01e996u24 ahorra 50 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/a1rxgpsg289fr5">
+  <label class="pick"><input type="checkbox" value="B01E996U24"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B01E996U24?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41SYqddkxQL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B01E996U24?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Joma - Short Deportivo Hombre , 6XS - 3XL - Bolsillos y Cintura Elástica con Cordón - Drive</a>
+    <div class="precio"><b>16,71 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (12.872)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 50 % en 1 al comprar 2</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 50 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/A1RXGPSG289FR5 · <code>B01E996U24</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="10.99" data-val="4.5" data-opi="11620" data-vend="0" data-grupo="Ahorra 50 % en 1 al comprar 2"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="joma pantalón corto deportivo hombre- cintura elástica y ajuste de cordón - bermuda transpirable y secado rápido - treviso b06y67p76z ahorra 50 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/a1rxgpsg289fr5">
+  <label class="pick"><input type="checkbox" value="B06Y67P76Z"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B06Y67P76Z?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/31wil-wgRkL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B06Y67P76Z?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Joma Pantalón Corto Deportivo Hombre- Cintura Elástica y Ajuste de Cordón - Bermuda Transpirable y Secado Rápido - Treviso</a>
+    <div class="precio"><b>10,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (11.620)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 50 % en 1 al comprar 2</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 50 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/A1RXGPSG289FR5 · <code>B06Y67P76Z</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="16.99" data-val="4.5" data-opi="6257" data-vend="0" data-grupo="Ahorra 50 % en 1 al comprar 2"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="joma - bermuda de hombre, 6xs - 3xl - bolsillos y cintura elástica con cordón - miami b06y2zgmq6 ahorra 50 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/a1rxgpsg289fr5">
+  <label class="pick"><input type="checkbox" value="B06Y2ZGMQ6"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B06Y2ZGMQ6?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/31wBd6818BL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B06Y2ZGMQ6?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Joma - Bermuda de Hombre, 6XS - 3XL - Bolsillos y Cintura Elástica con Cordón - Miami</a>
+    <div class="precio"><b>16,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (6.257)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 50 % en 1 al comprar 2</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 50 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/A1RXGPSG289FR5 · <code>B06Y2ZGMQ6</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="10.99" data-val="4.5" data-opi="5303" data-vend="0" data-grupo="Ahorra 50 % en 1 al comprar 2"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="joma - camiseta deportiva sin mangas hombre , 6xs - 3xl - transpirable y secado rápido - combi b07p6h112d ahorra 50 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/a1rxgpsg289fr5">
+  <label class="pick"><input type="checkbox" value="B07P6H112D"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07P6H112D?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/213XRV4TydL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07P6H112D?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Joma - Camiseta Deportiva Sin Mangas Hombre , 6XS - 3XL - Transpirable y Secado Rápido - Combi</a>
+    <div class="precio"><b>10,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (5.303)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 50 % en 1 al comprar 2</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 50 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/A1RXGPSG289FR5 · <code>B07P6H112D</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="11.95" data-val="4.1" data-opi="5225" data-vend="0" data-grupo="Ahorra 50 % en 1 al comprar 2"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="joma camiseta deportiva manga corta mujer, 6xs - 3xl - mantiene seco el contacto con el cuerpo, ideal para running o gym - combi b01csteema ahorra 50 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/a1rxgpsg289fr5">
+  <label class="pick"><input type="checkbox" value="B01CSTEEMA"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B01CSTEEMA?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41rs8G1+zCL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B01CSTEEMA?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Joma Camiseta Deportiva Manga Corta Mujer, 6XS - 3XL - Mantiene Seco el Contacto con el Cuerpo, Ideal para Running o Gym - Combi</a>
+    <div class="precio"><b>11,95 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,1 (5.225)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 50 % en 1 al comprar 2</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 50 % en 1 al comprar 2 · ver todos: amazon.es/promotion/psp/A1RXGPSG289FR5 · <code>B01CSTEEMA</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="5.99" data-val="4.3" data-opi="8440" data-vend="0" data-grupo="Ahorra 7 % en cada 3 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="nirvanashape toalla de microfibra | 14 colores | 8 dimensiones | toalla de viaje ligera, absorbente y de secado rápido | toalla de baño para viajes | ideal para playa, camping, yoga y sauna b082xjgqw8 ahorra 7 % en cada 3 o más · ver todos: amazon.es/promotion/psp/a5iz2emo14m6y">
+  <label class="pick"><input type="checkbox" value="B082XJGQW8"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B082XJGQW8?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/4147Lq1RXIL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B082XJGQW8?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">NirvanaShape Toalla de Microfibra | 14 Colores | 8 Dimensiones | Toalla de Viaje Ligera, Absorbente y de Secado Rápido | Toalla de Baño para Viajes | Ideal para Playa, Camping, Yoga y Sauna</a>
+    <div class="precio"><b>5,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (8.440)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 7 % en cada 3 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 7 % en cada 3 o más · ver todos: amazon.es/promotion/psp/A5IZ2EMO14M6Y · <code>B082XJGQW8</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="22.99" data-val="4.4" data-opi="6532" data-vend="0" data-grupo="Ahorra 7 % en cada 3 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="nirvanashape toallas de microfibra | absorbentes, ligeras, de secado rápido | toallas de baño, toalla de viaje, toallas deportivas | ideales para viajar, ir al gimnasio, la playa, practicar yoga b07lb7ykry ahorra 7 % en cada 3 o más · ver todos: amazon.es/promotion/psp/a5iz2emo14m6y">
+  <label class="pick"><input type="checkbox" value="B07LB7YKRY"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07LB7YKRY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/517QRxoZTvL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07LB7YKRY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">NirvanaShape Toallas de Microfibra | Absorbentes, Ligeras, de Secado rápido | Toallas de baño, Toalla de Viaje, Toallas Deportivas | Ideales para Viajar, IR al Gimnasio, la Playa, Practicar Yoga</a>
+    <div class="precio"><b>22,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (6.532)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 7 % en cada 3 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 7 % en cada 3 o más · ver todos: amazon.es/promotion/psp/A5IZ2EMO14M6Y · <code>B07LB7YKRY</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="55.98" data-val="4.6" data-opi="1512" data-vend="0" data-grupo="Ahorra 7 % en cada 3 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="nirvanashape toalla de yoga antideslizante | toalla de hot yoga con botones antideslizantes | toalla de yoga higiénica de microfibra [ 185 x 63 cm ] (paquete de 2) b0hfkdwd2h ahorra 7 % en cada 3 o más · ver todos: amazon.es/promotion/psp/a5iz2emo14m6y">
+  <label class="pick"><input type="checkbox" value="B0HFKDWD2H"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HFKDWD2H?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/313UP7C5reL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HFKDWD2H?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">NirvanaShape Toalla de Yoga Antideslizante | Toalla de Hot Yoga con Botones Antideslizantes | Toalla de Yoga higiénica de Microfibra [ 185 x 63 cm ] (Paquete de 2)</a>
+    <div class="precio"><b>55,98 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (1.512)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 7 % en cada 3 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 7 % en cada 3 o más · ver todos: amazon.es/promotion/psp/A5IZ2EMO14M6Y · <code>B0HFKDWD2H</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="9.99" data-val="4.1" data-opi="1118" data-vend="0" data-grupo="Ahorra 7 % en cada 3 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="microfibra toallas de enfriamiento - toalla deporte gimnasio para hombre &amp; mujer - ice towel/cooling towel/toalla refrescante ideal para correr, yoga, golf y senderismo - gym sudor toalla b082xjyhhl ahorra 7 % en cada 3 o más · ver todos: amazon.es/promotion/psp/a5iz2emo14m6y">
+  <label class="pick"><input type="checkbox" value="B082XJYHHL"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B082XJYHHL?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/5106FY+3TzL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B082XJYHHL?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Microfibra Toallas De Enfriamiento - Toalla Deporte Gimnasio para Hombre &amp; Mujer - Ice Towel/Cooling Towel/Toalla Refrescante Ideal para Correr, Yoga, Golf y Senderismo - Gym Sudor Toalla</a>
+    <div class="precio"><b>9,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,1 (1.118)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 7 % en cada 3 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 7 % en cada 3 o más · ver todos: amazon.es/promotion/psp/A5IZ2EMO14M6Y · <code>B082XJYHHL</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="19.99" data-val="4.5" data-opi="996" data-vend="0" data-grupo="Ahorra 7 % en cada 3 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="nirvanashape toalla de gimnasio | toalla de microfibra resistente con clip magnético | elegante y funcional | ultra absorbente y compacta | toalla de deporte gimnasio b0874wzbbt ahorra 7 % en cada 3 o más · ver todos: amazon.es/promotion/psp/a5iz2emo14m6y">
+  <label class="pick"><input type="checkbox" value="B0874WZBBT"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0874WZBBT?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41gTG17302L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0874WZBBT?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">NirvanaShape Toalla de Gimnasio | Toalla de Microfibra Resistente con Clip Magnético | Elegante y Funcional | Ultra Absorbente y Compacta | Toalla de Deporte Gimnasio</a>
+    <div class="precio"><b>19,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (996)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 7 % en cada 3 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 7 % en cada 3 o más · ver todos: amazon.es/promotion/psp/A5IZ2EMO14M6Y · <code>B0874WZBBT</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="29.99" data-val="4.4" data-opi="714" data-vend="0" data-grupo="Ahorra 7 % en cada 3 o más"
+         data-cat="Por unidades" data-marca="" data-marcas=" ok "
+         data-texto="nirvanashape toalla poncho 2 en 1 de microfibra para adultos – albornoz de secado rápido y ayuda para cambiarse, ideal para viaje, surf, camping, sauna y playa b082xjnk8m ahorra 7 % en cada 3 o más · ver todos: amazon.es/promotion/psp/a5iz2emo14m6y">
+  <label class="pick"><input type="checkbox" value="B082XJNK8M"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B082XJNK8M?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41peWrDCEnL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B082XJNK8M?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">NirvanaShape Toalla Poncho 2 en 1 de Microfibra para Adultos – Albornoz de Secado Rápido y Ayuda para Cambiarse, Ideal para Viaje, Surf, Camping, Sauna y Playa</a>
+    <div class="precio"><b>29,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (714)</div>
+    <div class="tags"><span class="tag ok">Nueva hoy</span><span class="tag ">🎁 Ahorra 7 % en cada 3 o más</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra 7 % en cada 3 o más · ver todos: amazon.es/promotion/psp/A5IZ2EMO14M6Y · <code>B082XJNK8M</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="14.77" data-val="4.6" data-opi="102725" data-vend="0" data-grupo="Ahorra un 5% al comprar 6 unidad"
+         data-cat="Por unidades" data-marca="" data-marcas="  "
+         data-texto="cosrx snail mucin 96% power face serum 3.38 fl oz 100ml, serum hidratante para el rostro, cuidado personal, piel brillante bajo el maquillaje, cuidado de la piel coreano, belleza coreana b00pbx3l7k ahorra un 5% al comprar 6 unidad · ver todos: amazon.es/promotion/psp/a2o2l2zpk144hf">
+  <label class="pick"><input type="checkbox" value="B00PBX3L7K"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B00PBX3L7K?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/310Qckf2ZtL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B00PBX3L7K?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">COSRX Snail Mucin 96% Power Face Serum 3.38 fl oz 100ml, Serum Hidratante para el Rostro, Cuidado Personal, Piel Brillante bajo el Maquillaje, Cuidado de la Piel Coreano, Belleza Coreana</a>
+    <div class="precio"><b>14,77 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (102.725)</div>
+    <div class="tags"><span class="tag ">🎁 Ahorra un 5% al comprar 6 unidad</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra un 5% al comprar 6 unidad · ver todos: amazon.es/promotion/psp/A2O2L2ZPK144HF · <code>B00PBX3L7K</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="20.85" data-val="4.4" data-opi="38223" data-vend="0" data-grupo="Ahorra un 5% al comprar 6 unidad"
+         data-cat="Por unidades" data-marca="" data-marcas="  "
+         data-texto="medicube jelly cream with collagen, niacinamide | crema facial con colágeno hidrolizado, hidratación y glow 24 horas, piel más rellena y firme, 110 ml b0cm2ppnmw ahorra un 5% al comprar 6 unidad · ver todos: amazon.es/promotion/psp/a2o2l2zpk144hf">
+  <label class="pick"><input type="checkbox" value="B0CM2PPNMW"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CM2PPNMW?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41kFJN4pWrL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CM2PPNMW?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">medicube Jelly Cream with Collagen, Niacinamide | Crema Facial con Colágeno Hidrolizado, Hidratación y Glow 24 Horas, Piel Más Rellena y Firme, 110 ml</a>
+    <div class="precio"><b>20,85 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (38.223)</div>
+    <div class="tags"><span class="tag ">🎁 Ahorra un 5% al comprar 6 unidad</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra un 5% al comprar 6 unidad · ver todos: amazon.es/promotion/psp/A2O2L2ZPK144HF · <code>B0CM2PPNMW</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="11.99" data-val="4.3" data-opi="30014" data-vend="0" data-grupo="Ahorra un 5% al comprar 6 unidad"
+         data-cat="Por unidades" data-marca="" data-marcas="  "
+         data-texto="cantu - crema capilar para cabello rizado - suaviza y aporta brillo - fórmula con manteca de karité - práctico dosificador - 355 ml b009az3wh4 ahorra un 5% al comprar 6 unidad · ver todos: amazon.es/promotion/psp/a2o2l2zpk144hf">
+  <label class="pick"><input type="checkbox" value="B009AZ3WH4"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B009AZ3WH4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/317e3+OluHL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B009AZ3WH4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">CANTU - Crema Capilar para Cabello Rizado - Suaviza y Aporta Brillo - Fórmula con Manteca de Karité - Práctico Dosificador - 355 ml</a>
+    <div class="precio"><b>11,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (30.014)</div>
+    <div class="tags"><span class="tag ">🎁 Ahorra un 5% al comprar 6 unidad</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra un 5% al comprar 6 unidad · ver todos: amazon.es/promotion/psp/A2O2L2ZPK144HF · <code>B009AZ3WH4</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="13.88" data-val="4.7" data-opi="29221" data-vend="0" data-grupo="Ahorra un 5% al comprar 6 unidad"
+         data-cat="Por unidades" data-marca="" data-marcas="  "
+         data-texto="tajin fruit and snack seasoning, 14oz b008c98u3k ahorra un 5% al comprar 6 unidad · ver todos: amazon.es/promotion/psp/a2o2l2zpk144hf">
+  <label class="pick"><input type="checkbox" value="B008C98U3K"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B008C98U3K?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41JUiW1VARL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B008C98U3K?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Tajin Fruit and Snack Seasoning, 14oz</a>
+    <div class="precio"><b>13,88 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,7 (29.221)</div>
+    <div class="tags"><span class="tag ">🎁 Ahorra un 5% al comprar 6 unidad</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra un 5% al comprar 6 unidad · ver todos: amazon.es/promotion/psp/A2O2L2ZPK144HF · <code>B008C98U3K</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="39.99" data-val="4.4" data-opi="26552" data-vend="0" data-grupo="Ahorra un 5% al comprar 6 unidad"
+         data-cat="Por unidades" data-marca="" data-marcas="  "
+         data-texto="celimax the vita a retinal shot tightening booster (duo set 15ml x 2) | 0,1% retinal, 3% matryxyl, retinoide de alta potencia, anti-edad, minimizador de poros, líneas finas, firmeza de la piel b0fqv2j48q ahorra un 5% al comprar 6 unidad · ver todos: amazon.es/promotion/psp/a2o2l2zpk144hf">
+  <label class="pick"><input type="checkbox" value="B0FQV2J48Q"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FQV2J48Q?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41N7ExZC6HL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FQV2J48Q?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">celimax The Vita A Retinal Shot Tightening Booster (Duo Set 15ml x 2) | 0,1% Retinal, 3% Matryxyl, Retinoide de Alta Potencia, Anti-Edad, Minimizador de Poros, Líneas Finas, Firmeza de la Piel</a>
+    <div class="precio"><b>39,99 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (26.552)</div>
+    <div class="tags"><span class="tag ">🎁 Ahorra un 5% al comprar 6 unidad</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra un 5% al comprar 6 unidad · ver todos: amazon.es/promotion/psp/A2O2L2ZPK144HF · <code>B0FQV2J48Q</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="20.98" data-val="4.6" data-opi="21972" data-vend="0" data-grupo="Ahorra un 5% al comprar 6 unidad"
+         data-cat="Por unidades" data-marca="" data-marcas="  "
+         data-texto="dr.althea 345 relief cream | crema hidratante calmante con pdrn y niacinamida | cuidado facial vegano coreano para todo tipo de piel (50ml, pack of 1) b07pk2p2xb ahorra un 5% al comprar 6 unidad · ver todos: amazon.es/promotion/psp/a2o2l2zpk144hf">
+  <label class="pick"><input type="checkbox" value="B07PK2P2XB"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07PK2P2XB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/31C1E1+T-wL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07PK2P2XB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Dr.Althea 345 Relief Cream | Crema hidratante calmante con PDRN y niacinamida | Cuidado facial vegano coreano para todo tipo de piel (50ml, Pack of 1)</a>
+    <div class="precio"><b>20,98 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (21.972)</div>
+    <div class="tags"><span class="tag ">🎁 Ahorra un 5% al comprar 6 unidad</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Ahorra un 5% al comprar 6 unidad · ver todos: amazon.es/promotion/psp/A2O2L2ZPK144HF · <code>B07PK2P2XB</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="14.95" data-val="4.6" data-opi="24420" data-vend="0" data-grupo="Consigue este producto gratis al comprar 2 en productos seleccionados"
+         data-cat="Por unidades" data-marca="" data-marcas="  "
+         data-texto="medicube pdrn pink peptide serum with salmon dna | sérum con péptidos y niacinamida para hidratación y una piel de aspecto más firme, mejora el tono de la piel, 30ml b0dbf65jyy consigue este producto gratis al comprar 2 en productos seleccionados · ver todos: amazon.es/promotion/psp/a32gfqytne1rxl">
+  <label class="pick"><input type="checkbox" value="B0DBF65JYY"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DBF65JYY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/31h8gOXMB7L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DBF65JYY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">medicube PDRN Pink Peptide Serum with Salmon DNA | Sérum con Péptidos y Niacinamida para Hidratación y una Piel de Aspecto Más Firme, Mejora el Tono de la Piel, 30ml</a>
+    <div class="precio"><b>14,95 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (24.420)</div>
+    <div class="tags"><span class="tag ">🎁 Consigue este producto gratis al comprar 2 en productos seleccionados</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Consigue este producto gratis al comprar 2 en productos seleccionados · ver todos: amazon.es/promotion/psp/A32GFQYTNE1RXL · <code>B0DBF65JYY</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="15.95" data-val="4.6" data-opi="13346" data-vend="0" data-grupo="Consigue este producto gratis al comprar 2 en productos seleccionados"
+         data-cat="Por unidades" data-marca="" data-marcas="  "
+         data-texto="medicube jelly gel mask with salmon dna pdrn pink collagen | mascarilla facial nocturna efecto glass skin, hidratación y efecto reafirmante, cosmética coreana, 28 g x 4 unidades b0dgtmr754 consigue este producto gratis al comprar 2 en productos seleccionados · ver todos: amazon.es/promotion/psp/a32gfqytne1rxl">
+  <label class="pick"><input type="checkbox" value="B0DGTMR754"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DGTMR754?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/31VILHUZDGL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DGTMR754?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">medicube Jelly Gel Mask with Salmon DNA PDRN Pink Collagen | Mascarilla Facial Nocturna Efecto Glass Skin, Hidratación y Efecto Reafirmante, Cosmética Coreana, 28 g x 4 Unidades</a>
+    <div class="precio"><b>15,95 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (13.346)</div>
+    <div class="tags"><span class="tag ">🎁 Consigue este producto gratis al comprar 2 en productos seleccionados</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Consigue este producto gratis al comprar 2 en productos seleccionados · ver todos: amazon.es/promotion/psp/A32GFQYTNE1RXL · <code>B0DGTMR754</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="19.0" data-val="4.5" data-opi="2930" data-vend="0" data-grupo="Consigue este producto gratis al comprar 2 en productos seleccionados"
+         data-cat="Por unidades" data-marca="" data-marcas="  "
+         data-texto="medicube nad egf firming serum for face &amp; neck | sérum antiedad con péptidos y colágeno, reduce signos de la edad y mejora la elasticidad y los poros, cosmética coreana, 30ml b0gcc2jv65 consigue este producto gratis al comprar 2 en productos seleccionados · ver todos: amazon.es/promotion/psp/a32gfqytne1rxl">
+  <label class="pick"><input type="checkbox" value="B0GCC2JV65"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GCC2JV65?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/31pEwWzfqyL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GCC2JV65?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">medicube NAD EGF Firming Serum for Face &amp; Neck | Sérum Antiedad con Péptidos y Colágeno, Reduce Signos de la Edad y Mejora la Elasticidad y los Poros, Cosmética Coreana, 30ml</a>
+    <div class="precio"><b>19,00 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (2.930)</div>
+    <div class="tags"><span class="tag ">🎁 Consigue este producto gratis al comprar 2 en productos seleccionados</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Consigue este producto gratis al comprar 2 en productos seleccionados · ver todos: amazon.es/promotion/psp/A32GFQYTNE1RXL · <code>B0GCC2JV65</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="13.95" data-val="4.4" data-opi="38223" data-vend="0" data-grupo="Producto adicional gratis al comprar 2 en productos seleccionados"
+         data-cat="Por unidades" data-marca="" data-marcas="  "
+         data-texto="medicube collagen jelly cream | crema facial con colágeno hidrolizado, hidratación y glow 24 horas, piel más rellena y firme, 50 ml b0dgpszvw3 producto adicional gratis al comprar 2 en productos seleccionados · ver todos: amazon.es/promotion/psp/a2ehquzvupallh">
+  <label class="pick"><input type="checkbox" value="B0DGPSZVW3"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DGPSZVW3?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/31As19qSjUL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DGPSZVW3?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">medicube Collagen Jelly Cream | Crema Facial con Colágeno Hidrolizado, Hidratación y Glow 24 Horas, Piel Más Rellena y Firme, 50 ml</a>
+    <div class="precio"><b>13,95 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (38.223)</div>
+    <div class="tags"><span class="tag ">🎁 Producto adicional gratis al comprar 2 en productos seleccionados</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Producto adicional gratis al comprar 2 en productos seleccionados · ver todos: amazon.es/promotion/psp/A2EHQUZVUPALLH · <code>B0DGPSZVW3</code></div>
+  </div>
+</article>
+<article class="card" data-dto="0" data-precio="215.0" data-val="4.3" data-opi="646" data-vend="0" data-grupo="Producto adicional gratis al comprar 2 en productos seleccionados"
+         data-cat="Por unidades" data-marca="" data-marcas="  "
+         data-texto="medicube booster pro x2™ | dispositivo beauty 7-1 para poros, firmeza y luminosidad, modos personalizados para mascarillas, cosmética coreana, blanco b0gs8bwdz3 producto adicional gratis al comprar 2 en productos seleccionados · ver todos: amazon.es/promotion/psp/a2ehquzvupallh">
+  <label class="pick"><input type="checkbox" value="B0GS8BWDZ3"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GS8BWDZ3?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">
+    <img src="https://m.media-amazon.com/images/I/41Us3YDnEoL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GS8BWDZ3?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">medicube Booster Pro X2™ | Dispositivo Beauty 7-1 para Poros, Firmeza y Luminosidad, Modos Personalizados para Mascarillas, Cosmética Coreana, Blanco</a>
+    <div class="precio"><b>215,00 €</b> </div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (646)</div>
+    <div class="tags"><span class="tag ">🎁 Producto adicional gratis al comprar 2 en productos seleccionados</span><span class="tag ">Por unidades</span></div>
+    <div class="pie">Producto adicional gratis al comprar 2 en productos seleccionados · ver todos: amazon.es/promotion/psp/A2EHQUZVUPALLH · <code>B0GS8BWDZ3</code></div>
+  </div>
+</article></main>
+<script>
+const lista = document.getElementById('lista');
+const cards = [...lista.querySelectorAll('.card')];
+const btn = document.getElementById('copiar');
+const $ = id => document.getElementById(id);
+function elegidos() { return cards.filter(c => c.querySelector('input').checked); }
+// Opciones marcadas en un desplegable múltiple (vacío = todas)
+function marcados(id) {
+  const d = $(id);
+  if (!d) return [];
+  const v = [...d.querySelectorAll('input:checked')].map(i => i.value);
+  d.classList.toggle('activo', v.length > 0);
+  d.querySelector('summary').textContent =
+    !v.length ? d.dataset.todas : v.length === 1 ? v[0] : `${v[0]} +${v.length - 1}`;
+  return v;
+}
+function filtrar() {
+  const q = $('q').value.toLowerCase().trim();
+  const g = $('grupo') ? $('grupo').value : '';
+  const d = +$('dtomin').value || 0;
+  const cats = marcados('cat');
+  const marcasTop = marcados('marca');
+  // Botones de etiqueta: "on" = solo las que la tienen, "off" = sin ella
+  const con = [...document.querySelectorAll('.chip.on')].map(b => ` ${b.dataset.m} `);
+  const sin = [...document.querySelectorAll('.chip.off')].map(b => ` ${b.dataset.m} `);
+  let n = 0;
+  cards.forEach(c => {
+    const ver = (!q || c.dataset.texto.includes(q))
+      && con.every(m => c.dataset.marcas.includes(m))
+      && !sin.some(m => c.dataset.marcas.includes(m))
+      && (!cats.length || cats.includes(c.dataset.cat))
+      && (!marcasTop.length || marcasTop.includes(c.dataset.marca))
+      && (!g || c.dataset.grupo.split('|').map(s => s.trim()).includes(g))
+      && +c.dataset.dto >= d;
+    c.hidden = !ver; if (ver) n++;
+  });
+  $('contador').textContent = `${n} de ${cards.length}`;
+}
+lista.addEventListener('change', e => {
+  e.target.closest('.card').classList.toggle('sel', e.target.checked);
+  const n = elegidos().length; btn.textContent = `Copiar ASIN (${n})`; btn.disabled = !n;
+});
+btn.onclick = async () => {
+  const txt = elegidos().map(c => c.querySelector('input').value).join('\n');
+  try { await navigator.clipboard.writeText(txt); }
+  catch (e) { const t = document.createElement('textarea'); t.value = txt; document.body.append(t);
+               t.select(); document.execCommand('copy'); t.remove(); }
+  const antes = btn.textContent; btn.textContent = '¡Copiados! Pégalos en la columna ASIN';
+  setTimeout(() => btn.textContent = antes, 2500);
+};
+// 1er clic: solo las que tienen la etiqueta · 2º: las que NO la tienen · 3º: quitar
+document.querySelectorAll('.chip').forEach(b => b.onclick = () => {
+  if (b.classList.contains('on')) { b.classList.replace('on', 'off'); b.title = 'Ocultando las que la tienen'; }
+  else if (b.classList.contains('off')) { b.classList.remove('off'); b.title = ''; }
+  else { b.classList.add('on'); b.title = 'Solo las que la tienen'; }
+  filtrar();
+});
+['q', 'cat', 'marca', 'grupo', 'dtomin'].forEach(id => {
+  if (!$(id)) return;
+  $(id).addEventListener('input', filtrar);
+  $(id).addEventListener('change', filtrar);
+});
+// Cerrar los desplegables múltiples al pulsar fuera
+document.addEventListener('click', e => document.querySelectorAll('details.multi[open]')
+  .forEach(d => d.contains(e.target) || d.removeAttribute('open')));
+$('limpiar').onclick = () => {
+  $('q').value = ''; $('dtomin').value = 0;
+  $('grupo') && ($('grupo').value = '');
+  document.querySelectorAll('.multi input:checked').forEach(i => i.checked = false);
+  document.querySelectorAll('.chip').forEach(b => { b.classList.remove('on', 'off'); b.title = ''; });
+  filtrar(); window.scrollTo(0, 0);
+};
+$('orden').onchange = e => {
+  const k = e.target.value;
+  cards.sort((a, b) => k === 'dto' ? b.dataset.dto - a.dataset.dto
+    : k === 'opi' ? b.dataset.opi - a.dataset.opi
+    : k === 'vend' ? (b.dataset.vend - a.dataset.vend) || (b.dataset.opi - a.dataset.opi)
+    // mejor valorados: a igual nota, antes el que tiene más opiniones
+    : k === 'val' ? (b.dataset.val - a.dataset.val) || (b.dataset.opi - a.dataset.opi)
+    : k === 'asc' ? a.dataset.precio - b.dataset.precio : b.dataset.precio - a.dataset.precio)
+    .forEach(c => lista.append(c));
+};
+filtrar();
+</script>
+</body></html>
