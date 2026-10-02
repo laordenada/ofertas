@@ -14412,6 +14412,7 @@ function filtrar() {
   const g = $('grupo') ? $('grupo').value : '';
   const d = +$('dtomin').value || 0;
   const dmax = $('dtomax').value === '' ? 100 : +$('dtomax').value;
+  const vmin = $('vendmin') ? +$('vendmin').value : 0;
   const cats = marcados('cat');
   const marcasTop = marcados('marca');
   // Botones de etiqueta: "on" = solo las que la tienen, "off" = sin ella
@@ -14425,6 +14426,7 @@ function filtrar() {
       && (!cats.length || cats.includes(c.dataset.cat))
       && (!marcasTop.length || marcasTop.includes(c.dataset.marca))
       && (!g || c.dataset.grupo.split('|').map(s => s.trim()).includes(g))
+      && +c.dataset.vend >= vmin
       && +c.dataset.dto >= d && +c.dataset.dto <= dmax;
     c.hidden = !ver; if (ver) n++;
   });
@@ -14451,7 +14453,7 @@ document.querySelectorAll('.chip').forEach(b => b.onclick = () => {
   else { b.classList.add('on'); b.title = 'Solo las que la tienen'; }
   filtrar();
 });
-['q', 'cat', 'marca', 'grupo', 'dtomin', 'dtomax'].forEach(id => {
+['q', 'cat', 'marca', 'grupo', 'vendmin', 'dtomin', 'dtomax'].forEach(id => {
   if (!$(id)) return;
   $(id).addEventListener('input', filtrar);
   $(id).addEventListener('change', filtrar);
@@ -14467,6 +14469,7 @@ document.addEventListener('click', e => document.querySelectorAll('details.multi
 $('limpiar').onclick = () => {
   $('q').value = ''; $('dtomin').value = 0; $('dtomax').value = 100;
   $('grupo') && ($('grupo').value = '');
+  $('vendmin') && ($('vendmin').value = '0');
   document.querySelectorAll('.multi input:checked').forEach(i => i.checked = false);
   document.querySelectorAll('.chip').forEach(b => { b.classList.remove('on', 'off'); b.title = ''; });
   filtrar(); window.scrollTo(0, 0);
