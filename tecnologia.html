@@ -88,6 +88,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <details class="multi" id="cat" data-todas="Todas las categorías"><summary>Todas las categorías</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="💻 Portátil"> 💻 Portátil <span>(22)</span></label><label><input type="checkbox" value="📲 Tablet"> 📲 Tablet <span>(11)</span></label><label><input type="checkbox" value="🎧 Auriculares"> 🎧 Auriculares <span>(15)</span></label><label><input type="checkbox" value="⌚ Smartwatch"> ⌚ Smartwatch <span>(4)</span></label><label><input type="checkbox" value="📱 Móvil"> 📱 Móvil <span>(19)</span></label><label><input type="checkbox" value="📺 TV"> 📺 TV <span>(1)</span></label></div></details>
     
     <select id="grupo"><option value="">Todas las búsquedas</option><option value="Auriculares">Auriculares</option><option value="Informatica">Informatica</option><option value="Moviles">Moviles</option><option value="Ofertas Prime">Ofertas Prime</option><option value="TV">TV</option></select>
+    <select id="vendmin"><option value="0">Comprados el mes pasado</option><option value="1">Con dato de comprados</option><option value="50">50+ comprados</option><option value="100">100+ comprados</option></select>
     <label>Dto. <input type="number" id="dtomin" min="0" max="100" step="5" value="0" title="mínimo">
       a <input type="number" id="dtomax" min="0" max="100" step="5" value="100" title="máximo"> %</label>
     <select id="orden">
@@ -102,7 +103,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <span id="contador"></span>
     <button id="copiar" disabled>Copiar ASIN (0)</button>
   </div>
-  <div class="chips"><button type="button" class="chip m-nueva" data-m="nueva">Oferta nueva <span>26</span></button><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>39</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>30</span></button><button type="button" class="chip m-min90" data-m="min90">Mínimo 3 meses <span>12</span></button><button type="button" class="chip m-prime" data-m="prime">Oferta Prime <span>50</span></button><button type="button" class="chip m-cupon" data-m="cupon">Cupón <span>2</span></button><button type="button" class="chip m-rep" data-m="rep">3+ días en oferta <span>9</span></button></div>
+  <div class="chips"><button type="button" class="chip m-nueva" data-m="nueva">Oferta nueva <span>26</span></button><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>39</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>30</span></button><button type="button" class="chip m-prime" data-m="prime">Oferta Prime <span>50</span></button><button type="button" class="chip m-cupon" data-m="cupon">Cupón <span>2</span></button><button type="button" class="chip m-rep" data-m="rep">3+ días en oferta <span>9</span></button></div>
 </header>
 <main id="lista">
 <article class="card" data-dto="69" data-precio="279.99" data-val="5.0" data-opi="13" data-vend="0" data-grupo="Informatica"
@@ -1140,6 +1141,7 @@ function filtrar() {
   const g = $('grupo') ? $('grupo').value : '';
   const d = +$('dtomin').value || 0;
   const dmax = $('dtomax').value === '' ? 100 : +$('dtomax').value;
+  const vmin = $('vendmin') ? +$('vendmin').value : 0;
   const cats = marcados('cat');
   const marcasTop = marcados('marca');
   // Botones de etiqueta: "on" = solo las que la tienen, "off" = sin ella
@@ -1153,6 +1155,7 @@ function filtrar() {
       && (!cats.length || cats.includes(c.dataset.cat))
       && (!marcasTop.length || marcasTop.includes(c.dataset.marca))
       && (!g || c.dataset.grupo.split('|').map(s => s.trim()).includes(g))
+      && +c.dataset.vend >= vmin
       && +c.dataset.dto >= d && +c.dataset.dto <= dmax;
     c.hidden = !ver; if (ver) n++;
   });
@@ -1179,7 +1182,7 @@ document.querySelectorAll('.chip').forEach(b => b.onclick = () => {
   else { b.classList.add('on'); b.title = 'Solo las que la tienen'; }
   filtrar();
 });
-['q', 'cat', 'marca', 'grupo', 'dtomin', 'dtomax'].forEach(id => {
+['q', 'cat', 'marca', 'grupo', 'vendmin', 'dtomin', 'dtomax'].forEach(id => {
   if (!$(id)) return;
   $(id).addEventListener('input', filtrar);
   $(id).addEventListener('change', filtrar);
@@ -1195,6 +1198,7 @@ document.addEventListener('click', e => document.querySelectorAll('details.multi
 $('limpiar').onclick = () => {
   $('q').value = ''; $('dtomin').value = 0; $('dtomax').value = 100;
   $('grupo') && ($('grupo').value = '');
+  $('vendmin') && ($('vendmin').value = '0');
   document.querySelectorAll('.multi input:checked').forEach(i => i.checked = false);
   document.querySelectorAll('.chip').forEach(b => { b.classList.remove('on', 'off'); b.title = ''; });
   filtrar(); window.scrollTo(0, 0);
