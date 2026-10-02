@@ -88,6 +88,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <details class="multi" id="cat" data-todas="Todas las categorías"><summary>Todas las categorías</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="Maletas y viaje"> Maletas y viaje <span>(4)</span></label><label><input type="checkbox" value="Moda infantil"> Moda infantil <span>(48)</span></label><label><input type="checkbox" value="Moda mujer"> Moda mujer <span>(34)</span></label><label><input type="checkbox" value="Moda hombre"> Moda hombre <span>(41)</span></label><label><input type="checkbox" value="Moda"> Moda <span>(50)</span></label><label><input type="checkbox" value="TV y home cinema"> TV y home cinema <span>(14)</span></label><label><input type="checkbox" value="Móviles y accesorios"> Móviles y accesorios <span>(58)</span></label><label><input type="checkbox" value="Auriculares y audio"> Auriculares y audio <span>(48)</span></label><label><input type="checkbox" value="Dispositivos Amazon"> Dispositivos Amazon <span>(76)</span></label><label><input type="checkbox" value="Informática"> Informática <span>(54)</span></label><label><input type="checkbox" value="Electrónica"> Electrónica <span>(33)</span></label><label><input type="checkbox" value="Electrodomésticos"> Electrodomésticos <span>(19)</span></label><label><input type="checkbox" value="Limpieza y planchado"> Limpieza y planchado <span>(44)</span></label><label><input type="checkbox" value="Climatización"> Climatización <span>(8)</span></label><label><input type="checkbox" value="Muebles"> Muebles <span>(21)</span></label><label><input type="checkbox" value="Iluminación"> Iluminación <span>(48)</span></label><label><input type="checkbox" value="Hogar y cocina"> Hogar y cocina <span>(181)</span></label><label><input type="checkbox" value="Belleza"> Belleza <span>(203)</span></label><label><input type="checkbox" value="Salud y cuidado personal"> Salud y cuidado personal <span>(187)</span></label><label><input type="checkbox" value="Bebé"> Bebé <span>(46)</span></label><label><input type="checkbox" value="Juguetes"> Juguetes <span>(58)</span></label><label><input type="checkbox" value="Videojuegos"> Videojuegos <span>(26)</span></label><label><input type="checkbox" value="Deportes"> Deportes <span>(15)</span></label><label><input type="checkbox" value="Jardín"> Jardín <span>(6)</span></label><label><input type="checkbox" value="Bricolaje"> Bricolaje <span>(35)</span></label><label><input type="checkbox" value="Mascotas"> Mascotas <span>(56)</span></label><label><input type="checkbox" value="Oficina y papelería"> Oficina y papelería <span>(56)</span></label><label><input type="checkbox" value="Alimentación y bebidas"> Alimentación y bebidas <span>(17)</span></label><label><input type="checkbox" value="Otros"> Otros <span>(8)</span></label></div></details>
     <details class="multi" id="marca" data-todas="Todas las marcas"><summary>Todas las marcas</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="Tommy Hilfiger"> Tommy Hilfiger <span>(17)</span></label><label><input type="checkbox" value="Clarks"> Clarks <span>(14)</span></label><label><input type="checkbox" value="Geox"> Geox <span>(10)</span></label><label><input type="checkbox" value="Calvin Klein"> Calvin Klein <span>(8)</span></label><label><input type="checkbox" value="Reebok"> Reebok <span>(6)</span></label><label><input type="checkbox" value="Triumph"> Triumph <span>(5)</span></label><label><input type="checkbox" value="Gant"> Gant <span>(4)</span></label><label><input type="checkbox" value="Hugo Boss"> Hugo Boss <span>(2)</span></label><label><input type="checkbox" value="Swarovski"> Swarovski <span>(2)</span></label><label><input type="checkbox" value="Vans"> Vans <span>(2)</span></label><label><input type="checkbox" value="Puma"> Puma <span>(1)</span></label><label><input type="checkbox" value="Timberland"> Timberland <span>(1)</span></label></div></details>
     <select id="grupo"><option value="">Todas las búsquedas</option><option value="Auriculares y Musica">Auriculares y Musica</option><option value="Bebé">Bebé</option><option value="Belleza">Belleza</option><option value="Bricolaje">Bricolaje</option><option value="Básicos Día a Día">Básicos Día a Día</option><option value="Cuidado Personal">Cuidado Personal</option><option value="Cupones">Cupones</option><option value="Deporte">Deporte</option><option value="Dispositivos Amazon">Dispositivos Amazon</option><option value="Hogar y Cocina">Hogar y Cocina</option><option value="Informatica y software">Informatica y software</option><option value="Juguetes">Juguetes</option><option value="Mascotas">Mascotas</option><option value="Moviles">Moviles</option><option value="Ofertas Prime">Ofertas Prime</option><option value="Oficina y papeleria">Oficina y papeleria</option><option value="TV y Peliculas">TV y Peliculas</option><option value="Videojuegos">Videojuegos</option></select>
+    <select id="vendmin"><option value="0">Comprados el mes pasado</option><option value="1">Con dato de comprados</option><option value="50">50+ comprados</option><option value="100">100+ comprados</option><option value="500">500+ comprados</option><option value="1000">1.000+ comprados</option></select>
     <label>Dto. <input type="number" id="dtomin" min="0" max="100" step="5" value="0" title="mínimo">
       a <input type="number" id="dtomax" min="0" max="100" step="5" value="100" title="máximo"> %</label>
     <select id="orden">
@@ -102,7 +103,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <span id="contador"></span>
     <button id="copiar" disabled>Copiar ASIN (0)</button>
   </div>
-  <div class="chips"><button type="button" class="chip m-top" data-m="top">Marca top <span>72</span></button><button type="button" class="chip m-nueva" data-m="nueva">Oferta nueva <span>284</span></button><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>416</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>417</span></button><button type="button" class="chip m-min90" data-m="min90">Mínimo 3 meses <span>403</span></button><button type="button" class="chip m-prime" data-m="prime">Oferta Prime <span>603</span></button><button type="button" class="chip m-cupon" data-m="cupon">Cupón <span>48</span></button><button type="button" class="chip m-sns" data-m="sns">Suscríbete y ahorra <span>73</span></button><button type="button" class="chip m-rep" data-m="rep">3+ días en oferta <span>852</span></button><button type="button" class="chip m-masvendido" data-m="masvendido">Top ventas <span>43</span></button></div>
+  <div class="chips"><button type="button" class="chip m-top" data-m="top">Marca top <span>72</span></button><button type="button" class="chip m-nueva" data-m="nueva">Oferta nueva <span>284</span></button><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>416</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>417</span></button><button type="button" class="chip m-prime" data-m="prime">Oferta Prime <span>603</span></button><button type="button" class="chip m-cupon" data-m="cupon">Cupón <span>48</span></button><button type="button" class="chip m-sns" data-m="sns">Suscríbete y ahorra <span>73</span></button><button type="button" class="chip m-rep" data-m="rep">3+ días en oferta <span>852</span></button><button type="button" class="chip m-masvendido" data-m="masvendido">Top ventas <span>43</span></button></div>
 </header>
 <main id="lista">
 <article class="card" data-dto="87" data-precio="9.0" data-val="4.6" data-opi="126" data-vend="0" data-grupo="Moviles"
@@ -21048,6 +21049,7 @@ function filtrar() {
   const g = $('grupo') ? $('grupo').value : '';
   const d = +$('dtomin').value || 0;
   const dmax = $('dtomax').value === '' ? 100 : +$('dtomax').value;
+  const vmin = $('vendmin') ? +$('vendmin').value : 0;
   const cats = marcados('cat');
   const marcasTop = marcados('marca');
   // Botones de etiqueta: "on" = solo las que la tienen, "off" = sin ella
@@ -21061,6 +21063,7 @@ function filtrar() {
       && (!cats.length || cats.includes(c.dataset.cat))
       && (!marcasTop.length || marcasTop.includes(c.dataset.marca))
       && (!g || c.dataset.grupo.split('|').map(s => s.trim()).includes(g))
+      && +c.dataset.vend >= vmin
       && +c.dataset.dto >= d && +c.dataset.dto <= dmax;
     c.hidden = !ver; if (ver) n++;
   });
@@ -21087,7 +21090,7 @@ document.querySelectorAll('.chip').forEach(b => b.onclick = () => {
   else { b.classList.add('on'); b.title = 'Solo las que la tienen'; }
   filtrar();
 });
-['q', 'cat', 'marca', 'grupo', 'dtomin', 'dtomax'].forEach(id => {
+['q', 'cat', 'marca', 'grupo', 'vendmin', 'dtomin', 'dtomax'].forEach(id => {
   if (!$(id)) return;
   $(id).addEventListener('input', filtrar);
   $(id).addEventListener('change', filtrar);
@@ -21103,6 +21106,7 @@ document.addEventListener('click', e => document.querySelectorAll('details.multi
 $('limpiar').onclick = () => {
   $('q').value = ''; $('dtomin').value = 0; $('dtomax').value = 100;
   $('grupo') && ($('grupo').value = '');
+  $('vendmin') && ($('vendmin').value = '0');
   document.querySelectorAll('.multi input:checked').forEach(i => i.checked = false);
   document.querySelectorAll('.chip').forEach(b => { b.classList.remove('on', 'off'); b.title = ''; });
   filtrar(); window.scrollTo(0, 0);
