@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Ofertas tecnología</title>
+<style>
+:root { --bg:#f6f4f1; --card:#fff; --txt:#2b2522; --suave:#7a6f69; --borde:#e6e0da;
+         --acento:#e4913a; --rojo:#c8372d; --tag:#f1ece6;
+         --ok:#2e7d4f; --r20:#1b5e37; --hist:#a66a00; --min90:#be185d;
+         --cupon:#2f6db5; --sns:#6d28d9; --prime:#00a8e1; --top:#111111; --rep:#64748b; --nueva:#ea580c; --oferta:#c8372d; --masvendido:#b45309; --vendidos:#0f766e; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#1b1917; --card:#26231f; --txt:#eee8e2; --suave:#a89d95; --borde:#3a3530; --tag:#332e29;
+           --ok:#3f9e68; --r20:#2f8a55; --hist:#c98a1a; --min90:#db2777;
+           --cupon:#4a86cf; --sns:#8b5cf6; --prime:#00a8e1; --top:#f2f2f2; --rep:#7c8aa0; --nueva:#f97316; --oferta:#e05a4f; --masvendido:#d97706; --vendidos:#14b8a6; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--txt);
+        font:15px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif; }
+header { position:sticky; top:0; z-index:5; background:var(--bg); border-bottom:1px solid var(--borde);
+          padding:14px 20px; display:flex; flex-wrap:wrap; gap:10px 16px; align-items:center; }
+h1 { font-size:19px; margin:0; }
+.sub { color:var(--suave); font-size:13px; }
+.ctrl { margin-left:auto; display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+input, select, button { font:inherit; padding:7px 10px; border-radius:8px;
+          border:1px solid var(--borde); background:var(--card); color:var(--txt); }
+#dtomin, #dtomax { width:64px; }
+.chips { flex-basis:100%; display:flex; flex-wrap:wrap; gap:6px; }
+.chip { --c:var(--suave); background:var(--card); color:var(--txt); border:1.5px solid var(--c);
+         border-radius:999px; padding:4px 12px; font-weight:500; font-size:13px; }
+.chip span { opacity:.7; }
+.chip.on { background:var(--c); color:#fff; }
+.chip.off { border-style:dashed; color:var(--suave); text-decoration:line-through; }
+.chip.off::before { content:"Sin "; text-decoration:none; display:inline-block; margin-right:3px; }
+.multi { position:relative; }
+.multi summary { list-style:none; cursor:pointer; padding:7px 28px 7px 10px; border-radius:8px;
+                  border:1px solid var(--borde); background:var(--card); white-space:nowrap; position:relative; }
+.multi summary::-webkit-details-marker { display:none; }
+.multi summary::after { content:"▾"; position:absolute; right:10px; color:var(--suave); }
+.multi.activo summary { border-color:var(--acento); font-weight:600; }
+.multi .opciones { position:absolute; z-index:10; top:calc(100% + 4px); left:0; min-width:230px;
+                    max-height:60vh; overflow:auto; background:var(--card); border:1px solid var(--borde);
+                    border-radius:8px; padding:6px; box-shadow:0 6px 20px rgba(0,0,0,.15); }
+.multi .opciones label { display:flex; gap:8px; align-items:center; padding:5px 6px; border-radius:6px;
+                          cursor:pointer; white-space:nowrap; }
+.multi .opciones label:hover { background:var(--tag); }
+.multi .opciones span { color:var(--suave); }
+.multi .acciones { display:flex; gap:6px; padding:2px 2px 8px; margin-bottom:4px;
+                    border-bottom:1px solid var(--borde); position:sticky; top:-6px; background:var(--card); }
+.multi .acciones button { flex:1; padding:5px 8px; font-size:13px; }
+button { background:var(--acento); border-color:var(--acento); color:#fff; font-weight:600; cursor:pointer; }
+button:disabled { opacity:.5; cursor:default; }
+button.sec { background:var(--card); color:var(--txt); border-color:var(--borde); font-weight:500; }
+#contador { color:var(--suave); font-size:13px; }
+main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); }
+.card { background:var(--card); border:1px solid var(--borde); border-radius:12px; overflow:hidden;
+         display:flex; flex-direction:column; position:relative;
+         content-visibility:auto; contain-intrinsic-size:auto 460px; }
+.card[hidden] { display:none; }
+.card.sel { outline:3px solid var(--acento); }
+.pick { position:absolute; top:8px; right:8px; z-index:2; background:var(--card); border-radius:6px;
+         padding:3px 7px; font-size:13px; cursor:pointer; border:1px solid var(--borde); }
+.foto { display:block; background:#fff; aspect-ratio:1; position:relative; }
+.foto img { width:100%; height:100%; object-fit:contain; padding:14px; }
+.dto { position:absolute; top:8px; left:8px; background:var(--rojo); color:#fff; font-weight:700;
+        padding:3px 8px; border-radius:6px; }
+.info { padding:12px; display:flex; flex-direction:column; gap:8px; flex:1; }
+.titulo { color:var(--txt); text-decoration:none; display:-webkit-box; -webkit-line-clamp:3;
+           -webkit-box-orient:vertical; overflow:hidden; }
+.titulo:hover { text-decoration:underline; }
+.precio b { font-size:20px; } .precio s { color:var(--suave); margin-left:6px; }
+.tags { display:flex; flex-wrap:wrap; gap:5px; }
+.tag { background:var(--tag); border-radius:5px; padding:2px 7px; font-size:12px; }
+.resenas { font-size:13px; color:var(--suave); margin:-2px 0 6px; }
+.resenas .estrellas { color:#f5a623; letter-spacing:1px; }
+.resenas .vendidos { white-space:nowrap; }
+.tag.talla { background:transparent; border:1px solid var(--suave); font-weight:600; }
+.tag.top, .chip.m-top { --c:var(--top); } .tag.top { background:var(--top); color:#fff; } .tag.nueva, .chip.m-nueva { --c:var(--nueva); } .tag.nueva { background:var(--nueva); color:#fff; } .tag.ok, .chip.m-ok { --c:var(--ok); } .tag.ok { background:var(--ok); color:#fff; } .tag.hist, .chip.m-hist { --c:var(--hist); } .tag.hist { background:var(--hist); color:#fff; } .tag.min90, .chip.m-min90 { --c:var(--min90); } .tag.min90 { background:var(--min90); color:#fff; } .tag.prime, .chip.m-prime { --c:var(--prime); } .tag.prime { background:var(--prime); color:#fff; } .tag.cupon, .chip.m-cupon { --c:var(--cupon); } .tag.cupon { background:var(--cupon); color:#fff; } .tag.sns, .chip.m-sns { --c:var(--sns); } .tag.sns { background:var(--sns); color:#fff; } .tag.rep, .chip.m-rep { --c:var(--rep); } .tag.rep { background:var(--rep); color:#fff; } .tag.oferta, .chip.m-oferta { --c:var(--oferta); } .tag.oferta { background:var(--oferta); color:#fff; } .tag.masvendido, .chip.m-masvendido { --c:var(--masvendido); } .tag.masvendido { background:var(--masvendido); color:#fff; } .tag.vendidos, .chip.m-vendidos { --c:var(--vendidos); } .tag.vendidos { background:var(--vendidos); color:#fff; } 
+.tag.prime, .chip.m-prime.on { color:#062a3a; }  /* azul Prime claro: texto oscuro para que se lea */
+.tag.top, .chip.m-top.on { color:var(--bg); font-weight:600; }  /* marca top: negro (blanco en modo oscuro) */
+.pie { margin-top:auto; color:var(--suave); font-size:12px; }
+@media (max-width:600px) { header { padding:12px 16px; } main { padding:16px; gap:12px;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); } .ctrl { margin-left:0; } }
+</style></head><body>
+<header>
+  <div><h1>Ofertas tecnología</h1>
+  <div class="sub">79 ofertas · 02/10/2026 14:50</div></div>
+  <div class="ctrl">
+    <input type="search" id="q" placeholder="Filtrar…">
+    <details class="multi" id="cat" data-todas="Todas las categorías"><summary>Todas las categorías</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="💻 Portátil"> 💻 Portátil <span>(22)</span></label><label><input type="checkbox" value="📲 Tablet"> 📲 Tablet <span>(11)</span></label><label><input type="checkbox" value="🎧 Auriculares"> 🎧 Auriculares <span>(16)</span></label><label><input type="checkbox" value="⌚ Smartwatch"> ⌚ Smartwatch <span>(5)</span></label><label><input type="checkbox" value="📱 Móvil"> 📱 Móvil <span>(24)</span></label><label><input type="checkbox" value="📺 TV"> 📺 TV <span>(1)</span></label></div></details>
+    
+    <select id="grupo"><option value="">Todas las búsquedas</option><option value="Auriculares">Auriculares</option><option value="Informatica">Informatica</option><option value="Moviles">Moviles</option><option value="Ofertas Prime">Ofertas Prime</option><option value="TV">TV</option></select>
+    <label>Dto. <input type="number" id="dtomin" min="0" max="100" step="5" value="0" title="mínimo">
+      a <input type="number" id="dtomax" min="0" max="100" step="5" value="100" title="máximo"> %</label>
+    <select id="orden">
+      <option value="dto">Más descuento</option>
+      <option value="asc">Precio más bajo</option>
+      <option value="desc">Precio más alto</option>
+      <option value="vend">Más vendidos</option>
+      <option value="opi">Más opiniones</option>
+      <option value="val">Mejor valorados</option>
+    </select>
+    <button id="limpiar" class="sec" type="button">Quitar filtros</button>
+    <span id="contador"></span>
+    <button id="copiar" disabled>Copiar ASIN (0)</button>
+  </div>
+  <div class="chips"><button type="button" class="chip m-nueva" data-m="nueva">Oferta nueva <span>11</span></button><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>42</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>33</span></button><button type="button" class="chip m-prime" data-m="prime">Oferta Prime <span>57</span></button><button type="button" class="chip m-cupon" data-m="cupon">Cupón <span>2</span></button><button type="button" class="chip m-rep" data-m="rep">3+ días en oferta <span>7</span></button><button type="button" class="chip m-vendidos" data-m="vendidos">🛒 Comprados el mes pasado <span>7</span></button></div>
+</header>
+<main id="lista">
+<article class="card" data-dto="69" data-precio="279.99" data-val="5.0" data-opi="13" data-vend="0" data-grupo="Informatica"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" hist ok "
+         data-texto="ordenador portátil 14 pulgadas celeron n5095 upto 2,9 ghz portatiles 8gb ram 256gb ssd tf 1tb lpddr4 win11 5g wifi 1920*1080 fhd mini hdml laptop película protectora español - oro cuerpo metálico b0fy29d587 informatica">
+  <label class="pick"><input type="checkbox" value="B0FY29D587" data-desc="Ordenador Portátil 14 Pulgadas Celeron… · 279,99 € · -69%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FY29D587?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-69%</span>
+    <img src="https://m.media-amazon.com/images/I/716F+gGOOeL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FY29D587?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Ordenador Portátil 14 Pulgadas Celeron N5095 Upto 2,9 GHz Portatiles 8GB RAM 256GB SSD TF 1TB LPDDR4 Win11 5G WiFi 1920*1080 FHD mini HDMl Laptop Película Protectora Español - Oro Cuerpo Metálico</a>
+    <div class="precio"><b>279,99 €</b> <s>899,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 5,0 (13)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ok">Bajada real: -69% vs mín. 30 días (899,99 €)</span></div>
+    <div class="pie">Informatica · <code>B0FY29D587</code></div>
+  </div>
+</article>
+<article class="card" data-dto="67" data-precio="99.99" data-val="4.8" data-opi="12" data-vend="0" data-grupo="Informatica"
+         data-cat="📲 Tablet" data-marca="" data-marcas=" ok "
+         data-texto="biegedy 2026 tablet 10 pulgadas android 15, gemini ai, octa-core, 5g wifi 6, 30gb ram (2tb tf), widevine l1, gms, gps, bt 5.0, 6000mah, 5+8mp, 3.5mm audio, fhd tablet con teclado+ ratón + funda, oro b0h99gc85k informatica">
+  <label class="pick"><input type="checkbox" value="B0H99GC85K" data-desc="BIEGEDY 2026 Tablet 10 Pulgadas Android… · 99,99 € · -67%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H99GC85K?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-67%</span>
+    <img src="https://m.media-amazon.com/images/I/71Oa00hTRVL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H99GC85K?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">BIEGEDY 2026 Tablet 10 Pulgadas Android 15, Gemini AI, Octa-Core, 5G WiFi 6, 30GB RAM (2TB TF), Widevine L1, GMS, GPS, BT 5.0, 6000mAh, 5+8MP, 3.5mm Audio, FHD Tablet con Teclado+ Ratón + Funda, Oro</a>
+    <div class="precio"><b>99,99 €</b> <s>299,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,8 (12)</div>
+    <div class="tags"><span class="tag ok">Bajada real: -67% vs mín. 30 días (299,99 €)</span></div>
+    <div class="pie">Informatica · <code>B0H99GC85K</code></div>
+  </div>
+</article>
+<article class="card" data-dto="60" data-precio="239.49" data-val="4.7" data-opi="61" data-vend="0" data-grupo="Informatica"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" ok rep "
+         data-texto="bvate 2026 ordenador portátil 14 pulgadas hasta 2,8 ghz celeron 256gb ssd | pc portátil soporta 1tb ssd expansión con ratón inalámbricopara trabajo-estudio-aprendizaje 1080pmini puerto multimedia b0h11fkc5h informatica">
+  <label class="pick"><input type="checkbox" value="B0H11FKC5H" data-desc="bvate 2026 Ordenador Portátil 14 Pulgad… · 239,49 € · -60%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H11FKC5H?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-60%</span>
+    <img src="https://m.media-amazon.com/images/I/71CHEcxsAeL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H11FKC5H?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">bvate 2026 Ordenador Portátil 14 Pulgadas hasta 2,8 GHz Celeron 256GB SSD | PC Portátil Soporta 1TB SSD Expansión con Ratón Inalámbricopara Trabajo-Estudio-Aprendizaje 1080PMini Puerto Multimedia</a>
+    <div class="precio"><b>239,49 €</b> <s>599,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,7 (61)</div>
+    <div class="tags"><span class="tag ok">Bajada real: -60% vs mín. 30 días (599,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Informatica · <code>B0H11FKC5H</code></div>
+  </div>
+</article>
+<article class="card" data-dto="55" data-precio="859.99" data-val="4.7" data-opi="4" data-vend="0" data-grupo="Informatica"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" nueva ok "
+         data-texto="mituntun portátil gaming laptop 15,6&quot;, r7 6800h, 32gb ram, 1tb ssd, win 11 | 8 núcleos y 16 hilos, hasta 4,7 ghz, para multitarea, creación de contenido, streaming y uso diario. b0hjtfkhfy informatica">
+  <label class="pick"><input type="checkbox" value="B0HJTFKHFY" data-desc="MITUNTUN Portátil Gaming Laptop 15,6&quot;,… · 859,99 € · -55%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HJTFKHFY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-55%</span>
+    <img src="https://m.media-amazon.com/images/I/71F-gZcGjsL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HJTFKHFY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">MITUNTUN Portátil Gaming Laptop 15,6&quot;, R7 6800H, 32GB RAM, 1TB SSD, Win 11 | 8 núcleos y 16 hilos, hasta 4,7 GHz, para multitarea, creación de contenido, streaming y uso diario.</a>
+    <div class="precio"><b>859,99 €</b> <s>1.899,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,7 (4)</div>
+    <div class="tags"><span class="tag ok">Bajada real: -55% vs mín. 30 días (1899,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Informatica · <code>B0HJTFKHFY</code></div>
+  </div>
+</article>
+<article class="card" data-dto="48" data-precio="67.99" data-val="4.4" data-opi="1991" data-vend="0" data-grupo="Auriculares"
+         data-cat="🎧 Auriculares" data-marca="" data-marcas=" hist ok prime rep "
+         data-texto="edifier w80 auriculares over-ear con anc de -49db &amp; hi-res ldac，negro | modo con cable e inalámbrico, llamadas claras con ai, carga rápida, multipunto, bluetooth 5.4, para audiófilos y viajes b0dr7nvgnq auriculares">
+  <label class="pick"><input type="checkbox" value="B0DR7NVGNQ" data-desc="Edifier W80 Auriculares Over-Ear con AN… · 67,99 € · -48%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DR7NVGNQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-48%</span>
+    <img src="https://m.media-amazon.com/images/I/619T7WrESGL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DR7NVGNQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Edifier W80 Auriculares Over-Ear con ANC De -49dB &amp; Hi-Res LDAC，Negro | Modo con cable e inalámbrico, Llamadas claras con AI, Carga rápida, Multipunto, Bluetooth 5.4, para audiófilos y viajes</a>
+    <div class="precio"><b>67,99 €</b> <s>129,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (1.991)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -48% vs mín. 30 días (129,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Auriculares · <code>B0DR7NVGNQ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="48" data-precio="156.22" data-val="4.5" data-opi="1200" data-vend="0" data-grupo="Auriculares | Moviles"
+         data-cat="🎧 Auriculares" data-marca="" data-marcas=" min90 nueva ok prime "
+         data-texto="nothing headphone (1) auriculares de diadema iinalámbricos | con cancelación activa de ruido, hasta 80h de batería, hi-res, audio espacial, resistentes al agua – negro b0f1z88fbt auriculares · moviles">
+  <label class="pick"><input type="checkbox" value="B0F1Z88FBT" data-desc="Nothing Headphone (1) Auriculares de Di… · 156,22 € · -48%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0F1Z88FBT?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-48%</span>
+    <img src="https://m.media-amazon.com/images/I/513RP7BmevL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0F1Z88FBT?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Nothing Headphone (1) Auriculares de Diadema iInalámbricos | con Cancelación Activa de Ruido, hasta 80h de Batería, Hi-Res, Audio Espacial, Resistentes al Agua – Negro</a>
+    <div class="precio"><b>156,22 €</b> <s>299,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (1.200)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -17% vs mín. 30 días (189,04 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Auriculares · Moviles · <code>B0F1Z88FBT</code></div>
+  </div>
+</article>
+<article class="card" data-dto="47" data-precio="89.99" data-val="4.2" data-opi="370" data-vend="0" data-grupo="Auriculares"
+         data-cat="🎧 Auriculares" data-marca="" data-marcas=" hist prime "
+         data-texto="soundcore aerofit pro by anker auriculares bluetooth, ldac, 46 h | conducción de aire, ajuste seguro, bluetooth 5.3, ipx5 y control con app b0ccrv3xtc auriculares">
+  <label class="pick"><input type="checkbox" value="B0CCRV3XTC" data-desc="Soundcore AeroFit Pro by Anker Auricula… · 89,99 € · -47%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CCRV3XTC?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-47%</span>
+    <img src="https://m.media-amazon.com/images/I/61y5T731SEL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CCRV3XTC?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Soundcore AeroFit Pro by Anker Auriculares Bluetooth, LDAC, 46 h | Conducción de aire, ajuste seguro, Bluetooth 5.3, IPX5 y control con App</a>
+    <div class="precio"><b>89,99 €</b> <s>169,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (370)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (94,99 €)</span></div>
+    <div class="pie">Auriculares · <code>B0CCRV3XTC</code></div>
+  </div>
+</article>
+<article class="card" data-dto="47" data-precio="369.0" data-val="4.4" data-opi="119" data-vend="0" data-grupo="Moviles | Ofertas Prime"
+         data-cat="⌚ Smartwatch" data-marca="" data-marcas=" ok prime "
+         data-texto="samsung galaxy watch ultra 2025 47mm - smartwatch lte con ia, titanio, botón personalizable, control de salud, garantía del fabricante 3 años + 1 año extra, plata titanio (versión española) b0fcg4wq9h moviles · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0FCG4WQ9H" data-desc="Samsung Galaxy Watch Ultra 2025 47mm -… · 369,00 € · -47%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FCG4WQ9H?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-47%</span>
+    <img src="https://m.media-amazon.com/images/I/71sOOwLHnFL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FCG4WQ9H?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Samsung Galaxy Watch Ultra 2025 47mm - Smartwatch LTE con IA, Titanio, Botón Personalizable, Control de Salud, Garantía del Fabricante 3 Años + 1 año Extra, Plata Titanio (Versión española)</a>
+    <div class="precio"><b>369,00 €</b> <s>699,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (119)</div>
+    <div class="tags"><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -19% vs mín. 30 días (453,65 €)</span></div>
+    <div class="pie">Moviles · Ofertas Prime · <code>B0FCG4WQ9H</code></div>
+  </div>
+</article>
+<article class="card" data-dto="42" data-precio="899.0" data-val="0" data-opi="0" data-vend="0" data-grupo="Informatica | Ofertas Prime"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" ok prime "
+         data-texto="portátil gaming alienware 15 - intel core 7 240h, rtx 5050 | 16gb ram, 512gb ssd, 15,3&#x27;&#x27; fhd+ wuxga 165 hz display, win 11 home, qwerty teclado, 3 meses de game pass b0h2nvmlxs informatica · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0H2NVMLXS" data-desc="Portátil Gaming Alienware 15 - Intel Co… · 899,00 € · -42%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H2NVMLXS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-42%</span>
+    <img src="https://m.media-amazon.com/images/I/716VdkK4j+L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H2NVMLXS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Portátil Gaming Alienware 15 - Intel Core 7 240H, RTX 5050 | 16GB RAM, 512GB SSD, 15,3&#x27;&#x27; FHD+ WUXGA 165 Hz Display, Win 11 Home, QWERTY Teclado, 3 meses de Game Pass</a>
+    <div class="precio"><b>899,00 €</b> <s>1.549,00 €</s></div>
+    
+    <div class="tags"><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -18% vs mín. 30 días (1099,00 €)</span></div>
+    <div class="pie">Informatica · Ofertas Prime · <code>B0H2NVMLXS</code></div>
+  </div>
+</article>
+<article class="card" data-dto="41" data-precio="649.9" data-val="4.4" data-opi="138" data-vend="0" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" hist ok prime "
+         data-texto="xiaomi 17 smartphone de 12+512gb azul lentes óptica leica summilux | sensor de alta dinámica light fusion 950, snapdragon 8 elite gen 5, hyperai, batería de 6330 mah, 1 año de garantía adicional b0g4b8cpsv moviles">
+  <label class="pick"><input type="checkbox" value="B0G4B8CPSV" data-desc="XIAOMI 17 Smartphone de 12+512GB Azul L… · 649,90 € · -41%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0G4B8CPSV?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-41%</span>
+    <img src="https://m.media-amazon.com/images/I/61XUv0IF+5L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0G4B8CPSV?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">XIAOMI 17 Smartphone de 12+512GB Azul Lentes óptica Leica Summilux | Sensor de alta dinámica Light Fusion 950, Snapdragon 8 Elite Gen 5, HyperAI, Batería de 6330 mAh, 1 año de garantía adicional</a>
+    <div class="precio"><b>649,90 €</b> <s>1.099,90 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (138)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -19% vs mín. 30 días (799,99 €)</span></div>
+    <div class="pie">Moviles · <code>B0G4B8CPSV</code></div>
+  </div>
+</article>
+<article class="card" data-dto="40" data-precio="89.99" data-val="3.7" data-opi="5331" data-vend="0" data-grupo="Auriculares"
+         data-cat="🎧 Auriculares" data-marca="" data-marcas=" hist prime rep "
+         data-texto="soundcore sleep a20 de anker, auriculares para dormir | reducción de ruido de alta frecuencia de 30 db, 80 h de autonomía, transmisión por bluetooth 5.3 y seguimiento del sueño b0crgr2ts5 auriculares">
+  <label class="pick"><input type="checkbox" value="B0CRGR2TS5" data-desc="Soundcore Sleep A20 de Anker, Auricular… · 89,99 € · -40%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CRGR2TS5?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-40%</span>
+    <img src="https://m.media-amazon.com/images/I/41wrFnibGXL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CRGR2TS5?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Soundcore Sleep A20 de Anker, Auriculares para Dormir | Reducción de Ruido de Alta Frecuencia de 30 dB, 80 h de Autonomía, Transmisión por Bluetooth 5.3 y Seguimiento del Sueño</a>
+    <div class="precio"><b>89,99 €</b> <s>149,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 3,7 (5.331)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (94,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Auriculares · <code>B0CRGR2TS5</code></div>
+  </div>
+</article>
+<article class="card" data-dto="40" data-precio="119.99" data-val="4.1" data-opi="97" data-vend="0" data-grupo="Auriculares | Moviles"
+         data-cat="🎧 Auriculares" data-marca="" data-marcas=" hist ok prime "
+         data-texto="edifier neobuds planar auriculares tws con driver plano &amp; anc híbrido | driver plano de 12mm, ldac hi-res, 30h de batería, carga inalámbrica, ip55, para deporte y uso diario b0dr7lsnq7 auriculares · moviles">
+  <label class="pick"><input type="checkbox" value="B0DR7LSNQ7" data-desc="Edifier NeoBuds Planar Auriculares TWS… · 119,99 € · -40%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DR7LSNQ7?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-40%</span>
+    <img src="https://m.media-amazon.com/images/I/61dIpcqZY3L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DR7LSNQ7?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Edifier NeoBuds Planar Auriculares TWS con Driver Plano &amp; ANC Híbrido | Driver plano de 12mm, LDAC Hi-Res, 30h de batería, Carga inalámbrica, IP55, para deporte y uso diario</a>
+    <div class="precio"><b>119,99 €</b> <s>199,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,1 (97)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -40% vs mín. 30 días (199,99 €)</span></div>
+    <div class="pie">Auriculares · Moviles · <code>B0DR7LSNQ7</code></div>
+  </div>
+</article>
+<article class="card" data-dto="40" data-precio="599.0" data-val="4.0" data-opi="15" data-vend="0" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" hist ok prime "
+         data-texto="samsung galaxy z flip7 fe 128gb - teléfono con ia, diseño plegable, pantalla frontal amplia, cámara 50mp, memoria 8gb, batería 4000 mah, garantía 3 años + 1 año extra, negro (versión española) b0fbgqyqll moviles">
+  <label class="pick"><input type="checkbox" value="B0FBGQYQLL" data-desc="Samsung Galaxy Z Flip7 FE 128GB - Teléf… · 599,00 € · -40%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FBGQYQLL?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-40%</span>
+    <img src="https://m.media-amazon.com/images/I/61Wd4f0QugL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FBGQYQLL?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Samsung Galaxy Z Flip7 FE 128GB - Teléfono con IA, Diseño Plegable, Pantalla Frontal Amplia, Cámara 50MP, Memoria 8GB, Batería 4000 mAh, Garantía 3 Años + 1 año Extra, Negro (Versión Española)</a>
+    <div class="precio"><b>599,00 €</b> <s>999,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,0 (15)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -40% vs mín. 30 días (999,00 €)</span></div>
+    <div class="pie">Moviles · <code>B0FBGQYQLL</code></div>
+  </div>
+</article>
+<article class="card" data-dto="40" data-precio="599.0" data-val="4.3" data-opi="10" data-vend="0" data-grupo="Informatica | Ofertas Prime"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" min90 ok prime "
+         data-texto="dell 15 portátil - intel core i7-1355u, 16gb ram, 512gb ssd | 15,6&quot; fhd 120hz, intel uhd graphics, windows 11 home, teclado qwerty (cargador vendido por separado) b0gk1vq6lz informatica · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0GK1VQ6LZ" data-desc="DELL 15 Portátil - Intel Core i7-1355U,… · 599,00 € · -40%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GK1VQ6LZ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-40%</span>
+    <img src="https://m.media-amazon.com/images/I/71S0GnjxXtL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GK1VQ6LZ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">DELL 15 Portátil - Intel Core i7-1355U, 16GB RAM, 512GB SSD | 15,6&quot; FHD 120Hz, Intel UHD Graphics, Windows 11 Home, Teclado QWERTY (Cargador Vendido por Separado)</a>
+    <div class="precio"><b>599,00 €</b> <s>999,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (10)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -14% vs mín. 30 días (699,00 €)</span></div>
+    <div class="pie">Informatica · Ofertas Prime · <code>B0GK1VQ6LZ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="38" data-precio="79.99" data-val="4.3" data-opi="3314" data-vend="50" data-grupo="Auriculares"
+         data-cat="🎧 Auriculares" data-marca="" data-marcas=" hist prime rep vendidos "
+         data-texto="anker soundcore aeroclip auriculares open-ear con forma de anilla abierta | comodidad adaptable, 4 micrófonos con ia, ajuste estable y altavoces de 12 mm para sonido claro b0dlgchl8m auriculares">
+  <label class="pick"><input type="checkbox" value="B0DLGCHL8M" data-desc="Anker soundcore AeroClip Auriculares Op… · 79,99 € · -38%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DLGCHL8M?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-38%</span>
+    <img src="https://m.media-amazon.com/images/I/51WLz4dDeOL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DLGCHL8M?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Anker soundcore AeroClip Auriculares Open-Ear con Forma de Anilla Abierta | Comodidad adaptable, 4 micrófonos con IA, ajuste estable y altavoces de 12 mm para sonido claro</a>
+    <div class="precio"><b>79,99 €</b> <s>129,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (3.314) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (84,79 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Auriculares · <code>B0DLGCHL8M</code></div>
+  </div>
+</article>
+<article class="card" data-dto="38" data-precio="79.99" data-val="4.3" data-opi="3314" data-vend="0" data-grupo="Ofertas Prime"
+         data-cat="🎧 Auriculares" data-marca="" data-marcas=" hist ok prime "
+         data-texto="soundcore anker aeroclip auriculares open-ear con forma de anilla abierta | comodidad de adaptación, llamadas nítidas con 4 micrófonos con ia, ajuste estable y sonido claro de 12 mm b0dn6b3z6z ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0DN6B3Z6Z" data-desc="soundcore Anker AeroClip Auriculares Op… · 79,99 € · -38%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DN6B3Z6Z?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-38%</span>
+    <img src="https://m.media-amazon.com/images/I/51Grw1s5dIL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DN6B3Z6Z?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">soundcore Anker AeroClip Auriculares Open-Ear con Forma de Anilla Abierta | Comodidad de adaptación, llamadas nítidas con 4 micrófonos con IA, ajuste estable y sonido claro de 12 mm</a>
+    <div class="precio"><b>79,99 €</b> <s>129,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (3.314)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -38% vs mín. 30 días (129,99 €)</span></div>
+    <div class="pie">Ofertas Prime · <code>B0DN6B3Z6Z</code></div>
+  </div>
+</article>
+<article class="card" data-dto="38" data-precio="159.99" data-val="4.1" data-opi="25" data-vend="0" data-grupo="Moviles | Ofertas Prime"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" min90 nueva prime "
+         data-texto="smartphone realme p4 lite 4g, 4gb+256gb, pantalla lcd hd 120hz 6,8&quot;, batería titan 6600mah, carga 15w, carga inversa 6w, ip64 antipolvo e impermeable, sistema next ia, púlsar morado (sin cargador) b0gy4dvdwm moviles · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0GY4DVDWM" data-desc="Smartphone realme P4 Lite 4G, 4GB+256GB… · 159,99 € · -38%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GY4DVDWM?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-38%</span>
+    <img src="https://m.media-amazon.com/images/I/71BD4HQOn3L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GY4DVDWM?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Smartphone realme P4 Lite 4G, 4GB+256GB, Pantalla LCD HD 120Hz 6,8&quot;, Batería Titan 6600mAh, Carga 15W, Carga inversa 6W, IP64 Antipolvo e Impermeable, Sistema Next IA, Púlsar Morado (Sin Cargador)</a>
+    <div class="precio"><b>159,99 €</b> <s>259,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,1 (25)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (169,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Moviles · Ofertas Prime · <code>B0GY4DVDWM</code></div>
+  </div>
+</article>
+<article class="card" data-dto="37" data-precio="94.99" data-val="4.4" data-opi="224" data-vend="0" data-grupo="Auriculares"
+         data-cat="🎧 Auriculares" data-marca="" data-marcas=" min90 ok prime "
+         data-texto="edifier es850nb auriculares inalámbricos anc con ldac y audio hi-res，marrón | hasta 92h de reproducción, conexión multipunto, control táctil, bluetooth 5.4, para oficina, viajes y uso diario b0f1fth2qb auriculares">
+  <label class="pick"><input type="checkbox" value="B0F1FTH2QB" data-desc="Edifier ES850NB Auriculares Inalámbrico… · 94,99 € · -37%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0F1FTH2QB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-37%</span>
+    <img src="https://m.media-amazon.com/images/I/71I1Pe8ViEL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0F1FTH2QB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Edifier ES850NB Auriculares Inalámbricos ANC con LDAC y Audio Hi-Res，Marrón | Hasta 92h de reproducción, Conexión multipunto, Control táctil, Bluetooth 5.4, para oficina, viajes y uso diario</a>
+    <div class="precio"><b>94,99 €</b> <s>149,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (224)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -37% vs mín. 30 días (149,99 €)</span></div>
+    <div class="pie">Auriculares · <code>B0F1FTH2QB</code></div>
+  </div>
+</article>
+<article class="card" data-dto="37" data-precio="189.51" data-val="4.4" data-opi="47" data-vend="0" data-grupo="Informatica"
+         data-cat="📲 Tablet" data-marca="" data-marcas=" hist rep "
+         data-texto="rebotai tablet 12 pulgadas android 16, 32gb ram+256gb rom, t7300 octa-core, 10000 mah, 2400 * 1600ips 2.4k,90hz, widevine l1, ip54,tableta with aguja，estuche negro b0gyc7nwyn informatica">
+  <label class="pick"><input type="checkbox" value="B0GYC7NWYN" data-desc="RebotAi Tablet 12 Pulgadas Android 16,… · 189,51 € · -37%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GYC7NWYN?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-37%</span>
+    <img src="https://m.media-amazon.com/images/I/61DXJ61CyGL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GYC7NWYN?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">RebotAi Tablet 12 Pulgadas Android 16, 32GB RAM+256GB ROM, T7300 Octa-Core, 10000 mAh, 2400 * 1600IPS 2.4K,90Hz, Widevine L1, IP54,Tableta with Aguja，Estuche Negro</a>
+    <div class="precio"><b>189,51 €</b> <s>299,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (47)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Informatica · <code>B0GYC7NWYN</code></div>
+  </div>
+</article>
+<article class="card" data-dto="35" data-precio="109.99" data-val="4.3" data-opi="202" data-vend="0" data-grupo="Informatica"
+         data-cat="📲 Tablet" data-marca="" data-marcas=" min90 ok rep "
+         data-texto="tablet 10 pulgadas android 15 con gemini ai, con teclado y ratón, 22gb ram + 128gb rom (ampliable 2tb), wifi 6, widevine l1, 6000mah, cuerpo metálico, estudio, trabajo y entretenimiento – verde claro b0fqnjpmv1 informatica">
+  <label class="pick"><input type="checkbox" value="B0FQNJPMV1" data-desc="Tablet 10 Pulgadas Android 15 con Gemin… · 109,99 € · -35%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FQNJPMV1?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-35%</span>
+    <img src="https://m.media-amazon.com/images/I/71RCCNjJuML._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FQNJPMV1?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Tablet 10 Pulgadas Android 15 con Gemini AI, con Teclado y Ratón, 22GB RAM + 128GB ROM (Ampliable 2TB), WiFi 6, Widevine L1, 6000mAh, Cuerpo Metálico, Estudio, Trabajo y Entretenimiento – Verde Claro</a>
+    <div class="precio"><b>109,99 €</b> <s>169,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (202)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ok">Bajada real: -35% vs mín. 30 días (169,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Informatica · <code>B0FQNJPMV1</code></div>
+  </div>
+</article>
+<article class="card" data-dto="35" data-precio="849.0" data-val="0" data-opi="0" data-vend="0" data-grupo="Informatica"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" prime "
+         data-texto="portátil gaming alienware 15 - intel core 5 210h, nvidia rtx 4050 | 16gb ram, 512gb ssd, 15.3&#x27;&#x27; fhd+ wuxga 165 hz display, win 11 home, qwerty teclado, 3 meses de game pass b0h7lkt32w informatica">
+  <label class="pick"><input type="checkbox" value="B0H7LKT32W" data-desc="Portátil Gaming Alienware 15 - Intel Co… · 849,00 € · -35%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H7LKT32W?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-35%</span>
+    <img src="https://m.media-amazon.com/images/I/71QV4yNarGL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H7LKT32W?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Portátil Gaming Alienware 15 - Intel Core 5 210H, NVIDIA RTX 4050 | 16GB RAM, 512GB SSD, 15.3&#x27;&#x27; FHD+ WUXGA 165 Hz Display, Win 11 Home, QWERTY Teclado, 3 meses de Game Pass</a>
+    <div class="precio"><b>849,00 €</b> <s>1.299,00 €</s></div>
+    
+    <div class="tags"><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (899,00 €)</span></div>
+    <div class="pie">Informatica · <code>B0H7LKT32W</code></div>
+  </div>
+</article>
+<article class="card" data-dto="34" data-precio="85.49" data-val="4.4" data-opi="27" data-vend="300" data-grupo="Informatica"
+         data-cat="📲 Tablet" data-marca="" data-marcas=" nueva vendidos "
+         data-texto="nidubio tablet, tablet android de 11 pulgadas, 16 gb ram 128 gb rom ampliable hasta 1 tb, octa-core, batería de gran capacidad de 6800 mah, cámara dual, desbloqueo facial (negro) b0hf7m6sys informatica">
+  <label class="pick"><input type="checkbox" value="B0HF7M6SYS" data-desc="NIDUBIO Tablet, Tablet Android de 11 Pu… · 85,49 € · -34%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HF7M6SYS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-34%</span>
+    <img src="https://m.media-amazon.com/images/I/81SKz8PQqUL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HF7M6SYS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">NIDUBIO Tablet, Tablet Android de 11 Pulgadas, 16 GB RAM 128 GB ROM Ampliable hasta 1 TB, Octa-Core, Batería de Gran Capacidad de 6800 mAh, Cámara Dual, Desbloqueo Facial (Negro)</a>
+    <div class="precio"><b>85,49 €</b> <s>129,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (27) · <span class="vendidos">🛒 300+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Informatica · <code>B0HF7M6SYS</code></div>
+  </div>
+</article>
+<article class="card" data-dto="34" data-precio="199.0" data-val="3.7" data-opi="5074" data-vend="0" data-grupo="Ofertas Prime"
+         data-cat="⌚ Smartwatch" data-marca="" data-marcas=" min90 ok prime "
+         data-texto="google fitbit sense 2, el smartwatch avanzado que te ayuda a cuidar tu salud, con gps integrado, funciones de salud avanzadas, hasta 6 días de batería y compatible con ios 15 &amp; android os 9.0 b0b6wnpdjk ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0B6WNPDJK" data-desc="Google Fitbit Sense 2, el smartwatch av… · 199,00 € · -34%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0B6WNPDJK?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-34%</span>
+    <img src="https://m.media-amazon.com/images/I/61jzloMWHlL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0B6WNPDJK?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Google Fitbit Sense 2, el smartwatch avanzado que te ayuda a cuidar tu salud, con GPS integrado, funciones de salud avanzadas, hasta 6 días de batería y compatible con iOS 15 &amp; Android OS 9.0</a>
+    <div class="precio"><b>199,00 €</b> <s>299,95 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 3,7 (5.074)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -20% vs mín. 30 días (249,00 €)</span></div>
+    <div class="pie">Ofertas Prime · <code>B0B6WNPDJK</code></div>
+  </div>
+</article>
+<article class="card" data-dto="34" data-precio="1199.0" data-val="0" data-opi="0" data-vend="0" data-grupo="Informatica"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" hist ok prime "
+         data-texto="dell 14 plus laptop - intel core ultra 7 258v, 32gb ram, 1tb ssd | 14&quot; 2.5k ips 300nits, intel arc, copilot+ pc, win 11 home, qwerty español (cargador vendido por separado) b0gq23xtj1 informatica">
+  <label class="pick"><input type="checkbox" value="B0GQ23XTJ1" data-desc="DELL 14 Plus Laptop - Intel Core Ultra… · 1.199,00 € · -34%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GQ23XTJ1?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-34%</span>
+    <img src="https://m.media-amazon.com/images/I/71uKekqwydL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GQ23XTJ1?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">DELL 14 Plus Laptop - Intel Core Ultra 7 258V, 32GB RAM, 1TB SSD | 14&quot; 2.5K IPS 300nits, Intel Arc, Copilot+ PC, Win 11 Home, QWERTY Español (Cargador vendido por separado)</a>
+    <div class="precio"><b>1.199,00 €</b> <s>1.829,00 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -34% vs mín. 30 días (1829,00 €)</span></div>
+    <div class="pie">Informatica · <code>B0GQ23XTJ1</code></div>
+  </div>
+</article>
+<article class="card" data-dto="33" data-precio="499.0" data-val="0" data-opi="0" data-vend="0" data-grupo="Informatica"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" ok prime "
+         data-texto="hp omnibook 3 16-by0007nsx ordenador portátil 16&quot; wuxga, ryzen 5, freedos | amd radeon, 8gb ram, 512gb ssd, sin cargador, azul, portátil, para trabajo, qwerty español b0h2wcbnlb informatica">
+  <label class="pick"><input type="checkbox" value="B0H2WCBNLB" data-desc="HP OmniBook 3 16-by0007nsx Ordenador Po… · 499,00 € · -33%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H2WCBNLB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-33%</span>
+    <img src="https://m.media-amazon.com/images/I/81n5lut6+SL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H2WCBNLB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">HP OmniBook 3 16-by0007nsx Ordenador Portátil 16&quot; WUXGA, Ryzen 5, FreeDOS | AMD Radeon, 8GB RAM, 512GB SSD, Sin Cargador, Azul, portátil, para trabajo, QWERTY Español</a>
+    <div class="precio"><b>499,00 €</b> <s>749,00 €</s></div>
+    
+    <div class="tags"><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -33% vs mín. 30 días (749,00 €)</span></div>
+    <div class="pie">Informatica · <code>B0H2WCBNLB</code></div>
+  </div>
+</article>
+<article class="card" data-dto="31" data-precio="89.99" data-val="4.2" data-opi="4721" data-vend="0" data-grupo="Auriculares"
+         data-cat="🎧 Auriculares" data-marca="" data-marcas=" hist prime rep "
+         data-texto="soundcore liberty 4 pro de anker auriculares con cancelación de ruido | adaptativa en tiempo real, 7 sensores, música hi-fi estudio, llamadas nítidas con 8 micrófonos e ia b0dbhpzlcc auriculares">
+  <label class="pick"><input type="checkbox" value="B0DBHPZLCC" data-desc="Soundcore Liberty 4 Pro de Anker Auricu… · 89,99 € · -31%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DBHPZLCC?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-31%</span>
+    <img src="https://m.media-amazon.com/images/I/51BhZsVUcdL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DBHPZLCC?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Soundcore Liberty 4 Pro de Anker Auriculares con Cancelación de Ruido | Adaptativa en Tiempo Real, 7 Sensores, Música Hi-Fi Estudio, Llamadas Nítidas con 8 Micrófonos e IA</a>
+    <div class="precio"><b>89,99 €</b> <s>129,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (4.721)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (94,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Auriculares · <code>B0DBHPZLCC</code></div>
+  </div>
+</article>
+<article class="card" data-dto="30" data-precio="119.0" data-val="4.5" data-opi="1405" data-vend="100" data-grupo="Moviles | Ofertas Prime"
+         data-cat="⌚ Smartwatch" data-marca="" data-marcas=" prime vendidos "
+         data-texto="huawei watch fit 4 smartwatch, brillo máximo 2000 nits, barómetro, blanco | reloj inteligente con gps banda dual, carga inalámbrica, ultrafino, monitor de actividad física b0f29yldz7 moviles · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0F29YLDZ7" data-desc="HUAWEI Watch FIT 4 Smartwatch, Brillo M… · 119,00 € · -30%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0F29YLDZ7?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-30%</span>
+    <img src="https://m.media-amazon.com/images/I/71MdwXnWjRL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0F29YLDZ7?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">HUAWEI Watch FIT 4 Smartwatch, Brillo Máximo 2000 nits, Barómetro, Blanco | Reloj Inteligente con GPS Banda Dual, Carga Inalámbrica, Ultrafino, Monitor de Actividad Física</a>
+    <div class="precio"><b>119,00 €</b> <s>169,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (1.405) · <span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-8% vs mín. 30 días (128,98 €)</span></div>
+    <div class="pie">Moviles · Ofertas Prime · <code>B0F29YLDZ7</code></div>
+  </div>
+</article>
+<article class="card" data-dto="30" data-precio="1899.0" data-val="5.0" data-opi="1" data-vend="0" data-grupo="Informatica"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" prime "
+         data-texto="portátil gaming alienware 16 - intel core 9 270h, rtx 5070 | 32gb ram, 1tb ssd, 16&quot; 2,5k 120hz srgb 100%, win 11 home, teclado retroiluminado, 3 meses de game pass b0h2fxdh7h informatica">
+  <label class="pick"><input type="checkbox" value="B0H2FXDH7H" data-desc="Portátil Gaming Alienware 16 - Intel Co… · 1.899,00 € · -30%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H2FXDH7H?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-30%</span>
+    <img src="https://m.media-amazon.com/images/I/711hqYZR-2L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H2FXDH7H?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Portátil Gaming Alienware 16 - Intel Core 9 270H, RTX 5070 | 32GB RAM, 1TB SSD, 16&quot; 2,5K 120Hz sRGB 100%, Win 11 Home, Teclado retroiluminado, 3 meses de Game Pass</a>
+    <div class="precio"><b>1.899,00 €</b> <s>2.699,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 5,0 (1)</div>
+    <div class="tags"><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-10% vs mín. 30 días (2099,00 €)</span></div>
+    <div class="pie">Informatica · <code>B0H2FXDH7H</code></div>
+  </div>
+</article>
+<article class="card" data-dto="30" data-precio="2599.0" data-val="4.6" data-opi="30" data-vend="0" data-grupo="TV"
+         data-cat="📺 TV" data-marca="" data-marcas=" min90 ok prime "
+         data-texto="hisense 100u70q pro - mini led pro smart tv 100 pulgadas, procesador hi-view ia pro, modo juego ultra de 165hz, full array local dimming, sonido 2.1.2, dolby vision iq, dolby atmos, antireflejos b0fqk4zgfr tv">
+  <label class="pick"><input type="checkbox" value="B0FQK4ZGFR" data-desc="Hisense 100U70Q Pro - Mini LED Pro Smar… · 2.599,00 € · -30%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FQK4ZGFR?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-30%</span>
+    <img src="https://m.media-amazon.com/images/I/81S3CPxJ5+L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FQK4ZGFR?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Hisense 100U70Q Pro - Mini LED Pro Smart TV 100 Pulgadas, Procesador Hi-View IA Pro, Modo Juego Ultra de 165Hz, Full Array Local Dimming, Sonido 2.1.2, Dolby Vision IQ, Dolby Atmos, Antireflejos</a>
+    <div class="precio"><b>2.599,00 €</b> <s>3.699,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (30)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ok">Bajada real: -30% vs mín. 30 días (3699,00 €)</span></div>
+    <div class="pie">TV · <code>B0FQK4ZGFR</code></div>
+  </div>
+</article>
+<article class="card" data-dto="29" data-precio="99.19" data-val="4.6" data-opi="26" data-vend="0" data-grupo="Informatica"
+         data-cat="📲 Tablet" data-marca="" data-marcas="  "
+         data-texto="tablet 10,1 pulgadas android 15 tableta gemini ai, 30+64gb+(1gb tf),negro | tablet con teclado, ratón, funda protectora, octa-core, 6000 mah, wi-fi 6, widevine l1, gms, audio de 3,5 mm, gps, face id b0h6j4c8jb informatica">
+  <label class="pick"><input type="checkbox" value="B0H6J4C8JB" data-desc="Tablet 10,1 pulgadas Android 15 tableta… · 99,19 € · -29%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H6J4C8JB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-29%</span>
+    <img src="https://m.media-amazon.com/images/I/81D3b2DxSTL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H6J4C8JB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Tablet 10,1 pulgadas Android 15 tableta Gemini AI, 30+64GB+(1GB TF),Negro | tablet con teclado, ratón, funda protectora, octa-core, 6000 mAh, Wi-Fi 6, Widevine L1, GMS, audio de 3,5 mm, GPS, Face ID</a>
+    <div class="precio"><b>99,19 €</b> <s>139,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (26)</div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span></div>
+    <div class="pie">Informatica · <code>B0H6J4C8JB</code></div>
+  </div>
+</article>
+<article class="card" data-dto="29" data-precio="99.99" data-val="4.0" data-opi="344" data-vend="0" data-grupo="Informatica"
+         data-cat="📲 Tablet" data-marca="" data-marcas=" hist nueva ok "
+         data-texto="tablet android 15 10 pulgadas con core-octa | 30 gb ram + 64 gb rom (tf / 2tb) |5mp + 8mp | giochi software educativo (iwawa) | 1280 * 800 píxeles | widevine l1 5g + 2.4g wifi6 | tablet eva case, blue b0fxxy6r9g informatica">
+  <label class="pick"><input type="checkbox" value="B0FXXY6R9G" data-desc="Tablet Android 15 10 Pulgadas con Core-… · 99,99 € · -29%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FXXY6R9G?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-29%</span>
+    <img src="https://m.media-amazon.com/images/I/81uYoSzagvL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FXXY6R9G?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Tablet Android 15 10 Pulgadas con Core-Octa | 30 GB RAM + 64 GB ROM (TF / 2TB) |5MP + 8MP | Giochi Software Educativo (iWAWA) | 1280 * 800 Píxeles | Widevine L1 5G + 2.4G WiFi6 | Tablet EVA Case, Blue</a>
+    <div class="precio"><b>99,99 €</b> <s>139,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,0 (344)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -29% vs mín. 30 días (139,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Informatica · <code>B0FXXY6R9G</code></div>
+  </div>
+</article>
+<article class="card" data-dto="29" data-precio="664.0" data-val="4.4" data-opi="89" data-vend="0" data-grupo="Moviles | Ofertas Prime"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" min90 prime "
+         data-texto="samsung galaxy s25 fe 512gb, teléfono móvil con ia, marco ligero 7,5mm, pantalla fhd+ 6,7&quot;, cámara 50mp, exynos 2400, 8gb ram, garantía fabricante 3 años + 1 año extra, azul marino (versión española) b0fldlz7mr moviles · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0FLDLZ7MR" data-desc="Samsung Galaxy S25 FE 512GB, Teléfono M… · 664,00 € · -29%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FLDLZ7MR?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-29%</span>
+    <img src="https://m.media-amazon.com/images/I/61bcBykvJWL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FLDLZ7MR?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Samsung Galaxy S25 FE 512GB, Teléfono Móvil con IA, Marco Ligero 7,5mm, Pantalla FHD+ 6,7&quot;, Cámara 50MP, Exynos 2400, 8GB RAM, Garantía Fabricante 3 Años + 1 Año Extra, Azul Marino (Versión Española)</a>
+    <div class="precio"><b>664,00 €</b> <s>939,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (89)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (699,00 €)</span></div>
+    <div class="pie">Moviles · Ofertas Prime · <code>B0FLDLZ7MR</code></div>
+  </div>
+</article>
+<article class="card" data-dto="29" data-precio="849.9" data-val="4.6" data-opi="98" data-vend="50" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" prime vendidos "
+         data-texto="xiaomi poco f9 ultra, 16+512, negro, 8050mah, carga 100 w | snapdragon® 8 elite gen 5, visionboost d8, amoled 6,85&quot;, cámara ai ois de 200 mp, corning® gorilla® glass 7i resistente b0h6xr2dzn moviles">
+  <label class="pick"><input type="checkbox" value="B0H6XR2DZN" data-desc="Xiaomi Poco F9 Ultra, 16+512, Negro, 80… · 849,90 € · -29%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H6XR2DZN?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-29%</span>
+    <img src="https://m.media-amazon.com/images/I/71XESlFO0AL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H6XR2DZN?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Xiaomi Poco F9 Ultra, 16+512, Negro, 8050mAh, Carga 100 W | Snapdragon® 8 Elite Gen 5, VisionBoost D8, AMOLED 6,85&quot;, cámara AI OIS de 200 MP, Corning® Gorilla® Glass 7i resistente</a>
+    <div class="precio"><b>849,90 €</b> <s>1.199,90 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (98) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (899,90 €)</span></div>
+    <div class="pie">Moviles · <code>B0H6XR2DZN</code></div>
+  </div>
+</article>
+<article class="card" data-dto="29" data-precio="849.9" data-val="4.6" data-opi="98" data-vend="100" data-grupo="Ofertas Prime"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" prime vendidos "
+         data-texto="xiaomi poco f9 ultra, 16+512, cereza oscuro, 8050mah, carga 100 w | snapdragon® 8 elite gen 5, visionboost d8, amoled 6,85&quot;, cámara ai ois de 200 mp, corning® gorilla® glass 7i resistente b0h6xqylq9 ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0H6XQYLQ9" data-desc="Xiaomi Poco F9 Ultra, 16+512, Cereza Os… · 849,90 € · -29%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H6XQYLQ9?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-29%</span>
+    <img src="https://m.media-amazon.com/images/I/71J7e8d7lfL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H6XQYLQ9?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Xiaomi Poco F9 Ultra, 16+512, Cereza Oscuro, 8050mAh, Carga 100 W | Snapdragon® 8 Elite Gen 5, VisionBoost D8, AMOLED 6,85&quot;, cámara AI OIS de 200 MP, Corning® Gorilla® Glass 7i resistente</a>
+    <div class="precio"><b>849,90 €</b> <s>1.199,90 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (98) · <span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (899,90 €)</span></div>
+    <div class="pie">Ofertas Prime · <code>B0H6XQYLQ9</code></div>
+  </div>
+</article>
+<article class="card" data-dto="29" data-precio="1299.0" data-val="0" data-opi="0" data-vend="0" data-grupo="Informatica"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" hist ok prime "
+         data-texto="hp omnibook 5 ordenador portátil 14&quot; oled 3k (2880x1800) | copilot+ pc, amd ryzen ai 7 445, gráficos amd radeon, 32gb, 1tb, 14-hm0015ns, sin cargador, windows 11, azul, qwerty español b0h2w97gc4 informatica">
+  <label class="pick"><input type="checkbox" value="B0H2W97GC4" data-desc="HP OmniBook 5 Ordenador Portátil 14&quot; OL… · 1.299,00 € · -29%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H2W97GC4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-29%</span>
+    <img src="https://m.media-amazon.com/images/I/71N5ouquh8L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H2W97GC4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">HP OmniBook 5 Ordenador Portátil 14&quot; OLED 3K (2880x1800) | Copilot+ PC, AMD Ryzen AI 7 445, Gráficos AMD Radeon, 32GB, 1TB, 14-hm0015ns, Sin cargador, Windows 11, Azul, QWERTY Español</a>
+    <div class="precio"><b>1.299,00 €</b> <s>1.829,00 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -29% vs mín. 30 días (1829,00 €)</span></div>
+    <div class="pie">Informatica · <code>B0H2W97GC4</code></div>
+  </div>
+</article>
+<article class="card" data-dto="28" data-precio="129.0" data-val="4.0" data-opi="325" data-vend="0" data-grupo="Auriculares | Moviles | Ofertas Prime"
+         data-cat="🎧 Auriculares" data-marca="" data-marcas=" hist ok prime "
+         data-texto="soundcore by anker aerofit 2 pro auriculares abiertos con anc, ldac | ganchos de 5 posiciones, controladores de 11,8 mm, 4 micrófonos, ip55 y carga inalámbrica b0fmjp7t3m auriculares · moviles · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0FMJP7T3M" data-desc="Soundcore by Anker AeroFit 2 Pro Auricu… · 129,00 € · -28%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FMJP7T3M?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-28%</span>
+    <img src="https://m.media-amazon.com/images/I/51ZOcHYMGKL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FMJP7T3M?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Soundcore by Anker AeroFit 2 Pro Auriculares Abiertos con ANC, LDAC | Ganchos de 5 posiciones, controladores de 11,8 mm, 4 micrófonos, IP55 y carga inalámbrica</a>
+    <div class="precio"><b>129,00 €</b> <s>179,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,0 (325)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -28% vs mín. 30 días (179,99 €)</span></div>
+    <div class="pie">Auriculares · Moviles · Ofertas Prime · <code>B0FMJP7T3M</code></div>
+  </div>
+</article>
+<article class="card" data-dto="28" data-precio="359.99" data-val="4.5" data-opi="84" data-vend="0" data-grupo="Auriculares | Moviles"
+         data-cat="🎧 Auriculares" data-marca="" data-marcas=" min90 ok prime "
+         data-texto="edifier stax spirit s5 auriculares planar magnetic, snapdragon sound, aptx adaptive, hi-res (ldac lhdc), bluetooth 5.4, tecnología dual-mic cvc, 80 horas y carga rápida, para audiófilos b0d6b6sdgj auriculares · moviles">
+  <label class="pick"><input type="checkbox" value="B0D6B6SDGJ" data-desc="Edifier STAX Spirit S5 Auriculares Plan… · 359,99 € · -28%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0D6B6SDGJ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-28%</span>
+    <img src="https://m.media-amazon.com/images/I/51kC9J9wL1L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0D6B6SDGJ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Edifier STAX Spirit S5 Auriculares Planar Magnetic, Snapdragon Sound, aptX Adaptive, Hi-Res (LDAC LHDC), Bluetooth 5.4, Tecnología Dual-Mic cVc, 80 horas y Carga Rápida, para Audiófilos</a>
+    <div class="precio"><b>359,99 €</b> <s>499,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (84)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ok">Bajada real: -28% vs mín. 30 días (499,99 €)</span></div>
+    <div class="pie">Auriculares · Moviles · <code>B0D6B6SDGJ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="27" data-precio="349.0" data-val="0" data-opi="0" data-vend="0" data-grupo="Ofertas Prime"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" nueva ok prime "
+         data-texto="hp chromebook 14a-nm0002nsx, portátil 14&quot; fhd, mediatek kompanio 540 | chromebook portátil, 8gb, 128gb, chromeos + 3 meses google ai pro con gemini pro y 5tb, sin cargador, plata, qwerty español b0h2whdj2f ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0H2WHDJ2F" data-desc="HP Chromebook 14a-nm0002nsx, Portátil 1… · 349,00 € · -27%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H2WHDJ2F?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-27%</span>
+    <img src="https://m.media-amazon.com/images/I/71cLwEtllEL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H2WHDJ2F?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">HP Chromebook 14a-nm0002nsx, Portátil 14&quot; FHD, MediaTek Kompanio 540 | Chromebook portátil, 8GB, 128GB, ChromeOS + 3 Meses Google AI Pro con Gemini Pro y 5TB, Sin Cargador, Plata, QWERTY Español</a>
+    <div class="precio"><b>349,00 €</b> <s>479,00 €</s></div>
+    
+    <div class="tags"><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ok">Bajada real: -27% vs mín. 30 días (479,00 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ofertas Prime · <code>B0H2WHDJ2F</code></div>
+  </div>
+</article>
+<article class="card" data-dto="25" data-precio="299.0" data-val="0" data-opi="0" data-vend="0" data-grupo="Informatica"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" hist nueva ok prime "
+         data-texto="hp chromebook 14a-nm0001nsx, portátil 14&quot; fhd, mediatek kompanio 540 | chromebook portátil, 4gb, 128gb, chromeos + 3 meses google ai pro con gemini pro y 5tb, sin cargador, plata, qwerty español b0h2w9m6qm informatica">
+  <label class="pick"><input type="checkbox" value="B0H2W9M6QM" data-desc="HP Chromebook 14a-nm0001nsx, Portátil 1… · 299,00 € · -25%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H2W9M6QM?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-25%</span>
+    <img src="https://m.media-amazon.com/images/I/71kNUlIGfXL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H2W9M6QM?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">HP Chromebook 14a-nm0001nsx, Portátil 14&quot; FHD, MediaTek Kompanio 540 | Chromebook portátil, 4GB, 128GB, ChromeOS + 3 Meses Google AI Pro con Gemini Pro y 5TB, Sin Cargador, Plata, QWERTY Español</a>
+    <div class="precio"><b>299,00 €</b> <s>399,00 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ok">Bajada real: -25% vs mín. 30 días (399,00 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Informatica · <code>B0H2W9M6QM</code></div>
+  </div>
+</article>
+<article class="card" data-dto="25" data-precio="299.9" data-val="0" data-opi="0" data-vend="0" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" ok prime "
+         data-texto="poco x8, smartphone 8g+256gb, naranja, batería de 8340mah, carga de 67 w | pantalla amoled de 6,83&quot; 1,5k con protección ocular, snapdragon® 6s gen 4, cámara ois de 50 mp, 3500 nits, hyperos 3 b0h6xy62vk moviles">
+  <label class="pick"><input type="checkbox" value="B0H6XY62VK" data-desc="POCO X8, Smartphone 8G+256GB, Naranja,… · 299,90 € · -25%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H6XY62VK?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-25%</span>
+    <img src="https://m.media-amazon.com/images/I/71BNoLkUMxL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H6XY62VK?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">POCO X8, Smartphone 8G+256GB, Naranja, batería de 8340mAh, carga de 67 W | Pantalla AMOLED de 6,83&quot; 1,5K con protección ocular, Snapdragon® 6s Gen 4, cámara OIS de 50 MP, 3500 nits, HyperOS 3</a>
+    <div class="precio"><b>299,90 €</b> <s>399,90 €</s></div>
+    
+    <div class="tags"><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ok">Bajada real: -25% vs mín. 30 días (399,90 €)</span></div>
+    <div class="pie">Moviles · <code>B0H6XY62VK</code></div>
+  </div>
+</article>
+<article class="card" data-dto="25" data-precio="489.9" data-val="4.7" data-opi="17" data-vend="0" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" nueva prime "
+         data-texto="redmi note 17 pro max 5g, smartphone 8+512gb, verde, batería de 9210mah | snapdragon® 6 gen 5, cámara ois 50 mp, hypercharge 100 w, ip66/ip68, pantalla flagship, xiaomi hyperai b0h4h8fmjb moviles">
+  <label class="pick"><input type="checkbox" value="B0H4H8FMJB" data-desc="REDMI Note 17 Pro MAX 5G, Smartphone 8+… · 489,90 € · -25%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H4H8FMJB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-25%</span>
+    <img src="https://m.media-amazon.com/images/I/614t4QoLAKL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H4H8FMJB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">REDMI Note 17 Pro MAX 5G, Smartphone 8+512GB, Verde, batería de 9210mAh | Snapdragon® 6 Gen 5, cámara OIS 50 MP, HyperCharge 100 W, IP66/IP68, pantalla flagship, Xiaomi HyperAI</a>
+    <div class="precio"><b>489,90 €</b> <s>649,90 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,7 (17)</div>
+    <div class="tags"><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (519,92 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Moviles · <code>B0H4H8FMJB</code></div>
+  </div>
+</article>
+<article class="card" data-dto="25" data-precio="564.5" data-val="4.5" data-opi="118" data-vend="0" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" hist prime "
+         data-texto="xiaomi 17t smartphone de 12+256gb azul teleobjetivo leica 5x | pantalla de 6,59&quot; 120 hz eye-care, batería de 6500 mah (típ.) de silicio-carbono, 1 año de garantía adicional b0gs684m4b moviles">
+  <label class="pick"><input type="checkbox" value="B0GS684M4B" data-desc="XIAOMI 17T Smartphone de 12+256GB Azul… · 564,50 € · -25%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GS684M4B?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-25%</span>
+    <img src="https://m.media-amazon.com/images/I/71Qr0aBd1LL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GS684M4B?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">XIAOMI 17T Smartphone de 12+256GB Azul Teleobjetivo Leica 5X | Pantalla de 6,59&quot; 120 Hz Eye-care, Batería de 6500 mAh (típ.) de Silicio-carbono, 1 año de garantía adicional</a>
+    <div class="precio"><b>564,50 €</b> <s>749,90 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (118)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (594,21 €)</span></div>
+    <div class="pie">Moviles · <code>B0GS684M4B</code></div>
+  </div>
+</article>
+<article class="card" data-dto="25" data-precio="564.5" data-val="4.5" data-opi="118" data-vend="0" data-grupo="Ofertas Prime"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" hist prime "
+         data-texto="xiaomi 17t smartphone de 12+256gb negro teleobjetivo leica 5x | pantalla de 6,59&quot; 120 hz eye-care, batería de 6500 mah (típ.) de silicio-carbono, 1 año de garantía adicional b0gs6c6fp1 ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0GS6C6FP1" data-desc="XIAOMI 17T Smartphone de 12+256GB Negro… · 564,50 € · -25%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GS6C6FP1?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-25%</span>
+    <img src="https://m.media-amazon.com/images/I/71oxjrA4BtL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GS6C6FP1?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">XIAOMI 17T Smartphone de 12+256GB Negro Teleobjetivo Leica 5X | Pantalla de 6,59&quot; 120 Hz Eye-care, Batería de 6500 mAh (típ.) de Silicio-carbono, 1 año de garantía adicional</a>
+    <div class="precio"><b>564,50 €</b> <s>749,90 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (118)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (594,21 €)</span></div>
+    <div class="pie">Ofertas Prime · <code>B0GS6C6FP1</code></div>
+  </div>
+</article>
+<article class="card" data-dto="24" data-precio="265.9" data-val="4.6" data-opi="9" data-vend="0" data-grupo="Ofertas Prime"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" nueva prime "
+         data-texto="redmi note 17 5g, smartphone 6+128gb, morado celestial, batería de 7700mah | snapdragon® 4 gen 4, carga turbo 45 w, amoled fhd+ 6,99&quot; con protección ocular, hyperos, ip65, cámara 50 mp b0h4h886fd ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0H4H886FD" data-desc="REDMI Note 17 5G, Smartphone 6+128GB, M… · 265,90 € · -24%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H4H886FD?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-24%</span>
+    <img src="https://m.media-amazon.com/images/I/71bLZNVEI-L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H4H886FD?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">REDMI Note 17 5G, Smartphone 6+128GB, Morado Celestial, batería de 7700mAh | Snapdragon® 4 Gen 4, carga turbo 45 W, AMOLED FHD+ 6,99&quot; con protección ocular, HyperOS, IP65, cámara 50 MP</a>
+    <div class="precio"><b>265,90 €</b> <s>349,90 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (9)</div>
+    <div class="tags"><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (279,92 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ofertas Prime · <code>B0H4H886FD</code></div>
+  </div>
+</article>
+<article class="card" data-dto="24" data-precio="1139.0" data-val="4.4" data-opi="245" data-vend="0" data-grupo="Ofertas Prime"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" hist prime "
+         data-texto="xiaomi 17 ultra smartphone de 16+512gb blanco teleobjetivo leica de 200 mp | teleobjetivo leica 200mp 75–100 mm, snapdragon 8 elite gen 5, hyperai, batería de 6000 mah, 1 año de garantía adicional b0g4bh97zw ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0G4BH97ZW" data-desc="XIAOMI 17 Ultra Smartphone de 16+512GB… · 1.139,00 € · -24%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0G4BH97ZW?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-24%</span>
+    <img src="https://m.media-amazon.com/images/I/61-G2svsiyL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0G4BH97ZW?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">XIAOMI 17 Ultra Smartphone de 16+512GB Blanco Teleobjetivo Leica de 200 MP | Teleobjetivo Leica 200MP 75–100 mm, Snapdragon 8 Elite Gen 5, HyperAI, Batería de 6000 mAh, 1 año de garantía adicional</a>
+    <div class="precio"><b>1.139,00 €</b> <s>1.499,90 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (245)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (1199,00 €)</span></div>
+    <div class="pie">Ofertas Prime · <code>B0G4BH97ZW</code></div>
+  </div>
+</article>
+<article class="card" data-dto="23" data-precio="199.49" data-val="3.3" data-opi="27" data-vend="0" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" hist ok "
+         data-texto="hotwav x100gt - android 16 telefono movil con pantalla trasera de 20gb+256gb 1tb, cámara 48 mp+16 mp, 6.88&quot; hd+ 120hz, 2.02&quot; rear pantalla telefono movil, carga rápida/ai/4g dual sim/face id/nfc b0gs4nklqg moviles">
+  <label class="pick"><input type="checkbox" value="B0GS4NKLQG" data-desc="HOTWAV X100GT - Android 16 Telefono Mov… · 199,49 € · -23%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GS4NKLQG?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-23%</span>
+    <img src="https://m.media-amazon.com/images/I/71y5g2PGBEL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GS4NKLQG?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">HOTWAV X100GT - Android 16 Telefono Movil con Pantalla Trasera de 20GB+256GB 1TB, Cámara 48 MP+16 MP, 6.88&quot; HD+ 120Hz, 2.02&quot; Rear Pantalla Telefono Movil, Carga rápida/AI/4G Dual SIM/Face ID/NFC</a>
+    <div class="precio"><b>199,49 €</b> <s>259,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★☆☆</span> 3,3 (27)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ok">Bajada real: -23% vs mín. 30 días (259,99 €)</span></div>
+    <div class="pie">Moviles · <code>B0GS4NKLQG</code></div>
+  </div>
+</article>
+<article class="card" data-dto="22" data-precio="109.0" data-val="4.3" data-opi="267" data-vend="0" data-grupo="Auriculares | Moviles | Ofertas Prime"
+         data-cat="🎧 Auriculares" data-marca="" data-marcas=" hist prime "
+         data-texto="shokz auriculares open-ear clip-on opendots air, ligero de 6,3 g, morado | con graves profundos | 36 h de batería | bluetooth 6.1 | reducción de ruido con ia | resistencia al agua ip55 | ajuste seguro b0gq39rjpq auriculares · moviles · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0GQ39RJPQ" data-desc="SHOKZ Auriculares Open-Ear Clip-on Open… · 109,00 € · -22%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GQ39RJPQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-22%</span>
+    <img src="https://m.media-amazon.com/images/I/417xq2AqNAL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GQ39RJPQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SHOKZ Auriculares Open-Ear Clip-on OpenDots Air, Ligero de 6,3 g, Morado | con Graves Profundos | 36 h de batería | Bluetooth 6.1 | reducción de Ruido con IA | Resistencia al Agua IP55 | Ajuste Seguro</a>
+    <div class="precio"><b>109,00 €</b> <s>139,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (267)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-8% vs mín. 30 días (119,00 €)</span></div>
+    <div class="pie">Auriculares · Moviles · Ofertas Prime · <code>B0GQ39RJPQ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="22" data-precio="139.99" data-val="4.4" data-opi="1288" data-vend="0" data-grupo="Auriculares | Moviles | Ofertas Prime"
+         data-cat="🎧 Auriculares" data-marca="" data-marcas=" hist ok prime "
+         data-texto="anker soundcore liberty 5 pro auriculares inalámbricos bluetooth con ia | llamadas nítidas, cancelación de ruido adaptiva, hi-res y traductor en tiempo real b0gwlkrwh7 auriculares · moviles · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0GWLKRWH7" data-desc="Anker Soundcore Liberty 5 Pro Auricular… · 139,99 € · -22%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GWLKRWH7?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-22%</span>
+    <img src="https://m.media-amazon.com/images/I/6128cB9SimL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GWLKRWH7?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Anker Soundcore Liberty 5 Pro Auriculares inalámbricos Bluetooth con IA | Llamadas nítidas, cancelación de ruido adaptiva, Hi-Res y traductor en tiempo real</a>
+    <div class="precio"><b>139,99 €</b> <s>179,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (1.288)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -22% vs mín. 30 días (179,99 €)</span></div>
+    <div class="pie">Auriculares · Moviles · Ofertas Prime · <code>B0GWLKRWH7</code></div>
+  </div>
+</article>
+<article class="card" data-dto="22" data-precio="235.0" data-val="4.4" data-opi="86" data-vend="100" data-grupo="Informatica | Ofertas Prime"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" hist prime vendidos "
+         data-texto="asus chromebook cm1505-15.6&quot; laptop full hd (mediatek kompanio 540, 4gb ram, 128gb emmc, chromeos)+ ratón y funda +3 meses google ai pro, youtube premium lite y 5tb b09b33gms4 informatica · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B09B33GMS4" data-desc="ASUS Chromebook CM1505-15.6&quot; Laptop Ful… · 235,00 € · -22%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B09B33GMS4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-22%</span>
+    <img src="https://m.media-amazon.com/images/I/71laNNYubfL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B09B33GMS4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">ASUS Chromebook CM1505-15.6&quot; Laptop Full HD (MediaTek Kompanio 540, 4GB RAM, 128GB eMMC, ChromeOS)+ Ratón y Funda +3 Meses Google AI Pro, Youtube Premium Lite y 5TB</a>
+    <div class="precio"><b>235,00 €</b> <s>299,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (86) · <span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (249,99 €)</span></div>
+    <div class="pie">Informatica · Ofertas Prime · <code>B09B33GMS4</code></div>
+  </div>
+</article>
+<article class="card" data-dto="22" data-precio="349.9" data-val="0" data-opi="0" data-vend="0" data-grupo="Ofertas Prime"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" ok prime "
+         data-texto="poco x8, smartphone 12g+256gb, negro, batería de 8340mah, carga de 67 w | pantalla amoled de 6,83&quot; 1,5k con protección ocular, snapdragon® 6s gen 4, cámara ois de 50 mp, 3500 nits, hyperos 3 b0h6xybpzc ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0H6XYBPZC" data-desc="POCO X8, Smartphone 12G+256GB, Negro, b… · 349,90 € · -22%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H6XYBPZC?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-22%</span>
+    <img src="https://m.media-amazon.com/images/I/71kpuYplGqL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H6XYBPZC?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">POCO X8, Smartphone 12G+256GB, Negro, batería de 8340mAh, carga de 67 W | Pantalla AMOLED de 6,83&quot; 1,5K con protección ocular, Snapdragon® 6s Gen 4, cámara OIS de 50 MP, 3500 nits, HyperOS 3</a>
+    <div class="precio"><b>349,90 €</b> <s>449,90 €</s></div>
+    
+    <div class="tags"><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ok">Bajada real: -22% vs mín. 30 días (449,90 €)</span></div>
+    <div class="pie">Ofertas Prime · <code>B0H6XYBPZC</code></div>
+  </div>
+</article>
+<article class="card" data-dto="22" data-precio="699.0" data-val="5.0" data-opi="1" data-vend="0" data-grupo="Informatica | Ofertas Prime"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" prime "
+         data-texto="lenovo ideapad slim 3, ordenador portátil, gen 11, intel, 16gb, 512gb, azul | 15.3&quot; wuxga, intel core 5 320, 16 gb ram, 512 gb ssd, windows 11 home, teclado qwerty en español, cargador no incluido b0h8yrfl38 informatica · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0H8YRFL38" data-desc="Lenovo IdeaPad Slim 3, Ordenador Portát… · 699,00 € · -22%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H8YRFL38?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-22%</span>
+    <img src="https://m.media-amazon.com/images/I/614VUlvwrAL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H8YRFL38?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Lenovo IdeaPad Slim 3, Ordenador Portátil, Gen 11, Intel, 16GB, 512GB, Azul | 15.3&quot; WUXGA, Intel Core 5 320, 16 GB RAM, 512 GB SSD, Windows 11 Home, Teclado QWERTY en Español, Cargador No Incluido</a>
+    <div class="precio"><b>699,00 €</b> <s>899,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 5,0 (1)</div>
+    <div class="tags"><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (739,00 €)</span></div>
+    <div class="pie">Informatica · Ofertas Prime · <code>B0H8YRFL38</code></div>
+  </div>
+</article>
+<article class="card" data-dto="22" data-precio="1049.0" data-val="0" data-opi="0" data-vend="0" data-grupo="Informatica"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" ok prime "
+         data-texto="hp omnibook 5 flip ordenador portátil convertible 14&quot; wuxga, intel ultra 5 | copilot+ pc, intel core ultra 5 322, 16gb, 512gb, windows 11, 14- km0004nsx, sin cargador, notebook, plata, qwerty español b0h2w7xc72 informatica">
+  <label class="pick"><input type="checkbox" value="B0H2W7XC72" data-desc="HP OmniBook 5 Flip Ordenador Portátil C… · 1.049,00 € · -22%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H2W7XC72?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-22%</span>
+    <img src="https://m.media-amazon.com/images/I/717FBbthLhL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H2W7XC72?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">HP OmniBook 5 Flip Ordenador Portátil Convertible 14&quot; WUXGA, Intel Ultra 5 | Copilot+ PC, Intel Core Ultra 5 322, 16GB, 512GB, Windows 11, 14- km0004nsx, Sin Cargador, notebook, Plata, QWERTY Español</a>
+    <div class="precio"><b>1.049,00 €</b> <s>1.349,00 €</s></div>
+    
+    <div class="tags"><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ok">Bajada real: -22% vs mín. 30 días (1349,00 €)</span></div>
+    <div class="pie">Informatica · <code>B0H2W7XC72</code></div>
+  </div>
+</article>
+<article class="card" data-dto="21" data-precio="129.99" data-val="4.5" data-opi="2658" data-vend="50" data-grupo="Auriculares | Moviles | Ofertas Prime"
+         data-cat="🎧 Auriculares" data-marca="" data-marcas=" min90 prime vendidos "
+         data-texto="soundcore space one de anker pro auriculares anc adaptativa de, ldac, 60h | 6 micrófonos, diseño muy plegable, audio sin pérdidas y carga ultrarrápida b0cz8g716j auriculares · moviles · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0CZ8G716J" data-desc="Soundcore Space One de Anker Pro Auricu… · 129,99 € · -21%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CZ8G716J?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-21%</span>
+    <img src="https://m.media-amazon.com/images/I/61bQdfpSHQL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CZ8G716J?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Soundcore Space One de Anker Pro Auriculares ANC Adaptativa de, LDAC, 60H | 6 Micrófonos, Diseño muy Plegable, Audio sin Pérdidas y Carga Ultrarrápida</a>
+    <div class="precio"><b>129,99 €</b> <s>164,45 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (2.658) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-6% vs mín. 30 días (137,79 €)</span></div>
+    <div class="pie">Auriculares · Moviles · Ofertas Prime · <code>B0CZ8G716J</code></div>
+  </div>
+</article>
+<article class="card" data-dto="20" data-precio="110.58" data-val="4.1" data-opi="45" data-vend="0" data-grupo="Informatica"
+         data-cat="📲 Tablet" data-marca="" data-marcas="  "
+         data-texto="mentume android 16 tablet 10 pulgadas en gemini ai, tableta en teclado, ratón &amp; lápiz, octa-core, 24 gb ram + 256 gb rom + 1 tb tf, 1920x1200 pantalla hd, cámara 8mp + 13mp, 6000 mah (funda negra) b0gf21wj6m informatica">
+  <label class="pick"><input type="checkbox" value="B0GF21WJ6M" data-desc="MENTUME Android 16 Tablet 10 Pulgadas e… · 110,58 € · -20%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GF21WJ6M?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-20%</span>
+    <img src="https://m.media-amazon.com/images/I/71uoS+YKGpL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GF21WJ6M?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">MENTUME Android 16 Tablet 10 Pulgadas en Gemini AI, Tableta en Teclado, Ratón &amp; Lápiz, Octa-Core, 24 GB RAM + 256 GB ROM + 1 TB TF, 1920x1200 Pantalla HD, Cámara 8MP + 13MP, 6000 mAh (Funda Negra)</a>
+    <div class="precio"><b>110,58 €</b> <s>139,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,1 (45)</div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span></div>
+    <div class="pie">Informatica · <code>B0GF21WJ6M</code></div>
+  </div>
+</article>
+<article class="card" data-dto="20" data-precio="429.99" data-val="4.5" data-opi="14" data-vend="0" data-grupo="Informatica"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" cupon ok "
+         data-texto="moonfish 2026 pc portátil estudio 15,6 pulgadas, 4425y, 16gb ram 256gb ssd | type c, mini hdmi, usb 3.0 y tf permiten conectar monitor, almacenamiento y periféricos habituales b0hglyf7fb informatica">
+  <label class="pick"><input type="checkbox" value="B0HGLYF7FB" data-desc="MOONFISH 2026 Pc Portátil Estudio 15,6… · 429,99 € · -20%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HGLYF7FB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-20%</span>
+    <img src="https://m.media-amazon.com/images/I/71hzI7iWdrL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HGLYF7FB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">MOONFISH 2026 Pc Portátil Estudio 15,6 Pulgadas, 4425Y, 16GB RAM 256GB SSD | Type C, Mini HDMI, USB 3.0 y TF permiten conectar monitor, almacenamiento y periféricos habituales</a>
+    <div class="precio"><b>429,99 €</b> <s>459,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (14)</div>
+    <div class="tags"><span class="tag cupon">Con cupón 369,99 €</span><span class="tag ok">Bajada real: -20% vs mín. 30 días (459,99 €)</span></div>
+    <div class="pie">Informatica · <code>B0HGLYF7FB</code></div>
+  </div>
+</article>
+<article class="card" data-dto="19" data-precio="129.0" data-val="4.2" data-opi="403" data-vend="0" data-grupo="Moviles"
+         data-cat="⌚ Smartwatch" data-marca="" data-marcas=" min90 ok prime "
+         data-texto="google fitbit versa 4 smartwatch, con google health premium b0bqz1y7qf moviles">
+  <label class="pick"><input type="checkbox" value="B0BQZ1Y7QF" data-desc="Google Fitbit Versa 4 smartwatch, con G… · 129,00 € · -19%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0BQZ1Y7QF?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-19%</span>
+    <img src="https://m.media-amazon.com/images/I/711swAUsovL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0BQZ1Y7QF?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Google Fitbit Versa 4 smartwatch, con Google Health Premium</a>
+    <div class="precio"><b>129,00 €</b> <s>158,31 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (403)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -28% vs mín. 30 días (178,34 €)</span></div>
+    <div class="pie">Moviles · <code>B0BQZ1Y7QF</code></div>
+  </div>
+</article>
+<article class="card" data-dto="18" data-precio="123.49" data-val="3.7" data-opi="242" data-vend="0" data-grupo="Moviles | Ofertas Prime"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" hist prime "
+         data-texto="xiaomi poco c81 pro smartphone 4+256 gb negro batería de 6000 mah | pantalla inmersiva de 6,9&quot;, teléfono con diseño elegante y refinado, cámara dual ai de 13 mp, 1 año de garantía adicional b0gvjdzyvn moviles · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0GVJDZYVN" data-desc="Xiaomi POCO C81 Pro Smartphone 4+256 GB… · 123,49 € · -18%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GVJDZYVN?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-18%</span>
+    <img src="https://m.media-amazon.com/images/I/61UXAfWjpbL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GVJDZYVN?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Xiaomi POCO C81 Pro Smartphone 4+256 GB Negro Batería de 6000 mAh | Pantalla inmersiva de 6,9&quot;, Teléfono con diseño elegante y refinado, Cámara dual AI de 13 MP, 1 año de garantía adicional</a>
+    <div class="precio"><b>123,49 €</b> <s>149,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 3,7 (242)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (129,99 €)</span></div>
+    <div class="pie">Moviles · Ofertas Prime · <code>B0GVJDZYVN</code></div>
+  </div>
+</article>
+<article class="card" data-dto="16" data-precio="209.99" data-val="3.4" data-opi="4" data-vend="0" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas="  "
+         data-texto="doogeesmart note 59 pro 5g telefono movil libre android 16, 32gb +256gb(2tb) octa core, smartphone 6,75&quot; hd+ 120hz, 6250mah telefono movil,16mp+8mp/8.6mm/dual sim/gps/widevine l1/nfc/otg/huella móvils b0hb93yhwv moviles">
+  <label class="pick"><input type="checkbox" value="B0HB93YHWV" data-desc="DOOGEESmart Note 59 Pro 5G Telefono Mov… · 209,99 € · -16%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HB93YHWV?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-16%</span>
+    <img src="https://m.media-amazon.com/images/I/71uCnXa2aYL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HB93YHWV?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">DOOGEESmart Note 59 Pro 5G Telefono Movil Libre Android 16, 32GB +256GB(2TB) Octa Core, Smartphone 6,75&quot; HD+ 120Hz, 6250mAh Telefono Movil,16MP+8MP/8.6mm/Dual SIM/GPS/Widevine L1/NFC/OTG/Huella Móvils</a>
+    <div class="precio"><b>209,99 €</b> <s>249,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★☆☆</span> 3,4 (4)</div>
+    <div class="tags"><span class="tag ">Antes = precio mediano</span></div>
+    <div class="pie">Moviles · <code>B0HB93YHWV</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-precio="169.0" data-val="4.5" data-opi="903" data-vend="0" data-grupo="Auriculares | Moviles | Ofertas Prime"
+         data-cat="🎧 Auriculares" data-marca="" data-marcas=" hist ok prime "
+         data-texto="shokz auriculares open-ear clip-on opendots 2,dolby audio,40h batería,gris | con grave profundo | reducción ruido con ia | bluetooth 6.1 | resistentes al agua ip57 | carga rápida inalámbrica b0gq342bgz auriculares · moviles · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0GQ342BGZ" data-desc="SHOKZ Auriculares Open-Ear Clip-on Open… · 169,00 € · -15%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GQ342BGZ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/51uYhNw6u3L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GQ342BGZ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SHOKZ Auriculares Open-Ear Clip-on OpenDots 2,Dolby Audio,40h batería,Gris | con Grave Profundo | Reducción Ruido con IA | Bluetooth 6.1 | Resistentes al Agua IP57 | Carga rápida inalámbrica</a>
+    <div class="precio"><b>169,00 €</b> <s>199,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (903)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -15% vs mín. 30 días (199,00 €)</span></div>
+    <div class="pie">Auriculares · Moviles · Ofertas Prime · <code>B0GQ342BGZ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-precio="169.0" data-val="4.7" data-opi="356" data-vend="0" data-grupo="Moviles"
+         data-cat="⌚ Smartwatch" data-marca="" data-marcas=" hist prime "
+         data-texto="huawei watch fit 5 smartwatch, gps, 1,82″ amoled, 2500nits, plateado | diseño ultraligero, pago nfc, 5atm, hasta 10 días autonomía, modos de entrenamiento, seguimiento de salud, para android ios b0gt9bq2mr moviles">
+  <label class="pick"><input type="checkbox" value="B0GT9BQ2MR" data-desc="HUAWEI Watch FIT 5 Smartwatch, GPS, 1,8… · 169,00 € · -15%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GT9BQ2MR?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/714K3M6vMtL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GT9BQ2MR?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">HUAWEI Watch FIT 5 Smartwatch, GPS, 1,82″ AMOLED, 2500Nits, Plateado | Diseño Ultraligero, Pago NFC, 5ATM, Hasta 10 Días Autonomía, Modos de Entrenamiento, Seguimiento de Salud, para Android iOS</a>
+    <div class="precio"><b>169,00 €</b> <s>199,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,7 (356)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (179,00 €)</span></div>
+    <div class="pie">Moviles · <code>B0GT9BQ2MR</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-precio="169.99" data-val="3.8" data-opi="193" data-vend="0" data-grupo="Auriculares | Moviles | Ofertas Prime"
+         data-cat="🎧 Auriculares" data-marca="" data-marcas=" min90 prime "
+         data-texto="soundcore sleep a30 special de anker, auriculares para dormir | sistema adaptativo para bloquear ronquidos, comodidad al dormir de lado, hasta 45 h de reproducción b0gjyjqhsn auriculares · moviles · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0GJYJQHSN" data-desc="Soundcore Sleep A30 Special de Anker, A… · 169,99 € · -15%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GJYJQHSN?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/51nHiD2xmtL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GJYJQHSN?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Soundcore Sleep A30 Special de Anker, Auriculares para Dormir | Sistema adaptativo para bloquear ronquidos, comodidad al dormir de lado, hasta 45 h de reproducción</a>
+    <div class="precio"><b>169,99 €</b> <s>199,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 3,8 (193)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-6% vs mín. 30 días (179,99 €)</span></div>
+    <div class="pie">Auriculares · Moviles · Ofertas Prime · <code>B0GJYJQHSN</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-precio="229.0" data-val="0" data-opi="0" data-vend="0" data-grupo="Moviles | Ofertas Prime"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" nueva ok prime "
+         data-texto="samsung galaxy a18 128gb negro | diseño fino, circle to search, ram plus, cámara triple, ip64, garantía del fabricante 3 años + 1 año extra (versión española) b0hdtnz51w moviles · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0HDTNZ51W" data-desc="Samsung Galaxy A18 128GB Negro | Diseño… · 229,00 € · -15%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HDTNZ51W?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/61JmlkDPRZL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HDTNZ51W?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Samsung Galaxy A18 128GB Negro | Diseño fino, Circle to Search, RAM Plus, Cámara triple, IP64, Garantía del Fabricante 3 Años + 1 Año Extra (Versión Española)</a>
+    <div class="precio"><b>229,00 €</b> <s>269,00 €</s></div>
+    
+    <div class="tags"><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ok">Bajada real: -15% vs mín. 30 días (269,00 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Moviles · Ofertas Prime · <code>B0HDTNZ51W</code></div>
+  </div>
+</article>
+<article class="card" data-dto="13" data-precio="218.0" data-val="0" data-opi="0" data-vend="0" data-grupo="Informatica | Ofertas Prime"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" hist ok prime "
+         data-texto="asus chromebook cm14 cm1405cm4a-s60222 - ordenador portátil 14&quot; full hd (mediatek kompanio kompanio 540, 4gb ram, 64gb emmc, arm mali-g57 mc2, chromeos) gris puro - teclado qwerty español b09b32pcgh informatica · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B09B32PCGH" data-desc="ASUS Chromebook CM14 CM1405CM4A-S60222… · 218,00 € · -13%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B09B32PCGH?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-13%</span>
+    <img src="https://m.media-amazon.com/images/I/712wfA4dmtL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B09B32PCGH?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">ASUS Chromebook CM14 CM1405CM4A-S60222 - Ordenador Portátil 14&quot; Full HD (MediaTek Kompanio Kompanio 540, 4GB RAM, 64GB eMMC, Arm Mali-G57 MC2, ChromeOS) Gris Puro - Teclado QWERTY español</a>
+    <div class="precio"><b>218,00 €</b> <s>249,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -13% vs mín. 30 días (249,99 €)</span></div>
+    <div class="pie">Informatica · Ofertas Prime · <code>B09B32PCGH</code></div>
+  </div>
+</article>
+<article class="card" data-dto="13" data-precio="218.49" data-val="4.6" data-opi="22" data-vend="0" data-grupo="Informatica"
+         data-cat="📲 Tablet" data-marca="" data-marcas=" hist "
+         data-texto="doogeetab u13 tablet 13 pulgadas fhd+ 90hz, tablet android 16 batería 11000mah,32gb+256gb/2tb, procesador octa-core tablets, gemini ai/widevine l1, 13mp/5g wifi/face id/gps/otg b0gz3dqgff informatica">
+  <label class="pick"><input type="checkbox" value="B0GZ3DQGFF" data-desc="DOOGEETab U13 Tablet 13 Pulgadas FHD+ 9… · 218,49 € · -13%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GZ3DQGFF?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-13%</span>
+    <img src="https://m.media-amazon.com/images/I/71ZQ8CG4HEL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GZ3DQGFF?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">DOOGEETab U13 Tablet 13 Pulgadas FHD+ 90Hz, Tablet Android 16 Batería 11000mAh,32GB+256GB/2TB, Procesador Octa-Core Tablets, Gemini AI/Widevine L1, 13MP/5G WiFi/Face ID/GPS/OTG</a>
+    <div class="precio"><b>218,49 €</b> <s>249,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (22)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span></div>
+    <div class="pie">Informatica · <code>B0GZ3DQGFF</code></div>
+  </div>
+</article>
+<article class="card" data-dto="13" data-precio="348.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" hist ok prime "
+         data-texto="oppo reno15 f 5g smartphone libre, 6.57 pulgadas amoled 120hz, 7000 mah batería, 80w supervooc, 256 gb, 8 gb ram, 50mp ois cámara, ip69 resistente al agua, azul b0gvjgwn31 moviles">
+  <label class="pick"><input type="checkbox" value="B0GVJGWN31" data-desc="OPPO Reno15 F 5G Smartphone Libre, 6.57… · 348,99 € · -13%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GVJGWN31?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-13%</span>
+    <img src="https://m.media-amazon.com/images/I/61P9M79M1SL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GVJGWN31?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">OPPO Reno15 F 5G Smartphone Libre, 6.57 Pulgadas AMOLED 120Hz, 7000 mAh Batería, 80W SUPERVOOC, 256 GB, 8 GB RAM, 50MP OIS Cámara, IP69 Resistente al Agua, Azul</a>
+    <div class="precio"><b>348,99 €</b> <s>399,00 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -13% vs mín. 30 días (399,00 €)</span></div>
+    <div class="pie">Moviles · <code>B0GVJGWN31</code></div>
+  </div>
+</article>
+<article class="card" data-dto="13" data-precio="569.98" data-val="4.7" data-opi="9" data-vend="0" data-grupo="Informatica"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" cupon ok "
+         data-texto="chifuyou ordenador portátil 17,3&quot;, i5-7y57, 16gb ram 1tb ssd, win 11 pro | teclado retroiluminado completo con bloque numérico y touchpad amplio b0hfn56q17 informatica">
+  <label class="pick"><input type="checkbox" value="B0HFN56Q17" data-desc="CHIFUYOU Ordenador Portátil 17,3&quot;, i5-7… · 569,98 € · -13%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HFN56Q17?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-13%</span>
+    <img src="https://m.media-amazon.com/images/I/718O8m-R24L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HFN56Q17?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">CHIFUYOU Ordenador Portátil 17,3&quot;, i5-7Y57, 16GB RAM 1TB SSD, Win 11 Pro | Teclado retroiluminado completo con bloque numérico y touchpad amplio</a>
+    <div class="precio"><b>569,98 €</b> <s>617,49 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,7 (9)</div>
+    <div class="tags"><span class="tag cupon">Con cupón 539,98 €</span><span class="tag ok">Bajada real: -13% vs mín. 30 días (617,49 €)</span></div>
+    <div class="pie">Informatica · <code>B0HFN56Q17</code></div>
+  </div>
+</article>
+<article class="card" data-dto="12" data-precio="123.49" data-val="3.1" data-opi="15" data-vend="0" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas="  "
+         data-texto="oukitel c5 moviles baratos y buenos 16gb +128gb, 6.56&quot; pantalla smartphone | batería de 5000mah telefonos moviles libres, cámara 13mp+5mp, 4g dual sim, face id, otg, gps, 3.5mm jack b0h829cwcy moviles">
+  <label class="pick"><input type="checkbox" value="B0H829CWCY" data-desc="OUKITEL C5 Moviles Baratos y Buenos 16G… · 123,49 € · -12%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H829CWCY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-12%</span>
+    <img src="https://m.media-amazon.com/images/I/71BJCfQ6u6L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H829CWCY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">OUKITEL C5 Moviles Baratos y Buenos 16GB +128GB, 6.56&quot; Pantalla Smartphone | Batería de 5000mAh Telefonos Moviles Libres, Cámara 13MP+5MP, 4G Dual SIM, Face ID, OTG, GPS, 3.5mm Jack</a>
+    <div class="precio"><b>123,49 €</b> <s>139,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★☆☆</span> 3,1 (15)</div>
+    <div class="tags"><span class="tag ">Antes = precio mediano</span></div>
+    <div class="pie">Moviles · <code>B0H829CWCY</code></div>
+  </div>
+</article>
+<article class="card" data-dto="12" data-precio="225.61" data-val="3.5" data-opi="17" data-vend="0" data-grupo="Informatica"
+         data-cat="📲 Tablet" data-marca="" data-marcas=" min90 "
+         data-texto="beynivan tablet 14 pulgadas android 15 tableta con 4g lte y 5g wifi,11580mah y 20w,36gb ram+256gb rom/2000 * 1200 fhd/face id/gps/bt 5.0/tüv/usb-c,tablet con lapiz,nero b0ffg15bs2 informatica">
+  <label class="pick"><input type="checkbox" value="B0FFG15BS2" data-desc="BEYNIVAN Tablet 14 Pulgadas Android 15… · 225,61 € · -12%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FFG15BS2?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-12%</span>
+    <img src="https://m.media-amazon.com/images/I/71zmVqibsLL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FFG15BS2?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">BEYNIVAN Tablet 14 Pulgadas Android 15 Tableta con 4G LTE y 5G WiFi,11580mAh y 20W,36GB RAM+256GB ROM/2000 * 1200 FHD/Face ID/GPS/BT 5.0/TÜV/USB-C,Tablet con Lapiz,Nero</a>
+    <div class="precio"><b>225,61 €</b> <s>254,98 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 3,5 (17)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (237,48 €)</span></div>
+    <div class="pie">Informatica · <code>B0FFG15BS2</code></div>
+  </div>
+</article>
+<article class="card" data-dto="12" data-precio="499.0" data-val="0" data-opi="0" data-vend="0" data-grupo="Informatica"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" hist ok "
+         data-texto="acer aspire go 15, portátil 15.6&quot; full hd, ryzen 5, 16gb ram, 512gb ssd | amd ryzen 5 7430u, amd radeon graphics, sin sistema operativo, teclado qwerty español, ligero y rápido para estudio y trabajo b089gvqpj5 informatica">
+  <label class="pick"><input type="checkbox" value="B089GVQPJ5" data-desc="Acer Aspire Go 15, Portátil 15.6&quot; Full… · 499,00 € · -12%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B089GVQPJ5?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-12%</span>
+    <img src="https://m.media-amazon.com/images/I/715n++Rn9mL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B089GVQPJ5?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Acer Aspire Go 15, Portátil 15.6&quot; Full HD, Ryzen 5, 16GB RAM, 512GB SSD | AMD Ryzen 5 7430U, AMD Radeon Graphics, Sin Sistema Operativo, Teclado QWERTY Español, Ligero y Rápido para Estudio y Trabajo</a>
+    <div class="precio"><b>499,00 €</b> <s>566,39 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -12% vs mín. 30 días (566,39 €)</span></div>
+    <div class="pie">Informatica · <code>B089GVQPJ5</code></div>
+  </div>
+</article>
+<article class="card" data-dto="12" data-precio="1499.0" data-val="5.0" data-opi="4" data-vend="0" data-grupo="Informatica"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" ok "
+         data-texto="lg gram 16u55u-g.au88bn - ordenador portátil ultraligero de 16&quot; | ultraligero, ryzen ai 7 445, amd radeon graphics, ips antirreflejo, 1800g, 26 h, windows 11, teclado es, negro carbón b0h2fj6b44 informatica">
+  <label class="pick"><input type="checkbox" value="B0H2FJ6B44" data-desc="LG gram 16U55U-G.AU88BN - Ordenador Por… · 1.499,00 € · -12%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H2FJ6B44?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-12%</span>
+    <img src="https://m.media-amazon.com/images/I/71BUTtOTv-L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H2FJ6B44?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">LG gram 16U55U-G.AU88BN - Ordenador Portátil Ultraligero de 16&quot; | Ultraligero, Ryzen AI 7 445, AMD Radeon Graphics, IPS Antirreflejo, 1800g, 26 h, Windows 11, Teclado ES, Negro carbón</a>
+    <div class="precio"><b>1.499,00 €</b> <s>1.699,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 5,0 (4)</div>
+    <div class="tags"><span class="tag ok">Bajada real: -12% vs mín. 30 días (1699,00 €)</span></div>
+    <div class="pie">Informatica · <code>B0H2FJ6B44</code></div>
+  </div>
+</article>
+<article class="card" data-dto="11" data-precio="150.83" data-val="3.9" data-opi="15" data-vend="0" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" hist prime "
+         data-texto="spc wuum one - smartphone para niños, android, gps, control parental, lila | compatible con app spc circles para geolocalizar y control parental, chats seguros, función de reproductor de música y 64gb b0h2ykrlmh moviles">
+  <label class="pick"><input type="checkbox" value="B0H2YKRLMH" data-desc="SPC WUUM One - Smartphone para niños, A… · 150,83 € · -11%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H2YKRLMH?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-11%</span>
+    <img src="https://m.media-amazon.com/images/I/61SXDsAdTmL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H2YKRLMH?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SPC WUUM One - Smartphone para niños, Android, GPS, Control Parental, Lila | Compatible con app SPC Circles para geolocalizar y control parental, chats seguros, función de reproductor de música y 64GB</a>
+    <div class="precio"><b>150,83 €</b> <s>169,90 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 3,9 (15)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (158,74 €)</span></div>
+    <div class="pie">Moviles · <code>B0H2YKRLMH</code></div>
+  </div>
+</article>
+<article class="card" data-dto="10" data-precio="99.27" data-val="4.3" data-opi="103" data-vend="0" data-grupo="Informatica"
+         data-cat="📲 Tablet" data-marca="" data-marcas=" hist "
+         data-texto="tablet 10 pulgadas android 15, 8000mah, 128gb rom, modelo teclado-gris | 30gb ram (8gb+22gb), octa-core, tf 2tb, widevine l1, face id, bt5.0, 5g wifi, carcasa metálica, incluye ratón y teclado b0d9bgnyyz informatica">
+  <label class="pick"><input type="checkbox" value="B0D9BGNYYZ" data-desc="Tablet 10 Pulgadas Android 15, 8000mAh,… · 99,27 € · -10%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0D9BGNYYZ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/81QByYTU4WL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0D9BGNYYZ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Tablet 10 Pulgadas Android 15, 8000mAh, 128GB ROM, Modelo Teclado-Gris | 30GB RAM (8GB+22GB), Octa-Core, TF 2TB, Widevine L1, Face ID, BT5.0, 5G WIFI, Carcasa Metálica, Incluye Ratón y Teclado</a>
+    <div class="precio"><b>99,27 €</b> <s>109,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (103)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (104,49 €)</span></div>
+    <div class="pie">Informatica · <code>B0D9BGNYYZ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="10" data-precio="179.9" data-val="4.4" data-opi="143" data-vend="0" data-grupo="Informatica"
+         data-cat="📲 Tablet" data-marca="" data-marcas=" hist ok prime "
+         data-texto="xiaomi redmi pad 2 4+128gb tablet de 11&quot; 2.5k gris batería de 9000 mah | pantalla crystal-clear, mediatek g100-ultra, xiaomi hyperos 2, wifi 5 + bluetooth 5.3, 1 año de garantía extra b0fbmmwkx8 informatica">
+  <label class="pick"><input type="checkbox" value="B0FBMMWKX8" data-desc="Xiaomi REDMI Pad 2 4+128GB Tablet de 11… · 179,90 € · -10%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FBMMWKX8?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/713vKBfcwWL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FBMMWKX8?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Xiaomi REDMI Pad 2 4+128GB Tablet de 11&quot; 2.5K Gris Batería de 9000 mAh | Pantalla crystal-clear, MediaTek G100-Ultra, Xiaomi HyperOS 2, WiFi 5 + Bluetooth 5.3, 1 año de garantía Extra</a>
+    <div class="precio"><b>179,90 €</b> <s>199,90 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (143)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -10% vs mín. 30 días (199,90 €)</span></div>
+    <div class="pie">Informatica · <code>B0FBMMWKX8</code></div>
+  </div>
+</article>
+<article class="card" data-dto="10" data-precio="213.48" data-val="0" data-opi="0" data-vend="0" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas="  "
+         data-texto="xiaomi redmi 17 4g 4+256gb black, incluye cargador | pantalla 6.9&quot; 120hz, procesador mediatek helio g91-ultra, cámara ai dual 50mp, batería 7500mah, gorilla glass 7i, ip64, nfc b0hcc1vvpr moviles">
+  <label class="pick"><input type="checkbox" value="B0HCC1VVPR" data-desc="XIAOMI Redmi 17 4G 4+256GB Black, Inclu… · 213,48 € · -10%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HCC1VVPR?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/618mPIjy4cL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HCC1VVPR?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">XIAOMI Redmi 17 4G 4+256GB Black, Incluye Cargador | Pantalla 6.9&quot; 120Hz, Procesador MediaTek Helio G91-Ultra, Cámara AI Dual 50MP, Batería 7500mAh, Gorilla Glass 7i, IP64, NFC</a>
+    <div class="precio"><b>213,48 €</b> <s>236,55 €</s></div>
+    
+    <div class="tags"><span class="tag ">Antes = precio mediano</span></div>
+    <div class="pie">Moviles · <code>B0HCC1VVPR</code></div>
+  </div>
+</article>
+<article class="card" data-dto="10" data-precio="214.99" data-val="4.4" data-opi="102" data-vend="0" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" ok prime "
+         data-texto="realme 14t smartphone 5g, 8+256gb,batería 5130 mah,procesador dimensity 6300,ip69, cámara de 50mp,pantalla amoled para esports de 120 hz,verde surf,exclusivo de amazon (sin adaptador) b0dyvtl9z8 moviles">
+  <label class="pick"><input type="checkbox" value="B0DYVTL9Z8" data-desc="realme 14T Smartphone 5g, 8+256GB,Bater… · 214,99 € · -10%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DYVTL9Z8?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/71X54TLUvpL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DYVTL9Z8?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">realme 14T Smartphone 5g, 8+256GB,Batería 5130 mAh,Procesador Dimensity 6300,IP69, Cámara de 50MP,Pantalla AMOLED para Esports de 120 Hz,Verde Surf,Exclusivo de Amazon (Sin Adaptador)</a>
+    <div class="precio"><b>214,99 €</b> <s>239,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (102)</div>
+    <div class="tags"><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -10% vs mín. 30 días (239,99 €)</span></div>
+    <div class="pie">Moviles · <code>B0DYVTL9Z8</code></div>
+  </div>
+</article>
+<article class="card" data-dto="10" data-precio="252.69" data-val="4.5" data-opi="155" data-vend="0" data-grupo="Informatica"
+         data-cat="💻 Portátil" data-marca="" data-marcas="  "
+         data-texto="2026 ordenador portátil 15,6 pulgadas celeron n5095 win11 pro 8gb 256gb ssd | expansión 1tb 5g wifi fhd bt4.2 2,9 ghz hdml usb 3.0 portatil con ratón inalámbrico y teclado español membrana - gris b0h872b6kn informatica">
+  <label class="pick"><input type="checkbox" value="B0H872B6KN" data-desc="2026 Ordenador Portátil 15,6 Pulgadas C… · 252,69 € · -10%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H872B6KN?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/716gfUuGh0L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H872B6KN?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">2026 Ordenador Portátil 15,6 Pulgadas Celeron N5095 Win11 Pro 8GB 256GB SSD | Expansión 1TB 5G WiFi FHD BT4.2 2,9 GHz HDMl USB 3.0 Portatil con Ratón Inalámbrico y Teclado Español Membrana - Gris</a>
+    <div class="precio"><b>252,69 €</b> <s>279,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (155)</div>
+    <div class="tags"><span class="tag ">Antes = precio mediano</span></div>
+    <div class="pie">Informatica · <code>B0H872B6KN</code></div>
+  </div>
+</article>
+<article class="card" data-dto="10" data-precio="264.49" data-val="3.6" data-opi="21" data-vend="0" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" nueva prime "
+         data-texto="spc zeus 2 elite - smartphone para mayores, módo fácil, display 6,7&quot;, negro | compatible con app para control y ubicación remota spc care, triple cámara 50mp, 128gb, carga rápida, iconos grandes y nfc b0gxyyzwxy moviles">
+  <label class="pick"><input type="checkbox" value="B0GXYYZWXY" data-desc="SPC Zeus 2 Elite - Smartphone para Mayo… · 264,49 € · -10%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GXYYZWXY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/616r5IXjOML._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GXYYZWXY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SPC Zeus 2 Elite - Smartphone para Mayores, módo fácil, Display 6,7&quot;, Negro | Compatible con app para control y ubicación remota SPC Care, triple cámara 50MP, 128GB, carga rápida, iconos grandes y NFC</a>
+    <div class="precio"><b>264,49 €</b> <s>293,14 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 3,6 (21)</div>
+    <div class="tags"><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (278,42 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Moviles · <code>B0GXYYZWXY</code></div>
+  </div>
+</article>
+<article class="card" data-dto="10" data-precio="269.0" data-val="3.5" data-opi="2" data-vend="0" data-grupo="Informatica | Ofertas Prime"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" ok prime "
+         data-texto="lenovo chromebook, ordenador portátil, mediatek, 4gb, 128gb, chromeos, azul | 14&#x27;&#x27; wuxga, mediatek kompanio 540, 4 gb ram, 128 gb ufs 2.2, teclado qwerty, cargador no incluido b0h8yy9l3s informatica · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0H8YY9L3S" data-desc="Lenovo Chromebook, Ordenador Portátil,… · 269,00 € · -10%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H8YY9L3S?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/71oQezxrgOL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H8YY9L3S?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Lenovo Chromebook, Ordenador Portátil, MediaTek, 4GB, 128GB, ChromeOS, Azul | 14&#x27;&#x27; WUXGA, MediaTek Kompanio 540, 4 GB RAM, 128 GB UFS 2.2, Teclado QWERTY, Cargador No Incluido</a>
+    <div class="precio"><b>269,00 €</b> <s>299,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 3,5 (2)</div>
+    <div class="tags"><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -10% vs mín. 30 días (299,00 €)</span></div>
+    <div class="pie">Informatica · Ofertas Prime · <code>B0H8YY9L3S</code></div>
+  </div>
+</article>
+<article class="card" data-dto="10" data-precio="1085.0" data-val="4.4" data-opi="72" data-vend="0" data-grupo="Moviles | Ofertas Prime"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" prime "
+         data-texto="google pixel 11 pro – smartphone android libre - gris niebla, 256gb | con gemini intelligence, batería de más de 30 horas y pantalla super actua de 6,3” b0h62jrn6v moviles · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0H62JRN6V" data-desc="Google Pixel 11 Pro – Smartphone Androi… · 1.085,00 € · -10%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H62JRN6V?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/81--7AclrBL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H62JRN6V?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Google Pixel 11 Pro – Smartphone Android Libre - Gris Niebla, 256GB | Con Gemini Intelligence, batería de más de 30 horas y pantalla Super Actua de 6,3”</a>
+    <div class="precio"><b>1.085,00 €</b> <s>1.199,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (72)</div>
+    <div class="tags"><span class="tag prime">👑 Oferta Prime anticipada</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-10% vs mín. 30 días (1199,00 €)</span></div>
+    <div class="pie">Moviles · Ofertas Prime · <code>B0H62JRN6V</code></div>
+  </div>
+</article></main>
+<script>
+const lista = document.getElementById('lista');
+const cards = [...lista.querySelectorAll('.card')];
+const btn = document.getElementById('copiar');
+const $ = id => document.getElementById(id);
+function elegidos() { return cards.filter(c => c.querySelector('input').checked); }
+// Opciones marcadas en un desplegable múltiple (vacío = todas)
+function marcados(id) {
+  const d = $(id);
+  if (!d) return [];
+  const total = d.querySelectorAll('input[type=checkbox]').length;
+  let v = [...d.querySelectorAll('input:checked')].map(i => i.value);
+  if (v.length === total) v = [];            // todas marcadas = sin filtro
+  const faltan = total - v.length;
+  d.classList.toggle('activo', v.length > 0);
+  d.querySelector('summary').textContent =
+    !v.length ? d.dataset.todas
+    : v.length === 1 ? v[0]
+    : faltan <= 3 && v.length > faltan ? `Todas menos ${faltan}`
+    : `${v[0]} +${v.length - 1}`;
+  return v;
+}
+function filtrar() {
+  const q = $('q').value.toLowerCase().trim();
+  const g = $('grupo') ? $('grupo').value : '';
+  const d = +$('dtomin').value || 0;
+  const dmax = $('dtomax').value === '' ? 100 : +$('dtomax').value;
+  const cats = marcados('cat');
+  const marcasTop = marcados('marca');
+  // Botones de etiqueta: "on" = solo las que la tienen, "off" = sin ella
+  const con = [...document.querySelectorAll('.chip.on')].map(b => ` ${b.dataset.m} `);
+  const sin = [...document.querySelectorAll('.chip.off')].map(b => ` ${b.dataset.m} `);
+  let n = 0;
+  cards.forEach(c => {
+    const ver = (!q || c.dataset.texto.includes(q))
+      && con.every(m => c.dataset.marcas.includes(m))
+      && !sin.some(m => c.dataset.marcas.includes(m))
+      && (!cats.length || cats.includes(c.dataset.cat))
+      && (!marcasTop.length || marcasTop.includes(c.dataset.marca))
+      && (!g || c.dataset.grupo.split('|').map(s => s.trim()).includes(g))
+      && +c.dataset.dto >= d && +c.dataset.dto <= dmax;
+    c.hidden = !ver; if (ver) n++;
+  });
+  $('contador').textContent = `${n} de ${cards.length}`;
+}
+lista.addEventListener('change', e => {
+  e.target.closest('.card').classList.toggle('sel', e.target.checked);
+  const n = elegidos().length; btn.textContent = `Copiar ASIN (${n})`; btn.disabled = !n;
+});
+btn.onclick = async () => {
+  // ASIN + tabulador + descripción: en Excel cae en dos columnas (ASIN | DESCRIPCION)
+  const txt = elegidos().map(c => { const i = c.querySelector('input');
+                                     return i.value + '\t' + (i.dataset.desc || ''); }).join('\n');
+  try { await navigator.clipboard.writeText(txt); }
+  catch (e) { const t = document.createElement('textarea'); t.value = txt; document.body.append(t);
+               t.select(); document.execCommand('copy'); t.remove(); }
+  const antes = btn.textContent; btn.textContent = '¡Copiados! Pégalos en la columna ASIN (la descripción va a la de al lado)';
+  setTimeout(() => btn.textContent = antes, 2500);
+};
+// 1er clic: solo las que tienen la etiqueta · 2º: las que NO la tienen · 3º: quitar
+document.querySelectorAll('.chip').forEach(b => b.onclick = () => {
+  if (b.classList.contains('on')) { b.classList.replace('on', 'off'); b.title = 'Ocultando las que la tienen'; }
+  else if (b.classList.contains('off')) { b.classList.remove('off'); b.title = ''; }
+  else { b.classList.add('on'); b.title = 'Solo las que la tienen'; }
+  filtrar();
+});
+['q', 'cat', 'marca', 'grupo', 'dtomin', 'dtomax'].forEach(id => {
+  if (!$(id)) return;
+  $(id).addEventListener('input', filtrar);
+  $(id).addEventListener('change', filtrar);
+});
+// "Marcar todas" / "Desmarcar todas" de cada desplegable múltiple
+document.querySelectorAll('.multi [data-marcar]').forEach(b => b.onclick = () => {
+  b.closest('.multi').querySelectorAll('input[type=checkbox]').forEach(i => i.checked = b.dataset.marcar === '1');
+  filtrar();
+});
+// Cerrar los desplegables múltiples al pulsar fuera
+document.addEventListener('click', e => document.querySelectorAll('details.multi[open]')
+  .forEach(d => d.contains(e.target) || d.removeAttribute('open')));
+$('limpiar').onclick = () => {
+  $('q').value = ''; $('dtomin').value = 0; $('dtomax').value = 100;
+  $('grupo') && ($('grupo').value = '');
+  document.querySelectorAll('.multi input:checked').forEach(i => i.checked = false);
+  document.querySelectorAll('.chip').forEach(b => { b.classList.remove('on', 'off'); b.title = ''; });
+  filtrar(); window.scrollTo(0, 0);
+};
+$('orden').onchange = e => {
+  const k = e.target.value;
+  cards.sort((a, b) => k === 'dto' ? b.dataset.dto - a.dataset.dto
+    : k === 'opi' ? b.dataset.opi - a.dataset.opi
+    : k === 'vend' ? (b.dataset.vend - a.dataset.vend) || (b.dataset.opi - a.dataset.opi)
+    // mejor valorados: a igual nota, antes el que tiene más opiniones
+    : k === 'val' ? (b.dataset.val - a.dataset.val) || (b.dataset.opi - a.dataset.opi)
+    : k === 'asc' ? a.dataset.precio - b.dataset.precio : b.dataset.precio - a.dataset.precio)
+    .forEach(c => lista.append(c));
+};
+filtrar();
+</script>
+</body></html>
