@@ -102,7 +102,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <span id="contador"></span>
     <button id="copiar" disabled>Copiar ASIN (0)</button>
   </div>
-  <div class="chips"><button type="button" class="chip m-top" data-m="top">Marca top <span>1234</span></button><button type="button" class="chip m-nueva" data-m="nueva">Oferta nueva <span>929</span></button><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>681</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>632</span></button><button type="button" class="chip m-min90" data-m="min90">Mínimo 3 meses <span>150</span></button><button type="button" class="chip m-prime" data-m="prime">Oferta Prime <span>1288</span></button><button type="button" class="chip m-cupon" data-m="cupon">Cupón <span>2</span></button><button type="button" class="chip m-rep" data-m="rep">3+ días en oferta <span>100</span></button><button type="button" class="chip m-masvendido" data-m="masvendido">Top ventas <span>1</span></button></div>
+  <div class="chips"><button type="button" class="chip m-top" data-m="top">Marca top <span>1234</span></button><button type="button" class="chip m-nueva" data-m="nueva">Oferta nueva <span>929</span></button><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>681</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>632</span></button><button type="button" class="chip m-prime" data-m="prime">Oferta Prime <span>1288</span></button><button type="button" class="chip m-cupon" data-m="cupon">Cupón <span>2</span></button><button type="button" class="chip m-rep" data-m="rep">3+ días en oferta <span>100</span></button><button type="button" class="chip m-masvendido" data-m="masvendido">Top ventas <span>1</span></button></div>
 </header>
 <main id="lista">
 <article class="card" data-dto="85" data-precio="7.65" data-val="4.3" data-opi="6" data-vend="0" data-grupo="Ropa y zapatos"
@@ -19732,6 +19732,7 @@ function filtrar() {
   const g = $('grupo') ? $('grupo').value : '';
   const d = +$('dtomin').value || 0;
   const dmax = $('dtomax').value === '' ? 100 : +$('dtomax').value;
+  const vmin = $('vendmin') ? +$('vendmin').value : 0;
   const cats = marcados('cat');
   const marcasTop = marcados('marca');
   // Botones de etiqueta: "on" = solo las que la tienen, "off" = sin ella
@@ -19745,6 +19746,7 @@ function filtrar() {
       && (!cats.length || cats.includes(c.dataset.cat))
       && (!marcasTop.length || marcasTop.includes(c.dataset.marca))
       && (!g || c.dataset.grupo.split('|').map(s => s.trim()).includes(g))
+      && +c.dataset.vend >= vmin
       && +c.dataset.dto >= d && +c.dataset.dto <= dmax;
     c.hidden = !ver; if (ver) n++;
   });
@@ -19771,7 +19773,7 @@ document.querySelectorAll('.chip').forEach(b => b.onclick = () => {
   else { b.classList.add('on'); b.title = 'Solo las que la tienen'; }
   filtrar();
 });
-['q', 'cat', 'marca', 'grupo', 'dtomin', 'dtomax'].forEach(id => {
+['q', 'cat', 'marca', 'grupo', 'vendmin', 'dtomin', 'dtomax'].forEach(id => {
   if (!$(id)) return;
   $(id).addEventListener('input', filtrar);
   $(id).addEventListener('change', filtrar);
@@ -19787,6 +19789,7 @@ document.addEventListener('click', e => document.querySelectorAll('details.multi
 $('limpiar').onclick = () => {
   $('q').value = ''; $('dtomin').value = 0; $('dtomax').value = 100;
   $('grupo') && ($('grupo').value = '');
+  $('vendmin') && ($('vendmin').value = '0');
   document.querySelectorAll('.multi input:checked').forEach(i => i.checked = false);
   document.querySelectorAll('.chip').forEach(b => { b.classList.remove('on', 'off'); b.title = ''; });
   filtrar(); window.scrollTo(0, 0);
