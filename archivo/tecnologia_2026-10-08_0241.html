@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Ofertas tecnología</title>
+<style>
+:root { --bg:#f6f4f1; --card:#fff; --txt:#2b2522; --suave:#7a6f69; --borde:#e6e0da;
+         --acento:#e4913a; --rojo:#c8372d; --tag:#f1ece6;
+         --ok:#2e7d4f; --r20:#1b5e37; --hist:#a66a00; --min90:#be185d;
+         --cupon:#2f6db5; --sns:#6d28d9; --prime:#00a8e1; --top:#111111; --rep:#64748b; --nueva:#ea580c; --oferta:#c8372d; --masvendido:#b45309; --vendidos:#0f766e; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#1b1917; --card:#26231f; --txt:#eee8e2; --suave:#a89d95; --borde:#3a3530; --tag:#332e29;
+           --ok:#3f9e68; --r20:#2f8a55; --hist:#c98a1a; --min90:#db2777;
+           --cupon:#4a86cf; --sns:#8b5cf6; --prime:#00a8e1; --top:#f2f2f2; --rep:#7c8aa0; --nueva:#f97316; --oferta:#e05a4f; --masvendido:#d97706; --vendidos:#14b8a6; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--txt);
+        font:15px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif; }
+header { position:sticky; top:0; z-index:5; background:var(--bg); border-bottom:1px solid var(--borde);
+          padding:14px 20px; display:flex; flex-wrap:wrap; gap:10px 16px; align-items:center; }
+h1 { font-size:19px; margin:0; }
+.sub { color:var(--suave); font-size:13px; }
+.ctrl { margin-left:auto; display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+input, select, button { font:inherit; padding:7px 10px; border-radius:8px;
+          border:1px solid var(--borde); background:var(--card); color:var(--txt); }
+#dtomin, #dtomax { width:64px; }
+.chips { flex-basis:100%; display:flex; flex-wrap:wrap; gap:6px; }
+.chip { --c:var(--suave); background:var(--card); color:var(--txt); border:1.5px solid var(--c);
+         border-radius:999px; padding:4px 12px; font-weight:500; font-size:13px; }
+.chip span { opacity:.7; }
+.chip.on { background:var(--c); color:#fff; }
+.chip.off { border-style:dashed; color:var(--suave); text-decoration:line-through; }
+.chip.off::before { content:"Sin "; text-decoration:none; display:inline-block; margin-right:3px; }
+.multi { position:relative; }
+.multi summary { list-style:none; cursor:pointer; padding:7px 28px 7px 10px; border-radius:8px;
+                  border:1px solid var(--borde); background:var(--card); white-space:nowrap; position:relative; }
+.multi summary::-webkit-details-marker { display:none; }
+.multi summary::after { content:"▾"; position:absolute; right:10px; color:var(--suave); }
+.multi.activo summary { border-color:var(--acento); font-weight:600; }
+.multi .opciones { position:absolute; z-index:10; top:calc(100% + 4px); left:0; min-width:230px;
+                    max-height:60vh; overflow:auto; background:var(--card); border:1px solid var(--borde);
+                    border-radius:8px; padding:6px; box-shadow:0 6px 20px rgba(0,0,0,.15); }
+.multi .opciones label { display:flex; gap:8px; align-items:center; padding:5px 6px; border-radius:6px;
+                          cursor:pointer; white-space:nowrap; }
+.multi .opciones label:hover { background:var(--tag); }
+.multi .opciones span { color:var(--suave); }
+.multi .acciones { display:flex; gap:6px; padding:2px 2px 8px; margin-bottom:4px;
+                    border-bottom:1px solid var(--borde); position:sticky; top:-6px; background:var(--card); }
+.multi .acciones button { flex:1; padding:5px 8px; font-size:13px; }
+button { background:var(--acento); border-color:var(--acento); color:#fff; font-weight:600; cursor:pointer; }
+button:disabled { opacity:.5; cursor:default; }
+button.sec { background:var(--card); color:var(--txt); border-color:var(--borde); font-weight:500; }
+#contador { color:var(--suave); font-size:13px; }
+main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); }
+.card { background:var(--card); border:1px solid var(--borde); border-radius:12px; overflow:hidden;
+         display:flex; flex-direction:column; position:relative;
+         content-visibility:auto; contain-intrinsic-size:auto 460px; }
+.card[hidden] { display:none; }
+.card.sel { outline:3px solid var(--acento); }
+.pick { position:absolute; top:8px; right:8px; z-index:2; background:var(--card); border-radius:6px;
+         padding:3px 7px; font-size:13px; cursor:pointer; border:1px solid var(--borde); }
+.foto { display:block; background:#fff; aspect-ratio:1; position:relative; }
+.foto img { width:100%; height:100%; object-fit:contain; padding:14px; }
+.dto { position:absolute; top:8px; left:8px; background:var(--rojo); color:#fff; font-weight:700;
+        padding:3px 8px; border-radius:6px; }
+.info { padding:12px; display:flex; flex-direction:column; gap:8px; flex:1; }
+.titulo { color:var(--txt); text-decoration:none; display:-webkit-box; -webkit-line-clamp:3;
+           -webkit-box-orient:vertical; overflow:hidden; }
+.titulo:hover { text-decoration:underline; }
+.precio b { font-size:20px; } .precio s { color:var(--suave); margin-left:6px; }
+.tags { display:flex; flex-wrap:wrap; gap:5px; }
+.tag { background:var(--tag); border-radius:5px; padding:2px 7px; font-size:12px; }
+.resenas { font-size:13px; color:var(--suave); margin:-2px 0 6px; }
+.resenas .estrellas { color:#f5a623; letter-spacing:1px; }
+.resenas .vendidos { white-space:nowrap; }
+.tag.talla { background:transparent; border:1px solid var(--suave); font-weight:600; }
+.tag.top, .chip.m-top { --c:var(--top); } .tag.top { background:var(--top); color:#fff; } .tag.nueva, .chip.m-nueva { --c:var(--nueva); } .tag.nueva { background:var(--nueva); color:#fff; } .tag.ok, .chip.m-ok { --c:var(--ok); } .tag.ok { background:var(--ok); color:#fff; } .tag.hist, .chip.m-hist { --c:var(--hist); } .tag.hist { background:var(--hist); color:#fff; } .tag.min90, .chip.m-min90 { --c:var(--min90); } .tag.min90 { background:var(--min90); color:#fff; } .tag.prime, .chip.m-prime { --c:var(--prime); } .tag.prime { background:var(--prime); color:#fff; } .tag.cupon, .chip.m-cupon { --c:var(--cupon); } .tag.cupon { background:var(--cupon); color:#fff; } .tag.sns, .chip.m-sns { --c:var(--sns); } .tag.sns { background:var(--sns); color:#fff; } .tag.rep, .chip.m-rep { --c:var(--rep); } .tag.rep { background:var(--rep); color:#fff; } .tag.oferta, .chip.m-oferta { --c:var(--oferta); } .tag.oferta { background:var(--oferta); color:#fff; } .tag.masvendido, .chip.m-masvendido { --c:var(--masvendido); } .tag.masvendido { background:var(--masvendido); color:#fff; } .tag.vendidos, .chip.m-vendidos { --c:var(--vendidos); } .tag.vendidos { background:var(--vendidos); color:#fff; } 
+.tag.prime, .chip.m-prime.on { color:#062a3a; }  /* azul Prime claro: texto oscuro para que se lea */
+.tag.top, .chip.m-top.on { color:var(--bg); font-weight:600; }  /* marca top: negro (blanco en modo oscuro) */
+.pie { margin-top:auto; color:var(--suave); font-size:12px; }
+@media (max-width:600px) { header { padding:12px 16px; } main { padding:16px; gap:12px;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); } .ctrl { margin-left:0; } }
+</style></head><body>
+<header>
+  <div><h1>Ofertas tecnología</h1>
+  <div class="sub">15 ofertas · 08/10/2026 02:41</div></div>
+  <div class="ctrl">
+    <input type="search" id="q" placeholder="Filtrar…">
+    <details class="multi" id="cat" data-todas="Todas las categorías"><summary>Todas las categorías</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="💻 Portátil"> 💻 Portátil <span>(7)</span></label><label><input type="checkbox" value="📲 Tablet"> 📲 Tablet <span>(3)</span></label><label><input type="checkbox" value="📺 TV"> 📺 TV <span>(1)</span></label><label><input type="checkbox" value="📱 Móvil"> 📱 Móvil <span>(3)</span></label><label><input type="checkbox" value="⌚ Smartwatch"> ⌚ Smartwatch <span>(1)</span></label></div></details>
+    
+    <select id="grupo"><option value="">Todas las búsquedas</option><option value="Informatica">Informatica</option><option value="Moviles">Moviles</option><option value="Ofertas Prime">Ofertas Prime</option><option value="TV">TV</option></select>
+    <label>Dto. <input type="number" id="dtomin" min="0" max="100" step="5" value="0" title="mínimo">
+      a <input type="number" id="dtomax" min="0" max="100" step="5" value="100" title="máximo"> %</label>
+    <select id="orden">
+      <option value="dto">Más descuento</option>
+      <option value="asc">Precio más bajo</option>
+      <option value="desc">Precio más alto</option>
+      <option value="vend">Más vendidos</option>
+      <option value="opi">Más opiniones</option>
+      <option value="val">Mejor valorados</option>
+    </select>
+    <button id="limpiar" class="sec" type="button">Quitar filtros</button>
+    <span id="contador"></span>
+    <button id="copiar" disabled>Copiar ASIN (0)</button>
+  </div>
+  <div class="chips"><button type="button" class="chip m-nueva" data-m="nueva">Oferta nueva <span>9</span></button><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>10</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>2</span></button><button type="button" class="chip m-cupon" data-m="cupon">Cupón <span>1</span></button></div>
+</header>
+<main id="lista">
+<article class="card" data-dto="69" data-precio="279.99" data-val="3.8" data-opi="5" data-vend="0" data-grupo="Informatica"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" nueva ok "
+         data-texto="ordenador portátil 14 pulgadas celeron n5095 upto 2,9 ghz portatiles 8gb ram 256gb ssd tf 1tb lpddr4 win11 5g wifi 1920*1080 fhd mini hdml laptop película protectora español - negro cuerpo metálico-61 b0fy1w2zk1 informatica">
+  <label class="pick"><input type="checkbox" value="B0FY1W2ZK1" data-desc="Ordenador Portátil 14 Pulgadas Celeron… · 279,99 € · -69%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FY1W2ZK1?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-69%</span>
+    <img src="https://m.media-amazon.com/images/I/71Eh1rSfoBL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FY1W2ZK1?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Ordenador Portátil 14 Pulgadas Celeron N5095 Upto 2,9 GHz Portatiles 8GB RAM 256GB SSD TF 1TB LPDDR4 Win11 5G WiFi 1920*1080 FHD mini HDMl Laptop Película Protectora Español - negro Cuerpo Metálico-61</a>
+    <div class="precio"><b>279,99 €</b> <s>899,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 3,8 (5)</div>
+    <div class="tags"><span class="tag ok">Bajada real: -69% vs mín. 30 días (899,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Informatica · <code>B0FY1W2ZK1</code></div>
+  </div>
+</article>
+<article class="card" data-dto="60" data-precio="239.99" data-val="4.0" data-opi="121" data-vend="0" data-grupo="Informatica"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" min90 nueva ok "
+         data-texto="ordenador portatil celeron n4020 up to 2.8ghz, ordenadores portatiles 14 pulgadas win 11 con 5g wifi 6+256gb ssd expansión 1tb, bt 4.2 1920*1080 fhd mini puerto multimedia portatiles buenos-rojo b0d7htn2sm informatica">
+  <label class="pick"><input type="checkbox" value="B0D7HTN2SM" data-desc="Ordenador Portatil Celeron N4020 Up to… · 239,99 € · -60%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0D7HTN2SM?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-60%</span>
+    <img src="https://m.media-amazon.com/images/I/71vVkYDmV+L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0D7HTN2SM?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Ordenador Portatil Celeron N4020 Up to 2.8Ghz, Ordenadores Portatiles 14 Pulgadas Win 11 con 5G WiFi 6+256GB SSD Expansión 1TB, BT 4.2 1920*1080 FHD Mini Puerto Multimedia Portatiles Buenos-Rojo</a>
+    <div class="precio"><b>239,99 €</b> <s>599,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,0 (121)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ok">Bajada real: -60% vs mín. 30 días (599,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Informatica · <code>B0D7HTN2SM</code></div>
+  </div>
+</article>
+<article class="card" data-dto="58" data-precio="249.99" data-val="4.4" data-opi="156" data-vend="0" data-grupo="Informatica"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" nueva ok "
+         data-texto="bvate 2026 ordenador portátil 14&quot; win11 8gb 256gb ssd - gris | soporte 1tb ssd expansión portátil 5g wifi bt 4.2 usb hdmi 1920x1080 fhd con ratón inalámbrico y teclado español membrana b0h11psj3l informatica">
+  <label class="pick"><input type="checkbox" value="B0H11PSJ3L" data-desc="bvate 2026 Ordenador Portátil 14&quot; Win11… · 249,99 € · -58%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H11PSJ3L?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-58%</span>
+    <img src="https://m.media-amazon.com/images/I/7135B4w3sIL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H11PSJ3L?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">bvate 2026 Ordenador Portátil 14&quot; Win11 8GB 256GB SSD - Gris | Soporte 1TB SSD Expansión Portátil 5G WiFi BT 4.2 USB HDMI 1920x1080 FHD con Ratón Inalámbrico y Teclado Español Membrana</a>
+    <div class="precio"><b>249,99 €</b> <s>599,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (156)</div>
+    <div class="tags"><span class="tag ok">Bajada real: -58% vs mín. 30 días (599,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Informatica · <code>B0H11PSJ3L</code></div>
+  </div>
+</article>
+<article class="card" data-dto="41" data-precio="99.99" data-val="4.4" data-opi="22" data-vend="0" data-grupo="Informatica"
+         data-cat="📲 Tablet" data-marca="" data-marcas=" nueva ok "
+         data-texto="gemini ai tablet android os tablets 10 pulgadas, 64gb+2tb tf, 5g wi-fi, octa-core 2.0ghz, widevine l1, 8+5mp, gms, 6000mah, facial id,gps,bt5.0, 2 en 1 tablet con teclado,ratón y funda - azul b0h5qpyt9w informatica">
+  <label class="pick"><input type="checkbox" value="B0H5QPYT9W" data-desc="Gemini AI Tablet Android OS Tablets 10… · 99,99 € · -41%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H5QPYT9W?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-41%</span>
+    <img src="https://m.media-amazon.com/images/I/819u89Ix-iL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H5QPYT9W?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Gemini AI Tablet Android OS Tablets 10 Pulgadas, 64GB+2TB TF, 5G Wi-Fi, Octa-Core 2.0GHz, Widevine L1, 8+5MP, GMS, 6000mAh, Facial ID,GPS,BT5.0, 2 en 1 Tablet con Teclado,Ratón y Funda - Azul</a>
+    <div class="precio"><b>99,99 €</b> <s>169,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (22)</div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -41% vs mín. 30 días (169,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Informatica · <code>B0H5QPYT9W</code></div>
+  </div>
+</article>
+<article class="card" data-dto="33" data-precio="1999.0" data-val="3.2" data-opi="2" data-vend="0" data-grupo="Informatica"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" ok "
+         data-texto="samsung galaxy book4 ultra, ordenador portátil ultrafino 16&quot; hdr, táctil, intel core ultra 7-155h, 16gb ram, 1tb ssd, nvidia geforce rtx 4050 (gddr6), windows 11 home, gris, teclado qwerty español b0ct89p1x1 informatica">
+  <label class="pick"><input type="checkbox" value="B0CT89P1X1" data-desc="Samsung Galaxy Book4 Ultra, Ordenador P… · 1.999,00 € · -33%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CT89P1X1?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-33%</span>
+    <img src="https://m.media-amazon.com/images/I/51du9dJdKQL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CT89P1X1?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Samsung Galaxy Book4 Ultra, Ordenador Portátil Ultrafino 16&quot; HDR, Táctil, Intel Core Ultra 7-155H, 16GB RAM, 1TB SSD, NVIDIA GeForce RTX 4050 (GDDR6), Windows 11 Home, Gris, Teclado QWERTY Español</a>
+    <div class="precio"><b>1.999,00 €</b> <s>2.999,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★☆☆</span> 3,2 (2)</div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -20% vs mín. 30 días (2499,00 €)</span></div>
+    <div class="pie">Informatica · <code>B0CT89P1X1</code></div>
+  </div>
+</article>
+<article class="card" data-dto="29" data-precio="389.49" data-val="5.0" data-opi="12" data-vend="0" data-grupo="Informatica"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" cupon nueva ok "
+         data-texto="mituntun ordenador portátil 15.6” ram 16gb ssd 256gb 4425y win11 pro | soporta tf card 1tb 1920x1080 fhd 2 cores portatil con wifi5, bt4.2, usb3.0x2, hdmi, type-c b0hgx95jzg informatica">
+  <label class="pick"><input type="checkbox" value="B0HGX95JZG" data-desc="MITUNTUN Ordenador Portátil 15.6” RAM 1… · 389,49 € · -29%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HGX95JZG?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-29%</span>
+    <img src="https://m.media-amazon.com/images/I/71rm+J5bSlL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HGX95JZG?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">MITUNTUN Ordenador Portátil 15.6” RAM 16GB SSD 256GB 4425Y Win11 Pro | Soporta TF Card 1TB 1920x1080 FHD 2 Cores Portatil con WIFI5, BT4.2, USB3.0x2, HDMI, Type-C</a>
+    <div class="precio"><b>389,49 €</b> <s>409,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 5,0 (12)</div>
+    <div class="tags"><span class="tag cupon">Con cupón 289,49 €</span><span class="tag ok">Bajada real: -29% vs mín. 30 días (409,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Informatica · <code>B0HGX95JZG</code></div>
+  </div>
+</article>
+<article class="card" data-dto="26" data-precio="419.0" data-val="4.2" data-opi="2352" data-vend="0" data-grupo="TV"
+         data-cat="📺 TV" data-marca="" data-marcas=" hist nueva "
+         data-texto="xiaomi tv pro 55 pulgadas 2026, 4k uhd qled smart fire tv, l55mb-fpveu | alexa voice control, hdr10+, game boost mode 120hz, memc, compatible with apple airplay b0h448wz71 tv">
+  <label class="pick"><input type="checkbox" value="B0H448WZ71" data-desc="XIAOMI TV Pro 55 Pulgadas 2026, 4K UHD… · 419,00 € · -26%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H448WZ71?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-26%</span>
+    <img src="https://m.media-amazon.com/images/I/71YTA-7WqVL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H448WZ71?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">XIAOMI TV Pro 55 Pulgadas 2026, 4K UHD QLED Smart Fire TV, L55MB-FPVEU | Alexa Voice Control, HDR10+, Game Boost Mode 120Hz, MEMC, Compatible with Apple AirPlay</a>
+    <div class="precio"><b>419,00 €</b> <s>569,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (2.352)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">TV · <code>B0H448WZ71</code></div>
+  </div>
+</article>
+<article class="card" data-dto="20" data-precio="199.0" data-val="3.2" data-opi="8" data-vend="0" data-grupo="Informatica"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" ok "
+         data-texto="acer chromebook 315, portátil 15.6&quot; fullhd, kompanio 540, 4gb ram, 64gb | mediatek kompanio 540, chromeos, teclado qwerty español, ligero y rápido para estudio y trabajo b0g5rrcm96 informatica">
+  <label class="pick"><input type="checkbox" value="B0G5RRCM96" data-desc="Acer Chromebook 315, Portátil 15.6&quot; Ful… · 199,00 € · -20%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0G5RRCM96?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-20%</span>
+    <img src="https://m.media-amazon.com/images/I/71m6t5j5fKL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0G5RRCM96?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Acer Chromebook 315, Portátil 15.6&quot; FullHD, Kompanio 540, 4GB RAM, 64GB | MediaTek Kompanio 540, ChromeOS, Teclado QWERTY Español, Ligero y Rápido para Estudio y Trabajo</a>
+    <div class="precio"><b>199,00 €</b> <s>249,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★☆☆</span> 3,2 (8)</div>
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -13% vs mín. 30 días (229,00 €)</span></div>
+    <div class="pie">Informatica · <code>B0G5RRCM96</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-precio="229.0" data-val="0" data-opi="0" data-vend="0" data-grupo="Moviles | Ofertas Prime"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" ok "
+         data-texto="samsung galaxy a18 128gb azul claro | diseño fino, circle to search, ram plus, cámara triple, ip64, garantía del fabricante 3 años + 1 año extra (versión española) b0hdtpf2kd moviles · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0HDTPF2KD" data-desc="Samsung Galaxy A18 128GB Azul Claro | D… · 229,00 € · -15%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HDTPF2KD?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/61DTcmZB5uL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HDTPF2KD?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Samsung Galaxy A18 128GB Azul Claro | Diseño fino, Circle to Search, RAM Plus, Cámara triple, IP64, Garantía del Fabricante 3 Años + 1 Año Extra (Versión Española)</a>
+    <div class="precio"><b>229,00 €</b> <s>269,00 €</s></div>
+    
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -15% vs mín. 30 días (269,00 €)</span></div>
+    <div class="pie">Moviles · Ofertas Prime · <code>B0HDTPF2KD</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-precio="339.0" data-val="0" data-opi="0" data-vend="0" data-grupo="Informatica"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" ok "
+         data-texto="acer chromebook 314, portátil 14&quot; fullhd, intel n4500, 8gb ram, e-mmc 128gb | intel celeron n4500, intel uhd graphics, chromeos, negro, teclado qwerty español, ligero y rápido para estudio y trabajo b089k4rn9j informatica">
+  <label class="pick"><input type="checkbox" value="B089K4RN9J" data-desc="Acer Chromebook 314, Portátil 14&quot; FullH… · 339,00 € · -15%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B089K4RN9J?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/619-7ZRps3L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B089K4RN9J?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Acer Chromebook 314, Portátil 14&quot; FullHD, Intel N4500, 8GB RAM, e-MMC 128GB | Intel Celeron N4500, Intel UHD Graphics, ChromeOS, Negro, Teclado QWERTY Español, Ligero y Rápido para Estudio y Trabajo</a>
+    <div class="precio"><b>339,00 €</b> <s>399,00 €</s></div>
+    
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -15% vs mín. 30 días (399,00 €)</span></div>
+    <div class="pie">Informatica · <code>B089K4RN9J</code></div>
+  </div>
+</article>
+<article class="card" data-dto="13" data-precio="208.99" data-val="4.4" data-opi="5" data-vend="0" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" nueva "
+         data-texto="oukitel g6 móvil resistente 10600mah 16gb+128gb smartphone android 16 verde | 6.52&quot; movil rugerizado, cámara 64mp+8mp, nfc, 4g dual sim, face id, huella dactilar, gps, ip68 ip69k mil-std-810h b0hb3gbx5m moviles">
+  <label class="pick"><input type="checkbox" value="B0HB3GBX5M" data-desc="OUKITEL G6 Móvil Resistente 10600mAh 16… · 208,99 € · -13%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HB3GBX5M?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-13%</span>
+    <img src="https://m.media-amazon.com/images/I/81zsi0bIG4L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HB3GBX5M?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">OUKITEL G6 Móvil Resistente 10600mAh 16GB+128GB Smartphone Android 16 Verde | 6.52&quot; Movil Rugerizado, Cámara 64MP+8MP, NFC, 4G Dual SIM, Face ID, Huella Dactilar, GPS, IP68 IP69K MIL-STD-810H</a>
+    <div class="precio"><b>208,99 €</b> <s>239,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (5)</div>
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (219,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Moviles · <code>B0HB3GBX5M</code></div>
+  </div>
+</article>
+<article class="card" data-dto="11" data-precio="132.99" data-val="4.2" data-opi="6" data-vend="0" data-grupo="Informatica"
+         data-cat="📲 Tablet" data-marca="" data-marcas=" nueva "
+         data-texto="tablet 11 pulgadas gemini ai, 36gb ram + 512gb rom/1tb tf, 4g lte dual sim+5g wifi, widevine l1, 2ghz octa-core, 9580mah/gps/13mp/gms/otg, android tablet con teclado+lápiz+funda+ratón+auriculares b0fy4ymblg informatica">
+  <label class="pick"><input type="checkbox" value="B0FY4YMBLG" data-desc="Tablet 11 Pulgadas Gemini AI, 36GB RAM… · 132,99 € · -11%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FY4YMBLG?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-11%</span>
+    <img src="https://m.media-amazon.com/images/I/81e4YNugf5L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FY4YMBLG?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Tablet 11 Pulgadas Gemini AI, 36GB RAM + 512GB ROM/1TB TF, 4G LTE Dual SIM+5G WiFi, Widevine L1, 2GHz Octa-Core, 9580mAh/GPS/13MP/GMS/OTG, Android Tablet con Teclado+Lápiz+Funda+Ratón+Auriculares</a>
+    <div class="precio"><b>132,99 €</b> <s>149,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (6)</div>
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (139,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Informatica · <code>B0FY4YMBLG</code></div>
+  </div>
+</article>
+<article class="card" data-dto="11" data-precio="151.99" data-val="3.7" data-opi="30" data-vend="0" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" min90 "
+         data-texto="doogeesmart note56xpro telefono movil octa core andriod 16, batería 6150mah, 32gb+128gb/2tb, 6.56&quot; hd+ 90hz móvil,13mp+8mp,nfc/dual sim 4g/gps/huella dactilar/face id/widevine l1/3.5mm jack smartphone b0gy7rv7hm moviles">
+  <label class="pick"><input type="checkbox" value="B0GY7RV7HM" data-desc="DOOGEESmart NOTE56XPRO Telefono Movil O… · 151,99 € · -11%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GY7RV7HM?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-11%</span>
+    <img src="https://m.media-amazon.com/images/I/71jvN6TeRNL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GY7RV7HM?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">DOOGEESmart NOTE56XPRO Telefono Movil Octa Core Andriod 16, Batería 6150mAh, 32GB+128GB/2TB, 6.56&quot; HD+ 90Hz Móvil,13MP+8MP,NFC/Dual SIM 4G/GPS/Huella Dactilar/Face ID/Widevine L1/3.5mm Jack Smartphone</a>
+    <div class="precio"><b>151,99 €</b> <s>169,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 3,7 (30)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (159,99 €)</span></div>
+    <div class="pie">Moviles · <code>B0GY7RV7HM</code></div>
+  </div>
+</article>
+<article class="card" data-dto="11" data-precio="399.0" data-val="0" data-opi="0" data-vend="0" data-grupo="Moviles"
+         data-cat="⌚ Smartwatch" data-marca="" data-marcas=" ok "
+         data-texto="huawei watch 6 42 mm smartwatch, comodidad ultraligera, esim, nfc, dorado | monitorización de salud con x-tap, conexión sin teléfono, modos deportivos avanzados, 3000nits, correa easycros, ios android b0hcz26r3q moviles">
+  <label class="pick"><input type="checkbox" value="B0HCZ26R3Q" data-desc="HUAWEI Watch 6 42 mm Smartwatch, Comodi… · 399,00 € · -11%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HCZ26R3Q?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-11%</span>
+    <img src="https://m.media-amazon.com/images/I/61Lc846FpQL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HCZ26R3Q?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">HUAWEI Watch 6 42 mm Smartwatch, Comodidad Ultraligera, eSIM, NFC, Dorado | Monitorización de Salud con X-TAP, Conexión sin Teléfono, Modos Deportivos Avanzados, 3000Nits, Correa EasyCros, iOS Android</a>
+    <div class="precio"><b>399,00 €</b> <s>449,00 €</s></div>
+    
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -11% vs mín. 30 días (449,00 €)</span></div>
+    <div class="pie">Moviles · <code>B0HCZ26R3Q</code></div>
+  </div>
+</article>
+<article class="card" data-dto="10" data-precio="90.24" data-val="4.2" data-opi="24" data-vend="0" data-grupo="Informatica"
+         data-cat="📲 Tablet" data-marca="" data-marcas=" hist nueva "
+         data-texto="tablet android 15 tablets 10 pulgadas con gemini ai, 64gb+2tb tf, 5g wi-fi, octa-core 2.0ghz, widevine l1, 8+5mp, gms, 6000mah, facial id,gps,bt5.0, 2 en 1 tablet con teclado,ratón y funda - oro rosa b0gxtzr7nr informatica">
+  <label class="pick"><input type="checkbox" value="B0GXTZR7NR" data-desc="Tablet Android 15 Tablets 10 Pulgadas c… · 90,24 € · -10%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GXTZR7NR?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/71bwyEAzA+L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GXTZR7NR?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Tablet Android 15 Tablets 10 Pulgadas con Gemini AI, 64GB+2TB TF, 5G Wi-Fi, Octa-Core 2.0GHz, Widevine L1, 8+5MP, GMS, 6000mAh, Facial ID,GPS,BT5.0, 2 en 1 Tablet con Teclado,Ratón y Funda - Oro Rosa</a>
+    <div class="precio"><b>90,24 €</b> <s>99,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (24)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-10% vs mín. 30 días (99,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Informatica · <code>B0GXTZR7NR</code></div>
+  </div>
+</article></main>
+<script>
+const lista = document.getElementById('lista');
+const cards = [...lista.querySelectorAll('.card')];
+const btn = document.getElementById('copiar');
+const $ = id => document.getElementById(id);
+function elegidos() { return cards.filter(c => c.querySelector('input').checked); }
+// Opciones marcadas en un desplegable múltiple (vacío = todas)
+function marcados(id) {
+  const d = $(id);
+  if (!d) return [];
+  const total = d.querySelectorAll('input[type=checkbox]').length;
+  let v = [...d.querySelectorAll('input:checked')].map(i => i.value);
+  if (v.length === total) v = [];            // todas marcadas = sin filtro
+  const faltan = total - v.length;
+  d.classList.toggle('activo', v.length > 0);
+  d.querySelector('summary').textContent =
+    !v.length ? d.dataset.todas
+    : v.length === 1 ? v[0]
+    : faltan <= 3 && v.length > faltan ? `Todas menos ${faltan}`
+    : `${v[0]} +${v.length - 1}`;
+  return v;
+}
+function filtrar() {
+  const q = $('q').value.toLowerCase().trim();
+  const g = $('grupo') ? $('grupo').value : '';
+  const d = +$('dtomin').value || 0;
+  const dmax = $('dtomax').value === '' ? 100 : +$('dtomax').value;
+  const cats = marcados('cat');
+  const marcasTop = marcados('marca');
+  // Botones de etiqueta: "on" = solo las que la tienen, "off" = sin ella
+  const con = [...document.querySelectorAll('.chip.on')].map(b => ` ${b.dataset.m} `);
+  const sin = [...document.querySelectorAll('.chip.off')].map(b => ` ${b.dataset.m} `);
+  let n = 0;
+  cards.forEach(c => {
+    const ver = (!q || c.dataset.texto.includes(q))
+      && con.every(m => c.dataset.marcas.includes(m))
+      && !sin.some(m => c.dataset.marcas.includes(m))
+      && (!cats.length || cats.includes(c.dataset.cat))
+      && (!marcasTop.length || marcasTop.includes(c.dataset.marca))
+      && (!g || c.dataset.grupo.split('|').map(s => s.trim()).includes(g))
+      && +c.dataset.dto >= d && +c.dataset.dto <= dmax;
+    c.hidden = !ver; if (ver) n++;
+  });
+  $('contador').textContent = `${n} de ${cards.length}`;
+}
+lista.addEventListener('change', e => {
+  e.target.closest('.card').classList.toggle('sel', e.target.checked);
+  const n = elegidos().length; btn.textContent = `Copiar ASIN (${n})`; btn.disabled = !n;
+});
+btn.onclick = async () => {
+  // ASIN + tabulador + descripción: en Excel cae en dos columnas (ASIN | DESCRIPCION)
+  const txt = elegidos().map(c => { const i = c.querySelector('input');
+                                     return i.value + '\t' + (i.dataset.desc || ''); }).join('\n');
+  try { await navigator.clipboard.writeText(txt); }
+  catch (e) { const t = document.createElement('textarea'); t.value = txt; document.body.append(t);
+               t.select(); document.execCommand('copy'); t.remove(); }
+  const antes = btn.textContent; btn.textContent = '¡Copiados! Pégalos en la columna ASIN (la descripción va a la de al lado)';
+  setTimeout(() => btn.textContent = antes, 2500);
+};
+// 1er clic: solo las que tienen la etiqueta · 2º: las que NO la tienen · 3º: quitar
+document.querySelectorAll('.chip').forEach(b => b.onclick = () => {
+  if (b.classList.contains('on')) { b.classList.replace('on', 'off'); b.title = 'Ocultando las que la tienen'; }
+  else if (b.classList.contains('off')) { b.classList.remove('off'); b.title = ''; }
+  else { b.classList.add('on'); b.title = 'Solo las que la tienen'; }
+  filtrar();
+});
+['q', 'cat', 'marca', 'grupo', 'dtomin', 'dtomax'].forEach(id => {
+  if (!$(id)) return;
+  $(id).addEventListener('input', filtrar);
+  $(id).addEventListener('change', filtrar);
+});
+// "Marcar todas" / "Desmarcar todas" de cada desplegable múltiple
+document.querySelectorAll('.multi [data-marcar]').forEach(b => b.onclick = () => {
+  b.closest('.multi').querySelectorAll('input[type=checkbox]').forEach(i => i.checked = b.dataset.marcar === '1');
+  filtrar();
+});
+// Cerrar los desplegables múltiples al pulsar fuera
+document.addEventListener('click', e => document.querySelectorAll('details.multi[open]')
+  .forEach(d => d.contains(e.target) || d.removeAttribute('open')));
+$('limpiar').onclick = () => {
+  $('q').value = ''; $('dtomin').value = 0; $('dtomax').value = 100;
+  $('grupo') && ($('grupo').value = '');
+  document.querySelectorAll('.multi input:checked').forEach(i => i.checked = false);
+  document.querySelectorAll('.chip').forEach(b => { b.classList.remove('on', 'off'); b.title = ''; });
+  filtrar(); window.scrollTo(0, 0);
+};
+$('orden').onchange = e => {
+  const k = e.target.value;
+  cards.sort((a, b) => k === 'dto' ? b.dataset.dto - a.dataset.dto
+    : k === 'opi' ? b.dataset.opi - a.dataset.opi
+    : k === 'vend' ? (b.dataset.vend - a.dataset.vend) || (b.dataset.opi - a.dataset.opi)
+    // mejor valorados: a igual nota, antes el que tiene más opiniones
+    : k === 'val' ? (b.dataset.val - a.dataset.val) || (b.dataset.opi - a.dataset.opi)
+    : k === 'asc' ? a.dataset.precio - b.dataset.precio : b.dataset.precio - a.dataset.precio)
+    .forEach(c => lista.append(c));
+};
+filtrar();
+</script>
+</body></html>
