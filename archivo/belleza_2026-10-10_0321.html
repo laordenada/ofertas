@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Ofertas belleza: maquillaje, perfumes y cuidado</title>
+<style>
+:root { --bg:#f6f4f1; --card:#fff; --txt:#2b2522; --suave:#7a6f69; --borde:#e6e0da;
+         --acento:#e4913a; --rojo:#c8372d; --tag:#f1ece6;
+         --ok:#2e7d4f; --r20:#1b5e37; --hist:#a66a00; --min90:#be185d;
+         --cupon:#2f6db5; --sns:#6d28d9; --prime:#00a8e1; --top:#111111; --rep:#64748b; --nueva:#ea580c; --oferta:#c8372d; --masvendido:#b45309; --vendidos:#0f766e; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#1b1917; --card:#26231f; --txt:#eee8e2; --suave:#a89d95; --borde:#3a3530; --tag:#332e29;
+           --ok:#3f9e68; --r20:#2f8a55; --hist:#c98a1a; --min90:#db2777;
+           --cupon:#4a86cf; --sns:#8b5cf6; --prime:#00a8e1; --top:#f2f2f2; --rep:#7c8aa0; --nueva:#f97316; --oferta:#e05a4f; --masvendido:#d97706; --vendidos:#14b8a6; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--txt);
+        font:15px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif; }
+header { position:sticky; top:0; z-index:5; background:var(--bg); border-bottom:1px solid var(--borde);
+          padding:14px 20px; display:flex; flex-wrap:wrap; gap:10px 16px; align-items:center; }
+h1 { font-size:19px; margin:0; }
+.sub { color:var(--suave); font-size:13px; }
+.ctrl { margin-left:auto; display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+input, select, button { font:inherit; padding:7px 10px; border-radius:8px;
+          border:1px solid var(--borde); background:var(--card); color:var(--txt); }
+#dtomin, #dtomax { width:64px; }
+.chips { flex-basis:100%; display:flex; flex-wrap:wrap; gap:6px; }
+.chip { --c:var(--suave); background:var(--card); color:var(--txt); border:1.5px solid var(--c);
+         border-radius:999px; padding:4px 12px; font-weight:500; font-size:13px; }
+.chip span { opacity:.7; }
+.chip.on { background:var(--c); color:#fff; }
+.chip.off { border-style:dashed; color:var(--suave); text-decoration:line-through; }
+.chip.off::before { content:"Sin "; text-decoration:none; display:inline-block; margin-right:3px; }
+.multi { position:relative; }
+.multi summary { list-style:none; cursor:pointer; padding:7px 28px 7px 10px; border-radius:8px;
+                  border:1px solid var(--borde); background:var(--card); white-space:nowrap; position:relative; }
+.multi summary::-webkit-details-marker { display:none; }
+.multi summary::after { content:"▾"; position:absolute; right:10px; color:var(--suave); }
+.multi.activo summary { border-color:var(--acento); font-weight:600; }
+.multi .opciones { position:absolute; z-index:10; top:calc(100% + 4px); left:0; min-width:230px;
+                    max-height:60vh; overflow:auto; background:var(--card); border:1px solid var(--borde);
+                    border-radius:8px; padding:6px; box-shadow:0 6px 20px rgba(0,0,0,.15); }
+.multi .opciones label { display:flex; gap:8px; align-items:center; padding:5px 6px; border-radius:6px;
+                          cursor:pointer; white-space:nowrap; }
+.multi .opciones label:hover { background:var(--tag); }
+.multi .opciones span { color:var(--suave); }
+.multi .acciones { display:flex; gap:6px; padding:2px 2px 8px; margin-bottom:4px;
+                    border-bottom:1px solid var(--borde); position:sticky; top:-6px; background:var(--card); }
+.multi .acciones button { flex:1; padding:5px 8px; font-size:13px; }
+button { background:var(--acento); border-color:var(--acento); color:#fff; font-weight:600; cursor:pointer; }
+button:disabled { opacity:.5; cursor:default; }
+button.sec { background:var(--card); color:var(--txt); border-color:var(--borde); font-weight:500; }
+#contador { color:var(--suave); font-size:13px; }
+main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); }
+.card { background:var(--card); border:1px solid var(--borde); border-radius:12px; overflow:hidden;
+         display:flex; flex-direction:column; position:relative;
+         content-visibility:auto; contain-intrinsic-size:auto 460px; }
+.card[hidden] { display:none; }
+.card.sel { outline:3px solid var(--acento); }
+.pick { position:absolute; top:8px; right:8px; z-index:2; background:var(--card); border-radius:6px;
+         padding:3px 7px; font-size:13px; cursor:pointer; border:1px solid var(--borde); }
+.foto { display:block; background:#fff; aspect-ratio:1; position:relative; }
+.foto img { width:100%; height:100%; object-fit:contain; padding:14px; }
+.dto { position:absolute; top:8px; left:8px; background:var(--rojo); color:#fff; font-weight:700;
+        padding:3px 8px; border-radius:6px; }
+.info { padding:12px; display:flex; flex-direction:column; gap:8px; flex:1; }
+.titulo { color:var(--txt); text-decoration:none; display:-webkit-box; -webkit-line-clamp:3;
+           -webkit-box-orient:vertical; overflow:hidden; }
+.titulo:hover { text-decoration:underline; }
+.precio b { font-size:20px; } .precio s { color:var(--suave); margin-left:6px; }
+.tags { display:flex; flex-wrap:wrap; gap:5px; }
+.tag { background:var(--tag); border-radius:5px; padding:2px 7px; font-size:12px; }
+.resenas { font-size:13px; color:var(--suave); margin:-2px 0 6px; }
+.resenas .estrellas { color:#f5a623; letter-spacing:1px; }
+.resenas .vendidos { white-space:nowrap; }
+.tag.talla { background:transparent; border:1px solid var(--suave); font-weight:600; }
+.tag.top, .chip.m-top { --c:var(--top); } .tag.top { background:var(--top); color:#fff; } .tag.nueva, .chip.m-nueva { --c:var(--nueva); } .tag.nueva { background:var(--nueva); color:#fff; } .tag.ok, .chip.m-ok { --c:var(--ok); } .tag.ok { background:var(--ok); color:#fff; } .tag.hist, .chip.m-hist { --c:var(--hist); } .tag.hist { background:var(--hist); color:#fff; } .tag.min90, .chip.m-min90 { --c:var(--min90); } .tag.min90 { background:var(--min90); color:#fff; } .tag.prime, .chip.m-prime { --c:var(--prime); } .tag.prime { background:var(--prime); color:#fff; } .tag.cupon, .chip.m-cupon { --c:var(--cupon); } .tag.cupon { background:var(--cupon); color:#fff; } .tag.sns, .chip.m-sns { --c:var(--sns); } .tag.sns { background:var(--sns); color:#fff; } .tag.rep, .chip.m-rep { --c:var(--rep); } .tag.rep { background:var(--rep); color:#fff; } .tag.oferta, .chip.m-oferta { --c:var(--oferta); } .tag.oferta { background:var(--oferta); color:#fff; } .tag.masvendido, .chip.m-masvendido { --c:var(--masvendido); } .tag.masvendido { background:var(--masvendido); color:#fff; } .tag.vendidos, .chip.m-vendidos { --c:var(--vendidos); } .tag.vendidos { background:var(--vendidos); color:#fff; } 
+.tag.prime, .chip.m-prime.on { color:#062a3a; }  /* azul Prime claro: texto oscuro para que se lea */
+.tag.top, .chip.m-top.on { color:var(--bg); font-weight:600; }  /* marca top: negro (blanco en modo oscuro) */
+.pie { margin-top:auto; color:var(--suave); font-size:12px; }
+@media (max-width:600px) { header { padding:12px 16px; } main { padding:16px; gap:12px;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); } .ctrl { margin-left:0; } }
+</style></head><body>
+<header>
+  <div><h1>Ofertas belleza: maquillaje, perfumes y cuidado</h1>
+  <div class="sub">76 ofertas · 10/10/2026 03:21</div></div>
+  <div class="ctrl">
+    <input type="search" id="q" placeholder="Filtrar…">
+    
+    
+    <select id="grupo"><option value="">Todas las búsquedas</option><option value="Belleza">Belleza</option><option value="Ofertas Prime">Ofertas Prime</option></select>
+    <label>Dto. <input type="number" id="dtomin" min="0" max="100" step="5" value="0" title="mínimo">
+      a <input type="number" id="dtomax" min="0" max="100" step="5" value="100" title="máximo"> %</label>
+    <select id="orden">
+      <option value="dto">Más descuento</option>
+      <option value="asc">Precio más bajo</option>
+      <option value="desc">Precio más alto</option>
+      <option value="vend">Más vendidos</option>
+      <option value="opi">Más opiniones</option>
+      <option value="val">Mejor valorados</option>
+    </select>
+    <button id="limpiar" class="sec" type="button">Quitar filtros</button>
+    <span id="contador"></span>
+    <button id="copiar" disabled>Copiar ASIN (0)</button>
+  </div>
+  <div class="chips"><button type="button" class="chip m-nueva" data-m="nueva">Oferta nueva <span>27</span></button><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>18</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>20</span></button><button type="button" class="chip m-cupon" data-m="cupon">Cupón <span>5</span></button><button type="button" class="chip m-sns" data-m="sns">Suscríbete y ahorra <span>15</span></button><button type="button" class="chip m-rep" data-m="rep">3+ días en oferta <span>5</span></button><button type="button" class="chip m-vendidos" data-m="vendidos">🛒 Comprados el mes pasado <span>15</span></button></div>
+</header>
+<main id="lista">
+<article class="card" data-dto="50" data-precio="8.07" data-val="4.1" data-opi="190" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" hist nueva ok sns "
+         data-texto="crema revitale de ácido salicílico avanzado para cara y cuerpo 80g – ayuda a suavizar y ablandar la textura de la piel. para piel áspera, irregular y propensa a imperfecciones b0dq94cxws belleza">
+  <label class="pick"><input type="checkbox" value="B0DQ94CXWS" data-desc="Crema Revitale de ácido salicílico avan… · 8,07 € · -50%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DQ94CXWS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-50%</span>
+    <img src="https://m.media-amazon.com/images/I/61Zfmy-dxNL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DQ94CXWS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Crema Revitale de ácido salicílico avanzado para cara y cuerpo 80g – Ayuda a suavizar y ablandar la textura de la piel. Para piel áspera, irregular y propensa a imperfecciones</a>
+    <div class="precio"><b>8,07 €</b> <s>15,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,1 (190)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -47% vs mín. 30 días (15,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span><span class="tag sns">Con Suscríbete y ahorra (-5%) · sin suscripción 8,50 €</span></div>
+    <div class="pie">Belleza · <code>B0DQ94CXWS</code></div>
+  </div>
+</article>
+<article class="card" data-dto="35" data-precio="18.9" data-val="4.6" data-opi="274" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" cupon sns "
+         data-texto="collistar leche solar en spray spf 30, alta protección corporal y facial, hidrata, protege y favorece el bronceado, resistente al agua, 200 ml b091nhwc4d belleza">
+  <label class="pick"><input type="checkbox" value="B091NHWC4D" data-desc="Collistar Leche Solar en Spray SPF 30,… · 18,90 € · -35%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B091NHWC4D?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-35%</span>
+    <img src="https://m.media-amazon.com/images/I/41DON7tDvYL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B091NHWC4D?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Collistar Leche Solar en Spray SPF 30, Alta Protección Corporal y Facial, Hidrata, Protege y Favorece el Bronceado, Resistente al Agua, 200 ml</a>
+    <div class="precio"><b>18,90 €</b> <s>29,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (274)</div>
+    <div class="tags"><span class="tag cupon">Con cupón 16,91 €</span><span class="tag ">Antes = precio recomendado</span><span class="tag sns">Con Suscríbete y ahorra (-5%) · sin suscripción 19,90 €</span></div>
+    <div class="pie">Belleza · <code>B091NHWC4D</code></div>
+  </div>
+</article>
+<article class="card" data-dto="40" data-precio="6.56" data-val="4.2" data-opi="3966" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" hist nueva "
+         data-texto="bezox cortaúñas de cabeza en ángulo para personas mayores, cortaúñas ergonómico para uñas gruesas, cortador de uñas de acero premium con recogedor para hombres y mujeres (negro) b0c2pxfqkq belleza">
+  <label class="pick"><input type="checkbox" value="B0C2PXFQKQ" data-desc="BEZOX Cortaúñas de cabeza en ángulo par… · 6,56 € · -40%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0C2PXFQKQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-40%</span>
+    <img src="https://m.media-amazon.com/images/I/51W+qJWCOjL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0C2PXFQKQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">BEZOX Cortaúñas de cabeza en ángulo para personas mayores, cortaúñas ergonómico para uñas gruesas, cortador de uñas de acero premium con recogedor para hombres y mujeres (negro)</a>
+    <div class="precio"><b>6,56 €</b> <s>10,85 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (3.966)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (6,90 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Belleza · <code>B0C2PXFQKQ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="39" data-precio="9.84" data-val="4.1" data-opi="80" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" nueva ok "
+         data-texto="parches para uñas: 21 parches reparadores extra fuertes para uñas de los pies y uñas dañadas, cuidado nocturno de 8 horas con ingredientes naturales, para hombres y mujeres. (2, 42 piezas) b0fwy232d2 belleza">
+  <label class="pick"><input type="checkbox" value="B0FWY232D2" data-desc="Parches para uñas: 21 parches reparador… · 9,84 € · -39%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FWY232D2?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-39%</span>
+    <img src="https://m.media-amazon.com/images/I/719U12a8jcL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FWY232D2?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Parches para uñas: 21 parches reparadores extra fuertes para uñas de los pies y uñas dañadas, cuidado nocturno de 8 horas con ingredientes naturales, para hombres y mujeres. (2, 42 piezas)</a>
+    <div class="precio"><b>9,84 €</b> <s>16,26 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,1 (80)</div>
+    <div class="tags"><span class="tag ok">Bajada real: -39% vs mín. 30 días (16,26 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Belleza · <code>B0FWY232D2</code></div>
+  </div>
+</article>
+<article class="card" data-dto="38" data-precio="13.7" data-val="4.2" data-opi="1564" data-vend="50" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" hist vendidos "
+         data-texto="dark brown hair dye shampoo 3 en 1 cubre canas,champú tinte castaño oscuro | hair color shampoo, champú color para el cabello instantáneo, champu tinte pelo cobertura canas en minutos para hombre mujere b0gczvt6cm belleza">
+  <label class="pick"><input type="checkbox" value="B0GCZVT6CM" data-desc="Dark Brown Hair Dye Shampoo 3 en 1 Cubr… · 13,70 € · -38%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GCZVT6CM?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-38%</span>
+    <img src="https://m.media-amazon.com/images/I/71pDSvyxe6L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GCZVT6CM?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Dark Brown Hair Dye Shampoo 3 en 1 Cubre Canas,Champú Tinte Castaño Oscuro | Hair Color Shampoo, Champú Color Para el Cabello Instantáneo, Champu Tinte Pelo Cobertura Canas En Minutos para Hombre Mujere</a>
+    <div class="precio"><b>13,70 €</b> <s>21,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (1.564) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (14,42 €)</span></div>
+    <div class="pie">Belleza · <code>B0GCZVT6CM</code></div>
+  </div>
+</article>
+<article class="card" data-dto="35" data-precio="67.54" data-val="3.7" data-opi="52" data-vend="0" data-grupo="Belleza | Ofertas Prime"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 ok rep "
+         data-texto="cocunat body power tratamiento 2 meses anticelulítico reductor | 1x warm up + 2x smart burn. reduce la apariencia de la celulitis y aumenta la elasticidad y firmeza de la piel. b0bzq3w22j belleza · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0BZQ3W22J" data-desc="COCUNAT Body Power Tratamiento 2 Meses… · 67,54 € · -35%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0BZQ3W22J?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-35%</span>
+    <img src="https://m.media-amazon.com/images/I/51Vxgk4S-LL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0BZQ3W22J?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">COCUNAT Body Power Tratamiento 2 Meses Anticelulítico Reductor | 1x Warm Up + 2x Smart Burn. Reduce la apariencia de la celulitis y aumenta la elasticidad y firmeza de la piel.</a>
+    <div class="precio"><b>67,54 €</b> <s>103,90 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 3,7 (52)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -13% vs mín. 30 días (77,93 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Belleza · Ofertas Prime · <code>B0BZQ3W22J</code></div>
+  </div>
+</article>
+<article class="card" data-dto="35" data-precio="115.67" data-val="3.7" data-opi="24" data-vend="0" data-grupo="Belleza | Ofertas Prime"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 ok rep "
+         data-texto="cocunat pack clinical beauty filler + the real c vitamina c antiedad | skin booster mensual y sérum de vitamina c pura 20%, reduce arrugas y manchas, aporta luminosidad, firmeza y elasticidad b0dp7shwzv belleza · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0DP7SHWZV" data-desc="COCUNAT Pack Clinical Beauty Filler + T… · 115,67 € · -35%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DP7SHWZV?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-35%</span>
+    <img src="https://m.media-amazon.com/images/I/519VgK1Kz7L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DP7SHWZV?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">COCUNAT Pack Clinical Beauty Filler + The Real C Vitamina C Antiedad | Skin Booster Mensual y Sérum de Vitamina C Pura 20%, Reduce Arrugas y Manchas, Aporta Luminosidad, Firmeza y Elasticidad</a>
+    <div class="precio"><b>115,67 €</b> <s>177,95 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 3,7 (24)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -35% vs mín. 30 días (177,95 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Belleza · Ofertas Prime · <code>B0DP7SHWZV</code></div>
+  </div>
+</article>
+<article class="card" data-dto="37" data-precio="15.62" data-val="4.4" data-opi="96" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" sns "
+         data-texto="cumlaude - rilastil deliskin crema fluida 40ml b00ixx0ese belleza">
+  <label class="pick"><input type="checkbox" value="B00IXX0ESE" data-desc="CUMLAUDE - RILASTIL DELISKIN crema flui… · 15,62 € · -37%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B00IXX0ESE?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-37%</span>
+    <img src="https://m.media-amazon.com/images/I/610MAndIa+L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B00IXX0ESE?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">CUMLAUDE - RILASTIL DELISKIN crema fluida 40ml</a>
+    <div class="precio"><b>15,62 €</b> <s>24,90 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (96)</div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-4% vs mín. 30 días (17,15 €)</span><span class="tag sns">Con Suscríbete y ahorra (-5%) · sin suscripción 16,44 €</span></div>
+    <div class="pie">Belleza · <code>B00IXX0ESE</code></div>
+  </div>
+</article>
+<article class="card" data-dto="33" data-precio="14.11" data-val="4.6" data-opi="81" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 "
+         data-texto="collistar línea hombre, desodorante masculino roll on 48h, antimanchas, protección activa de larga duración, sin alcohol, frescor intenso, 75 ml b0dqq2ltkv belleza">
+  <label class="pick"><input type="checkbox" value="B0DQQ2LTKV" data-desc="Collistar Línea Hombre, Desodorante Mas… · 14,11 € · -33%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DQQ2LTKV?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-33%</span>
+    <img src="https://m.media-amazon.com/images/I/61SHJNZ6yPL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DQQ2LTKV?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Collistar Línea Hombre, Desodorante Masculino Roll On 48h, Antimanchas, Protección Activa de Larga Duración, Sin Alcohol, Frescor Intenso, 75 ml</a>
+    <div class="precio"><b>14,11 €</b> <s>21,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (81)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (15,07 €)</span></div>
+    <div class="pie">Belleza · <code>B0DQQ2LTKV</code></div>
+  </div>
+</article>
+<article class="card" data-dto="31" data-precio="6.93" data-val="4.0" data-opi="96" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" hist nueva "
+         data-texto="lammcou vaporizador de perfume 10ml, mini recargable (golden) | botella de vidrio elegante con pulverizador de aluminio, antifugas para bolso, uso diario, viajes, citas perfume atomiser b0gjsr6yb7 belleza">
+  <label class="pick"><input type="checkbox" value="B0GJSR6YB7" data-desc="Lammcou Vaporizador de Perfume 10ml, Mi… · 6,93 € · -31%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GJSR6YB7?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-31%</span>
+    <img src="https://m.media-amazon.com/images/I/51olp0KznQL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GJSR6YB7?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Lammcou Vaporizador de Perfume 10ml, Mini Recargable (Golden) | Botella de Vidrio Elegante con Pulverizador de Aluminio, Antifugas para Bolso, Uso Diario, Viajes, Citas Perfume Atomiser</a>
+    <div class="precio"><b>6,93 €</b> <s>9,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,0 (96)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (7,29 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Belleza · <code>B0GJSR6YB7</code></div>
+  </div>
+</article>
+<article class="card" data-dto="31" data-precio="10.96" data-val="4.2" data-opi="987" data-vend="50" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 vendidos "
+         data-texto="bálsamo de sebo de res y miel 120g, beef tallow cream, crema de sebo y miel 120g, bálsamo de miel y sebo de res alimentado con pasto, bálsamo facial hidratante para cara y cuerpo, absorción rápida b0dqy7jyp6 belleza">
+  <label class="pick"><input type="checkbox" value="B0DQY7JYP6" data-desc="Bálsamo de Sebo de Res y Miel 120g, Bee… · 10,96 € · -31%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DQY7JYP6?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-31%</span>
+    <img src="https://m.media-amazon.com/images/I/81wvU1RUMPL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DQY7JYP6?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Bálsamo de Sebo de Res y Miel 120g, Beef Tallow Cream, Crema De Sebo Y Miel 120g, Bálsamo de Miel y Sebo de Res Alimentado con Pasto, BáLsamo Facial Hidratante Para Cara Y Cuerpo, Absorción Rápida</a>
+    <div class="precio"><b>10,96 €</b> <s>15,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (987) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (11,54 €)</span></div>
+    <div class="pie">Belleza · <code>B0DQY7JYP6</code></div>
+  </div>
+</article>
+<article class="card" data-dto="30" data-precio="6.97" data-val="4.0" data-opi="36" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" hist "
+         data-texto="senvenski gelatina vitral ojo de gato esmaltes semipermanentes para uñas con iman 15ml magnético cat eye galaxias holográfica brillante color esmaltes de gel de uñas (azul estrella, 15ml) b0gvcrtfr4 belleza">
+  <label class="pick"><input type="checkbox" value="B0GVCRTFR4" data-desc="Senvenski Gelatina Vitral ojo de gato E… · 6,97 € · -30%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GVCRTFR4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-30%</span>
+    <img src="https://m.media-amazon.com/images/I/81kVkYFxqaL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GVCRTFR4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Senvenski Gelatina Vitral ojo de gato Esmaltes Semipermanentes Para uñas con iman 15ML Magnético Cat Eye Galaxias Holográfica Brillante Color Esmaltes de gel de uñas (Azul Estrella, 15ml)</a>
+    <div class="precio"><b>6,97 €</b> <s>9,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,0 (36)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-10% vs mín. 30 días (7,73 €)</span></div>
+    <div class="pie">Belleza · <code>B0GVCRTFR4</code></div>
+  </div>
+</article>
+<article class="card" data-dto="30" data-precio="10.47" data-val="3.8" data-opi="208" data-vend="50" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" hist ok vendidos "
+         data-texto="aceite cyperus rotundus oil, aceite depilatorio de cyperus rotundus 60ml, oil natural para reducir el crecimiento del vello, eliminación de vello corporal, suaviza la piel, inhibidor de crecimiento b0gjjgplmz belleza">
+  <label class="pick"><input type="checkbox" value="B0GJJGPLMZ" data-desc="Aceite Cyperus Rotundus Oil, Aceite Dep… · 10,47 € · -30%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GJJGPLMZ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-30%</span>
+    <img src="https://m.media-amazon.com/images/I/71BTqDyaHoL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GJJGPLMZ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Aceite Cyperus Rotundus Oil, Aceite Depilatorio de Cyperus Rotundus 60ml, Oil Natural para Reducir el Crecimiento del Vello, Eliminación de Vello Corporal, Suaviza la Piel, Inhibidor de Crecimiento</a>
+    <div class="precio"><b>10,47 €</b> <s>14,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 3,8 (208) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -30% vs mín. 30 días (14,99 €)</span></div>
+    <div class="pie">Belleza · <code>B0GJJGPLMZ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="28" data-precio="4.57" data-val="5.0" data-opi="4" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" ok "
+         data-texto="pink minnie mouse hair accessories 3 pieces b0c34nk89w belleza">
+  <label class="pick"><input type="checkbox" value="B0C34NK89W" data-desc="Pink Minnie Mouse Hair Accessories 3 Pi… · 4,57 € · -28%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0C34NK89W?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-28%</span>
+    <img src="https://m.media-amazon.com/images/I/61-EVYEwcXL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0C34NK89W?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Pink Minnie Mouse Hair Accessories 3 Pieces</a>
+    <div class="precio"><b>4,57 €</b> <s>6,33 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 5,0 (4)</div>
+    <div class="tags"><span class="tag ok">Bajada real: -28% vs mín. 30 días (6,33 €)</span></div>
+    <div class="pie">Belleza · <code>B0C34NK89W</code></div>
+  </div>
+</article>
+<article class="card" data-dto="28" data-precio="7.21" data-val="3.9" data-opi="311" data-vend="200" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 vendidos "
+         data-texto="tratamiento para hongos en las uñas de los pies máxima potencia, tratamiento para uñas gruesas, rotas, descoloridas y dañadas, uñas encarnadas, extractos naturales de plantas, 30 ml b0fg25r72k belleza">
+  <label class="pick"><input type="checkbox" value="B0FG25R72K" data-desc="Tratamiento para Hongos en las Uñas de… · 7,21 € · -28%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FG25R72K?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-28%</span>
+    <img src="https://m.media-amazon.com/images/I/71gJSgOJ9qL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FG25R72K?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Tratamiento para Hongos en las Uñas de los Pies Máxima Potencia, Tratamiento para Uñas Gruesas, Rotas, Descoloridas y Dañadas, Uñas Encarnadas, Extractos Naturales de Plantas, 30 ml</a>
+    <div class="precio"><b>7,21 €</b> <s>9,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 3,9 (311) · <span class="vendidos">🛒 200+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (7,59 €)</span></div>
+    <div class="pie">Belleza · <code>B0FG25R72K</code></div>
+  </div>
+</article>
+<article class="card" data-dto="28" data-precio="22.9" data-val="4.4" data-opi="68" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" cupon min90 "
+         data-texto="korres smart yoghurt™ sérum probiótico superhidratante – refuerza la barrera cutánea, con yogur griego &amp; extracto de avena, calmante, ideal para piel sensible, 30ml b09wwk1v8h belleza">
+  <label class="pick"><input type="checkbox" value="B09WWK1V8H" data-desc="KORRES Smart Yoghurt™ Sérum Probiótico… · 22,90 € · -28%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B09WWK1V8H?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-28%</span>
+    <img src="https://m.media-amazon.com/images/I/61GOGzuH1+L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B09WWK1V8H?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">KORRES Smart Yoghurt™ Sérum Probiótico Superhidratante – Refuerza la Barrera Cutánea, Con Yogur Griego &amp; Extracto de Avena, Calmante, Ideal para Piel Sensible, 30ml</a>
+    <div class="precio"><b>22,90 €</b> <s>26,85 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (68)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag cupon">Con cupón 19,46 €</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-8% vs mín. 30 días (25,00 €)</span></div>
+    <div class="pie">Belleza · <code>B09WWK1V8H</code></div>
+  </div>
+</article>
+<article class="card" data-dto="28" data-precio="36.1" data-val="3.6" data-opi="7" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" hist nueva "
+         data-texto="spray de suero para el crecimiento del cabello para hombres/mujeres, acelera el crecimiento del cabello, previene la caída del cabello, con biotina y romero para aceite de crecimiento capilar, aceite b0fzbkclwb belleza">
+  <label class="pick"><input type="checkbox" value="B0FZBKCLWB" data-desc="Spray de suero para el crecimiento del… · 36,10 € · -28%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FZBKCLWB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-28%</span>
+    <img src="https://m.media-amazon.com/images/I/71MEjLM6VBL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FZBKCLWB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Spray de suero para el crecimiento del cabello para hombres/mujeres, acelera el crecimiento del cabello, previene la caída del cabello, con biotina y romero para aceite de crecimiento capilar, aceite</a>
+    <div class="precio"><b>36,10 €</b> <s>49,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 3,6 (7)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (38,00 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Belleza · <code>B0FZBKCLWB</code></div>
+  </div>
+</article>
+<article class="card" data-dto="35" data-precio="6.53" data-val="4.4" data-opi="207" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 sns "
+         data-texto="essy crema de pies 125 ml, cuidado con urea 10% para talones agrietados | hidratante de absorción rápida con aceite de ricinus communis b0g6549ngd belleza">
+  <label class="pick"><input type="checkbox" value="B0G6549NGD" data-desc="Essy Crema de Pies 125 ml, Cuidado con… · 6,53 € · -35%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0G6549NGD?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-35%</span>
+    <img src="https://m.media-amazon.com/images/I/61etdwtgyZL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0G6549NGD?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Essy Crema de Pies 125 ml, Cuidado con Urea 10% para Talones Agrietados | Hidratante de Absorción Rápida con Aceite de Ricinus Communis</a>
+    <div class="precio"><b>6,53 €</b> <s>10,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (207)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (7,63 €)</span><span class="tag sns">Con Suscríbete y ahorra (-10%) · sin suscripción 7,26 €</span></div>
+    <div class="pie">Belleza · <code>B0G6549NGD</code></div>
+  </div>
+</article>
+<article class="card" data-dto="27" data-precio="15.99" data-val="3.8" data-opi="475" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" nueva ok "
+         data-texto="rilsic 500ml champú tinte pelo marrón oscuro, black hair dye shampoo 3 en 1, champú color champu tinte canas instantáneo cubre canas, tinte pelo barba champu canas, hair color para hombres mujeres b0d2krmt6j belleza">
+  <label class="pick"><input type="checkbox" value="B0D2KRMT6J" data-desc="RILSIC 500ML Champú Tinte Pelo Marrón O… · 15,99 € · -27%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0D2KRMT6J?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-27%</span>
+    <img src="https://m.media-amazon.com/images/I/818N7fiZaML._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0D2KRMT6J?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">RILSIC 500ML Champú Tinte Pelo Marrón Oscuro, Black Hair Dye Shampoo 3 en 1, Champú Color Champu Tinte Canas Instantáneo Cubre Canas, Tinte Pelo Barba Champu Canas, Hair Color para Hombres Mujeres</a>
+    <div class="precio"><b>15,99 €</b> <s>21,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 3,8 (475)</div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -27% vs mín. 30 días (21,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Belleza · <code>B0D2KRMT6J</code></div>
+  </div>
+</article>
+<article class="card" data-dto="26" data-precio="6.64" data-val="5.0" data-opi="10" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas="  "
+         data-texto="pestañas postizas magnéticas,pestañas magnéticas reutilizables con clip de pestañas,estilo natural para maquillaje de ojos,uso diario,fiestas y viajes,aplicación sin pegamento b0hjc3klkw belleza">
+  <label class="pick"><input type="checkbox" value="B0HJC3KLKW" data-desc="Pestañas postizas magnéticas,Pestañas M… · 6,64 € · -26%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HJC3KLKW?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-26%</span>
+    <img src="https://m.media-amazon.com/images/I/71biffgUnkL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HJC3KLKW?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Pestañas postizas magnéticas,Pestañas Magnéticas Reutilizables con Clip de pestañas,estilo natural para maquillaje de ojos,uso diario,fiestas y viajes,aplicación sin pegamento</a>
+    <div class="precio"><b>6,64 €</b> <s>8,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 5,0 (10)</div>
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (6,99 €)</span></div>
+    <div class="pie">Belleza · <code>B0HJC3KLKW</code></div>
+  </div>
+</article>
+<article class="card" data-dto="26" data-precio="13.23" data-val="3.6" data-opi="30" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" hist "
+         data-texto="copper peptides ghk-cu serum, suero de péptidos ghk-cu, copper peptide serum for tightening, collagen boosting &amp; hydrat, reduce las líneas finas y las arrugas (1pcs, 60ml) b0gy4j3zkt belleza">
+  <label class="pick"><input type="checkbox" value="B0GY4J3ZKT" data-desc="Copper Peptides Ghk-cu Serum, Suero de… · 13,23 € · -26%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GY4J3ZKT?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-26%</span>
+    <img src="https://m.media-amazon.com/images/I/71LRC8QiA9L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GY4J3ZKT?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Copper Peptides Ghk-cu Serum, Suero de Péptidos Ghk-cu, Copper peptide Serum for Tightening, Collagen Boosting &amp; hydrat, Reduce las líneas finas y las arrugas (1PCS, 60ML)</a>
+    <div class="precio"><b>13,23 €</b> <s>17,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 3,6 (30)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (13,93 €)</span></div>
+    <div class="pie">Belleza · <code>B0GY4J3ZKT</code></div>
+  </div>
+</article>
+<article class="card" data-dto="26" data-precio="20.33" data-val="4.6" data-opi="378" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas="  "
+         data-texto="bepanthol derma regenerierende gesichtscreme, 50 ml crema | para pieles sensibles y muy secas. apoya la regeneración de la piel. dermatológicamente probado. no comedogénico. b09c23jrsk belleza">
+  <label class="pick"><input type="checkbox" value="B09C23JRSK" data-desc="Bepanthol Derma Regenerierende Gesichts… · 20,33 € · -26%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B09C23JRSK?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-26%</span>
+    <img src="https://m.media-amazon.com/images/I/619iTr2a9UL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B09C23JRSK?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Bepanthol Derma Regenerierende Gesichtscreme, 50 ml Crema | Para pieles sensibles y muy secas. Apoya la regeneración de la piel. Dermatológicamente probado. No comedogénico.</a>
+    <div class="precio"><b>20,33 €</b> <s>27,37 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (378)</div>
+    <div class="tags"><span class="tag ">Antes = precio mediano</span></div>
+    <div class="pie">Belleza · <code>B09C23JRSK</code></div>
+  </div>
+</article>
+<article class="card" data-dto="34" data-precio="21.84" data-val="4.0" data-opi="14429" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" hist sns "
+         data-texto="poderm esmalte cuidado para uñas con tea tree - rojo allure &amp; rosa pálido | swiss lab - 8ml | enriquecido con silicio &amp; biotina | purifica, aclara &amp; nutre las uñas amarillas | creado por una podóloga b0b25b7lkh belleza">
+  <label class="pick"><input type="checkbox" value="B0B25B7LKH" data-desc="PODERM Esmalte Cuidado para Uñas con Te… · 21,84 € · -34%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0B25B7LKH?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-34%</span>
+    <img src="https://m.media-amazon.com/images/I/71w-PUT6k6L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0B25B7LKH?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">PODERM Esmalte Cuidado para Uñas con Tea Tree - Rojo Allure &amp; Rosa Pálido | Swiss Lab - 8ML | Enriquecido con Silicio &amp; Biotina | Purifica, Aclara &amp; Nutre las Uñas Amarillas | Creado por una Podóloga</a>
+    <div class="precio"><b>21,84 €</b> <s>33,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,0 (14.429)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-9% vs mín. 30 días (26,58 €)</span><span class="tag sns">Con Suscríbete y ahorra (-10%) · sin suscripción 24,27 €</span></div>
+    <div class="pie">Belleza · <code>B0B25B7LKH</code></div>
+  </div>
+</article>
+<article class="card" data-dto="26" data-precio="37.14" data-val="4.2" data-opi="540" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 nueva "
+         data-texto="twowin 24 in cabeza peluquería, 80% cabello humano, 60cm cabeza de muñeca | cabeza maniquí para trenzado, cortes y peinados, cabeza para peinar con abrazadera y kit de accesorios para trenzas (rubio) b08pfjc2sp belleza">
+  <label class="pick"><input type="checkbox" value="B08PFJC2SP" data-desc="TwoWin 24 in Cabeza Peluquería, 80% Cab… · 37,14 € · -26%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B08PFJC2SP?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-26%</span>
+    <img src="https://m.media-amazon.com/images/I/71dCJMwqIgL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B08PFJC2SP?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">TwoWin 24 in Cabeza Peluquería, 80% Cabello Humano, 60cm Cabeza de Muñeca | Cabeza Maniquí para Trenzado, Cortes y Peinados, Cabeza para Peinar con Abrazadera y Kit de Accesorios para Trenzas (Rubio)</a>
+    <div class="precio"><b>37,14 €</b> <s>49,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (540)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (39,09 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Belleza · <code>B08PFJC2SP</code></div>
+  </div>
+</article>
+<article class="card" data-dto="25" data-precio="16.16" data-val="4.6" data-opi="261" data-vend="50" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 vendidos "
+         data-texto="la roche-posay, toleriane physiologyque oil-infused micellar water, 400 ml | desmaquilla, limpia profundamente, calma y es antipolución, incluso con maquillaje resistente al agua. b08hmvthyn belleza">
+  <label class="pick"><input type="checkbox" value="B08HMVTHYN" data-desc="La Roche-Posay, Toleriane Physiologyque… · 16,16 € · -25%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B08HMVTHYN?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-25%</span>
+    <img src="https://m.media-amazon.com/images/I/71MR-5mhHML._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B08HMVTHYN?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">La Roche-Posay, Toleriane Physiologyque Oil-Infused Micellar Water, 400 ml | Desmaquilla, limpia profundamente, calma y es antipolución, incluso con maquillaje resistente al agua.</a>
+    <div class="precio"><b>16,16 €</b> <s>21,55 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (261) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span></div>
+    <div class="pie">Belleza · <code>B08HMVTHYN</code></div>
+  </div>
+</article>
+<article class="card" data-dto="24" data-precio="7.59" data-val="3.8" data-opi="49" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas="  "
+         data-texto="7ml suero pestañas, solución pestañas, crea pestañas largas y gruesas, aporta longitud y volumen natural, aplicación diaria con resultados duraderos, uso sencillo con aplicador preciso b0frs6vrtf belleza">
+  <label class="pick"><input type="checkbox" value="B0FRS6VRTF" data-desc="7ml Suero Pestañas, Solución Pestañas,… · 7,59 € · -24%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FRS6VRTF?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-24%</span>
+    <img src="https://m.media-amazon.com/images/I/71G-eE4Bi6L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FRS6VRTF?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">7ml Suero Pestañas, Solución Pestañas, Crea Pestañas Largas y Gruesas, aporta longitud y volumen natural, aplicación diaria con resultados duraderos, uso sencillo con aplicador preciso</a>
+    <div class="precio"><b>7,59 €</b> <s>9,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 3,8 (49)</div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (7,99 €)</span></div>
+    <div class="pie">Belleza · <code>B0FRS6VRTF</code></div>
+  </div>
+</article>
+<article class="card" data-dto="24" data-precio="12.99" data-val="4.3" data-opi="30" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 nueva ok "
+         data-texto="crema de sebo de res hidratante para rostro y cuerpo 120 g – 100% grass fed, con ácido hialurónico, niacinamida y escualano, apta para todo tipo de piel, hidratación profunda, repara y refuerza la bar b0gxvqz2ns belleza">
+  <label class="pick"><input type="checkbox" value="B0GXVQZ2NS" data-desc="Crema de sebo de res hidratante para ro… · 12,99 € · -24%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GXVQZ2NS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-24%</span>
+    <img src="https://m.media-amazon.com/images/I/71SokcxmdvL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GXVQZ2NS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Crema de sebo de res hidratante para rostro y cuerpo 120 g – 100% grass fed, con ácido hialurónico, niacinamida y escualano, apta para todo tipo de piel, hidratación profunda, repara y refuerza la bar</a>
+    <div class="precio"><b>12,99 €</b> <s>16,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (30)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -24% vs mín. 30 días (16,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Belleza · <code>B0GXVQZ2NS</code></div>
+  </div>
+</article>
+<article class="card" data-dto="24" data-precio="18.96" data-val="4.3" data-opi="1031" data-vend="300" data-grupo="Belleza | Ofertas Prime"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 vendidos "
+         data-texto="cocunat curl booster gel definidor activador rizos método curly 250 ml | gel de definición para cabello rizado sin siliconas ni sulfatos. hidrata profundamente y elimina el frizz sin apelmazar. b09yj3xcn2 belleza · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B09YJ3XCN2" data-desc="COCUNAT Curl Booster Gel Definidor Acti… · 18,96 € · -24%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B09YJ3XCN2?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-24%</span>
+    <img src="https://m.media-amazon.com/images/I/51e1Z9v6WfL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B09YJ3XCN2?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">COCUNAT Curl Booster Gel Definidor Activador Rizos Método Curly 250 ml | Gel de definición para cabello rizado sin siliconas ni sulfatos. Hidrata profundamente y elimina el frizz sin apelmazar.</a>
+    <div class="precio"><b>18,96 €</b> <s>24,95 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (1.031) · <span class="vendidos">🛒 300+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (19,96 €)</span></div>
+    <div class="pie">Belleza · Ofertas Prime · <code>B09YJ3XCN2</code></div>
+  </div>
+</article>
+<article class="card" data-dto="28" data-precio="28.55" data-val="4.2" data-opi="694" data-vend="50" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" nueva sns vendidos "
+         data-texto="kérastase gloss absolu perfume brillo para el pelo talla de viaje 30ml | perfume para el pelo en talla de viaje. aporta brillo sublime y fragancia duradera para un acabado suave y ligero. b0fjml2dv8 belleza">
+  <label class="pick"><input type="checkbox" value="B0FJML2DV8" data-desc="Kérastase Gloss Absolu Perfume Brillo P… · 28,55 € · -28%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FJML2DV8?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-28%</span>
+    <img src="https://m.media-amazon.com/images/I/51F6jVbsDZL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FJML2DV8?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Kérastase Gloss Absolu Perfume Brillo Para el Pelo Talla de Viaje 30ml | Perfume para el pelo en talla de viaje. Aporta brillo sublime y fragancia duradera para un acabado suave y ligero.</a>
+    <div class="precio"><b>28,55 €</b> <s>39,78 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (694) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-0% vs mín. 30 días (30,09 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span><span class="tag sns">Con Suscríbete y ahorra (-5%) · sin suscripción 30,05 €</span></div>
+    <div class="pie">Belleza · <code>B0FJML2DV8</code></div>
+  </div>
+</article>
+<article class="card" data-dto="24" data-precio="42.52" data-val="4.2" data-opi="102" data-vend="0" data-grupo="Belleza | Ofertas Prime"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 rep "
+         data-texto="cocunat - the cure - serum facial antiedad - trabaja arrugas, luminosidad y nutrición - 21 aceites esenciales, antioxidantes, vitaminas, ácidos grasos y bakuchiol (retinol-like) - 30 ml b0bgm4zlyt belleza · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0BGM4ZLYT" data-desc="COCUNAT - The Cure - Serum Facial Antie… · 42,52 € · -24%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0BGM4ZLYT?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-24%</span>
+    <img src="https://m.media-amazon.com/images/I/51uhc0o0fqL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0BGM4ZLYT?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">COCUNAT - The Cure - Serum Facial Antiedad - Trabaja Arrugas, Luminosidad y Nutrición - 21 Aceites Esenciales, Antioxidantes, Vitaminas, Ácidos Grasos y Bakuchiol (Retinol-Like) - 30 ml</a>
+    <div class="precio"><b>42,52 €</b> <s>55,95 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (102)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (44,76 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Belleza · Ofertas Prime · <code>B0BGM4ZLYT</code></div>
+  </div>
+</article>
+<article class="card" data-dto="24" data-precio="49.36" data-val="4.0" data-opi="308" data-vend="0" data-grupo="Belleza | Ofertas Prime"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 "
+         data-texto="cocunat body power crema anticelulítica reductora firmeza 150 ml + 200 ml | tratamiento reductor potente y reafirmante con cafeína. reduce la celulitis, drena y redefines la silueta corporal. b0bgpk4s9d belleza · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0BGPK4S9D" data-desc="COCUNAT Body Power Crema Anticelulítica… · 49,36 € · -24%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0BGPK4S9D?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-24%</span>
+    <img src="https://m.media-amazon.com/images/I/61FLICsbalL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0BGPK4S9D?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">COCUNAT Body Power Crema Anticelulítica Reductora Firmeza 150 ml + 200 ml | Tratamiento reductor potente y reafirmante con cafeína. Reduce la celulitis, drena y redefines la silueta corporal.</a>
+    <div class="precio"><b>49,36 €</b> <s>64,95 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,0 (308)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (51,96 €)</span></div>
+    <div class="pie">Belleza · Ofertas Prime · <code>B0BGPK4S9D</code></div>
+  </div>
+</article>
+<article class="card" data-dto="24" data-precio="53.16" data-val="4.1" data-opi="50" data-vend="0" data-grupo="Belleza | Ofertas Prime"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 rep "
+         data-texto="cocunat clinical retinal 0.1% noche, niacinamida y ácido hialurónico 30ml | sérum retinal antiedad de noche con eficacia clínica: menos arrugas, más elasticidad. para todo tipo de pieles. b0d2lj1wks belleza · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0D2LJ1WKS" data-desc="COCUNAT Clinical Retinal 0.1% Noche, Ni… · 53,16 € · -24%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0D2LJ1WKS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-24%</span>
+    <img src="https://m.media-amazon.com/images/I/41u46nr3mmL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0D2LJ1WKS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">COCUNAT Clinical Retinal 0.1% Noche, Niacinamida y Ácido Hialurónico 30ml | Sérum retinal antiedad de noche con eficacia clínica: menos arrugas, más elasticidad. Para todo tipo de pieles.</a>
+    <div class="precio"><b>53,16 €</b> <s>69,95 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,1 (50)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (55,96 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Belleza · Ofertas Prime · <code>B0D2LJ1WKS</code></div>
+  </div>
+</article>
+<article class="card" data-dto="24" data-precio="91.16" data-val="4.0" data-opi="57" data-vend="0" data-grupo="Belleza | Ofertas Prime"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 rep "
+         data-texto="cocunat clinical molecular therapy crema antiedad 360º 50ml | tensa, reafirma y restaura pre-peri menopausia 11 moléculas biotecnológicas. b0drpm1h42 belleza · ofertas prime">
+  <label class="pick"><input type="checkbox" value="B0DRPM1H42" data-desc="COCUNAT Clinical Molecular Therapy Crem… · 91,16 € · -24%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DRPM1H42?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-24%</span>
+    <img src="https://m.media-amazon.com/images/I/51F++NpfcVL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DRPM1H42?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">COCUNAT Clinical Molecular Therapy Crema Antiedad 360º 50ml | Tensa, Reafirma y Restaura Pre-Peri Menopausia 11 Moléculas Biotecnológicas.</a>
+    <div class="precio"><b>91,16 €</b> <s>119,95 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,0 (57)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (95,96 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Belleza · Ofertas Prime · <code>B0DRPM1H42</code></div>
+  </div>
+</article>
+<article class="card" data-dto="23" data-precio="7.7" data-val="4.6" data-opi="2514" data-vend="100" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 vendidos "
+         data-texto="cepillo defnidor de rizos profesional – forma y define rulos | reduce tirón, frizz y separación. bordes suaves, unisex. b0d7src7yx belleza">
+  <label class="pick"><input type="checkbox" value="B0D7SRC7YX" data-desc="Cepillo Defnidor de Rizos Profesional –… · 7,70 € · -23%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0D7SRC7YX?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-23%</span>
+    <img src="https://m.media-amazon.com/images/I/61vzyIDIKRL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0D7SRC7YX?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Cepillo Defnidor de Rizos Profesional – Forma y Define Rulos | Reduce tirón, frizz y separación. Bordes suaves, unisex.</a>
+    <div class="precio"><b>7,70 €</b> <s>9,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (2.514) · <span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (8,11 €)</span></div>
+    <div class="pie">Belleza · <code>B0D7SRC7YX</code></div>
+  </div>
+</article>
+<article class="card" data-dto="23" data-precio="8.49" data-val="3.3" data-opi="74" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" hist nueva "
+         data-texto="mowetoo 10 lápices de tatuaje de color neón, colores fluorescentes que brillan en la oscuridad, colores de pintura corporal, lápiz uv para fiestas de neón, decoración de luz negra b0fq4zqk25 belleza">
+  <label class="pick"><input type="checkbox" value="B0FQ4ZQK25" data-desc="MOWETOO 10 lápices de tatuaje de color… · 8,49 € · -23%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FQ4ZQK25?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-23%</span>
+    <img src="https://m.media-amazon.com/images/I/717bhmLD2yL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FQ4ZQK25?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">MOWETOO 10 lápices de tatuaje de color neón, colores fluorescentes que brillan en la oscuridad, colores de pintura corporal, lápiz UV para fiestas de neón, decoración de luz negra</a>
+    <div class="precio"><b>8,49 €</b> <s>10,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★☆☆</span> 3,3 (74)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (8,94 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Belleza · <code>B0FQ4ZQK25</code></div>
+  </div>
+</article>
+<article class="card" data-dto="23" data-precio="12.34" data-val="4.4" data-opi="11" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" hist "
+         data-texto="30g crema antifúngica,para aliviar la piel jock picazón,eczema,hidratante y reparadora pomada pieles,para todos los tipos de piel b0h14xjpyq belleza">
+  <label class="pick"><input type="checkbox" value="B0H14XJPYQ" data-desc="30g Crema Antifúngica,Para Aliviar la p… · 12,34 € · -23%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H14XJPYQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-23%</span>
+    <img src="https://m.media-amazon.com/images/I/71nMik1h3-L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H14XJPYQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">30g Crema Antifúngica,Para Aliviar la piel Jock Picazón,Eczema,Hidratante y Reparadora pomada Pieles,para todos los tipos de piel</a>
+    <div class="precio"><b>12,34 €</b> <s>15,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (11)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span></div>
+    <div class="pie">Belleza · <code>B0H14XJPYQ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="22" data-precio="17.09" data-val="3.9" data-opi="1165" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" nueva "
+         data-texto="jelmok 500ml champú tinte de cabello negro instantáneo 3 en 1, champú para canas, champú color para hombre y mujer, tinte de cabello en minutos b0cxj9sv4s belleza">
+  <label class="pick"><input type="checkbox" value="B0CXJ9SV4S" data-desc="JELMOK 500ML Champú Tinte de Cabello Ne… · 17,09 € · -22%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CXJ9SV4S?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-22%</span>
+    <img src="https://m.media-amazon.com/images/I/818N7fiZaML._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CXJ9SV4S?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">JELMOK 500ML Champú Tinte de Cabello Negro Instantáneo 3 en 1, Champú para Canas, Champú Color para Hombre y Mujer, Tinte de Cabello en Minutos</a>
+    <div class="precio"><b>17,09 €</b> <s>21,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 3,9 (1.165)</div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (17,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Belleza · <code>B0CXJ9SV4S</code></div>
+  </div>
+</article>
+<article class="card" data-dto="21" data-precio="9.02" data-val="4.2" data-opi="231" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" hist nueva "
+         data-texto="spray pequeñas para rellenar, pequeñas botellas(clear+blue+pink, 100ml*3) | small spray bottle de vapor reutilizables, a prueba de fugas, tamaño de viaje aprobado por la tsa para cara, cabello, tóner b0gr426vvb belleza">
+  <label class="pick"><input type="checkbox" value="B0GR426VVB" data-desc="spray pequeñas para rellenar, pequeñas… · 9,02 € · -21%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GR426VVB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-21%</span>
+    <img src="https://m.media-amazon.com/images/I/61P+IdnJjCL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GR426VVB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">spray pequeñas para rellenar, pequeñas botellas(Clear+Blue+Pink, 100ml*3) | Small Spray Bottle de vapor reutilizables, a prueba de fugas, tamaño de viaje aprobado por la TSA para cara, cabello, tóner</a>
+    <div class="precio"><b>9,02 €</b> <s>11,47 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (231)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (9,50 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Belleza · <code>B0GR426VVB</code></div>
+  </div>
+</article>
+<article class="card" data-dto="21" data-precio="15.81" data-val="4.3" data-opi="9" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" nueva "
+         data-texto="linfia drenaje linfático,linfia drenaje linfático gotas,2026 drenaje linfatico,gotas drenaje linfático para linforrea,soporte sistema linfático,rápido y eficaz,con gua sha b0hcmzlx1w belleza">
+  <label class="pick"><input type="checkbox" value="B0HCMZLX1W" data-desc="Linfia Drenaje Linfático,Linfia Drenaje… · 15,81 € · -21%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HCMZLX1W?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-21%</span>
+    <img src="https://m.media-amazon.com/images/I/71So4FMeWzL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HCMZLX1W?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Linfia Drenaje Linfático,Linfia Drenaje Linfático Gotas,2026 Drenaje Linfatico,Gotas Drenaje Linfático para Linforrea,Soporte Sistema Linfático,Rápido Y Eficaz,con Gua Sha</a>
+    <div class="precio"><b>15,81 €</b> <s>19,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (9)</div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (16,64 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Belleza · <code>B0HCMZLX1W</code></div>
+  </div>
+</article>
+<article class="card" data-dto="20" data-precio="6.09" data-val="4.1" data-opi="21" data-vend="50" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" hist ok vendidos "
+         data-texto="tiras para la nariz 10 unidades, tiras removedoras de puntos negros de hidrocoloide, limpieza profunda y reducción de poros, tiras para controlar el aceite y el acné, cuidado suave de la piel para b0h1vd6dy7 belleza">
+  <label class="pick"><input type="checkbox" value="B0H1VD6DY7" data-desc="Tiras para la nariz 10 unidades, tiras… · 6,09 € · -20%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H1VD6DY7?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-20%</span>
+    <img src="https://m.media-amazon.com/images/I/61DHUSTImuL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H1VD6DY7?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Tiras para la nariz 10 unidades, tiras removedoras de puntos negros de hidrocoloide, limpieza profunda y reducción de poros, tiras para controlar el aceite y el acné, cuidado suave de la piel para</a>
+    <div class="precio"><b>6,09 €</b> <s>7,59 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,1 (21) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -11% vs mín. 30 días (6,85 €)</span></div>
+    <div class="pie">Belleza · <code>B0H1VD6DY7</code></div>
+  </div>
+</article>
+<article class="card" data-dto="20" data-precio="7.21" data-val="4.8" data-opi="7" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" hist "
+         data-texto="7ml serum para pestañas,acondicionador para pestañas, serum de pestañas,suero fortalecedor y alargador,aplicador de precisión para raíz,resultados duraderos b0gxkbd4x7 belleza">
+  <label class="pick"><input type="checkbox" value="B0GXKBD4X7" data-desc="7ml Serum para Pestañas,acondicionador… · 7,21 € · -20%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GXKBD4X7?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-20%</span>
+    <img src="https://m.media-amazon.com/images/I/71Y49wKDZpL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GXKBD4X7?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">7ml Serum para Pestañas,acondicionador para pestañas, serum de pestañas,Suero Fortalecedor Y Alargador,Aplicador De Precisión Para Raíz,resultados duraderos</a>
+    <div class="precio"><b>7,21 €</b> <s>8,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,8 (7)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (7,59 €)</span></div>
+    <div class="pie">Belleza · <code>B0GXKBD4X7</code></div>
+  </div>
+</article>
+<article class="card" data-dto="20" data-precio="7.99" data-val="4.4" data-opi="36" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" hist nueva ok "
+         data-texto="spray para el cuidado posterior dela perforación de sal marina| 100 % natural| limpia y alivia | solución salina para piercings | para orejas, nariz y otras perforaciones corporales, 60ml b0g1t5r3c7 belleza">
+  <label class="pick"><input type="checkbox" value="B0G1T5R3C7" data-desc="Spray Para El Cuidado Posterior Dela Pe… · 7,99 € · -20%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0G1T5R3C7?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-20%</span>
+    <img src="https://m.media-amazon.com/images/I/71vQg0IpJ2L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0G1T5R3C7?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Spray Para El Cuidado Posterior Dela Perforación De Sal Marina| 100 % Natural| Limpia y Alivia | Solución Salina Para Piercings | Para Orejas, Nariz Y Otras Perforaciones Corporales, 60ml</a>
+    <div class="precio"><b>7,99 €</b> <s>9,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (36)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -20% vs mín. 30 días (9,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Belleza · <code>B0G1T5R3C7</code></div>
+  </div>
+</article>
+<article class="card" data-dto="10" data-precio="10.35" data-val="4.5" data-opi="222" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" cupon sns "
+         data-texto="acondicionador sin aclarado tigi 200 ml b09q9b8zzg belleza">
+  <label class="pick"><input type="checkbox" value="B09Q9B8ZZG" data-desc="Acondicionador sin Aclarado Tigi 200 ml · 10,35 € · -10%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B09Q9B8ZZG?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/61SXp-Hvx9L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B09Q9B8ZZG?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Acondicionador sin Aclarado Tigi 200 ml</a>
+    <div class="precio"><b>10,35 €</b> <s>11,50 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (222)</div>
+    <div class="tags"><span class="tag cupon">Con cupón 9,25 €</span><span class="tag ">Antes = precio mediano</span><span class="tag sns">Con Suscríbete y ahorra (-5%) · sin suscripción 10,90 €</span></div>
+    <div class="pie">Belleza · <code>B09Q9B8ZZG</code></div>
+  </div>
+</article>
+<article class="card" data-dto="20" data-precio="14.4" data-val="4.5" data-opi="1549" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 "
+         data-texto="nip+fab salicylic fix, 60 almohadillas de noche con ácido salicílico, bha | ácido hialurónico hidratante, control de sebo, reducción de poros, exfoliación nocturna suave, piel firme y luminosa b07h12m91b belleza">
+  <label class="pick"><input type="checkbox" value="B07H12M91B" data-desc="Nip+Fab Salicylic Fix, 60 Almohadillas… · 14,40 € · -20%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07H12M91B?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-20%</span>
+    <img src="https://m.media-amazon.com/images/I/618L-DqmW4L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07H12M91B?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Nip+Fab Salicylic Fix, 60 Almohadillas de Noche con Ácido Salicílico, BHA | Ácido Hialurónico Hidratante, Control de Sebo, Reducción de Poros, Exfoliación Nocturna Suave, Piel Firme y Luminosa</a>
+    <div class="precio"><b>14,40 €</b> <s>17,95 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (1.549)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span></div>
+    <div class="pie">Belleza · <code>B07H12M91B</code></div>
+  </div>
+</article>
+<article class="card" data-dto="24" data-precio="22.75" data-val="4.1" data-opi="138" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" hist sns "
+         data-texto="kiko milano glossy lip set 03, kit de labios: 3 brillos de labios hidratantes efecto volumen 3d b0fbx84l1f belleza">
+  <label class="pick"><input type="checkbox" value="B0FBX84L1F" data-desc="KIKO Milano Glossy Lip Set 03, Kit De L… · 22,75 € · -24%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FBX84L1F?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-24%</span>
+    <img src="https://m.media-amazon.com/images/I/71gzK-SJqcL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FBX84L1F?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">KIKO Milano Glossy Lip Set 03, Kit De Labios: 3 Brillos De Labios Hidratantes Efecto Volumen 3D</a>
+    <div class="precio"><b>22,75 €</b> <s>29,95 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,1 (138)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-0% vs mín. 30 días (23,96 €)</span><span class="tag sns">Con Suscríbete y ahorra (-5%) · sin suscripción 23,95 €</span></div>
+    <div class="pie">Belleza · <code>B0FBX84L1F</code></div>
+  </div>
+</article>
+<article class="card" data-dto="23" data-precio="5.36" data-val="4.2" data-opi="3093" data-vend="50" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" nueva ok sns vendidos "
+         data-texto="oulac sombras de ojos e iluminador blanco | súper impermeable al agua y de larga duración | acabado brillante | crear purpurina maquillaje | vegano | 06g (01) crystal rain b0cd1rnq28 belleza">
+  <label class="pick"><input type="checkbox" value="B0CD1RNQ28" data-desc="Oulac Sombras de Ojos e Iluminador Blan… · 5,36 € · -23%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CD1RNQ28?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-23%</span>
+    <img src="https://m.media-amazon.com/images/I/71YISBqZ53L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CD1RNQ28?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Oulac Sombras de Ojos e Iluminador Blanco | Súper impermeable al Agua y de Larga Duración | Acabado Brillante | Crear Purpurina Maquillaje | Vegano | 06g (01) Crystal Rain</a>
+    <div class="precio"><b>5,36 €</b> <s>6,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (3.093) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -11% vs mín. 30 días (6,31 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span><span class="tag sns">Con Suscríbete y ahorra (-5%) · sin suscripción 5,64 €</span></div>
+    <div class="pie">Belleza · <code>B0CD1RNQ28</code></div>
+  </div>
+</article>
+<article class="card" data-dto="19" data-precio="5.69" data-val="0" data-opi="0" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" nueva "
+         data-texto="2 piezas green mask stick de té verde, mascarilla facial en stick, sticks de arcilla para limpieza profunda y minimizar poros, eliminación de puntos negros, hidratante para todo tipo de piel b0hfbyw6ps belleza">
+  <label class="pick"><input type="checkbox" value="B0HFBYW6PS" data-desc="2 Piezas Green Mask Stick de Té Verde,… · 5,69 € · -19%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HFBYW6PS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-19%</span>
+    <img src="https://m.media-amazon.com/images/I/61d7hAdKjLL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HFBYW6PS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">2 Piezas Green Mask Stick de Té Verde, Mascarilla Facial en Stick, Sticks de Arcilla para Limpieza Profunda y Minimizar Poros, Eliminación de Puntos Negros, Hidratante para Todo Tipo de Piel</a>
+    <div class="precio"><b>5,69 €</b> <s>6,99 €</s></div>
+    
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (5,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Belleza · <code>B0HFBYW6PS</code></div>
+  </div>
+</article>
+<article class="card" data-dto="19" data-precio="6.13" data-val="4.0" data-opi="22" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" nueva "
+         data-texto="crema anticelulítica reductora 100 g, crema reductora abdomen mujer y hombre, cremas reafirmante corporal, anticelulítico reductor potente para abdomen, piernas, glúteos y brazos b0h1d3cjrk belleza">
+  <label class="pick"><input type="checkbox" value="B0H1D3CJRK" data-desc="Crema Anticelulítica Reductora 100 g, C… · 6,13 € · -19%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H1D3CJRK?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-19%</span>
+    <img src="https://m.media-amazon.com/images/I/61pa4q5-BkL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H1D3CJRK?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Crema Anticelulítica Reductora 100 g, Crema Reductora Abdomen Mujer y Hombre, Cremas Reafirmante Corporal, Anticelulítico Reductor Potente para Abdomen, Piernas, Glúteos y Brazos</a>
+    <div class="precio"><b>6,13 €</b> <s>7,59 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,0 (22)</div>
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (6,45 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Belleza · <code>B0H1D3CJRK</code></div>
+  </div>
+</article>
+<article class="card" data-dto="23" data-precio="6.17" data-val="4.3" data-opi="304" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 nueva sns "
+         data-texto="revitale jabón avanzado con retinol – barra reafirmante y renovadora para una piel suave y radiante b0cgy5zzps belleza">
+  <label class="pick"><input type="checkbox" value="B0CGY5ZZPS" data-desc="Revitale Jabón Avanzado con Retinol – B… · 6,17 € · -23%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CGY5ZZPS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-23%</span>
+    <img src="https://m.media-amazon.com/images/I/6155LvnvP9L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CGY5ZZPS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Revitale Jabón Avanzado con Retinol – Barra Reafirmante y Renovadora para una Piel Suave y Radiante</a>
+    <div class="precio"><b>6,17 €</b> <s>7,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (304)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-7% vs mín. 30 días (6,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span><span class="tag sns">Con Suscríbete y ahorra (-5%) · sin suscripción 6,49 €</span></div>
+    <div class="pie">Belleza · <code>B0CGY5ZZPS</code></div>
+  </div>
+</article>
+<article class="card" data-dto="19" data-precio="8.05" data-val="4.5" data-opi="8141" data-vend="50" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 nueva ok vendidos "
+         data-texto="160 bandas de cera no tejidas para depilación profesional | para cera caliente y fría · cara, cuerpo y piernas · uso en casa y en salón · piel suave sin irritaciones b08g4v2d52 belleza">
+  <label class="pick"><input type="checkbox" value="B08G4V2D52" data-desc="160 bandas de cera no tejidas para depi… · 8,05 € · -19%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B08G4V2D52?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-19%</span>
+    <img src="https://m.media-amazon.com/images/I/91tTdx8+tIL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B08G4V2D52?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">160 bandas de cera no tejidas para depilación profesional | Para cera caliente y fría · cara, cuerpo y piernas · uso en casa y en salón · piel suave sin irritaciones</a>
+    <div class="precio"><b>8,05 €</b> <s>9,97 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (8.141) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -19% vs mín. 30 días (9,97 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Belleza · <code>B08G4V2D52</code></div>
+  </div>
+</article>
+<article class="card" data-dto="19" data-precio="8.06" data-val="4.4" data-opi="10282" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 nueva "
+         data-texto="bezox juego de cortaúñas - cortaúñas ultra afilado resistente de acero inoxidable y lima ergonómica cómoda para uñas - cortaúñas afilado para adultos y niños oro b094mzhw11 belleza">
+  <label class="pick"><input type="checkbox" value="B094MZHW11" data-desc="BEZOX Juego de cortaúñas - Cortaúñas ul… · 8,06 € · -19%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B094MZHW11?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-19%</span>
+    <img src="https://m.media-amazon.com/images/I/61JPv23gR8S._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B094MZHW11?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">BEZOX Juego de cortaúñas - Cortaúñas ultra afilado resistente de acero inoxidable y lima ergonómica cómoda para uñas - Cortaúñas afilado para adultos y niños Oro</a>
+    <div class="precio"><b>8,06 €</b> <s>9,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (10.282)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (8,48 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Belleza · <code>B094MZHW11</code></div>
+  </div>
+</article>
+<article class="card" data-dto="19" data-precio="8.07" data-val="4.1" data-opi="507" data-vend="50" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" hist vendidos "
+         data-texto="cyperus rotundus - aceite para depilación, reducción del crecimiento del vello corporal, piel suave, reduce los poros, aceite adecuado para todo tipo de piel, 60 b0dzgr5745 belleza">
+  <label class="pick"><input type="checkbox" value="B0DZGR5745" data-desc="Cyperus Rotundus - Aceite para depilaci… · 8,07 € · -19%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DZGR5745?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-19%</span>
+    <img src="https://m.media-amazon.com/images/I/81YW65-D2+L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DZGR5745?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Cyperus Rotundus - Aceite para depilación, reducción del crecimiento del vello corporal, piel suave, reduce los poros, aceite adecuado para todo tipo de piel, 60</a>
+    <div class="precio"><b>8,07 €</b> <s>9,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,1 (507) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (8,49 €)</span></div>
+    <div class="pie">Belleza · <code>B0DZGR5745</code></div>
+  </div>
+</article>
+<article class="card" data-dto="19" data-precio="8.07" data-val="3.7" data-opi="43" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" hist "
+         data-texto="pegamento sólido para lifting de pestañas,adhesivo sólido para laminado de cejas y pestañas,pegamento de pestaña,con un pequeño cepillo,uso en salón de belleza y uso en casa b0gsjvydvz belleza">
+  <label class="pick"><input type="checkbox" value="B0GSJVYDVZ" data-desc="Pegamento Sólido Para Lifting De Pestañ… · 8,07 € · -19%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GSJVYDVZ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-19%</span>
+    <img src="https://m.media-amazon.com/images/I/71ooy9izEzL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GSJVYDVZ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Pegamento Sólido Para Lifting De Pestañas,Adhesivo Sólido Para Laminado De Cejas Y Pestañas,Pegamento de Pestaña,Con un pequeño cepillo,Uso en Salón De Belleza y Uso En Casa</a>
+    <div class="precio"><b>8,07 €</b> <s>9,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 3,7 (43)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (8,49 €)</span></div>
+    <div class="pie">Belleza · <code>B0GSJVYDVZ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="19" data-precio="8.11" data-val="4.5" data-opi="190" data-vend="100" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 vendidos "
+         data-texto="aceite cyperus rotundus, aceite inhibidor de vello con cyperus rotundus 60ml | reduce crecimiento, repara piel y cierra poros | fórmula natural + péptidos | vegano y para pieles sensibles b0f1xqkgjz belleza">
+  <label class="pick"><input type="checkbox" value="B0F1XQKGJZ" data-desc="Aceite Cyperus Rotundus, Aceite Inhibid… · 8,11 € · -19%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0F1XQKGJZ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-19%</span>
+    <img src="https://m.media-amazon.com/images/I/71Fem9MTJaL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0F1XQKGJZ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Aceite Cyperus Rotundus, Aceite Inhibidor de Vello con Cyperus Rotundus 60ml | Reduce Crecimiento, Repara Piel y Cierra Poros | Fórmula Natural + Péptidos | Vegano y para Pieles Sensibles</a>
+    <div class="precio"><b>8,11 €</b> <s>9,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (190) · <span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (8,54 €)</span></div>
+    <div class="pie">Belleza · <code>B0F1XQKGJZ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="27" data-precio="7.3" data-val="3.8" data-opi="47" data-vend="50" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" sns vendidos "
+         data-texto="tratamiento hongos uñas pies – solución efectiva que combate la decoloración, antihongos para uñas fáciles de usar, cuidado intensivo y seguro para devolver la confianza a tus pies 30ml b0fqstv4ln belleza">
+  <label class="pick"><input type="checkbox" value="B0FQSTV4LN" data-desc="Tratamiento hongos uñas pies – Solución… · 7,30 € · -27%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FQSTV4LN?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-27%</span>
+    <img src="https://m.media-amazon.com/images/I/71gJSgOJ9qL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FQSTV4LN?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Tratamiento hongos uñas pies – Solución efectiva que combate la decoloración, antihongos para uñas fáciles de usar, cuidado intensivo y seguro para devolver la confianza a tus pies 30ML</a>
+    <div class="precio"><b>7,30 €</b> <s>9,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 3,8 (47) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (8,54 €)</span><span class="tag sns">Con Suscríbete y ahorra (-10%) · sin suscripción 8,11 €</span></div>
+    <div class="pie">Belleza · <code>B0FQSTV4LN</code></div>
+  </div>
+</article>
+<article class="card" data-dto="19" data-precio="11.39" data-val="4.3" data-opi="178" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" hist "
+         data-texto="yolonce fibra capilar polvo, levanta raíz pelo, dissimula calvicie, unisex, marrón oscuro, neutral, 27.5 gramos b0f1fn5tzs belleza">
+  <label class="pick"><input type="checkbox" value="B0F1FN5TZS" data-desc="YOLONCE Fibra Capilar Polvo, Levanta Ra… · 11,39 € · -19%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0F1FN5TZS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-19%</span>
+    <img src="https://m.media-amazon.com/images/I/71ki6b7K43L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0F1FN5TZS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">YOLONCE Fibra Capilar Polvo, Levanta Raíz Pelo, Dissimula Calvicie, Unisex, Marrón Oscuro, Neutral, 27.5 Gramos</a>
+    <div class="precio"><b>11,39 €</b> <s>13,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (178)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (11,99 €)</span></div>
+    <div class="pie">Belleza · <code>B0F1FN5TZS</code></div>
+  </div>
+</article>
+<article class="card" data-dto="27" data-precio="12.05" data-val="3.4" data-opi="57" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" ok sns "
+         data-texto="poderm esmalte fortalecedor de uñas - sunkissed | repara y fortalece uñas dañadas y debilitadas por esmaltes semipermanentes | biotina, silicio y queratina | desarrollado por un podólogo en suiza b0dz2zp7bk belleza">
+  <label class="pick"><input type="checkbox" value="B0DZ2ZP7BK" data-desc="PODERM Esmalte Fortalecedor de Uñas - S… · 12,05 € · -27%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DZ2ZP7BK?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-27%</span>
+    <img src="https://m.media-amazon.com/images/I/71CdpR8UmFL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DZ2ZP7BK?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">PODERM Esmalte Fortalecedor de Uñas - Sunkissed | Repara y Fortalece Uñas Dañadas y Debilitadas por Esmaltes Semipermanentes | Biotina, Silicio y Queratina | Desarrollado por un Podólogo en Suiza</a>
+    <div class="precio"><b>12,05 €</b> <s>16,50 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★☆☆</span> 3,4 (57)</div>
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -19% vs mín. 30 días (16,50 €)</span><span class="tag sns">Con Suscríbete y ahorra (-10%) · sin suscripción 13,39 €</span></div>
+    <div class="pie">Belleza · <code>B0DZ2ZP7BK</code></div>
+  </div>
+</article>
+<article class="card" data-dto="23" data-precio="13.06" data-val="4.2" data-opi="414" data-vend="50" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" sns vendidos "
+         data-texto="poderm - removedor de cuticulas 2-en-1 exfolia e hidrata las cutículas - elimina pieles muertas - quitacuticulas - cuticle remover - swiss lab b0dyvmnrb4 belleza">
+  <label class="pick"><input type="checkbox" value="B0DYVMNRB4" data-desc="Poderm - Removedor de Cuticulas 2-en-1… · 13,06 € · -23%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DYVMNRB4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-23%</span>
+    <img src="https://m.media-amazon.com/images/I/71Bo3mRjDPL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DYVMNRB4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Poderm - Removedor de Cuticulas 2-en-1 Exfolia e Hidrata las Cutículas - Elimina Pieles Muertas - Quitacuticulas - Cuticle Remover - Swiss Lab</a>
+    <div class="precio"><b>13,06 €</b> <s>16,90 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (414) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (14,50 €)</span><span class="tag sns">Con Suscríbete y ahorra (-5%) · sin suscripción 13,75 €</span></div>
+    <div class="pie">Belleza · <code>B0DYVMNRB4</code></div>
+  </div>
+</article>
+<article class="card" data-dto="19" data-precio="16.14" data-val="3.8" data-opi="3" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" hist ok "
+         data-texto="serum crecimiento cabello con aceite de romero, 60ml | hair growth spray serum anticaida cabello mujer y hombres, crece pelo rapido, fortalece, nutre y aporta volumen b0gycr7vwr belleza">
+  <label class="pick"><input type="checkbox" value="B0GYCR7VWR" data-desc="Serum Crecimiento Cabello con Aceite de… · 16,14 € · -19%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GYCR7VWR?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-19%</span>
+    <img src="https://m.media-amazon.com/images/I/71TRUxI8x7L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GYCR7VWR?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Serum Crecimiento Cabello con Aceite de Romero, 60ml | Hair Growth Spray Serum Anticaida Cabello Mujer y Hombres, Crece Pelo Rapido, Fortalece, Nutre y Aporta Volumen</a>
+    <div class="precio"><b>16,14 €</b> <s>19,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 3,8 (3)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -19% vs mín. 30 días (19,99 €)</span></div>
+    <div class="pie">Belleza · <code>B0GYCR7VWR</code></div>
+  </div>
+</article>
+<article class="card" data-dto="19" data-precio="20.76" data-val="4.1" data-opi="400" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 ok "
+         data-texto="softto+ plus black hair champú para cubrir el pelo blanco y gris en 10 minutos, sin manchas, incluye guantes, para hombre y mujer, 350 ml, color negro b08617mkj1 belleza">
+  <label class="pick"><input type="checkbox" value="B08617MKJ1" data-desc="Softto+ Plus Black Hair Champú para cub… · 20,76 € · -19%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B08617MKJ1?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-19%</span>
+    <img src="https://m.media-amazon.com/images/I/61JhrOneNdL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B08617MKJ1?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Softto+ Plus Black Hair Champú para cubrir el pelo blanco y gris en 10 minutos, sin manchas, incluye guantes, para hombre y mujer, 350 ml, color negro</a>
+    <div class="precio"><b>20,76 €</b> <s>25,76 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,1 (400)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -19% vs mín. 30 días (25,76 €)</span></div>
+    <div class="pie">Belleza · <code>B08617MKJ1</code></div>
+  </div>
+</article>
+<article class="card" data-dto="18" data-precio="12.34" data-val="4.4" data-opi="413" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 nueva "
+         data-texto="razuyen tonico facial 200ml, rice toner con aloe vera y niacinamida | tónico hidratante sin alcohol ni fragancias sintéticas, para todo tipo de piel, rutina facial diaria y piel suave b0ddtffgm4 belleza">
+  <label class="pick"><input type="checkbox" value="B0DDTFFGM4" data-desc="RAZUYEN Tonico Facial 200ml, Rice Toner… · 12,34 € · -18%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DDTFFGM4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-18%</span>
+    <img src="https://m.media-amazon.com/images/I/612OURanFaL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DDTFFGM4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">RAZUYEN Tonico Facial 200ml, Rice Toner con Aloe Vera y Niacinamida | Tónico hidratante sin alcohol ni fragancias sintéticas, para todo tipo de piel, rutina facial diaria y piel suave</a>
+    <div class="precio"><b>12,34 €</b> <s>14,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (413)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (12,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Belleza · <code>B0DDTFFGM4</code></div>
+  </div>
+</article>
+<article class="card" data-dto="18" data-precio="29.14" data-val="4.3" data-opi="256" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas="  "
+         data-texto="guam inthenso effect - crema salina riducente notte, 200ml b0clh1cjml belleza">
+  <label class="pick"><input type="checkbox" value="B0CLH1CJML" data-desc="Guam Inthenso Effect - Crema Salina Rid… · 29,14 € · -18%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CLH1CJML?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-18%</span>
+    <img src="https://m.media-amazon.com/images/I/81e74UXmGfL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CLH1CJML?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Guam Inthenso Effect - Crema Salina Riducente Notte, 200ml</a>
+    <div class="precio"><b>29,14 €</b> <s>35,50 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (256)</div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span></div>
+    <div class="pie">Belleza · <code>B0CLH1CJML</code></div>
+  </div>
+</article>
+<article class="card" data-dto="18" data-precio="41.95" data-val="4.6" data-opi="68" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 "
+         data-texto="shu uemura muroto volume acondicionador voluminizador ligero 250ml | acondicionador voluminizador que aporta hidratación y cuerpo sin peso. ideal con champú volumen. b07s653hnf belleza">
+  <label class="pick"><input type="checkbox" value="B07S653HNF" data-desc="Shu Uemura Muroto Volume Acondicionador… · 41,95 € · -18%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07S653HNF?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-18%</span>
+    <img src="https://m.media-amazon.com/images/I/41dEM94OUbL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07S653HNF?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Shu Uemura Muroto Volume Acondicionador Voluminizador Ligero 250ml | Acondicionador voluminizador que Aporta hidratación y cuerpo sin peso. Ideal con champú volumen.</a>
+    <div class="precio"><b>41,95 €</b> <s>50,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (68)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span></div>
+    <div class="pie">Belleza · <code>B07S653HNF</code></div>
+  </div>
+</article>
+<article class="card" data-dto="17" data-precio="9.99" data-val="4.0" data-opi="180" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 ok "
+         data-texto="lac for you 2 atomizador perfume recargable 8ml - decants perfumes dosificador colonia recargable, bote colonia viaje - azul y rosa b0cz488b93 belleza">
+  <label class="pick"><input type="checkbox" value="B0CZ488B93" data-desc="LAC FOR YOU 2 Atomizador Perfume Recarg… · 9,99 € · -17%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CZ488B93?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-17%</span>
+    <img src="https://m.media-amazon.com/images/I/71E7pqSgVqL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CZ488B93?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">LAC FOR YOU 2 Atomizador Perfume Recargable 8ml - Decants Perfumes Dosificador Colonia Recargable, Bote Colonia Viaje - Azul y Rosa</a>
+    <div class="precio"><b>9,99 €</b> <s>11,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,0 (180)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -17% vs mín. 30 días (11,99 €)</span></div>
+    <div class="pie">Belleza · <code>B0CZ488B93</code></div>
+  </div>
+</article>
+<article class="card" data-dto="17" data-precio="13.13" data-val="4.6" data-opi="1811" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" ok "
+         data-texto="tecbeauty soporte para lápices labiales de 40 rejillas, organizador de lápiz labial acrílico transparente y vitrina de almacenamiento para brillo de labios, tubos de lápiz labial b08k2dhfnr belleza">
+  <label class="pick"><input type="checkbox" value="B08K2DHFNR" data-desc="Tecbeauty Soporte para lápices labiales… · 13,13 € · -17%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B08K2DHFNR?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-17%</span>
+    <img src="https://m.media-amazon.com/images/I/71Cw8tXJozS._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B08K2DHFNR?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Tecbeauty Soporte para lápices labiales de 40 rejillas, organizador de lápiz labial acrílico transparente y vitrina de almacenamiento para brillo de labios, tubos de lápiz labial</a>
+    <div class="precio"><b>13,13 €</b> <s>15,83 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (1.811)</div>
+    <div class="tags"><span class="tag ok">Bajada real: -17% vs mín. 30 días (15,83 €)</span></div>
+    <div class="pie">Belleza · <code>B08K2DHFNR</code></div>
+  </div>
+</article>
+<article class="card" data-dto="21" data-precio="15.67" data-val="4.2" data-opi="100" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 nueva sns "
+         data-texto="collistar activos puros hair exfoliante con niacinamida, seboequilibrante, para todo tipo de cabello, 250 ml b0ckxndhd2 belleza">
+  <label class="pick"><input type="checkbox" value="B0CKXNDHD2" data-desc="Collistar Activos Puros Hair Exfoliante… · 15,67 € · -21%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CKXNDHD2?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-21%</span>
+    <img src="https://m.media-amazon.com/images/I/61TIXVwHYfL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CKXNDHD2?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Collistar Activos Puros Hair Exfoliante con Niacinamida, Seboequilibrante, para Todo Tipo de Cabello, 250 ml</a>
+    <div class="precio"><b>15,67 €</b> <s>19,89 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (100)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-6% vs mín. 30 días (17,50 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span><span class="tag sns">Con Suscríbete y ahorra (-5%) · sin suscripción 16,50 €</span></div>
+    <div class="pie">Belleza · <code>B0CKXNDHD2</code></div>
+  </div>
+</article>
+<article class="card" data-dto="16" data-precio="25.06" data-val="4.2" data-opi="894" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 nueva "
+         data-texto="umisleep 100% 22 momme gorro de seda de morera para dormir doble capa, rosa | gorro de noche de seda suave para cabello rizado, transpirable, correa ancha ajustable para sujetar a la cabeza b0d7979k3l belleza">
+  <label class="pick"><input type="checkbox" value="B0D7979K3L" data-desc="Umisleep 100% 22 Momme Gorro de Seda de… · 25,06 € · -16%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0D7979K3L?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-16%</span>
+    <img src="https://m.media-amazon.com/images/I/71IgtdUgCNL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0D7979K3L?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Umisleep 100% 22 Momme Gorro de Seda de Morera para Dormir Doble Capa, Rosa | Gorro de Noche de Seda Suave para Cabello Rizado, Transpirable, Correa Ancha Ajustable para Sujetar a la Cabeza</a>
+    <div class="precio"><b>25,06 €</b> <s>29,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (894)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-7% vs mín. 30 días (27,07 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Belleza · <code>B0D7979K3L</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-precio="7.43" data-val="4.3" data-opi="255" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 "
+         data-texto="spirit of cashmere musk edp 30 ml b0dw8wkp7z belleza">
+  <label class="pick"><input type="checkbox" value="B0DW8WKP7Z" data-desc="Spirit of Cashmere Musk EdP 30 ml · 7,43 € · -15%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DW8WKP7Z?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/71uQnsTJR6L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DW8WKP7Z?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Spirit of Cashmere Musk EdP 30 ml</a>
+    <div class="precio"><b>7,43 €</b> <s>8,79 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (255)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-7% vs mín. 30 días (7,96 €)</span></div>
+    <div class="pie">Belleza · <code>B0DW8WKP7Z</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-precio="8.45" data-val="4.0" data-opi="75" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" nueva "
+         data-texto="lammcou atomizador de perfume 10ml, vaporizador de viaje (nergo) | recargable antifugas, frasco de perfume portátil efecto cuero, mini spray para bolso, viaje y uso diario, regalo mujer b0h753jbfz belleza">
+  <label class="pick"><input type="checkbox" value="B0H753JBFZ" data-desc="Lammcou Atomizador de Perfume 10ml, Vap… · 8,45 € · -15%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H753JBFZ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/61z4k20lhRL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H753JBFZ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Lammcou Atomizador de Perfume 10ml, Vaporizador de Viaje (Nergo) | Recargable Antifugas, Frasco de Perfume Portátil Efecto Cuero, Mini Spray para Bolso, Viaje y Uso Diario, Regalo Mujer</a>
+    <div class="precio"><b>8,45 €</b> <s>9,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,0 (75)</div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Belleza · <code>B0H753JBFZ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-precio="9.49" data-val="5.0" data-opi="33" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" cupon "
+         data-texto="2 pares calcetines exfoliantes de pies,mascarilla hidratante para pies | foot peeling mask,mascarilla pies,hidratantes para pies secos agrietados,peeling pies,elimina la piel muerta y los callos b0h9cy5mcb belleza">
+  <label class="pick"><input type="checkbox" value="B0H9CY5MCB" data-desc="2 Pares Calcetines Exfoliantes de Pies,… · 9,49 € · -15%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H9CY5MCB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/81CiPPhP-HL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H9CY5MCB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">2 Pares Calcetines Exfoliantes de Pies,Mascarilla Hidratante Para Pies | Foot Peeling Mask,Mascarilla pies,Hidratantes Para Pies Secos Agrietados,Peeling pies,Elimina la piel muerta y los callos</a>
+    <div class="precio"><b>9,49 €</b> <s>9,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 5,0 (33)</div>
+    <div class="tags"><span class="tag cupon">Con cupón 8,49 €</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (9,99 €)</span></div>
+    <div class="pie">Belleza · <code>B0H9CY5MCB</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-precio="8.54" data-val="4.6" data-opi="3" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas="  "
+         data-texto="set de 3 tinta de labios peel off mate impermeable, perfilador de labios efecto tatuaje larga duracion, labial despegable secado rapido alta pigmentacion sin borrones b0hjzr1qhv belleza">
+  <label class="pick"><input type="checkbox" value="B0HJZR1QHV" data-desc="Set de 3 Tinta de Labios Peel Off Mate… · 8,54 € · -15%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HJZR1QHV?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/71m1j9KKgPL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HJZR1QHV?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Set de 3 Tinta de Labios Peel Off Mate Impermeable, Perfilador de Labios Efecto Tatuaje Larga Duracion, Labial Despegable Secado Rapido Alta Pigmentacion Sin Borrones</a>
+    <div class="precio"><b>8,54 €</b> <s>9,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (3)</div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (8,99 €)</span></div>
+    <div class="pie">Belleza · <code>B0HJZR1QHV</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-precio="11.39" data-val="4.4" data-opi="1261" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" cupon min90 nueva "
+         data-texto="lictin maquillaje halloween-3 colores, negro rojo y blanco, contiene 3 pinceles,2 esponjas y 2 pegatinas para tatuajes.pintura facial halloween,¡ideales para zombis, vampiros, monstruos y cosplay b0d7cnl74k belleza">
+  <label class="pick"><input type="checkbox" value="B0D7CNL74K" data-desc="Lictin Maquillaje Halloween-3 Colores,… · 11,39 € · -15%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0D7CNL74K?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/71sk6SMMpFL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0D7CNL74K?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Lictin Maquillaje Halloween-3 Colores, Negro Rojo y Blanco, contiene 3 pinceles,2 esponjas y 2 pegatinas para tatuajes.Pintura Facial Halloween,¡ideales para zombis, vampiros, monstruos y cosplay</a>
+    <div class="precio"><b>11,39 €</b> <s>11,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (1.261)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag cupon">Con cupón 10,25 €</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (11,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Belleza · <code>B0D7CNL74K</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-precio="15.33" data-val="4.8" data-opi="33" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" nueva "
+         data-texto="set de regalo mujer mascarillas faciales 48pc | mascarilla facial, parches ojos, mascarilla labios, crema de manos y hojas de jabón | regalo para despedida de soltera, fiesta de pijamas, amigas b0ghyl16rn belleza">
+  <label class="pick"><input type="checkbox" value="B0GHYL16RN" data-desc="Set de Regalo Mujer Mascarillas Faciale… · 15,33 € · -15%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GHYL16RN?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/81X1xtTy5oL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GHYL16RN?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Set de Regalo Mujer Mascarillas Faciales 48PC | Mascarilla Facial, Parches Ojos, Mascarilla Labios, Crema de Manos y Hojas de Jabón | Regalo para Despedida de Soltera, Fiesta de Pijamas, Amigas</a>
+    <div class="precio"><b>15,33 €</b> <s>17,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,8 (33)</div>
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (16,14 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Belleza · <code>B0GHYL16RN</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-precio="16.99" data-val="4.3" data-opi="28" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" min90 "
+         data-texto="ballphl sérum crecimiento cabello anticaída,con romero,batana,60ml | aceite de ricino orgánico&amp;biotina, para mujer y hombre,fortalece y mejora la densidad capilar,cuero cabelludo sensible,barba b0gsdrqq78 belleza">
+  <label class="pick"><input type="checkbox" value="B0GSDRQQ78" data-desc="Ballphl Sérum Crecimiento Cabello Antic… · 16,99 € · -15%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GSDRQQ78?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/71mInZxNujL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GSDRQQ78?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Ballphl Sérum Crecimiento Cabello Anticaída,con Romero,Batana,60ml | Aceite de Ricino Orgánico&amp;Biotina, para Mujer y Hombre,Fortalece y Mejora la Densidad Capilar,Cuero Cabelludo Sensible,Barba</a>
+    <div class="precio"><b>16,99 €</b> <s>19,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (28)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-6% vs mín. 30 días (18,04 €)</span></div>
+    <div class="pie">Belleza · <code>B0GSDRQQ78</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-precio="17.25" data-val="4.6" data-opi="163" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" ok "
+         data-texto="l&#x27;oréal professionnel crema de secado con beneficios 10 en 1 para todo tipo de cabello, protección contra el calor hasta 230 °c, tecni.art, flex blow dry, 150 m b0f1tv1247 belleza">
+  <label class="pick"><input type="checkbox" value="B0F1TV1247" data-desc="L&#x27;Oréal Professionnel Crema de secado c… · 17,25 € · -15%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0F1TV1247?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/51WcoLlNS7L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0F1TV1247?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">L&#x27;Oréal Professionnel Crema de secado con beneficios 10 en 1 para todo tipo de cabello, protección contra el calor hasta 230 °C, Tecni.ART, Flex Blow Dry, 150 m</a>
+    <div class="precio"><b>17,25 €</b> <s>20,27 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (163)</div>
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -10% vs mín. 30 días (19,26 €)</span></div>
+    <div class="pie">Belleza · <code>B0F1TV1247</code></div>
+  </div>
+</article>
+<article class="card" data-dto="19" data-precio="17.15" data-val="4.2" data-opi="100" data-vend="0" data-grupo="Belleza"
+         data-cat="Belleza" data-marca="" data-marcas=" nueva sns "
+         data-texto="valquer sérum facial vitamina c y ácido hialurónico | 30 ml | antiedad, hidratante y antiarrugas | con vitamina e y activo anti-imperfecciones | para todo tipo de piel | vegano b09klz3g6x belleza">
+  <label class="pick"><input type="checkbox" value="B09KLZ3G6X" data-desc="VALQUER Sérum Facial Vitamina C y Ácido… · 17,15 € · -19%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B09KLZ3G6X?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-19%</span>
+    <img src="https://m.media-amazon.com/images/I/71SZfY8bhBL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B09KLZ3G6X?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">VALQUER Sérum Facial Vitamina C y Ácido Hialurónico | 30 ml | Antiedad, Hidratante y Antiarrugas | Con Vitamina E y Activo Anti-Imperfecciones | Para Todo Tipo de Piel | Vegano</a>
+    <div class="precio"><b>17,15 €</b> <s>21,25 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (100)</div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (19,15 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span><span class="tag sns">Con Suscríbete y ahorra (-5%) · sin suscripción 18,05 €</span></div>
+    <div class="pie">Belleza · <code>B09KLZ3G6X</code></div>
+  </div>
+</article></main>
+<script>
+const lista = document.getElementById('lista');
+const cards = [...lista.querySelectorAll('.card')];
+const btn = document.getElementById('copiar');
+const $ = id => document.getElementById(id);
+function elegidos() { return cards.filter(c => c.querySelector('input').checked); }
+// Opciones marcadas en un desplegable múltiple (vacío = todas)
+function marcados(id) {
+  const d = $(id);
+  if (!d) return [];
+  const total = d.querySelectorAll('input[type=checkbox]').length;
+  let v = [...d.querySelectorAll('input:checked')].map(i => i.value);
+  if (v.length === total) v = [];            // todas marcadas = sin filtro
+  const faltan = total - v.length;
+  d.classList.toggle('activo', v.length > 0);
+  d.querySelector('summary').textContent =
+    !v.length ? d.dataset.todas
+    : v.length === 1 ? v[0]
+    : faltan <= 3 && v.length > faltan ? `Todas menos ${faltan}`
+    : `${v[0]} +${v.length - 1}`;
+  return v;
+}
+function filtrar() {
+  const q = $('q').value.toLowerCase().trim();
+  const g = $('grupo') ? $('grupo').value : '';
+  const d = +$('dtomin').value || 0;
+  const dmax = $('dtomax').value === '' ? 100 : +$('dtomax').value;
+  const cats = marcados('cat');
+  const marcasTop = marcados('marca');
+  // Botones de etiqueta: "on" = solo las que la tienen, "off" = sin ella
+  const con = [...document.querySelectorAll('.chip.on')].map(b => ` ${b.dataset.m} `);
+  const sin = [...document.querySelectorAll('.chip.off')].map(b => ` ${b.dataset.m} `);
+  let n = 0;
+  cards.forEach(c => {
+    const ver = (!q || c.dataset.texto.includes(q))
+      && con.every(m => c.dataset.marcas.includes(m))
+      && !sin.some(m => c.dataset.marcas.includes(m))
+      && (!cats.length || cats.includes(c.dataset.cat))
+      && (!marcasTop.length || marcasTop.includes(c.dataset.marca))
+      && (!g || c.dataset.grupo.split('|').map(s => s.trim()).includes(g))
+      && +c.dataset.dto >= d && +c.dataset.dto <= dmax;
+    c.hidden = !ver; if (ver) n++;
+  });
+  $('contador').textContent = `${n} de ${cards.length}`;
+}
+lista.addEventListener('change', e => {
+  e.target.closest('.card').classList.toggle('sel', e.target.checked);
+  const n = elegidos().length; btn.textContent = `Copiar ASIN (${n})`; btn.disabled = !n;
+});
+btn.onclick = async () => {
+  // ASIN + tabulador + descripción: en Excel cae en dos columnas (ASIN | DESCRIPCION)
+  const txt = elegidos().map(c => { const i = c.querySelector('input');
+                                     return i.value + '\t' + (i.dataset.desc || ''); }).join('\n');
+  try { await navigator.clipboard.writeText(txt); }
+  catch (e) { const t = document.createElement('textarea'); t.value = txt; document.body.append(t);
+               t.select(); document.execCommand('copy'); t.remove(); }
+  const antes = btn.textContent; btn.textContent = '¡Copiados! Pégalos en la columna ASIN (la descripción va a la de al lado)';
+  setTimeout(() => btn.textContent = antes, 2500);
+};
+// 1er clic: solo las que tienen la etiqueta · 2º: las que NO la tienen · 3º: quitar
+document.querySelectorAll('.chip').forEach(b => b.onclick = () => {
+  if (b.classList.contains('on')) { b.classList.replace('on', 'off'); b.title = 'Ocultando las que la tienen'; }
+  else if (b.classList.contains('off')) { b.classList.remove('off'); b.title = ''; }
+  else { b.classList.add('on'); b.title = 'Solo las que la tienen'; }
+  filtrar();
+});
+['q', 'cat', 'marca', 'grupo', 'dtomin', 'dtomax'].forEach(id => {
+  if (!$(id)) return;
+  $(id).addEventListener('input', filtrar);
+  $(id).addEventListener('change', filtrar);
+});
+// "Marcar todas" / "Desmarcar todas" de cada desplegable múltiple
+document.querySelectorAll('.multi [data-marcar]').forEach(b => b.onclick = () => {
+  b.closest('.multi').querySelectorAll('input[type=checkbox]').forEach(i => i.checked = b.dataset.marcar === '1');
+  filtrar();
+});
+// Cerrar los desplegables múltiples al pulsar fuera
+document.addEventListener('click', e => document.querySelectorAll('details.multi[open]')
+  .forEach(d => d.contains(e.target) || d.removeAttribute('open')));
+$('limpiar').onclick = () => {
+  $('q').value = ''; $('dtomin').value = 0; $('dtomax').value = 100;
+  $('grupo') && ($('grupo').value = '');
+  document.querySelectorAll('.multi input:checked').forEach(i => i.checked = false);
+  document.querySelectorAll('.chip').forEach(b => { b.classList.remove('on', 'off'); b.title = ''; });
+  filtrar(); window.scrollTo(0, 0);
+};
+$('orden').onchange = e => {
+  const k = e.target.value;
+  cards.sort((a, b) => k === 'dto' ? b.dataset.dto - a.dataset.dto
+    : k === 'opi' ? b.dataset.opi - a.dataset.opi
+    : k === 'vend' ? (b.dataset.vend - a.dataset.vend) || (b.dataset.opi - a.dataset.opi)
+    // mejor valorados: a igual nota, antes el que tiene más opiniones
+    : k === 'val' ? (b.dataset.val - a.dataset.val) || (b.dataset.opi - a.dataset.opi)
+    : k === 'asc' ? a.dataset.precio - b.dataset.precio : b.dataset.precio - a.dataset.precio)
+    .forEach(c => lista.append(c));
+};
+filtrar();
+</script>
+</body></html>
