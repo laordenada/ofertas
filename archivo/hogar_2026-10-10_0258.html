@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Ofertas hogar: limpieza y cocina</title>
+<style>
+:root { --bg:#f6f4f1; --card:#fff; --txt:#2b2522; --suave:#7a6f69; --borde:#e6e0da;
+         --acento:#e4913a; --rojo:#c8372d; --tag:#f1ece6;
+         --ok:#2e7d4f; --r20:#1b5e37; --hist:#a66a00; --min90:#be185d;
+         --cupon:#2f6db5; --sns:#6d28d9; --prime:#00a8e1; --top:#111111; --rep:#64748b; --nueva:#ea580c; --oferta:#c8372d; --masvendido:#b45309; --vendidos:#0f766e; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#1b1917; --card:#26231f; --txt:#eee8e2; --suave:#a89d95; --borde:#3a3530; --tag:#332e29;
+           --ok:#3f9e68; --r20:#2f8a55; --hist:#c98a1a; --min90:#db2777;
+           --cupon:#4a86cf; --sns:#8b5cf6; --prime:#00a8e1; --top:#f2f2f2; --rep:#7c8aa0; --nueva:#f97316; --oferta:#e05a4f; --masvendido:#d97706; --vendidos:#14b8a6; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--txt);
+        font:15px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif; }
+header { position:sticky; top:0; z-index:5; background:var(--bg); border-bottom:1px solid var(--borde);
+          padding:14px 20px; display:flex; flex-wrap:wrap; gap:10px 16px; align-items:center; }
+h1 { font-size:19px; margin:0; }
+.sub { color:var(--suave); font-size:13px; }
+.ctrl { margin-left:auto; display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+input, select, button { font:inherit; padding:7px 10px; border-radius:8px;
+          border:1px solid var(--borde); background:var(--card); color:var(--txt); }
+#dtomin, #dtomax { width:64px; }
+.chips { flex-basis:100%; display:flex; flex-wrap:wrap; gap:6px; }
+.chip { --c:var(--suave); background:var(--card); color:var(--txt); border:1.5px solid var(--c);
+         border-radius:999px; padding:4px 12px; font-weight:500; font-size:13px; }
+.chip span { opacity:.7; }
+.chip.on { background:var(--c); color:#fff; }
+.chip.off { border-style:dashed; color:var(--suave); text-decoration:line-through; }
+.chip.off::before { content:"Sin "; text-decoration:none; display:inline-block; margin-right:3px; }
+.multi { position:relative; }
+.multi summary { list-style:none; cursor:pointer; padding:7px 28px 7px 10px; border-radius:8px;
+                  border:1px solid var(--borde); background:var(--card); white-space:nowrap; position:relative; }
+.multi summary::-webkit-details-marker { display:none; }
+.multi summary::after { content:"▾"; position:absolute; right:10px; color:var(--suave); }
+.multi.activo summary { border-color:var(--acento); font-weight:600; }
+.multi .opciones { position:absolute; z-index:10; top:calc(100% + 4px); left:0; min-width:230px;
+                    max-height:60vh; overflow:auto; background:var(--card); border:1px solid var(--borde);
+                    border-radius:8px; padding:6px; box-shadow:0 6px 20px rgba(0,0,0,.15); }
+.multi .opciones label { display:flex; gap:8px; align-items:center; padding:5px 6px; border-radius:6px;
+                          cursor:pointer; white-space:nowrap; }
+.multi .opciones label:hover { background:var(--tag); }
+.multi .opciones span { color:var(--suave); }
+.multi .acciones { display:flex; gap:6px; padding:2px 2px 8px; margin-bottom:4px;
+                    border-bottom:1px solid var(--borde); position:sticky; top:-6px; background:var(--card); }
+.multi .acciones button { flex:1; padding:5px 8px; font-size:13px; }
+button { background:var(--acento); border-color:var(--acento); color:#fff; font-weight:600; cursor:pointer; }
+button:disabled { opacity:.5; cursor:default; }
+button.sec { background:var(--card); color:var(--txt); border-color:var(--borde); font-weight:500; }
+#contador { color:var(--suave); font-size:13px; }
+main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); }
+.card { background:var(--card); border:1px solid var(--borde); border-radius:12px; overflow:hidden;
+         display:flex; flex-direction:column; position:relative;
+         content-visibility:auto; contain-intrinsic-size:auto 460px; }
+.card[hidden] { display:none; }
+.card.sel { outline:3px solid var(--acento); }
+.pick { position:absolute; top:8px; right:8px; z-index:2; background:var(--card); border-radius:6px;
+         padding:3px 7px; font-size:13px; cursor:pointer; border:1px solid var(--borde); }
+.foto { display:block; background:#fff; aspect-ratio:1; position:relative; }
+.foto img { width:100%; height:100%; object-fit:contain; padding:14px; }
+.dto { position:absolute; top:8px; left:8px; background:var(--rojo); color:#fff; font-weight:700;
+        padding:3px 8px; border-radius:6px; }
+.info { padding:12px; display:flex; flex-direction:column; gap:8px; flex:1; }
+.titulo { color:var(--txt); text-decoration:none; display:-webkit-box; -webkit-line-clamp:3;
+           -webkit-box-orient:vertical; overflow:hidden; }
+.titulo:hover { text-decoration:underline; }
+.precio b { font-size:20px; } .precio s { color:var(--suave); margin-left:6px; }
+.tags { display:flex; flex-wrap:wrap; gap:5px; }
+.tag { background:var(--tag); border-radius:5px; padding:2px 7px; font-size:12px; }
+.resenas { font-size:13px; color:var(--suave); margin:-2px 0 6px; }
+.resenas .estrellas { color:#f5a623; letter-spacing:1px; }
+.resenas .vendidos { white-space:nowrap; }
+.tag.talla { background:transparent; border:1px solid var(--suave); font-weight:600; }
+.tag.top, .chip.m-top { --c:var(--top); } .tag.top { background:var(--top); color:#fff; } .tag.nueva, .chip.m-nueva { --c:var(--nueva); } .tag.nueva { background:var(--nueva); color:#fff; } .tag.ok, .chip.m-ok { --c:var(--ok); } .tag.ok { background:var(--ok); color:#fff; } .tag.hist, .chip.m-hist { --c:var(--hist); } .tag.hist { background:var(--hist); color:#fff; } .tag.min90, .chip.m-min90 { --c:var(--min90); } .tag.min90 { background:var(--min90); color:#fff; } .tag.prime, .chip.m-prime { --c:var(--prime); } .tag.prime { background:var(--prime); color:#fff; } .tag.cupon, .chip.m-cupon { --c:var(--cupon); } .tag.cupon { background:var(--cupon); color:#fff; } .tag.sns, .chip.m-sns { --c:var(--sns); } .tag.sns { background:var(--sns); color:#fff; } .tag.rep, .chip.m-rep { --c:var(--rep); } .tag.rep { background:var(--rep); color:#fff; } .tag.oferta, .chip.m-oferta { --c:var(--oferta); } .tag.oferta { background:var(--oferta); color:#fff; } .tag.masvendido, .chip.m-masvendido { --c:var(--masvendido); } .tag.masvendido { background:var(--masvendido); color:#fff; } .tag.vendidos, .chip.m-vendidos { --c:var(--vendidos); } .tag.vendidos { background:var(--vendidos); color:#fff; } 
+.tag.prime, .chip.m-prime.on { color:#062a3a; }  /* azul Prime claro: texto oscuro para que se lea */
+.tag.top, .chip.m-top.on { color:var(--bg); font-weight:600; }  /* marca top: negro (blanco en modo oscuro) */
+.pie { margin-top:auto; color:var(--suave); font-size:12px; }
+@media (max-width:600px) { header { padding:12px 16px; } main { padding:16px; gap:12px;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); } .ctrl { margin-left:0; } }
+</style></head><body>
+<header>
+  <div><h1>Ofertas hogar: limpieza y cocina</h1>
+  <div class="sub">109 ofertas · 10/10/2026 02:58</div></div>
+  <div class="ctrl">
+    <input type="search" id="q" placeholder="Filtrar…">
+    <details class="multi" id="cat" data-todas="Todas las categorías"><summary>Todas las categorías</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="🤖 Robot aspirador"> 🤖 Robot aspirador <span>(15)</span></label><label><input type="checkbox" value="🥤 Batidora / Licuadora"> 🥤 Batidora / Licuadora <span>(16)</span></label><label><input type="checkbox" value="🧹 Aspiradora"> 🧹 Aspiradora <span>(34)</span></label><label><input type="checkbox" value="📟 Microondas / Horno"> 📟 Microondas / Horno <span>(9)</span></label><label><input type="checkbox" value="☕ Cafetera"> ☕ Cafetera <span>(6)</span></label><label><input type="checkbox" value="♨️ Vapor"> ♨️ Vapor <span>(4)</span></label><label><input type="checkbox" value="🍲 Robot de cocina"> 🍲 Robot de cocina <span>(2)</span></label><label><input type="checkbox" value="🍟 Freidora de aire"> 🍟 Freidora de aire <span>(13)</span></label><label><input type="checkbox" value="🛋️ Tapicerías"> 🛋️ Tapicerías <span>(1)</span></label><label><input type="checkbox" value="🧽 Friegasuelos"> 🧽 Friegasuelos <span>(2)</span></label><label><input type="checkbox" value="🍞 Pequeño electro"> 🍞 Pequeño electro <span>(5)</span></label><label><input type="checkbox" value="💦 Hidrolimpiadora"> 💦 Hidrolimpiadora <span>(2)</span></label></div></details>
+    
+    <select id="grupo"><option value="">Todas las búsquedas</option><option value="Bricolaje (hidrolimpiadoras)">Bricolaje (hidrolimpiadoras)</option><option value="Básicos Día a Día">Básicos Día a Día</option><option value="Hogar y Cocina">Hogar y Cocina</option></select>
+    <label>Dto. <input type="number" id="dtomin" min="0" max="100" step="5" value="0" title="mínimo">
+      a <input type="number" id="dtomax" min="0" max="100" step="5" value="100" title="máximo"> %</label>
+    <select id="orden">
+      <option value="dto">Más descuento</option>
+      <option value="asc">Precio más bajo</option>
+      <option value="desc">Precio más alto</option>
+      <option value="vend">Más vendidos</option>
+      <option value="opi">Más opiniones</option>
+      <option value="val">Mejor valorados</option>
+    </select>
+    <button id="limpiar" class="sec" type="button">Quitar filtros</button>
+    <span id="contador"></span>
+    <button id="copiar" disabled>Copiar ASIN (0)</button>
+  </div>
+  <div class="chips"><button type="button" class="chip m-nueva" data-m="nueva">Oferta nueva <span>34</span></button><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>59</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>50</span></button><button type="button" class="chip m-cupon" data-m="cupon">Cupón <span>2</span></button><button type="button" class="chip m-vendidos" data-m="vendidos">🛒 Comprados el mes pasado <span>27</span></button></div>
+</header>
+<main id="lista">
+<article class="card" data-dto="73" data-precio="329.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" hist ok "
+         data-texto="lefant m3 max robot aspirador y fregasuelos,20000 pa,210min, mapeo,navegación lidar,recogida de pelo de mascotas,sistema antienredos de pelo,anticolisión,elevación de fregona,2.4g/5ghz wifi b0g81d1zf5 básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0G81D1ZF5" data-desc="Lefant M3 MAX Robot Aspirador y Fregasu… · 329,99 € · -73%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0G81D1ZF5?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-73%</span>
+    <img src="https://m.media-amazon.com/images/I/71Evy1EGCzL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0G81D1ZF5?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Lefant M3 MAX Robot Aspirador y Fregasuelos,20000 Pa,210min, Mapeo,Navegación LiDAR,Recogida de Pelo de Mascotas,Sistema antienredos de Pelo,Anticolisión,Elevación de fregona,2.4G/5GHz WiFi</a>
+    <div class="precio"><b>329,99 €</b> <s>1.199,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ok">Bajada real: -73% vs mín. 30 días (1199,99 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0G81D1ZF5</code></div>
+  </div>
+</article>
+<article class="card" data-dto="72" data-precio="169.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" ok "
+         data-texto="lefant m2l plus robot aspirador y fregasuelos 6000pa autolimpieza 75 días | 130min, navegación lidar dtof, evasión obstáculos psd 190°, mapeo inteligente aspiradora robot, wifi 2,4g/5g/alexa/app b0fqnr45f3 básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0FQNR45F3" data-desc="Lefant M2L Plus Robot Aspirador y Frega… · 169,99 € · -72%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FQNR45F3?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-72%</span>
+    <img src="https://m.media-amazon.com/images/I/71-n4dr+boL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FQNR45F3?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Lefant M2L Plus Robot Aspirador y Fregasuelos 6000pa Autolimpieza 75 Días | 130min, Navegación LiDAR dToF, Evasión Obstáculos PSD 190°, Mapeo Inteligente Aspiradora Robot, WiFi 2,4G/5G/Alexa/App</a>
+    <div class="precio"><b>169,99 €</b> <s>599,99 €</s></div>
+    
+    <div class="tags"><span class="tag ok">Bajada real: -72% vs mín. 30 días (599,99 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0FQNR45F3</code></div>
+  </div>
+</article>
+<article class="card" data-dto="70" data-precio="299.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" ok "
+         data-texto="lefant m3 robot aspirador con mapeo, 12000pa, navegación dtof lidar, evitar obstáculos psd, llenado de vaciado, lavado y secado automático, wifi/alexa/app, blanco b0gr9k97zv básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GR9K97ZV" data-desc="Lefant M3 Robot Aspirador con Mapeo, 12… · 299,99 € · -70%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GR9K97ZV?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-70%</span>
+    <img src="https://m.media-amazon.com/images/I/71IeUsfJH-L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GR9K97ZV?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Lefant M3 Robot Aspirador con Mapeo, 12000Pa, Navegación dToF LiDAR, Evitar obstáculos PSD, llenado de Vaciado, Lavado y Secado automático, WiFi/Alexa/App, Blanco</a>
+    <div class="precio"><b>299,99 €</b> <s>999,99 €</s></div>
+    
+    <div class="tags"><span class="tag ok">Bajada real: -70% vs mín. 30 días (999,99 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0GR9K97ZV</code></div>
+  </div>
+</article>
+<article class="card" data-dto="65" data-precio="139.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" ok "
+         data-texto="lefant robot aspirador y fregasuelos 2 en 1, 5500pa, 200mins， negro | ultrafino 32 cm, navegación láser dtof, control app/alexa, para pelo de animales y suelos duros, zona prohibida b0grv9wf91 básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GRV9WF91" data-desc="Lefant Robot Aspirador y Fregasuelos 2… · 139,99 € · -65%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GRV9WF91?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-65%</span>
+    <img src="https://m.media-amazon.com/images/I/51K6J-Gm1NL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GRV9WF91?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Lefant Robot Aspirador y Fregasuelos 2 en 1, 5500Pa, 200mins， Negro | Ultrafino 32 cm, Navegación Láser dToF, Control APP/Alexa, para Pelo de Animales y Suelos Duros, Zona Prohibida</a>
+    <div class="precio"><b>139,99 €</b> <s>399,99 €</s></div>
+    
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -65% vs mín. 30 días (399,99 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0GRV9WF91</code></div>
+  </div>
+</article>
+<article class="card" data-dto="57" data-precio="259.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" ok "
+         data-texto="lefant m210 omni robot aspirador y fregasuelos, 20000 pa, cero enredos | depósito de polvo 800 ml, cuerpo ultradelgado de 85 mm, ideal para suelos duros y hogares con mascotas b0g7tmhwv6 básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0G7TMHWV6" data-desc="Lefant M210 Omni Robot Aspirador y Freg… · 259,99 € · -57%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0G7TMHWV6?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-57%</span>
+    <img src="https://m.media-amazon.com/images/I/71oqTa0GN-L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0G7TMHWV6?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Lefant M210 Omni Robot Aspirador y Fregasuelos, 20000 Pa, Cero Enredos | Depósito de Polvo 800 ml, Cuerpo Ultradelgado de 85 mm, Ideal para Suelos Duros y Hogares con Mascotas</a>
+    <div class="precio"><b>259,99 €</b> <s>599,99 €</s></div>
+    
+    <div class="tags"><span class="tag ok">Bajada real: -57% vs mín. 30 días (599,99 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0G7TMHWV6</code></div>
+  </div>
+</article>
+<article class="card" data-dto="50" data-precio="149.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🥤 Batidora / Licuadora" data-marca="" data-marcas=" hist nueva ok "
+         data-texto="fretta extractor de zumos y verduras,apertura de 135 mm y capacidad de 1,8 l, licuadora prensado en frio para frutas y verduras enteras, 250w juicer machine, sin bpa, incluye 2 vasos (gris, 1,8l) b0ghr2zvxp básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GHR2ZVXP" data-desc="Fretta Extractor de Zumos y Verduras,Ap… · 149,99 € · -50%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GHR2ZVXP?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-50%</span>
+    <img src="https://m.media-amazon.com/images/I/51wEgxkdRsL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GHR2ZVXP?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Fretta Extractor de Zumos y Verduras,Apertura de 135 MM y Capacidad de 1,8 L, Licuadora Prensado en Frio para Frutas y Verduras Enteras, 250W Juicer Machine, Sin BPA, Incluye 2 Vasos (Gris, 1,8L)</a>
+    <div class="precio"><b>149,99 €</b> <s>299,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ok">Bajada real: -50% vs mín. 30 días (299,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0GHR2ZVXP</code></div>
+  </div>
+</article>
+<article class="card" data-dto="48" data-precio="104.49" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🥤 Batidora / Licuadora" data-marca="" data-marcas=" hist nueva ok "
+         data-texto="amzchef extractor de zumos, slow juicer con apertura xl de 158mm | capacidad de 2,5l, licuadora prensado en frío para frutas y verduras enteras, cuerpo inoxidable, fácil montaje y limpieza b0gx52ks63 básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GX52KS63" data-desc="AMZCHEF Extractor de Zumos, Slow Juicer… · 104,49 € · -48%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GX52KS63?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-48%</span>
+    <img src="https://m.media-amazon.com/images/I/71UfGN1NsRL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GX52KS63?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">AMZCHEF Extractor de Zumos, Slow Juicer con Apertura XL de 158MM | Capacidad de 2,5L, Licuadora Prensado en Frío para Frutas y Verduras Enteras, Cuerpo Inoxidable, Fácil Montaje y Limpieza</a>
+    <div class="precio"><b>104,49 €</b> <s>199,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -42% vs mín. 30 días (179,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0GX52KS63</code></div>
+  </div>
+</article>
+<article class="card" data-dto="47" data-precio="105.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" hist ok "
+         data-texto="famivac fv3 aspiradora sin cable,plegable aspirador escoba vertical potente | 60kpa/50min,ligera 1.5kg,luz led detecta polvo,cepillo antienredos,autoportante,para suelos,alfombras,mascotas y coche(lila) b0gkp9xcsv básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GKP9XCSV" data-desc="FAMIVAC FV3 Aspiradora sin Cable,Plegab… · 105,99 € · -47%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GKP9XCSV?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-47%</span>
+    <img src="https://m.media-amazon.com/images/I/71JJ9+gEvmL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GKP9XCSV?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">FAMIVAC FV3 Aspiradora sin Cable,Plegable Aspirador Escoba Vertical Potente | 60KPa/50Min,Ligera 1.5KG,Luz LED Detecta Polvo,Cepillo Antienredos,Autoportante,para Suelos,Alfombras,Mascotas y Coche(Lila)</a>
+    <div class="precio"><b>105,99 €</b> <s>199,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -27% vs mín. 30 días (144,82 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0GKP9XCSV</code></div>
+  </div>
+</article>
+<article class="card" data-dto="45" data-precio="109.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" ok "
+         data-texto="lefant v1 aspirador sin cable 40 kpa potente, 3 velocidades, filtración de 5 capas, tubo telescópico, pantalla led táctil, cepillo con led, ideal para toda la casa b0glnh76jw básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GLNH76JW" data-desc="Lefant V1 Aspirador Sin Cable 40 kPa Po… · 109,99 € · -45%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GLNH76JW?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-45%</span>
+    <img src="https://m.media-amazon.com/images/I/51K9a6irkCL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GLNH76JW?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Lefant V1 Aspirador Sin Cable 40 kPa Potente, 3 Velocidades, Filtración de 5 Capas, Tubo Telescópico, Pantalla LED Táctil, Cepillo con LED, Ideal para Toda la Casa</a>
+    <div class="precio"><b>109,99 €</b> <s>200,00 €</s></div>
+    
+    <div class="tags"><span class="tag ok">Bajada real: -45% vs mín. 30 días (200,00 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0GLNH76JW</code></div>
+  </div>
+</article>
+<article class="card" data-dto="41" data-precio="104.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="📟 Microondas / Horno" data-marca="" data-marcas=" min90 nueva ok "
+         data-texto="candy essenza microondas con grill, 31l, 1000w-1500w, 5 niveles de potencia, autolimpieza, automenús, alerta acústica finalización, grill rack, descongelación, apertura izquierda, negro e inox b0c15cshzf básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0C15CSHZF" data-desc="Candy Essenza Microondas con Grill, 31L… · 104,99 € · -41%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0C15CSHZF?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-41%</span>
+    <img src="https://m.media-amazon.com/images/I/71+BrG4vXAL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0C15CSHZF?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Candy Essenza Microondas con Grill, 31L, 1000W-1500W, 5 Niveles de Potencia, Autolimpieza, Automenús, Alerta Acústica Finalización, Grill Rack, Descongelación, Apertura Izquierda, Negro e Inox</a>
+    <div class="precio"><b>104,99 €</b> <s>179,00 €</s></div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -36% vs mín. 30 días (164,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0C15CSHZF</code></div>
+  </div>
+</article>
+<article class="card" data-dto="40" data-precio="44.0" data-val="0" data-opi="0" data-vend="0" data-grupo="Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" min90 "
+         data-texto="m mimotec - twist aspiradora sin cable 120w 14000pa, aspirador vertical 6 en 1, ultraligera, silenciosa, luz led frontal, depósito 0,4l, 20min de autonomía, para suelos, sofás, coche y mascotas b0grbnjvwy hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GRBNJVWY" data-desc="M mimotec - Twist Aspiradora Sin Cable… · 44,00 € · -40%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GRBNJVWY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-40%</span>
+    <img src="https://m.media-amazon.com/images/I/51a3mibuT8L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GRBNJVWY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">M mimotec - Twist Aspiradora Sin Cable 120W 14000Pa, Aspirador Vertical 6 en 1, Ultraligera, Silenciosa, Luz LED Frontal, Depósito 0,4L, 20Min de Autonomía, para Suelos, Sofás, Coche y Mascotas</a>
+    <div class="precio"><b>44,00 €</b> <s>72,90 €</s></div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (47,00 €)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0GRBNJVWY</code></div>
+  </div>
+</article>
+<article class="card" data-dto="40" data-precio="89.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" ok "
+         data-texto="aspiradora sin cable askgift | faros led, aspirador de mano extraible,boquilla para rincones | alfombras ysuelos duros b0h94h9wsm básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0H94H9WSM" data-desc="Aspiradora sin Cable ASKGIFT | Faros LE… · 89,99 € · -40%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H94H9WSM?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-40%</span>
+    <img src="https://m.media-amazon.com/images/I/71xKl+SSRgL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H94H9WSM?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Aspiradora sin Cable ASKGIFT | Faros LED, aspirador de mano extraible,boquilla para rincones | Alfombras ysuelos duros</a>
+    <div class="precio"><b>89,99 €</b> <s>149,99 €</s></div>
+    
+    <div class="tags"><span class="tag ok">Bajada real: -40% vs mín. 30 días (149,99 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0H94H9WSM</code></div>
+  </div>
+</article>
+<article class="card" data-dto="40" data-precio="126.34" data-val="0" data-opi="0" data-vend="500" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" nueva vendidos "
+         data-texto="aibirth aspiradora sin cable 60kpa/650w/70mins, escoba aspiradora de 1.8l, sistema de filtración de 8 etapas,autoportante, adecuada para pelo de mascotas, luz verde alfombras y suelos de madera b09bbx24cv básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B09BBX24CV" data-desc="AIBIRTH Aspiradora sin Cable 60Kpa/650W… · 126,34 € · -40%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B09BBX24CV?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-40%</span>
+    <img src="https://m.media-amazon.com/images/I/61-SZHztEZL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B09BBX24CV?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">AIBIRTH Aspiradora sin Cable 60Kpa/650W/70Mins, Escoba Aspiradora de 1.8L, Sistema de Filtración de 8 Etapas,Autoportante, Adecuada para Pelo de Mascotas, Luz Verde Alfombras y Suelos de Madera</a>
+    <div class="precio"><b>126,34 €</b> <s>209,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 500+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (132,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B09BBX24CV</code></div>
+  </div>
+</article>
+<article class="card" data-dto="39" data-precio="79.78" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🥤 Batidora / Licuadora" data-marca="" data-marcas=" hist ok "
+         data-texto="fretta extractor de zumos y verduras, apertura de 108mm y capacidad de 1l, licuadora prensado en frio para verduras frutas enteras, 200w slow juicer machine, fácil montaje y limpieza, sin bpa (negro) b0gf7s81cq básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GF7S81CQ" data-desc="Fretta Extractor de Zumos y Verduras, A… · 79,78 € · -39%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GF7S81CQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-39%</span>
+    <img src="https://m.media-amazon.com/images/I/71S0CVdlcuL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GF7S81CQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Fretta Extractor de Zumos y Verduras, Apertura de 108MM y Capacidad de 1L, Licuadora Prensado en Frio para Verduras Frutas Enteras, 200W Slow Juicer Machine, Fácil Montaje y Limpieza, Sin BPA (Negro)</a>
+    <div class="precio"><b>79,78 €</b> <s>129,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ok">Bajada real: -39% vs mín. 30 días (129,99 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0GF7S81CQ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="39" data-precio="549.99" data-val="0" data-opi="0" data-vend="50" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" hist vendidos "
+         data-texto="roborock qrevo edge 2 robot aspirador succión extrema de 25000 pa, negro | succión de 25000 pa, 7,98 cm ultrafino para espacios reducidos, base todo en uno, sistema antienredos b0gmh56trh básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GMH56TRH" data-desc="roborock Qrevo Edge 2 Robot Aspirador S… · 549,99 € · -39%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GMH56TRH?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-39%</span>
+    <img src="https://m.media-amazon.com/images/I/71CLvGTVIGL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GMH56TRH?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">roborock Qrevo Edge 2 Robot Aspirador Succión Extrema de 25000 Pa, Negro | Succión de 25000 Pa, 7,98 cm Ultrafino para Espacios Reducidos, Base Todo en Uno, Sistema antienredos</a>
+    <div class="precio"><b>549,99 €</b> <s>899,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-7% vs mín. 30 días (589,99 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0GMH56TRH</code></div>
+  </div>
+</article>
+<article class="card" data-dto="38" data-precio="369.98" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" hist ok "
+         data-texto="lefant m3 ultra robot aspirador y fregasuelos con estación de autolimpieza, 23000 pa, 220 min, navegación láser dtof de 15 m, evasión de obstáculos psd, lavado a 75 °c, secado por aire frío, gris b0fskxgwvb básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0FSKXGWVB" data-desc="Lefant M3 Ultra Robot Aspirador y Frega… · 369,98 € · -38%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FSKXGWVB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-38%</span>
+    <img src="https://m.media-amazon.com/images/I/71MrjZpIF0L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FSKXGWVB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Lefant M3 Ultra Robot Aspirador y Fregasuelos con Estación de Autolimpieza, 23000 Pa, 220 min, Navegación Láser dToF de 15 m, Evasión de Obstáculos PSD, Lavado a 75 °C, Secado por Aire Frío, Gris</a>
+    <div class="precio"><b>369,98 €</b> <s>599,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ok">Bajada real: -38% vs mín. 30 días (599,99 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0FSKXGWVB</code></div>
+  </div>
+</article>
+<article class="card" data-dto="37" data-precio="37.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" nueva "
+         data-texto="zynet v5 aspiradora de mano sin cable 28kpa/60min,aspiradora coche potente | mini aspiradora de mano portátil 3 en 1 aspirar/soplar/inflar, pantalla led, luz verde y filtro hepa b0gvyc59nw hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GVYC59NW" data-desc="Zynet V5 Aspiradora de Mano sin Cable 2… · 37,99 € · -37%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GVYC59NW?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-37%</span>
+    <img src="https://m.media-amazon.com/images/I/61gbIhRLmUL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GVYC59NW?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Zynet V5 Aspiradora de Mano sin Cable 28KPa/60Min,Aspiradora Coche Potente | Mini Aspiradora de Mano Portátil 3 en 1 Aspirar/Soplar/Inflar, Pantalla LED, Luz Verde y Filtro HEPA</a>
+    <div class="precio"><b>37,99 €</b> <s>59,99 €</s></div>
+    
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (39,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0GVYC59NW</code></div>
+  </div>
+</article>
+<article class="card" data-dto="37" data-precio="246.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="☕ Cafetera" data-marca="" data-marcas=" cupon nueva "
+         data-texto="ecozy cafetera espresso 4 en 1, cold brew, latte, cappuccino, plata | pantalla táctil, autolimpieza, espumador de leche, cafetera para cold brew, espresso, cappuccino, latte y café con hielo b0h38rd46x básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0H38RD46X" data-desc="ecozy Cafetera Espresso 4 en 1, Cold Br… · 246,99 € · -37%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H38RD46X?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-37%</span>
+    <img src="https://m.media-amazon.com/images/I/81RNizEMa2L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H38RD46X?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">ecozy Cafetera Espresso 4 en 1, Cold Brew, Latte, Cappuccino, Plata | Pantalla Táctil, Autolimpieza, Espumador de Leche, Cafetera para Cold Brew, Espresso, Cappuccino, Latte y Café con Hielo</a>
+    <div class="precio"><b>246,99 €</b> <s>299,99 €</s></div>
+    
+    <div class="tags"><span class="tag cupon">Con cupón 189,99 €</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (259,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0H38RD46X</code></div>
+  </div>
+</article>
+<article class="card" data-dto="36" data-precio="45.12" data-val="0" data-opi="0" data-vend="100" data-grupo="Hogar y Cocina"
+         data-cat="♨️ Vapor" data-marca="" data-marcas=" nueva vendidos "
+         data-texto="akpian limpiador a vapor de mano, steam cleaner con 10 accesorios | limpiador a vapor de mano | 105 °c (221 °f) vapor caliente | hornos, campanas extractoras, azulejos, ventanas b0hfm19l3b hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0HFM19L3B" data-desc="AKPIAN Limpiador A Vapor De Mano, Steam… · 45,12 € · -36%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HFM19L3B?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-36%</span>
+    <img src="https://m.media-amazon.com/images/I/61xfGB4GJnL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HFM19L3B?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">AKPIAN Limpiador A Vapor De Mano, Steam Cleaner Con 10 Accesorios | Limpiador A Vapor De Mano | 105 °C (221 °F) Vapor Caliente | Hornos, Campanas Extractoras, Azulejos, Ventanas</a>
+    <div class="precio"><b>45,12 €</b> <s>69,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (47,49 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0HFM19L3B</code></div>
+  </div>
+</article>
+<article class="card" data-dto="36" data-precio="449.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" ok "
+         data-texto="roborock qrevo 2 pro set robot aspirador succión extrema de 25000 pa,negro | mopa flexiarm, secado con aire caliente a 45 °c, autolimpieza a alta temperatura a 75 °c, sistema doble antienredos. b0gzzhy5mc básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GZZHY5MC" data-desc="roborock Qrevo 2 Pro Set Robot Aspirado… · 449,99 € · -36%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GZZHY5MC?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-36%</span>
+    <img src="https://m.media-amazon.com/images/I/61MEeAxzDsL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GZZHY5MC?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">roborock Qrevo 2 Pro Set Robot Aspirador Succión Extrema de 25000 Pa,Negro | Mopa FlexiArm, secado con aire caliente a 45 °C, autolimpieza a alta temperatura a 75 °C, sistema doble antienredos.</a>
+    <div class="precio"><b>449,99 €</b> <s>699,00 €</s></div>
+    
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -36% vs mín. 30 días (699,00 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0GZZHY5MC</code></div>
+  </div>
+</article>
+<article class="card" data-dto="34" data-precio="259.9" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🍲 Robot de cocina" data-marca="" data-marcas=" min90 ok "
+         data-texto="kenwood chef xl - robot de cocina 1200w bol inox 6,7l plata | robot de cocina, control electrónico de velocidad, batidor k, gancho amasador, batidor, tapa antisalpicaduras, kvl4100s b06xj4n5sl básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B06XJ4N5SL" data-desc="Kenwood Chef XL - Robot de Cocina 1200W… · 259,90 € · -34%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B06XJ4N5SL?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-34%</span>
+    <img src="https://m.media-amazon.com/images/I/51GQFX5UjdL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B06XJ4N5SL?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Kenwood Chef XL - Robot de Cocina 1200W Bol Inox 6,7L Plata | Robot de Cocina, Control Electrónico de Velocidad, Batidor K, Gancho Amasador, Batidor, Tapa Antisalpicaduras, KVL4100S</a>
+    <div class="precio"><b>259,90 €</b> <s>392,08 €</s></div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -13% vs mín. 30 días (299,90 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B06XJ4N5SL</code></div>
+  </div>
+</article>
+<article class="card" data-dto="33" data-precio="59.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="☕ Cafetera" data-marca="" data-marcas=" hist ok "
+         data-texto="solac taste slim basic 1100w - cafetera 20 bar| espresso o capuccino en casa| vaporizador orientable, espuma leche| 1-2 cafés| molido o monodosis| calienta líquidos| compacta 16x31x30 b0cghv9664 básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0CGHV9664" data-desc="Solac Taste Slim Basic 1100W - Cafetera… · 59,99 € · -33%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CGHV9664?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-33%</span>
+    <img src="https://m.media-amazon.com/images/I/61VjMNK1IhL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CGHV9664?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Solac Taste Slim Basic 1100W - Cafetera 20 Bar| Espresso o Capuccino en Casa| Vaporizador Orientable, Espuma Leche| 1-2 Cafés| Molido o monodosis| Calienta líquidos| Compacta 16x31x30</a>
+    <div class="precio"><b>59,99 €</b> <s>89,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -33% vs mín. 30 días (89,99 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0CGHV9664</code></div>
+  </div>
+</article>
+<article class="card" data-dto="33" data-precio="79.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🍟 Freidora de aire" data-marca="" data-marcas=" hist nueva ok "
+         data-texto="taurus - freidora de aire sin aceite air fry digital duo 9l | 2.600w | doble cestillo 4,5l | 12 programas predefinidos | temporizador digital 60 mins | air fryer pantalla táctil | libre bpa b0ck286mdz básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0CK286MDZ" data-desc="Taurus - Freidora De Aire Sin Aceite Ai… · 79,99 € · -33%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CK286MDZ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-33%</span>
+    <img src="https://m.media-amazon.com/images/I/613pAcAm4pL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CK286MDZ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Taurus - Freidora De Aire Sin Aceite Air Fry Digital Duo 9L | 2.600W | Doble cestillo 4,5L | 12 Programas Predefinidos | Temporizador Digital 60 mins | Air Fryer pantalla Táctil | Libre BPA</a>
+    <div class="precio"><b>79,99 €</b> <s>119,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -30% vs mín. 30 días (114,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0CK286MDZ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="33" data-precio="86.99" data-val="0" data-opi="0" data-vend="50" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🍟 Freidora de aire" data-marca="" data-marcas=" min90 nueva ok vendidos "
+         data-texto="bosch, freidora de aire serie 4, 6.1l, doble calor, crema, maf462c0 | doble calentador para una cocción rápida y uniforme. fríe, hornea, asa y descongela. b0fwkm8pqk básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0FWKM8PQK" data-desc="Bosch, Freidora de aire Serie 4, 6.1L,… · 86,99 € · -33%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FWKM8PQK?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-33%</span>
+    <img src="https://m.media-amazon.com/images/I/61OdU1rlWGL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FWKM8PQK?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Bosch, Freidora de aire Serie 4, 6.1L, Doble calor, Crema, MAF462C0 | Doble calentador para una cocción rápida y uniforme. Fríe, hornea, asa y descongela.</a>
+    <div class="precio"><b>86,99 €</b> <s>129,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -16% vs mín. 30 días (103,00 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0FWKM8PQK</code></div>
+  </div>
+</article>
+<article class="card" data-dto="33" data-precio="119.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="☕ Cafetera" data-marca="" data-marcas=" hist nueva ok "
+         data-texto="taurus euforia - cafetera espresso 20 bar, sistema thermoblock, supreme cream system, 1450w, 1l, vaporizador, hasta 2 cafés, agua caliente, cantidad de café programable, apta para tazas grandes b0fqfw8rgf básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0FQFW8RGF" data-desc="Taurus Euforia - Cafetera espresso 20 B… · 119,99 € · -33%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FQFW8RGF?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-33%</span>
+    <img src="https://m.media-amazon.com/images/I/51kiFp8Y0eL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FQFW8RGF?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Taurus Euforia - Cafetera espresso 20 Bar, sistema thermoblock, supreme cream system, 1450W, 1L, vaporizador, hasta 2 cafés, agua caliente, cantidad de café programable, apta para tazas grandes</a>
+    <div class="precio"><b>119,99 €</b> <s>179,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ok">Bajada real: -33% vs mín. 30 días (179,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0FQFW8RGF</code></div>
+  </div>
+</article>
+<article class="card" data-dto="32" data-precio="149.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" hist nueva ok "
+         data-texto="solac – aspirador escoba | sin cable | 60 min autonomía | 650w | 210aw poder de succión | depósito desmontable 1500ml | 4 velocidades | ideal para mascotas | 3 accesorios b0h41dn7l3 hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0H41DN7L3" data-desc="Solac – Aspirador Escoba | Sin Cable |… · 149,99 € · -32%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H41DN7L3?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-32%</span>
+    <img src="https://m.media-amazon.com/images/I/6138nGJEofL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H41DN7L3?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Solac – Aspirador Escoba | Sin Cable | 60 min Autonomía | 650W | 210AW Poder de Succión | Depósito Desmontable 1500ml | 4 Velocidades | Ideal para Mascotas | 3 Accesorios</a>
+    <div class="precio"><b>149,99 €</b> <s>219,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -32% vs mín. 30 días (219,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0H41DN7L3</code></div>
+  </div>
+</article>
+<article class="card" data-dto="32" data-precio="189.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" min90 ok "
+         data-texto="roborock q7l5+ robot aspirador y fregador succión extrema de 8000 pa,blanco b0dwmlmrwq básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0DWMLMRWQ" data-desc="roborock Q7L5+ Robot Aspirador y Fregad… · 189,99 € · -32%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DWMLMRWQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-32%</span>
+    <img src="https://m.media-amazon.com/images/I/611hEcZ5neL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DWMLMRWQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">roborock Q7L5+ Robot Aspirador y Fregador Succión Extrema de 8000 Pa,Blanco</a>
+    <div class="precio"><b>189,99 €</b> <s>279,99 €</s></div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -14% vs mín. 30 días (219,99 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0DWMLMRWQ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="30" data-precio="69.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Hogar y Cocina"
+         data-cat="🥤 Batidora / Licuadora" data-marca="" data-marcas=" min90 nueva ok "
+         data-texto="vitapower - batidora bosch mmb6141w, 1200 w, 30000 rpm, 2 velocidades, cuenco de 1,5 l, 4 cuchillas extraíbles, color blanco b0dczykfyb hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0DCZYKFYB" data-desc="VitaPower - Batidora Bosch MMB6141W, 12… · 69,99 € · -30%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DCZYKFYB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-30%</span>
+    <img src="https://m.media-amazon.com/images/I/61KptFG6s2L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DCZYKFYB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">VitaPower - Batidora Bosch MMB6141W, 1200 W, 30000 rpm, 2 velocidades, cuenco de 1,5 L, 4 cuchillas extraíbles, color blanco</a>
+    <div class="precio"><b>69,99 €</b> <s>99,99 €</s></div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -26% vs mín. 30 días (93,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0DCZYKFYB</code></div>
+  </div>
+</article>
+<article class="card" data-dto="30" data-precio="76.7" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" ok "
+         data-texto="zynet aspiradora sin cable,45kpa/550w/45min,escoba aspiradora sin cable | tubo plegable,motor sin escobillas,base de carga mural,pantalla led,para mascotas,suelos y alfombras b0gvyhrgpc básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GVYHRGPC" data-desc="Zynet Aspiradora Sin Cable,45KPa/550W/4… · 76,70 € · -30%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GVYHRGPC?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-30%</span>
+    <img src="https://m.media-amazon.com/images/I/61-+a8gn6pL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GVYHRGPC?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Zynet Aspiradora Sin Cable,45KPa/550W/45Min,Escoba Aspiradora Sin Cable | Tubo Plegable,Motor sin Escobillas,Base de Carga Mural,Pantalla LED,Para Mascotas,Suelos y Alfombras</a>
+    <div class="precio"><b>76,70 €</b> <s>109,99 €</s></div>
+    
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -15% vs mín. 30 días (89,99 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0GVYHRGPC</code></div>
+  </div>
+</article>
+<article class="card" data-dto="30" data-precio="104.4" data-val="0" data-opi="0" data-vend="50" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🥤 Batidora / Licuadora" data-marca="" data-marcas=" min90 vendidos "
+         data-texto="nutribullet ultra - batidora personal cuchillas extractoras inox gris | batidora de smoothies, tecnología silenciosa, ciclo automático, vasos tritan 900ml 700ml, 2 tapas llevar, 1200w, nb1206mb b0f6ytjc71 básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0F6YTJC71" data-desc="nutribullet Ultra - Batidora Personal C… · 104,40 € · -30%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0F6YTJC71?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-30%</span>
+    <img src="https://m.media-amazon.com/images/I/71cRPFSJPiL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0F6YTJC71?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">nutribullet Ultra - Batidora Personal Cuchillas Extractoras Inox Gris | Batidora de Smoothies, Tecnología Silenciosa, Ciclo Automático, Vasos Tritan 900ml 700ml, 2 Tapas Llevar, 1200W, NB1206MB</a>
+    <div class="precio"><b>104,40 €</b> <s>149,90 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (109,90 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0F6YTJC71</code></div>
+  </div>
+</article>
+<article class="card" data-dto="29" data-precio="42.86" data-val="0" data-opi="0" data-vend="100" data-grupo="Hogar y Cocina"
+         data-cat="♨️ Vapor" data-marca="" data-marcas=" hist vendidos "
+         data-texto="vaporeta limpieza hogar | limpiador de vapor portátil 1200w | tank: 850ml | calentamiento instantáneo de 15s | steam cleaner con accesorios de 7pcs |para sofás, alfombras, juntas, limpieza sin químicos b0h3p6ydrb hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0H3P6YDRB" data-desc="Vaporeta limpieza hogar | Limpiador de… · 42,86 € · -29%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H3P6YDRB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-29%</span>
+    <img src="https://m.media-amazon.com/images/I/61EXu9jPAWL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H3P6YDRB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Vaporeta limpieza hogar | Limpiador de vapor portátil 1200W | Tank: 850ml | calentamiento instantáneo de 15s | Steam Cleaner con accesorios de 7Pcs |Para Sofás, Alfombras, Juntas, Limpieza sin Químicos</a>
+    <div class="precio"><b>42,86 €</b> <s>59,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (45,12 €)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0H3P6YDRB</code></div>
+  </div>
+</article>
+<article class="card" data-dto="29" data-precio="49.9" data-val="0" data-opi="0" data-vend="50" data-grupo="Básicos Día a Día"
+         data-cat="🥤 Batidora / Licuadora" data-marca="" data-marcas=" hist vendidos "
+         data-texto="nutribullet baby batidora, batidora, sistema de preparación de alimentos para bebés, componentes y accesorios sin bpa, potencia de 250 w, nby100 b08cn54jvj básicos día a día">
+  <label class="pick"><input type="checkbox" value="B08CN54JVJ" data-desc="nutribullet Baby Batidora, batidora, si… · 49,90 € · -29%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B08CN54JVJ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-29%</span>
+    <img src="https://m.media-amazon.com/images/I/61fNaYr5J3L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B08CN54JVJ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">nutribullet Baby Batidora, batidora, sistema de preparación de alimentos para bebés, componentes y accesorios sin BPA, potencia de 250 W, NBY100</a>
+    <div class="precio"><b>49,90 €</b> <s>69,90 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-9% vs mín. 30 días (54,90 €)</span></div>
+    <div class="pie">Básicos Día a Día · <code>B08CN54JVJ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="29" data-precio="85.0" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" hist "
+         data-texto="m mimotec-pronext aspiradora escoba sin cable 315w 27000pa, aspirador vertical potente 3 en 1, 70min autonomía, luz led, depósito 0,9l, silenciosa para suelos, coche y mascotas b0grbfn6xh básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GRBFN6XH" data-desc="M mimotec-ProNext Aspiradora Escoba Sin… · 85,00 € · -29%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GRBFN6XH?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-29%</span>
+    <img src="https://m.media-amazon.com/images/I/610fM3wRb0L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GRBFN6XH?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">M mimotec-ProNext Aspiradora Escoba Sin Cable 315W 27000Pa, Aspirador Vertical Potente 3 en 1, 70Min Autonomía, Luz LED, Depósito 0,9L, Silenciosa para Suelos, Coche y Mascotas</a>
+    <div class="precio"><b>85,00 €</b> <s>119,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (90,00 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0GRBFN6XH</code></div>
+  </div>
+</article>
+<article class="card" data-dto="27" data-precio="116.99" data-val="0" data-opi="0" data-vend="50" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" hist vendidos "
+         data-texto="levoit aspiradora sin cable lvac200, anti-enredos, 4 en 1, ligero, golden | antienredos, 3 modos y hasta 50min, 99,9% de filtración, luz led, potente para pelo de mascotas, polvo, suelos duros b0dhzkvpd9 básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0DHZKVPD9" data-desc="Levoit Aspiradora sin Cable LVAC200, An… · 116,99 € · -27%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DHZKVPD9?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-27%</span>
+    <img src="https://m.media-amazon.com/images/I/71QP0UP2FsL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DHZKVPD9?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Levoit Aspiradora sin Cable LVAC200, Anti-Enredos, 4 en 1, Ligero, Golden | Antienredos, 3 Modos y hasta 50Min, 99,9% de Filtración, Luz LED, Potente para Pelo de Mascotas, Polvo, Suelos Duros</a>
+    <div class="precio"><b>116,99 €</b> <s>159,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0DHZKVPD9</code></div>
+  </div>
+</article>
+<article class="card" data-dto="27" data-precio="282.89" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="☕ Cafetera" data-marca="" data-marcas=" hist nueva ok "
+         data-texto="garvee cafetera italiana automática con molinillo integrado – 15 bares y control pid – espresso profesional en casa con boquilla de vapor, depósito 2,3l, acero inoxidable, plateado b0gqbjs6zq básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GQBJS6ZQ" data-desc="Garvee Cafetera Italiana Automática con… · 282,89 € · -27%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GQBJS6ZQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-27%</span>
+    <img src="https://m.media-amazon.com/images/I/61Ch-vtYQHL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GQBJS6ZQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Garvee Cafetera Italiana Automática con Molinillo Integrado – 15 Bares y Control PID – Espresso Profesional en Casa con Boquilla de Vapor, Depósito 2,3L, Acero Inoxidable, Plateado</a>
+    <div class="precio"><b>282,89 €</b> <s>385,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ok">Bajada real: -27% vs mín. 30 días (385,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0GQBJS6ZQ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="27" data-precio="399.0" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" hist ok "
+         data-texto="ecovacs t90 omni robot aspirador y fregasuelos, ozmo roller gen3, 30000 pa | sistema blast, triple lift, truepass 4wd y aivi 3d gen4, agente ia yiko con cuidado de mascotas, lavado a presión fresh-flow b0ghr9ngt7 básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GHR9NGT7" data-desc="ECOVACS T90 Omni Robot Aspirador y freg… · 399,00 € · -27%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GHR9NGT7?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-27%</span>
+    <img src="https://m.media-amazon.com/images/I/71h+b884rsL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GHR9NGT7?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">ECOVACS T90 Omni Robot Aspirador y fregasuelos, OZMO Roller Gen3, 30000 Pa | Sistema BLAST, Triple Lift, TruePass 4WD y AIVI 3D Gen4, Agente IA YIKO con Cuidado de Mascotas, Lavado a Presión Fresh-Flow</a>
+    <div class="precio"><b>399,00 €</b> <s>549,00 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -27% vs mín. 30 días (549,00 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0GHR9NGT7</code></div>
+  </div>
+</article>
+<article class="card" data-dto="26" data-precio="44.9" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🥤 Batidora / Licuadora" data-marca="" data-marcas=" min90 ok "
+         data-texto="kenwood batidora de mano, accesorio compatible con la batidora triblade xl, fácil ajuste giratorio, apta para lavavajillas, acero inoxidable, hbm40.002wh b09c8fjgkb básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B09C8FJGKB" data-desc="Kenwood Batidora de Mano, Accesorio Com… · 44,90 € · -26%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B09C8FJGKB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-26%</span>
+    <img src="https://m.media-amazon.com/images/I/51dt5vmlg7L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B09C8FJGKB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Kenwood Batidora de Mano, Accesorio Compatible con la Batidora Triblade XL, Fácil Ajuste Giratorio, Apta para Lavavajillas, Acero Inoxidable, HBM40.002WH</a>
+    <div class="precio"><b>44,90 €</b> <s>61,00 €</s></div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -10% vs mín. 30 días (49,90 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B09C8FJGKB</code></div>
+  </div>
+</article>
+<article class="card" data-dto="25" data-precio="149.99" data-val="0" data-opi="0" data-vend="200" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🛋️ Tapicerías" data-marca="" data-marcas=" vendidos "
+         data-texto="bissell spotclean auto pro select limpiador portátil 750 w 2,8 l 3730n | limpiador de tapicerías y manchas de alfombras para eliminar derrames y suciedad de mascotas b0c3j322lp básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0C3J322LP" data-desc="BISSELL SpotClean Auto Pro Select Limpi… · 149,99 € · -25%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0C3J322LP?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-25%</span>
+    <img src="https://m.media-amazon.com/images/I/61kDBHhbmLL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0C3J322LP?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">BISSELL SpotClean Auto Pro Select Limpiador Portátil 750 W 2,8 L 3730N | Limpiador de tapicerías y manchas de alfombras para eliminar derrames y suciedad de mascotas</a>
+    <div class="precio"><b>149,99 €</b> <s>199,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 200+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0C3J322LP</code></div>
+  </div>
+</article>
+<article class="card" data-dto="25" data-precio="149.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" hist nueva ok "
+         data-texto="taurus aspiradora escoba vertical sin cable potente inhalambrica 90 min autonomia para hogar y mascotas flexible pantalla lcd cepillo antienredos aspirador deposito 700ml b0gypplfgs hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GYPPLFGS" data-desc="Taurus Aspiradora Escoba Vertical sin C… · 149,99 € · -25%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GYPPLFGS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-25%</span>
+    <img src="https://m.media-amazon.com/images/I/613vfC8E-XL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GYPPLFGS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Taurus Aspiradora Escoba Vertical sin Cable Potente Inhalambrica 90 min Autonomia para Hogar y Mascotas Flexible Pantalla LCD Cepillo Antienredos Aspirador Deposito 700ml</a>
+    <div class="precio"><b>149,99 €</b> <s>199,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ok">Bajada real: -25% vs mín. 30 días (199,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0GYPPLFGS</code></div>
+  </div>
+</article>
+<article class="card" data-dto="25" data-precio="299.99" data-val="4.3" data-opi="44" data-vend="0" data-grupo="Bricolaje (hidrolimpiadoras) | Básicos Día a Día | Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" hist "
+         data-texto="bissell crosswave omniforce edgefind aspirador inalámbrico 4325n | aspirador y friegasuelos en 1, luces led furfinder pelo de mascota, limpieza zerogap, multisuperficie 350m² b0f6d3k986 bricolaje (hidrolimpiadoras) · básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0F6D3K986" data-desc="BISSELL CrossWave OmniForce EdgeFind As… · 299,99 € · -25%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0F6D3K986?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-25%</span>
+    <img src="https://m.media-amazon.com/images/I/6129nRRZ7JL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0F6D3K986?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">BISSELL CrossWave OmniForce EdgeFind Aspirador Inalámbrico 4325N | Aspirador y friegasuelos en 1, luces LED FurFinder pelo de mascota, limpieza ZeroGap, multisuperficie 350m²</a>
+    <div class="precio"><b>299,99 €</b> <s>399,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (44)</div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span></div>
+    <div class="pie">Bricolaje (hidrolimpiadoras) · Básicos Día a Día · Hogar y Cocina · <code>B0F6D3K986</code></div>
+  </div>
+</article>
+<article class="card" data-dto="24" data-precio="68.62" data-val="0" data-opi="0" data-vend="50" data-grupo="Hogar y Cocina"
+         data-cat="📟 Microondas / Horno" data-marca="" data-marcas=" min90 vendidos "
+         data-texto="vasagle estantería de cocina con led, para microondas con regleta | estantes ajustables, 8 ganchos, 80 x 40 x 168 cm, marrón rústico y negro mate, colección barnet kks050kd01 b0f93d7lf2 hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0F93D7LF2" data-desc="VASAGLE Estantería de Cocina con LED, p… · 68,62 € · -24%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0F93D7LF2?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-24%</span>
+    <img src="https://m.media-amazon.com/images/I/81vtT3PkUdL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0F93D7LF2?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">VASAGLE Estantería de Cocina con LED, para Microondas con Regleta | Estantes Ajustables, 8 Ganchos, 80 x 40 x 168 cm, Marrón Rústico y Negro Mate, Colección BARNET KKS050KD01</a>
+    <div class="precio"><b>68,62 €</b> <s>89,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (72,23 €)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0F93D7LF2</code></div>
+  </div>
+</article>
+<article class="card" data-dto="24" data-precio="75.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" min90 ok "
+         data-texto="akitas v10 aspiradora sin cable 30v 450w hasta 50 minutos 3 velocidades escoba vertical y de mano motor digital sin escobillas bldc batería recargable de litio ideal para alfombras b0ddcrqpvr hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0DDCRQPVR" data-desc="Akitas V10 Aspiradora sin Cable 30V 450… · 75,99 € · -24%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DDCRQPVR?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-24%</span>
+    <img src="https://m.media-amazon.com/images/I/612ZZ9ZPELL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DDCRQPVR?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Akitas V10 Aspiradora sin Cable 30V 450W hasta 50 Minutos 3 Velocidades Escoba Vertical y de Mano Motor Digital sin Escobillas BLDC Batería Recargable de Litio Ideal para Alfombras</a>
+    <div class="precio"><b>75,99 €</b> <s>99,99 €</s></div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ok">Bajada real: -24% vs mín. 30 días (99,99 €)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0DDCRQPVR</code></div>
+  </div>
+</article>
+<article class="card" data-dto="24" data-precio="109.9" data-val="0" data-opi="0" data-vend="0" data-grupo="Hogar y Cocina"
+         data-cat="🍟 Freidora de aire" data-marca="" data-marcas=" hist ok "
+         data-texto="girmi fg41 - freidora de aire &quot;ecofrit dual&quot;, 2400 w, contenedores y bandejas antiadherentes, 9 programas, pantalla digital, libro de recetas incluido, blanco b0g8k9hbmp hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0G8K9HBMP" data-desc="Girmi FG41 - Freidora de aire &quot;Ecofrit… · 109,90 € · -24%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0G8K9HBMP?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-24%</span>
+    <img src="https://m.media-amazon.com/images/I/61-X5pRLUdL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0G8K9HBMP?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Girmi FG41 - Freidora de aire &quot;Ecofrit Dual&quot;, 2400 W, contenedores y bandejas antiadherentes, 9 programas, pantalla digital, libro de recetas incluido, blanco</a>
+    <div class="precio"><b>109,90 €</b> <s>144,90 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -23% vs mín. 30 días (143,56 €)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0G8K9HBMP</code></div>
+  </div>
+</article>
+<article class="card" data-dto="23" data-precio="54.06" data-val="0" data-opi="0" data-vend="300" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="♨️ Vapor" data-marca="" data-marcas=" hist nueva vendidos "
+         data-texto="vaporeta de mano 15s calentamiento rápido, 550 ml depósito steam cleaner | vaporeta limpieza hogar 16 accesorios para cocina, baño, juntas, ventanas, auto y tapicería, vapor caliente a 100 °c b0g3q16h2f básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0G3Q16H2F" data-desc="Vaporeta de Mano 15S Calentamiento Rápi… · 54,06 € · -23%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0G3Q16H2F?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-23%</span>
+    <img src="https://m.media-amazon.com/images/I/71isKdU2uvL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0G3Q16H2F?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Vaporeta de Mano 15S Calentamiento Rápido, 550 ml Depósito Steam Cleaner | Vaporeta Limpieza Hogar 16 Accesorios para Cocina, Baño, Juntas, Ventanas, Auto y Tapicería, Vapor Caliente a 100 °C</a>
+    <div class="precio"><b>54,06 €</b> <s>69,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 300+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (56,89 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0G3Q16H2F</code></div>
+  </div>
+</article>
+<article class="card" data-dto="23" data-precio="74.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Hogar y Cocina"
+         data-cat="🍟 Freidora de aire" data-marca="" data-marcas=" hist nueva ok "
+         data-texto="solac - freidora sin aceite léviter 3.5l digital | 1500w | 9 menús | air fryer de aire | antiadherente | apta lavavajillas | panel control táctil multifunción | programable temporizador | 800gr patata b0cjrvtl69 hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0CJRVTL69" data-desc="Solac - Freidora sin Aceite Léviter 3.5… · 74,99 € · -23%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CJRVTL69?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-23%</span>
+    <img src="https://m.media-amazon.com/images/I/51ZQhJbK6gL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CJRVTL69?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Solac - Freidora sin Aceite Léviter 3.5L Digital | 1500W | 9 menús | Air Fryer de aire | Antiadherente | Apta lavavajillas | Panel control táctil multifunción | Programable Temporizador | 800gr patata</a>
+    <div class="precio"><b>74,99 €</b> <s>96,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ok">Bajada real: -23% vs mín. 30 días (96,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0CJRVTL69</code></div>
+  </div>
+</article>
+<article class="card" data-dto="23" data-precio="107.38" data-val="0" data-opi="0" data-vend="100" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" vendidos "
+         data-texto="vexilar v14pro aspiradora sin cable 60kpa, 60 min, 1l, autoportante, batería extraíble, cepillo antienredos con luz led, aspirador escoba para suelos, alfombras, pelo de mascotas y coche b0h1mrn6cf básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0H1MRN6CF" data-desc="Vexilar V14Pro Aspiradora sin Cable 60k… · 107,38 € · -23%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H1MRN6CF?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-23%</span>
+    <img src="https://m.media-amazon.com/images/I/71eoGt0XLBL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H1MRN6CF?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Vexilar V14Pro Aspiradora sin Cable 60kPa, 60 Min, 1L, Autoportante, Batería Extraíble, Cepillo Antienredos con Luz LED, Aspirador Escoba para Suelos, Alfombras, Pelo de Mascotas y Coche</a>
+    <div class="precio"><b>107,38 €</b> <s>139,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag ">Antes = precio mediano</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0H1MRN6CF</code></div>
+  </div>
+</article>
+<article class="card" data-dto="23" data-precio="107.38" data-val="0" data-opi="0" data-vend="50" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" hist vendidos "
+         data-texto="vexilar w8 robot aspirador 5000pa, antienredos,larga autonomía,3 niveles de ajuste,silencioso,fácil programa,robot aspirador y fregasuelos para suelos/alfombras/pelo de mascotas/superficies múltiples b0gsvtxccb básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GSVTXCCB" data-desc="Vexilar W8 Robot Aspirador 5000Pa, Anti… · 107,38 € · -23%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GSVTXCCB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-23%</span>
+    <img src="https://m.media-amazon.com/images/I/81-lvufQRYL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GSVTXCCB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Vexilar W8 Robot Aspirador 5000Pa, Antienredos,Larga Autonomía,3 Niveles de Ajuste,Silencioso,Fácil Programa,Robot Aspirador y Fregasuelos para Suelos/Alfombras/Pelo de Mascotas/Superficies Múltiples</a>
+    <div class="precio"><b>107,38 €</b> <s>139,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0GSVTXCCB</code></div>
+  </div>
+</article>
+<article class="card" data-dto="23" data-precio="269.0" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🧽 Friegasuelos" data-marca="" data-marcas=" hist ok "
+         data-texto="tineco pure one station 5 plus aspiradora sin cable inteligente, auto-empty | succión potente de 175aw, cepillo zerotangle, clogless system, apta para suelo duro y moqueta, base para suciedad de 2,5l b0gl8s6c8j básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GL8S6C8J" data-desc="Tineco Pure One Station 5 Plus Aspirado… · 269,00 € · -23%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GL8S6C8J?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-23%</span>
+    <img src="https://m.media-amazon.com/images/I/61fPxwDK2IL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GL8S6C8J?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Tineco Pure One Station 5 Plus Aspiradora Sin Cable Inteligente, Auto-Empty | Succión potente de 175AW, Cepillo ZeroTangle, ClogLess System, Apta para Suelo Duro y Moqueta, Base para Suciedad de 2,5L</a>
+    <div class="precio"><b>269,00 €</b> <s>349,00 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ok">Bajada real: -23% vs mín. 30 días (349,00 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0GL8S6C8J</code></div>
+  </div>
+</article>
+<article class="card" data-dto="22" data-precio="31.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🥤 Batidora / Licuadora" data-marca="" data-marcas=" min90 ok "
+         data-texto="tristar mx-4829 - set de batidora, con batidor, picadora y vaso medidor de 700 ml con tapa, varilla de acero inoxidable, función turbo, motor de 1000 w dc, negro y plateado b08d3l4z87 básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B08D3L4Z87" data-desc="Tristar MX-4829 - Set de batidora, con… · 31,99 € · -22%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B08D3L4Z87?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-22%</span>
+    <img src="https://m.media-amazon.com/images/I/6154ZtW0uwL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B08D3L4Z87?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Tristar MX-4829 - Set de batidora, con batidor, picadora y vaso medidor de 700 ml con tapa, Varilla de acero inoxidable, Función turbo, Motor de 1000 W DC, Negro y plateado</a>
+    <div class="precio"><b>31,99 €</b> <s>40,99 €</s></div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -28% vs mín. 30 días (44,19 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B08D3L4Z87</code></div>
+  </div>
+</article>
+<article class="card" data-dto="22" data-precio="45.0" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🍟 Freidora de aire" data-marca="" data-marcas=" hist "
+         data-texto="m mimotec – air fryer sara touch 6,5l, freidora de aire sin aceite, 1600w, 8 menús digitales, pantalla táctil,función grill, temporizador regulable, temperatura 80-200°c, cocina fácil y saludable b0gz3zctl4 básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GZ3ZCTL4" data-desc="M mimotec – Air Fryer Sara Touch 6,5L,… · 45,00 € · -22%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GZ3ZCTL4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-22%</span>
+    <img src="https://m.media-amazon.com/images/I/61lZedjLl1L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GZ3ZCTL4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">M mimotec – Air Fryer Sara Touch 6,5L, Freidora de Aire sin Aceite, 1600W, 8 Menús Digitales, Pantalla Táctil,Función Grill, Temporizador regulable, Temperatura 80-200°C, Cocina Fácil y Saludable</a>
+    <div class="precio"><b>45,00 €</b> <s>57,90 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (47,40 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0GZ3ZCTL4</code></div>
+  </div>
+</article>
+<article class="card" data-dto="22" data-precio="69.9" data-val="0" data-opi="0" data-vend="0" data-grupo="Hogar y Cocina"
+         data-cat="🍞 Pequeño electro" data-marca="" data-marcas=" min90 "
+         data-texto="foodsaver envasadora al vacío | mantiene el alimento fresco hasta 5 veces más*|ahorra un 50% más espacio** | 1 rollo (28cm x 2,43m), 2 bolsas de sellado (0,94l), 2 bolsas con cierre (0,94l) | vs1290x b0czmhrzsm hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0CZMHRZSM" data-desc="FoodSaver Envasadora al vacío | Mantien… · 69,90 € · -22%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CZMHRZSM?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-22%</span>
+    <img src="https://m.media-amazon.com/images/I/81d7uPA4PnL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CZMHRZSM?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">FoodSaver Envasadora al vacío | Mantiene el alimento fresco hasta 5 veces más*|Ahorra un 50% más espacio** | 1 rollo (28cm x 2,43m), 2 bolsas de sellado (0,94L), 2 bolsas con cierre (0,94L) | VS1290X</a>
+    <div class="precio"><b>69,90 €</b> <s>89,99 €</s></div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-7% vs mín. 30 días (74,99 €)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0CZMHRZSM</code></div>
+  </div>
+</article>
+<article class="card" data-dto="22" data-precio="69.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Bricolaje (hidrolimpiadoras) | Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" hist nueva ok "
+         data-texto="taurus – aspirador homeland hydrodry 1200 | para sólidos y líquidos | 1200w | 15l | función soplador | radio acción 7m | cable 4,3m | ideal hogar, garaje, taller y exterior | accesorios incluidos b0gx9yn3yl bricolaje (hidrolimpiadoras) · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GX9YN3YL" data-desc="Taurus – Aspirador Homeland Hydrodry 12… · 69,99 € · -22%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GX9YN3YL?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-22%</span>
+    <img src="https://m.media-amazon.com/images/I/61Rbp34CMhL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GX9YN3YL?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Taurus – Aspirador Homeland Hydrodry 1200 | para Sólidos y Líquidos | 1200W | 15L | Función Soplador | Radio acción 7m | Cable 4,3m | Ideal Hogar, Garaje, Taller y Exterior | Accesorios Incluidos</a>
+    <div class="precio"><b>69,99 €</b> <s>89,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -22% vs mín. 30 días (89,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Bricolaje (hidrolimpiadoras) · Hogar y Cocina · <code>B0GX9YN3YL</code></div>
+  </div>
+</article>
+<article class="card" data-dto="21" data-precio="51.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" ok "
+         data-texto="sanewe aspirador de mano, 20kpa aspiradora de mano, aspiradora coche 150w con motor sin escobillas, aspiradora de mano sin cable 4 en 1 fácil de llevar,para oficina,coche,casa escenas b0h4g6tqgt básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0H4G6TQGT" data-desc="SANEWE Aspirador de Mano, 20KPA aspirad… · 51,99 € · -21%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H4G6TQGT?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-21%</span>
+    <img src="https://m.media-amazon.com/images/I/7114gDe1WcL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H4G6TQGT?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SANEWE Aspirador de Mano, 20KPA aspiradora de Mano, aspiradora Coche 150W con Motor Sin Escobillas, Aspiradora de Mano sin Cable 4 en 1 Fácil de Llevar,para Oficina,Coche,Casa Escenas</a>
+    <div class="precio"><b>51,99 €</b> <s>65,99 €</s></div>
+    
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -13% vs mín. 30 días (59,99 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0H4G6TQGT</code></div>
+  </div>
+</article>
+<article class="card" data-dto="21" data-precio="54.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="♨️ Vapor" data-marca="" data-marcas=" nueva ok "
+         data-texto="sin shine limpiador de vapor con calentamiento rápido en 10 s, pantalla táctil depósito de 400 ml, cable de 4 m, 2 niveles de vapor, 9 accesorios para cocina, baño, azulejos, juntas b0gtmrh2qs básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GTMRH2QS" data-desc="SIN SHINE Limpiador de Vapor con Calent… · 54,99 € · -21%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GTMRH2QS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-21%</span>
+    <img src="https://m.media-amazon.com/images/I/71luJi8B20L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GTMRH2QS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SIN SHINE Limpiador de Vapor con Calentamiento rápido en 10 s, Pantalla táctil depósito de 400 ml, Cable de 4 m, 2 Niveles de Vapor, 9 Accesorios para Cocina, baño, Azulejos, Juntas</a>
+    <div class="precio"><b>54,99 €</b> <s>69,99 €</s></div>
+    
+    <div class="tags"><span class="tag ok">Bajada real: -21% vs mín. 30 días (69,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0GTMRH2QS</code></div>
+  </div>
+</article>
+<article class="card" data-dto="21" data-precio="149.99" data-val="0" data-opi="0" data-vend="50" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" hist ok vendidos "
+         data-texto="uwant y100s limpiador tapicerias vapor 3en1, 1750w 18kpa aspiradora de agua | 2 dep. 1.2l, manguera autolimpiable, cepillo 2en1 reversible/vapor/zapatos, sofá/coche/cocina, frío/65°c cal./100°c vapor b0h1b164kh básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0H1B164KH" data-desc="Uwant Y100S Limpiador Tapicerias Vapor… · 149,99 € · -21%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H1B164KH?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-21%</span>
+    <img src="https://m.media-amazon.com/images/I/71rICLqsRHL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H1B164KH?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Uwant Y100S Limpiador Tapicerias Vapor 3en1, 1750W 18kPa Aspiradora de Agua | 2 dep. 1.2L, Manguera Autolimpiable, Cepillo 2en1 reversible/Vapor/Zapatos, sofá/coche/cocina, Frío/65°C Cal./100°C Vapor</a>
+    <div class="precio"><b>149,99 €</b> <s>189,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -12% vs mín. 30 días (169,99 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0H1B164KH</code></div>
+  </div>
+</article>
+<article class="card" data-dto="20" data-precio="38.56" data-val="0" data-opi="0" data-vend="0" data-grupo="Hogar y Cocina"
+         data-cat="🍟 Freidora de aire" data-marca="" data-marcas=" hist ok "
+         data-texto="azorex freidora de aire sin aceite de 6 l, air fryer caliente, 8 programas, pantalla digital, temperatura ajustable 80-200°c, temporizador 60 min, fácil de limpiar (6 l) b0gl9cpfr6 hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GL9CPFR6" data-desc="azorex Freidora de Aire sin Aceite de 6… · 38,56 € · -20%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GL9CPFR6?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-20%</span>
+    <img src="https://m.media-amazon.com/images/I/71nyihIRwWL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GL9CPFR6?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">azorex Freidora de Aire sin Aceite de 6 L, Air Fryer Caliente, 8 Programas, Pantalla Digital, Temperatura Ajustable 80-200°C, Temporizador 60 min, Fácil de Limpiar (6 L)</a>
+    <div class="precio"><b>38,56 €</b> <s>47,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -15% vs mín. 30 días (45,59 €)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0GL9CPFR6</code></div>
+  </div>
+</article>
+<article class="card" data-dto="20" data-precio="104.49" data-val="0" data-opi="0" data-vend="100" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" vendidos "
+         data-texto="vexilar robot aspirador y fregasuelos w8, aspirar y fregar 2 en 1,potente succión 5000pa,antienredos,larga autonomía,4 niveles de ajuste de agua, adecuada para suelos,alfombras,pelo de mascotas b0hf3526by básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0HF3526BY" data-desc="Vexilar Robot Aspirador y Fregasuelos W… · 104,49 € · -20%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HF3526BY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-20%</span>
+    <img src="https://m.media-amazon.com/images/I/81KWwEhigtL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HF3526BY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Vexilar Robot Aspirador y Fregasuelos W8, Aspirar y Fregar 2 en 1,Potente Succión 5000Pa,Antienredos,Larga Autonomía,4 Niveles de Ajuste de Agua, Adecuada para Suelos,Alfombras,Pelo de Mascotas</a>
+    <div class="precio"><b>104,49 €</b> <s>129,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0HF3526BY</code></div>
+  </div>
+</article>
+<article class="card" data-dto="20" data-precio="319.99" data-val="4.4" data-opi="52" data-vend="0" data-grupo="Bricolaje (hidrolimpiadoras) | Básicos Día a Día | Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" min90 "
+         data-texto="bissell crosswave hydroscrub aspirador inalámbrico seco y húmedo 4283n | limpieza multisuperficie potente, 45 minutos de autonomía, con limpieza de bordes, luces led b0fslthvtc bricolaje (hidrolimpiadoras) · básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0FSLTHVTC" data-desc="Bissell CrossWave HydroScrub Aspirador… · 319,99 € · -20%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FSLTHVTC?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-20%</span>
+    <img src="https://m.media-amazon.com/images/I/61k9yQco2pL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FSLTHVTC?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Bissell CrossWave HydroScrub Aspirador Inalámbrico Seco y Húmedo 4283N | Limpieza multisuperficie potente, 45 minutos de autonomía, con limpieza de bordes, luces LED</a>
+    <div class="precio"><b>319,99 €</b> <s>399,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (52)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span></div>
+    <div class="pie">Bricolaje (hidrolimpiadoras) · Básicos Día a Día · Hogar y Cocina · <code>B0FSLTHVTC</code></div>
+  </div>
+</article>
+<article class="card" data-dto="19" data-precio="88.81" data-val="0" data-opi="0" data-vend="100" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" vendidos "
+         data-texto="vexilar c9 aspiradora con cable 70kpa/600w, 1,5l depósito de polvo,multiusos, con 7 metros de cable, ligero, fácil guarda,aspiradora,aspirador vertical,para suelos/alfombras/pelos/coche b0h1mp6z47 básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0H1MP6Z47" data-desc="Vexilar C9 Aspiradora con Cable 70KPa/6… · 88,81 € · -19%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H1MP6Z47?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-19%</span>
+    <img src="https://m.media-amazon.com/images/I/81Pop0CBKzL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H1MP6Z47?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Vexilar C9 Aspiradora con Cable 70KPa/600W, 1,5L Depósito de Polvo,Multiusos, con 7 Metros de Cable, Ligero, Fácil Guarda,Aspiradora,Aspirador Vertical,para Suelos/Alfombras/Pelos/Coche</a>
+    <div class="precio"><b>88,81 €</b> <s>109,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag ">Antes = precio mediano</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0H1MP6Z47</code></div>
+  </div>
+</article>
+<article class="card" data-dto="19" data-precio="88.82" data-val="0" data-opi="0" data-vend="100" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="📟 Microondas / Horno" data-marca="" data-marcas=" vendidos "
+         data-texto="vasagle aparador cocina con cajón y puerta, estante para microondas | alacena cocina, mueble vajillero con encimera, estantes regulables, blanco nube, colección kailyn bbk373wb01 b0fqnqbs63 básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0FQNQBS63" data-desc="VASAGLE Aparador Cocina con Cajón y Pue… · 88,82 € · -19%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FQNQBS63?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-19%</span>
+    <img src="https://m.media-amazon.com/images/I/71CjEMSsy4L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FQNQBS63?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">VASAGLE Aparador Cocina con Cajón y Puerta, Estante para Microondas | Alacena Cocina, Mueble Vajillero con Encimera, Estantes Regulables, Blanco Nube, Colección KAILYN BBK373WB01</a>
+    <div class="precio"><b>88,82 €</b> <s>109,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (93,49 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0FQNQBS63</code></div>
+  </div>
+</article>
+<article class="card" data-dto="19" data-precio="99.27" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" cupon nueva "
+         data-texto="aspiradora con cable 70kpa/600w potente aspirador escoba con cable 7m 1,5l | 2 velocidades, tubo plegable, antienredos, soporte de pared, sistema multiciclónico, para suelos/alfombras/pelo de mascotas b0hgscx4kn básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0HGSCX4KN" data-desc="Aspiradora con Cable 70KPa/600W Potente… · 99,27 € · -19%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HGSCX4KN?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-19%</span>
+    <img src="https://m.media-amazon.com/images/I/61Pkffkby0L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HGSCX4KN?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Aspiradora con Cable 70KPa/600W Potente Aspirador Escoba con Cable 7M 1,5L | 2 Velocidades, Tubo Plegable, Antienredos, Soporte de Pared, Sistema Multiciclónico, para Suelos/Alfombras/Pelo de Mascotas</a>
+    <div class="precio"><b>99,27 €</b> <s>109,99 €</s></div>
+    
+    <div class="tags"><span class="tag cupon">Con cupón 89,27 €</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (104,49 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0HGSCX4KN</code></div>
+  </div>
+</article>
+<article class="card" data-dto="19" data-precio="97.74" data-val="0" data-opi="0" data-vend="0" data-grupo="Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" hist nueva "
+         data-texto="aspiradora de agua tapicería - 2500w 20kpa limpiador de tapiceríascon vapor caliente,alfombras, moquetas para aspiradora y desmontador para colchón compacto y portátil b0g48nchtz hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0G48NCHTZ" data-desc="Aspiradora de Agua Tapicería - 2500W 20… · 97,74 € · -19%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0G48NCHTZ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-19%</span>
+    <img src="https://m.media-amazon.com/images/I/61ykoH4KLmL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0G48NCHTZ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Aspiradora de Agua Tapicería - 2500W 20kPa Limpiador de Tapiceríascon Vapor Caliente,alfombras, moquetas para aspiradora y desmontador para colchón compacto y portátil</a>
+    <div class="precio"><b>97,74 €</b> <s>119,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (102,88 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0G48NCHTZ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="19" data-precio="129.19" data-val="0" data-opi="0" data-vend="100" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" vendidos "
+         data-texto="vexilar robot aspirador y fregasuelos w9 8000pa, aspirar y fregar 3-en-1, con navegación láser, larga autonomía, robot aspirador inteligente para suelo/alfombras de pelo corto/pelo de mascotas b0gy89y1g5 básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GY89Y1G5" data-desc="Vexilar Robot Aspirador y Fregasuelos W… · 129,19 € · -19%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GY89Y1G5?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-19%</span>
+    <img src="https://m.media-amazon.com/images/I/81ja-Hh0qKL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GY89Y1G5?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Vexilar Robot Aspirador y Fregasuelos W9 8000Pa, Aspirar y Fregar 3-en-1, con Navegación Láser, Larga Autonomía, Robot Aspirador Inteligente para Suelo/Alfombras de Pelo Corto/Pelo de Mascotas</a>
+    <div class="precio"><b>129,19 €</b> <s>159,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0GY89Y1G5</code></div>
+  </div>
+</article>
+<article class="card" data-dto="18" data-precio="86.49" data-val="0" data-opi="0" data-vend="50" data-grupo="Hogar y Cocina"
+         data-cat="☕ Cafetera" data-marca="" data-marcas=" min90 ok vendidos "
+         data-texto="princess 01.249450.01.001 caffettiera multifunzione, compatibile con capsule nespresso,dolce gusto,cialde ese e caffè macinato, 19 bar, nero e argento, 800 ml b09bnsg1zs hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B09BNSG1ZS" data-desc="Princess 01.249450.01.001 Caffettiera M… · 86,49 € · -18%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B09BNSG1ZS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-18%</span>
+    <img src="https://m.media-amazon.com/images/I/71ASH+2Fv6L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B09BNSG1ZS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Princess 01.249450.01.001 Caffettiera Multifunzione, Compatibile con capsule Nespresso,Dolce Gusto,cialde ESE e caffè macinato, 19 bar, Nero e argento, 800 ml</a>
+    <div class="precio"><b>86,49 €</b> <s>104,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -16% vs mín. 30 días (102,57 €)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B09BNSG1ZS</code></div>
+  </div>
+</article>
+<article class="card" data-dto="18" data-precio="89.99" data-val="0" data-opi="0" data-vend="50" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" hist vendidos "
+         data-texto="sunsare aspiradora sin cable, 600w/50kpa/65min (eco), 1.8l aspirador sin cable con función de aromaterapia, pantalla led inteligente, función antienredos para pelo de mascotas, alfombras, pisos, coche b0h2tw76wh básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0H2TW76WH" data-desc="SunSare Aspiradora Sin Cable, 600W/50KP… · 89,99 € · -18%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H2TW76WH?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-18%</span>
+    <img src="https://m.media-amazon.com/images/I/71L1ozsIULL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H2TW76WH?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SunSare Aspiradora Sin Cable, 600W/50KPA/65Min (Eco), 1.8L Aspirador Sin Cable con Función de Aromaterapia, Pantalla LED inteligente, Función Antienredos para Pelo de Mascotas, Alfombras, Pisos, Coche</a>
+    <div class="precio"><b>89,99 €</b> <s>109,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (94,99 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0H2TW76WH</code></div>
+  </div>
+</article>
+<article class="card" data-dto="18" data-precio="89.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" hist nueva ok "
+         data-texto="maquinilla eléctrica para perros 7 en 1 con aspirador de pelo–cortapelos mascotas silencioso 2,5l,cepillo aspirador para perros y kit de higiene profesional amarillo b0fjrptlf6 básicos día a día">
+  <label class="pick"><input type="checkbox" value="B0FJRPTLF6" data-desc="Maquinilla Eléctrica para Perros 7 en 1… · 89,99 € · -18%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FJRPTLF6?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-18%</span>
+    <img src="https://m.media-amazon.com/images/I/61jzsW5OHJL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FJRPTLF6?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Maquinilla Eléctrica para Perros 7 en 1 con Aspirador de Pelo–Cortapelos Mascotas Silencioso 2,5L,Cepillo Aspirador para Perros y Kit de Higiene Profesional Amarillo</a>
+    <div class="precio"><b>89,99 €</b> <s>109,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -18% vs mín. 30 días (109,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Básicos Día a Día · <code>B0FJRPTLF6</code></div>
+  </div>
+</article>
+<article class="card" data-dto="18" data-precio="119.0" data-val="0" data-opi="0" data-vend="0" data-grupo="Hogar y Cocina"
+         data-cat="🍟 Freidora de aire" data-marca="" data-marcas=" hist ok "
+         data-texto="g3 ferrari g10181 friggisano bbq freidora de aire, horno barbocoa smokeless, 200 w, doble resistencia, 10 litros xxl, accesorios incluidos, temporizador 60 min, b0crvq5gx3 hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0CRVQ5GX3" data-desc="G3 Ferrari G10181 Friggisano BBQ Freido… · 119,00 € · -18%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CRVQ5GX3?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-18%</span>
+    <img src="https://m.media-amazon.com/images/I/71Ng86sB9mL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CRVQ5GX3?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">G3 Ferrari G10181 Friggisano BBQ Freidora de aire, Horno Barbocoa Smokeless, 200 W, Doble resistencia, 10 Litros XXL, Accesorios incluidos, Temporizador 60 min,</a>
+    <div class="precio"><b>119,00 €</b> <s>146,00 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ok">Bajada real: -18% vs mín. 30 días (146,00 €)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0CRVQ5GX3</code></div>
+  </div>
+</article>
+<article class="card" data-dto="18" data-precio="135.88" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="📟 Microondas / Horno" data-marca="" data-marcas=" hist nueva ok "
+         data-texto="tectake® vajilla completa para 6 personas, diseño marítimo, aptas para lavavajillas y microondas, platos vajilla, cuencos y tazas de cafe, vajillas completas modernas - 30 piezas menta b0g8k8q17r básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0G8K8Q17R" data-desc="tectake® Vajilla Completa para 6 Person… · 135,88 € · -18%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0G8K8Q17R?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-18%</span>
+    <img src="https://m.media-amazon.com/images/I/71l4R1BkDFL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0G8K8Q17R?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">tectake® Vajilla Completa para 6 Personas, Diseño Marítimo, Aptas para Lavavajillas y Microondas, Platos Vajilla, Cuencos y Tazas de Cafe, Vajillas Completas Modernas - 30 Piezas Menta</a>
+    <div class="precio"><b>135,88 €</b> <s>164,90 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -18% vs mín. 30 días (164,90 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0G8K8Q17R</code></div>
+  </div>
+</article>
+<article class="card" data-dto="18" data-precio="139.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🥤 Batidora / Licuadora" data-marca="" data-marcas=" ok "
+         data-texto="homlee batidora amasadora profesional 2000w bajo ruido amasadora de pan,con bol de acero inoxidable de 7.2 l,amasador,batidor,varillas y protección para salpicaduras 6 velocidades b098x8pc44 básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B098X8PC44" data-desc="Homlee Batidora Amasadora Profesional 2… · 139,99 € · -18%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B098X8PC44?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-18%</span>
+    <img src="https://m.media-amazon.com/images/I/719EIVxo60L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B098X8PC44?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Homlee Batidora Amasadora Profesional 2000W Bajo Ruido Amasadora de Pan,con Bol de Acero inoxidable de 7.2 L,Amasador,Batidor,Varillas y Protección Para Salpicaduras 6 Velocidades</a>
+    <div class="precio"><b>139,99 €</b> <s>169,99 €</s></div>
+    
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -18% vs mín. 30 días (169,99 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B098X8PC44</code></div>
+  </div>
+</article>
+<article class="card" data-dto="18" data-precio="179.99" data-val="0" data-opi="0" data-vend="50" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🍟 Freidora de aire" data-marca="" data-marcas=" min90 vendidos "
+         data-texto="comfee&#x27; cbo60m80m1-bk horno empotrable de 60 cm y 60 litros con 8 funciones, freidora de aire, cocción multifase, puerta extraíble, fácil limpieza, limpieza con vapor, color negro b0dxyv6txj básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0DXYV6TXJ" data-desc="COMFEE&#x27; CBO60M80M1-BK Horno empotrable… · 179,99 € · -18%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DXYV6TXJ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-18%</span>
+    <img src="https://m.media-amazon.com/images/I/51Sv0XPsEQL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DXYV6TXJ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">COMFEE&#x27; CBO60M80M1-BK Horno empotrable de 60 cm y 60 litros con 8 funciones, freidora de aire, cocción multifase, puerta extraíble, fácil limpieza, limpieza con vapor, color negro</a>
+    <div class="precio"><b>179,99 €</b> <s>219,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (189,99 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0DXYV6TXJ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="17" data-precio="49.99" data-val="0" data-opi="0" data-vend="400" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" hist nueva ok vendidos "
+         data-texto="akitas x5 aspiradora de agua tapicería con función autolimpieza, 30ml solución concentrada, portátil para mascotas, sofás, colchones, alfombras, coches, depósito doble b0gff7c519 básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GFF7C519" data-desc="Akitas X5 Aspiradora de Agua Tapicería… · 49,99 € · -17%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GFF7C519?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-17%</span>
+    <img src="https://m.media-amazon.com/images/I/71y7DHT1x-L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GFF7C519?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Akitas X5 Aspiradora de Agua Tapicería con Función Autolimpieza, 30ml Solución Concentrada, Portátil para Mascotas, Sofás, Colchones, Alfombras, Coches, Depósito Doble</a>
+    <div class="precio"><b>49,99 €</b> <s>59,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 400+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -11% vs mín. 30 días (55,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0GFF7C519</code></div>
+  </div>
+</article>
+<article class="card" data-dto="17" data-precio="189.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" hist nueva "
+         data-texto="hearten aspiradora y fregona sin cable, 25 kpa succión, agua electrolizada | aspirador en seco y húmedo, led pantalla, autolimpieza, navegación por voz, autopropulsado, antienredo, limpieza de bordes b0gtnpzgy2 básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GTNPZGY2" data-desc="Hearten Aspiradora y Fregona Sin Cable,… · 189,99 € · -17%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GTNPZGY2?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-17%</span>
+    <img src="https://m.media-amazon.com/images/I/61WnAkJgeOL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GTNPZGY2?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Hearten Aspiradora y Fregona Sin Cable, 25 kPa Succión, Agua electrolizada | Aspirador en Seco y Húmedo, LED Pantalla, Autolimpieza, Navegación por voz, Autopropulsado, Antienredo, Limpieza de bordes</a>
+    <div class="precio"><b>189,99 €</b> <s>229,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (199,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0GTNPZGY2</code></div>
+  </div>
+</article>
+<article class="card" data-dto="17" data-precio="259.9" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🍲 Robot de cocina" data-marca="" data-marcas=" min90 ok "
+         data-texto="kenwood prospero+ khc29a.r0si - robot de cocina, cuenco (4,3 l, acero inoxidable, 10 accesorios, picadora, licuadora de cristal, prensa cítrica, extractor de jugo y más, báscula integrada, 1000 w b0cthmhgwr básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0CTHMHGWR" data-desc="Kenwood Prospero+ KHC29A.R0SI - Robot d… · 259,90 € · -17%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CTHMHGWR?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-17%</span>
+    <img src="https://m.media-amazon.com/images/I/71ehQn7v7KL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CTHMHGWR?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Kenwood Prospero+ KHC29A.R0SI - Robot de cocina, cuenco (4,3 L, acero inoxidable, 10 accesorios, picadora, licuadora de cristal, prensa cítrica, extractor de jugo y más, báscula integrada, 1000 W</a>
+    <div class="precio"><b>259,90 €</b> <s>311,60 €</s></div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ok">Bajada real: -17% vs mín. 30 días (311,60 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0CTHMHGWR</code></div>
+  </div>
+</article>
+<article class="card" data-dto="16" data-precio="50.34" data-val="0" data-opi="0" data-vend="50" data-grupo="Hogar y Cocina"
+         data-cat="🍞 Pequeño electro" data-marca="" data-marcas=" vendidos "
+         data-texto="bonsenkitchen envasadora al vacio 125w, cortador integrado, vs3019 | 4 modos de funcionamiento, barra de sellado ensanchada, cortador integrado, 1 rollo de bolsas, 5 bolsas al vacío b0ggghnm7l hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GGGHNM7L" data-desc="Bonsenkitchen Envasadora al Vacio 125W,… · 50,34 € · -16%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GGGHNM7L?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-16%</span>
+    <img src="https://m.media-amazon.com/images/I/61lqVtxEwOL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GGGHNM7L?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Bonsenkitchen Envasadora al Vacio 125W, Cortador Integrado, VS3019 | 4 Modos de Funcionamiento, Barra de Sellado Ensanchada, Cortador Integrado, 1 Rollo de Bolsas, 5 Bolsas al Vacío</a>
+    <div class="precio"><b>50,34 €</b> <s>59,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (52,99 €)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0GGGHNM7L</code></div>
+  </div>
+</article>
+<article class="card" data-dto="16" data-precio="116.2" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="☕ Cafetera" data-marca="" data-marcas=" min90 nueva "
+         data-texto="cera+ cafetera portátil pro version autocalentable compatible con molienda ultrafina para viajes, camping, senderismo, regalo ideal para cumpleaños y san valentín b0d7zslbmj básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0D7ZSLBMJ" data-desc="CERA+ Cafetera portátil Pro Version aut… · 116,20 € · -16%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0D7ZSLBMJ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-16%</span>
+    <img src="https://m.media-amazon.com/images/I/51IzbxiSG9L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0D7ZSLBMJ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">CERA+ Cafetera portátil Pro Version autocalentable compatible con molienda ultrafina para viajes, camping, senderismo, regalo ideal para cumpleaños y San Valentín</a>
+    <div class="precio"><b>116,20 €</b> <s>139,00 €</s></div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (122,32 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0D7ZSLBMJ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-precio="41.89" data-val="0" data-opi="0" data-vend="0" data-grupo="Hogar y Cocina"
+         data-cat="🥤 Batidora / Licuadora" data-marca="" data-marcas=" min90 "
+         data-texto="wmf kult x - batidora de varillas amasadora, 400 w, 5 velocidades, función turbo, varillas batidoras, varillas amasadoras, negro b077pjh9v3 hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B077PJH9V3" data-desc="WMF Kult X - Batidora de varillas amasa… · 41,89 € · -15%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B077PJH9V3?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/41IQK+1BtnL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B077PJH9V3?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">WMF Kult X - Batidora de varillas amasadora, 400 W, 5 velocidades, Función Turbo, Varillas Batidoras, Varillas Amasadoras, Negro</a>
+    <div class="precio"><b>41,89 €</b> <s>49,33 €</s></div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-7% vs mín. 30 días (44,95 €)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B077PJH9V3</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-precio="58.64" data-val="0" data-opi="0" data-vend="50" data-grupo="Hogar y Cocina"
+         data-cat="📟 Microondas / Horno" data-marca="" data-marcas=" min90 ok vendidos "
+         data-texto="vasagle estantería de cocina para microondas con 2 cestas, 80 x 35 x 94 cm | estructura de acero, con estantes y ganchos, roble dorado y blanco mate, colección dacey kks096w09 b0c4f6d5rf hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0C4F6D5RF" data-desc="VASAGLE Estantería de Cocina para Micro… · 58,64 € · -15%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0C4F6D5RF?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/41pLmYDd9BL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0C4F6D5RF?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">VASAGLE Estantería de Cocina para Microondas con 2 Cestas, 80 x 35 x 94 cm | Estructura de Acero, con Estantes y Ganchos, Roble Dorado y Blanco Mate, Colección DACEY KKS096W09</a>
+    <div class="precio"><b>58,64 €</b> <s>68,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -15% vs mín. 30 días (68,99 €)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0C4F6D5RF</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-precio="61.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Hogar y Cocina"
+         data-cat="🥤 Batidora / Licuadora" data-marca="" data-marcas=" min90 nueva ok "
+         data-texto="bosch - batidora de mano, ergomaster, 1000w, quattroblade, accesorios incluidos, serie 4, antracita, msm4w421 b0bn46rtyl hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0BN46RTYL" data-desc="Bosch - Batidora de Mano, ErgoMaster, 1… · 61,99 € · -15%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0BN46RTYL?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/61Ht3DmHEIL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0BN46RTYL?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Bosch - Batidora de Mano, ErgoMaster, 1000W, QuattroBlade, Accesorios Incluidos, Serie 4, Antracita, MSM4W421</a>
+    <div class="precio"><b>61,99 €</b> <s>72,99 €</s></div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -11% vs mín. 30 días (69,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0BN46RTYL</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-precio="62.04" data-val="0" data-opi="0" data-vend="0" data-grupo="Hogar y Cocina"
+         data-cat="🥤 Batidora / Licuadora" data-marca="" data-marcas=" min90 ok "
+         data-texto="homcom batidora amasadora 4,5l amasadora de pan 1300w batidor beige | amasadora repostería, 6 velocidades, bol de acero inoxidable, gancho, varilla, protector contra salpicaduras b0gj5ghd2h hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GJ5GHD2H" data-desc="HOMCOM Batidora Amasadora 4,5L Amasador… · 62,04 € · -15%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GJ5GHD2H?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/71I0BTWRvfL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GJ5GHD2H?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">HOMCOM Batidora Amasadora 4,5L Amasadora de Pan 1300W Batidor Beige | Amasadora Repostería, 6 Velocidades, Bol de Acero Inoxidable, Gancho, Varilla, Protector contra Salpicaduras</a>
+    <div class="precio"><b>62,04 €</b> <s>72,99 €</s></div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -15% vs mín. 30 días (72,99 €)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0GJ5GHD2H</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-precio="76.39" data-val="0" data-opi="0" data-vend="0" data-grupo="Hogar y Cocina"
+         data-cat="🍞 Pequeño electro" data-marca="" data-marcas=" hist ok "
+         data-texto="wmf lono silk - tostadora 2 rebanadas, acero inoxidable, doble ranura ancha con calentador de pan, 7 niveles de tostado, funciones led, bandeja recogemigas, revestimiento antihuellas, 900 w b0fskv3ts9 hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0FSKV3TS9" data-desc="WMF Lono Silk - Tostadora 2 rebanadas,… · 76,39 € · -15%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FSKV3TS9?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/71uOIh1uBIL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FSKV3TS9?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">WMF Lono Silk - Tostadora 2 rebanadas, acero inoxidable, doble ranura ancha con calentador de pan, 7 niveles de tostado, funciones LED, bandeja recogemigas, revestimiento antihuellas, 900 W</a>
+    <div class="precio"><b>76,39 €</b> <s>89,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -11% vs mín. 30 días (85,49 €)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0FSKV3TS9</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-precio="84.14" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="📟 Microondas / Horno" data-marca="" data-marcas="  "
+         data-texto="vasagle estanteria cocina con 4 enchufes y 2 puertos usb, mueble microondas | mueble auxiliar, 80 x 40 x 171 cm, 14 ganchos, estante ajustable, colección barnet kks025b01eu b0bzsdvrpy básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0BZSDVRPY" data-desc="VASAGLE Estanteria Cocina con 4 Enchufe… · 84,14 € · -15%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0BZSDVRPY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/71avqWTvOgL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0BZSDVRPY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">VASAGLE Estanteria Cocina con 4 Enchufes y 2 Puertos USB, Mueble Microondas | Mueble Auxiliar, 80 x 40 x 171 cm, 14 Ganchos, Estante Ajustable, Colección BARNET KKS025B01EU</a>
+    <div class="precio"><b>84,14 €</b> <s>98,99 €</s></div>
+    
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (88,99 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0BZSDVRPY</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-precio="114.9" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🍟 Freidora de aire" data-marca="" data-marcas="  "
+         data-texto="m mimotec - air fryer double tech, freidora de aire sin aceite, 11,6l con 2 cestas de 5,8l, 3000w, 10 menús, pantalla táctil, 40-200°c, deshidratación, luz interior y piezas lavables b0hgbttm7c básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0HGBTTM7C" data-desc="M mimotec - Air fryer Double Tech, Frei… · 114,90 € · -15%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HGBTTM7C?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/712ACdgLXCL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HGBTTM7C?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">M mimotec - Air fryer Double Tech, Freidora de aire sin aceite, 11,6L con 2 Cestas de 5,8L, 3000W, 10 Menús, Pantalla táctil, 40-200°C, Deshidratación, Luz Interior y Piezas Lavables</a>
+    <div class="precio"><b>114,90 €</b> <s>135,13 €</s></div>
+    
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (121,00 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0HGBTTM7C</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-precio="117.81" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🥤 Batidora / Licuadora" data-marca="" data-marcas=" hist nueva "
+         data-texto="braun powerblend 7 - batidora jarra 1400w 10 vel. + pulse triaction negro | batidora eléctrica, cuchilla precisioncrush, jarra cristal 1,7 l, 9 programas, empujador, jb7551bk b0dhhdvftw básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0DHHDVFTW" data-desc="Braun PowerBlend 7 - Batidora Jarra 140… · 117,81 € · -15%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DHHDVFTW?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/51VU8mp1GRL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DHHDVFTW?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Braun PowerBlend 7 - Batidora Jarra 1400W 10 Vel. + Pulse TriAction Negro | Batidora Eléctrica, Cuchilla PrecisionCrush, Jarra Cristal 1,7 L, 9 Programas, Empujador, JB7551BK</a>
+    <div class="precio"><b>117,81 €</b> <s>138,27 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (124,02 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0DHHDVFTW</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-precio="169.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" min90 "
+         data-texto="bissell crosswave edgefind aspirador de mano seco y húmedo 4159n | limpieza potente de suciedad de mascotas, en húmedo con tecnología zerogap, para fregar, multisuperficie b0f3d7wq71 básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0F3D7WQ71" data-desc="BISSELL CrossWave EdgeFind Aspirador de… · 169,99 € · -15%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0F3D7WQ71?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/611uZk+bNpL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0F3D7WQ71?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">BISSELL CrossWave EdgeFind Aspirador de Mano Seco y Húmedo 4159N | Limpieza potente de suciedad de mascotas, en húmedo con tecnología ZeroGap, para fregar, multisuperficie</a>
+    <div class="precio"><b>169,99 €</b> <s>199,99 €</s></div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0F3D7WQ71</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-precio="233.65" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día"
+         data-cat="💦 Hidrolimpiadora" data-marca="" data-marcas=" hist ok "
+         data-texto="muc-off hidrolimpiadora portátil a batería moto starter bundle – depósito 20l con 4 lanzas y nano tech limpiador de moto b0grnqcl2j básicos día a día">
+  <label class="pick"><input type="checkbox" value="B0GRNQCL2J" data-desc="Muc-Off Hidrolimpiadora Portátil a Bate… · 233,65 € · -15%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GRNQCL2J?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/71JNdtlT9JL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GRNQCL2J?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Muc-Off Hidrolimpiadora Portátil a Batería Moto Starter Bundle – Depósito 20L con 4 Lanzas y Nano Tech Limpiador de Moto</a>
+    <div class="precio"><b>233,65 €</b> <s>275,00 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -15% vs mín. 30 días (275,00 €)</span></div>
+    <div class="pie">Básicos Día a Día · <code>B0GRNQCL2J</code></div>
+  </div>
+</article>
+<article class="card" data-dto="14" data-precio="56.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" min90 nueva ok "
+         data-texto="olvy lava aspirador de tapicerías limpiador de telas | 1 set | modelo 17000pa 2.0 | sillones y coche | manguera flex 1.6m | limpia tapices y alfombras b0fmg1py3g hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0FMG1PY3G" data-desc="Olvy Lava Aspirador de Tapicerías Limpi… · 56,99 € · -14%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FMG1PY3G?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-14%</span>
+    <img src="https://m.media-amazon.com/images/I/71nJiB+lf2L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FMG1PY3G?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Olvy Lava Aspirador de Tapicerías Limpiador de Telas | 1 Set | Modelo 17000Pa 2.0 | Sillones y Coche | Manguera Flex 1.6m | Limpia Tapices y Alfombras</a>
+    <div class="precio"><b>56,99 €</b> <s>65,99 €</s></div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -14% vs mín. 30 días (65,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0FMG1PY3G</code></div>
+  </div>
+</article>
+<article class="card" data-dto="14" data-precio="63.17" data-val="4.5" data-opi="904" data-vend="0" data-grupo="Bricolaje (hidrolimpiadoras) | Básicos Día a Día | Hogar y Cocina"
+         data-cat="📟 Microondas / Horno" data-marca="" data-marcas=" min90 nueva "
+         data-texto="sogesfurniture estantería de cocina, estante para microondas, armario de cocina, nivel de apoyo de cocina, estante abierto de pie con ganchos, 90 x 40 x 83 cm, estructura metálica, arce blanco b07lf8qvv7 bricolaje (hidrolimpiadoras) · básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B07LF8QVV7" data-desc="sogesfurniture Estantería de Cocina, Es… · 63,17 € · -14%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07LF8QVV7?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-14%</span>
+    <img src="https://m.media-amazon.com/images/I/61nSnww8jZS._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07LF8QVV7?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">sogesfurniture Estantería de Cocina, Estante para microondas, Armario de Cocina, Nivel de Apoyo de Cocina, Estante Abierto de pie con Ganchos, 90 x 40 x 83 cm, Estructura metálica, Arce Blanco</a>
+    <div class="precio"><b>63,17 €</b> <s>73,38 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (904)</div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (66,49 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Bricolaje (hidrolimpiadoras) · Básicos Día a Día · Hogar y Cocina · <code>B07LF8QVV7</code></div>
+  </div>
+</article>
+<article class="card" data-dto="14" data-precio="102.88" data-val="0" data-opi="0" data-vend="0" data-grupo="Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" min90 "
+         data-texto="greenote gsc80 aspiradora escoba sin cable 45kpa/600w, con base de carga, 60min autonomía, tubo plegable &amp; autoportante, pantalla táctil, anti-enredos para pelo de mascotas, alfombras y suelos duros b0g5n66gv5 hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0G5N66GV5" data-desc="Greenote GSC80 Aspiradora Escoba Sin Ca… · 102,88 € · -14%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0G5N66GV5?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-14%</span>
+    <img src="https://m.media-amazon.com/images/I/71BsxAYo7WL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0G5N66GV5?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Greenote GSC80 Aspiradora Escoba Sin Cable 45KPa/600W, con Base De Carga, 60Min Autonomía, Tubo Plegable &amp; Autoportante, Pantalla Táctil, Anti-Enredos para Pelo de Mascotas, Alfombras y Suelos Duros</a>
+    <div class="precio"><b>102,88 €</b> <s>119,99 €</s></div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (108,29 €)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0G5N66GV5</code></div>
+  </div>
+</article>
+<article class="card" data-dto="14" data-precio="199.9" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🥤 Batidora / Licuadora" data-marca="" data-marcas=" hist ok "
+         data-texto="kenwood prospero+ khc29a.o0si - amasadora, cuenco de acero inoxidable, 4,3 l, incluye juego de accesorios, 10 unidades + 3 ganchos y batidor, batidora de cristal, procesador de alimentos de 3 discos, b0cvnkcgjp básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0CVNKCGJP" data-desc="Kenwood Prospero+ KHC29A.O0SI - Amasado… · 199,90 € · -14%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CVNKCGJP?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-14%</span>
+    <img src="https://m.media-amazon.com/images/I/713RwkI4MTL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CVNKCGJP?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Kenwood Prospero+ KHC29A.O0SI - Amasadora, cuenco de acero inoxidable, 4,3 L, incluye juego de accesorios, 10 unidades + 3 ganchos y batidor, batidora de cristal, procesador de alimentos de 3 discos,</a>
+    <div class="precio"><b>199,90 €</b> <s>233,70 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -13% vs mín. 30 días (229,90 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0CVNKCGJP</code></div>
+  </div>
+</article>
+<article class="card" data-dto="14" data-precio="429.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" ok "
+         data-texto="tapo robot aspirador rv50 pro omni – 15.000 pa, navegación láser dual, autovaciado, cepillos antienredo para mascotas, limpieza de bordes, estación todo-en-uno con depósito de agua 5l (negro oscuro) b0gcf4mpd5 básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GCF4MPD5" data-desc="Tapo Robot Aspirador RV50 Pro Omni – 15… · 429,99 € · -14%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GCF4MPD5?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-14%</span>
+    <img src="https://m.media-amazon.com/images/I/71JasBISHWL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GCF4MPD5?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Tapo Robot Aspirador RV50 Pro Omni – 15.000 Pa, Navegación Láser Dual, Autovaciado, Cepillos Antienredo para Mascotas, Limpieza de Bordes, Estación Todo-en-Uno con Depósito de Agua 5L (Negro Oscuro)</a>
+    <div class="precio"><b>429,99 €</b> <s>499,99 €</s></div>
+    
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -14% vs mín. 30 días (499,49 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0GCF4MPD5</code></div>
+  </div>
+</article>
+<article class="card" data-dto="13" data-precio="32.12" data-val="0" data-opi="0" data-vend="0" data-grupo="Hogar y Cocina"
+         data-cat="🍞 Pequeño electro" data-marca="" data-marcas="  "
+         data-texto="gadgy gofrera belga doble 1000 w con control de temperatura | prepara dos gofres belgas con termostato ajustable placas antiadherentes indicadores led y asa fría al tacto b07f3xwvs2 hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B07F3XWVS2" data-desc="Gadgy Gofrera Belga Doble 1000 W con Co… · 32,12 € · -13%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07F3XWVS2?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-13%</span>
+    <img src="https://m.media-amazon.com/images/I/81okyUYTveL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07F3XWVS2?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Gadgy Gofrera Belga Doble 1000 W con Control de Temperatura | Prepara Dos Gofres Belgas con Termostato Ajustable Placas Antiadherentes Indicadores LED y Asa Fría al Tacto</a>
+    <div class="precio"><b>32,12 €</b> <s>36,95 €</s></div>
+    
+    <div class="tags"><span class="tag ">Antes = precio mediano</span></div>
+    <div class="pie">Hogar y Cocina · <code>B07F3XWVS2</code></div>
+  </div>
+</article>
+<article class="card" data-dto="13" data-precio="38.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Hogar y Cocina"
+         data-cat="🥤 Batidora / Licuadora" data-marca="" data-marcas=" min90 "
+         data-texto="princess 221220 set de batidora de mano, control de velocidad, 800 w, incluye taza de medir, picador y batidor, acabado de goma para un agarre ergonómico, acero inoxidable, negro b07jn8986n hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B07JN8986N" data-desc="Princess 221220 Set de batidora de mano… · 38,99 € · -13%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07JN8986N?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-13%</span>
+    <img src="https://m.media-amazon.com/images/I/61RsllTwpfL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07JN8986N?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Princess 221220 Set de batidora de mano, Control de velocidad, 800 W, incluye taza de medir, picador y batidor, acabado de goma para un agarre ergonómico, acero Inoxidable, negro</a>
+    <div class="precio"><b>38,99 €</b> <s>44,99 €</s></div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span></div>
+    <div class="pie">Hogar y Cocina · <code>B07JN8986N</code></div>
+  </div>
+</article>
+<article class="card" data-dto="13" data-precio="69.99" data-val="0" data-opi="0" data-vend="200" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🍟 Freidora de aire" data-marca="" data-marcas=" hist vendidos "
+         data-texto="cosori freidora de aire duradera de 4,7 l, 9 modos, máx 230 °c, silenciosa | pantalla táctil, 30+ recetas en español, 9 programas, diseño moderno y elegante, gris, l501 b0dq1c6npv básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0DQ1C6NPV" data-desc="Cosori Freidora de Aire Duradera de 4,7… · 69,99 € · -13%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DQ1C6NPV?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-13%</span>
+    <img src="https://m.media-amazon.com/images/I/612btQEqjNL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DQ1C6NPV?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Cosori Freidora de Aire Duradera de 4,7 L, 9 Modos, Máx 230 °C, Silenciosa | Pantalla Táctil, 30+ Recetas en Español, 9 Programas, Diseño Moderno y Elegante, Gris, L501</a>
+    <div class="precio"><b>69,99 €</b> <s>79,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 200+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0DQ1C6NPV</code></div>
+  </div>
+</article>
+<article class="card" data-dto="13" data-precio="119.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="📟 Microondas / Horno" data-marca="" data-marcas=" min90 nueva ok "
+         data-texto="taurus laurent 25 black - microondas digital, 25l, 900w, grill 1000w, 10 niveles, función descongelar, revestimiento shiny&amp;clean, hasta 99 min, función inicio programado, 480 x 430 x 280 mm, negro b0bknm94sc básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0BKNM94SC" data-desc="Taurus Laurent 25 Black - Microondas di… · 119,99 € · -13%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0BKNM94SC?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-13%</span>
+    <img src="https://m.media-amazon.com/images/I/614llfiRjeL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0BKNM94SC?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Taurus Laurent 25 Black - Microondas digital, 25L, 900W, grill 1000W, 10 niveles, función descongelar, revestimiento Shiny&amp;Clean, hasta 99 min, función inicio programado, 480 x 430 x 280 mm, negro</a>
+    <div class="precio"><b>119,99 €</b> <s>138,67 €</s></div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ok">Bajada real: -13% vs mín. 30 días (138,67 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0BKNM94SC</code></div>
+  </div>
+</article>
+<article class="card" data-dto="13" data-precio="129.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" hist "
+         data-texto="rowenta x-pert digital, aspiradora escoba sin cable | solución de limpieza 5 en 1 para aspirar suelos, superficies y tejidos, limpiar el techo, aspirador de mano y de ranuras b0h7bpnwpk básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0H7BPNWPK" data-desc="Rowenta X-Pert Digital, Aspiradora Esco… · 129,99 € · -13%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H7BPNWPK?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-13%</span>
+    <img src="https://m.media-amazon.com/images/I/61r4QUbjVbL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H7BPNWPK?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Rowenta X-Pert Digital, Aspiradora Escoba Sin Cable | Solución de limpieza 5 en 1 para aspirar suelos, superficies y tejidos, limpiar el techo, aspirador de mano y de ranuras</a>
+    <div class="precio"><b>129,99 €</b> <s>149,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-7% vs mín. 30 días (139,99 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0H7BPNWPK</code></div>
+  </div>
+</article>
+<article class="card" data-dto="13" data-precio="138.64" data-val="0" data-opi="0" data-vend="0" data-grupo="Hogar y Cocina"
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" hist ok "
+         data-texto="yigars robot aspirador y fregasuelos hasta 8000pa navegación lidar y mapeo | potente succión autovaciado autonomía de 220 minutos, anticolisión, limpieza personalizada control por voz y app-blanco b0fwq941xp hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0FWQ941XP" data-desc="Yigars Robot Aspirador y fregasuelos ha… · 138,64 € · -13%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FWQ941XP?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-13%</span>
+    <img src="https://m.media-amazon.com/images/I/61pE1Nz1zjL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FWQ941XP?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Yigars Robot Aspirador y fregasuelos hasta 8000Pa Navegación LiDAR y Mapeo | Potente succión Autovaciado Autonomía de 220 Minutos, Anticolisión, Limpieza Personalizada Control por Voz y App-Blanco</a>
+    <div class="precio"><b>138,64 €</b> <s>159,89 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -37% vs mín. 30 días (219,99 €)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0FWQ941XP</code></div>
+  </div>
+</article>
+<article class="card" data-dto="13" data-precio="259.9" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🥤 Batidora / Licuadora" data-marca="" data-marcas=" hist ok "
+         data-texto="kenwood chef xl amasadora planetaria kvl4100w, 3 ganchos y batidores para amasar, montar y mezclar, cuenco de 6,7 l, lavable en lavavajillas, motor de 1200 w, color blanco b08y8vnhx6 básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B08Y8VNHX6" data-desc="Kenwood Chef XL Amasadora planetaria KV… · 259,90 € · -13%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B08Y8VNHX6?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-13%</span>
+    <img src="https://m.media-amazon.com/images/I/51MMqBiR17L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B08Y8VNHX6?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Kenwood Chef XL Amasadora planetaria KVL4100W, 3 ganchos y batidores para amasar, montar y mezclar, cuenco de 6,7 L, lavable en lavavajillas, motor de 1200 W, color blanco</a>
+    <div class="precio"><b>259,90 €</b> <s>299,90 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ok">Bajada real: -13% vs mín. 30 días (299,90 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B08Y8VNHX6</code></div>
+  </div>
+</article>
+<article class="card" data-dto="12" data-precio="60.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Hogar y Cocina"
+         data-cat="📟 Microondas / Horno" data-marca="" data-marcas=" min90 nueva ok "
+         data-texto="candy smart cmw 2070m, microondas, 20l, 1200w, 6 niveles de potencia, descongelación automática, alerta acústica fin cocción, plato 24,5cm, blanco b0050ijeww hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0050IJEWW" data-desc="Candy Smart CMW 2070M, Microondas, 20L,… · 60,99 € · -12%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0050IJEWW?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-12%</span>
+    <img src="https://m.media-amazon.com/images/I/71VEXoULyBL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0050IJEWW?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Candy Smart CMW 2070M, Microondas, 20L, 1200W, 6 Niveles de Potencia, Descongelación Automática, Alerta Acústica Fin Cocción, Plato 24,5CM, Blanco</a>
+    <div class="precio"><b>60,99 €</b> <s>68,99 €</s></div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -15% vs mín. 30 días (71,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0050IJEWW</code></div>
+  </div>
+</article>
+<article class="card" data-dto="12" data-precio="113.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🍟 Freidora de aire" data-marca="" data-marcas=" hist "
+         data-texto="moulinex easy fry compact, freidora de aire, capacidad de 7,5l, 8 raciones | diseño compacto, pantalla táctil intuitiva, 8 programas automáticos, limpieza fácil, cesta apta lavavajillas, ez866a b0h2h3jy3x básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0H2H3JY3X" data-desc="Moulinex Easy Fry Compact, Freidora de… · 113,99 € · -12%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H2H3JY3X?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-12%</span>
+    <img src="https://m.media-amazon.com/images/I/41RJ3wW2vVL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H2H3JY3X?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Moulinex Easy Fry Compact, Freidora de aire, Capacidad de 7,5L, 8 Raciones | Diseño compacto, Pantalla táctil intuitiva, 8 Programas automáticos, Limpieza fácil, Cesta apta lavavajillas, EZ866A</a>
+    <div class="precio"><b>113,99 €</b> <s>129,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (119,99 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0H2H3JY3X</code></div>
+  </div>
+</article>
+<article class="card" data-dto="11" data-precio="55.0" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🍟 Freidora de aire" data-marca="" data-marcas=" hist "
+         data-texto="m mimotec – air fryer vera touch 10l, freidora de aire sin aceite, 1800w, 10 menús digitales, pantalla táctil, función grill, temporizador regulable, 2 niveles, temperatura 80-200°c, cocina saludable b0gz3s1v1z básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GZ3S1V1Z" data-desc="M mimotec – Air Fryer Vera Touch 10L, F… · 55,00 € · -11%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GZ3S1V1Z?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-11%</span>
+    <img src="https://m.media-amazon.com/images/I/71yX2qlfXRL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GZ3S1V1Z?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">M mimotec – Air Fryer Vera Touch 10L, Freidora de Aire sin Aceite, 1800W, 10 Menús Digitales, Pantalla Táctil, Función Grill, Temporizador regulable, 2 niveles, Temperatura 80-200°C, Cocina Saludable</a>
+    <div class="precio"><b>55,00 €</b> <s>61,60 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-6% vs mín. 30 días (58,50 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0GZ3S1V1Z</code></div>
+  </div>
+</article>
+<article class="card" data-dto="11" data-precio="229.49" data-val="0" data-opi="0" data-vend="0" data-grupo="Hogar y Cocina"
+         data-cat="🍞 Pequeño electro" data-marca="" data-marcas=" hist ok "
+         data-texto="springlane heladera yogurtera 2 en 1 elisa con compresor de refrigeración y función de calefacción, 2 l máquina de helados y yogur en acero inoxidable, función de mantenimiento de frío b07cz6msb4 hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B07CZ6MSB4" data-desc="SPRINGLANE Heladera yogurtera 2 en 1 EL… · 229,49 € · -11%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07CZ6MSB4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-11%</span>
+    <img src="https://m.media-amazon.com/images/I/51wQWRdxp4L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07CZ6MSB4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SPRINGLANE Heladera yogurtera 2 en 1 ELISA con compresor de refrigeración y función de calefacción, 2 l Máquina de helados y yogur en acero inoxidable, función de mantenimiento de frío</a>
+    <div class="precio"><b>229,49 €</b> <s>256,49 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ok">Bajada real: -11% vs mín. 30 días (256,49 €)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B07CZ6MSB4</code></div>
+  </div>
+</article>
+<article class="card" data-dto="10" data-precio="44.9" data-val="0" data-opi="0" data-vend="0" data-grupo="Hogar y Cocina"
+         data-cat="🍟 Freidora de aire" data-marca="" data-marcas=" hist nueva "
+         data-texto="girmi fg27 &quot;ecofrit lite&quot; freidora de aire, 4,2 litros, 1400 w, pantalla figital, 8 programas, temporizador, 80-200 °c, bpa/pfoa safe, color tiza recetario incluido b0fwrr859k hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0FWRR859K" data-desc="Girmi FG27 &quot;Ecofrit Lite&quot; Freidora de a… · 44,90 € · -10%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FWRR859K?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/61RMVVJ9mEL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FWRR859K?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Girmi FG27 &quot;Ecofrit Lite&quot; Freidora de aire, 4,2 litros, 1400 W, Pantalla Figital, 8 programas, Temporizador, 80-200 °C, BPA/PFOA Safe, Color Tiza Recetario incluido</a>
+    <div class="precio"><b>44,90 €</b> <s>49,90 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">-10% vs mín. 30 días (49,90 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0FWRR859K</code></div>
+  </div>
+</article>
+<article class="card" data-dto="10" data-precio="54.14" data-val="0" data-opi="0" data-vend="0" data-grupo="Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" hist "
+         data-texto="aspirador de mano inalámbrico 4 en 1 con motor sin escobillas 87000 rpm | 20000pa de succión, pantalla led inteligente, 2 velocidades, ligero y portátil, para coche y hogar b0gvn5dp4t hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0GVN5DP4T" data-desc="Aspirador de Mano Inalámbrico 4 en 1 co… · 54,14 € · -10%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GVN5DP4T?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/71zDc8yhwuL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GVN5DP4T?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Aspirador de Mano Inalámbrico 4 en 1 con Motor Sin Escobillas 87000 RPM | 20000Pa de Succión, Pantalla LED Inteligente, 2 Velocidades, Ligero y Portátil, Para Coche y Hogar</a>
+    <div class="precio"><b>54,14 €</b> <s>59,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span></div>
+    <div class="pie">Hogar y Cocina · <code>B0GVN5DP4T</code></div>
+  </div>
+</article>
+<article class="card" data-dto="10" data-precio="59.56" data-val="0" data-opi="0" data-vend="100" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" vendidos "
+         data-texto="verslife aspiradora sin cable,30kpa escoba aspiradora sin cable,sin enredos | aspiradora inalámbrica ligera,filtro hepa lavable,ideal para suelos y pelos de mascotas b0h6q63ldp básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0H6Q63LDP" data-desc="VersLife Aspiradora Sin Cable,30KPa Esc… · 59,56 € · -10%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H6Q63LDP?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/61oECEZO-YL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H6Q63LDP?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">VersLife Aspiradora Sin Cable,30KPa Escoba Aspiradora Sin Cable,Sin Enredos | Aspiradora Inalámbrica ligera,filtro HEPA lavable,ideal para suelos y pelos de mascotas</a>
+    <div class="precio"><b>59,56 €</b> <s>65,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (62,69 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0H6Q63LDP</code></div>
+  </div>
+</article>
+<article class="card" data-dto="10" data-precio="89.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" hist nueva ok "
+         data-texto="uwant y100 limpia tapicerias aspiradora de agua, 600w 18kpa, dep.doble 1.2l | manguera autolimpiable, higieniza 99.9%, detergente 500ml y cepillos incluidos, para sofá, alfombra, colchón y coche b0h1b5kk12 básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0H1B5KK12" data-desc="Uwant Y100 Limpia Tapicerias Aspiradora… · 89,99 € · -10%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H1B5KK12?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/71wYTrCD3YL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H1B5KK12?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Uwant Y100 Limpia Tapicerias Aspiradora de Agua, 600W 18kPa, Dep.Doble 1.2L | Manguera Autolimpiable, Higieniza 99.9%, Detergente 500ml y Cepillos incluidos, Para sofá, alfombra, colchón y coche</a>
+    <div class="precio"><b>89,99 €</b> <s>99,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -10% vs mín. 30 días (99,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0H1B5KK12</code></div>
+  </div>
+</article>
+<article class="card" data-dto="10" data-precio="89.99" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🧽 Friegasuelos" data-marca="" data-marcas=" nueva "
+         data-texto="2 en 1 robot aspirador y fregasuelos 5500pa ideal para pelo de mascotas | 7.8cm ultra sottile, delgado, sin enredos, alfombras de pelo bajo, automático 120 min, 2.4g wifi/app/alexa/mando-negro b0fwjwxbch básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0FWJWXBCH" data-desc="2 en 1 Robot Aspirador y Fregasuelos 55… · 89,99 € · -10%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FWJWXBCH?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/610Zy2IeyvL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FWJWXBCH?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">2 en 1 Robot Aspirador y Fregasuelos 5500Pa Ideal para Pelo de Mascotas | 7.8cm Ultra Sottile, Delgado, Sin Enredos, Alfombras de Pelo Bajo, Automático 120 min, 2.4G WiFi/App/Alexa/Mando-Negro</a>
+    <div class="precio"><b>89,99 €</b> <s>99,99 €</s></div>
+    
+    <div class="tags"><span class="tag ">-10% vs mín. 30 días (99,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0FWJWXBCH</code></div>
+  </div>
+</article>
+<article class="card" data-dto="10" data-precio="90.24" data-val="0" data-opi="0" data-vend="300" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" vendidos "
+         data-texto="ivormentico c10 evo aspiradora sin cable, 68kpa/600w/70mins | aspiradoras escoba con modo automático, diserio autoportante, depósito doble de 1.8l, cepillo antienredos b0g4wg9c6n básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0G4WG9C6N" data-desc="Ivormentico C10 EVO Aspiradora sin Cabl… · 90,24 € · -10%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0G4WG9C6N?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/61I583Ko84L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0G4WG9C6N?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Ivormentico C10 EVO Aspiradora sin Cable, 68Kpa/600W/70Mins | Aspiradoras Escoba con Modo Automático, Diserio autoportante, Depósito Doble de 1.8L, Cepillo Antienredos</a>
+    <div class="precio"><b>90,24 €</b> <s>99,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 300+ comprados el mes pasado</span></div>
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (94,99 €)</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0G4WG9C6N</code></div>
+  </div>
+</article>
+<article class="card" data-dto="10" data-precio="153.42" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día | Hogar y Cocina"
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" hist "
+         data-texto="vexilar x7 aspiradora fregadora sin cable 20kpa, aspiradora en seco y húmedo,aspira y friega,autolimpieza,diseño reclinable de 180°, autonomía 40min, fregona electrica para polvo/residuos/partículas b0fyfjjqzz básicos día a día · hogar y cocina">
+  <label class="pick"><input type="checkbox" value="B0FYFJJQZZ" data-desc="Vexilar X7 Aspiradora Fregadora sin Cab… · 153,42 € · -10%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FYFJJQZZ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/61hnCJ6fJ6L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FYFJJQZZ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Vexilar X7 Aspiradora Fregadora sin Cable 20KPa, Aspiradora en Seco y Húmedo,Aspira y Friega,Autolimpieza,Diseño Reclinable de 180°, Autonomía 40Min, Fregona Electrica para Polvo/Residuos/Partículas</a>
+    <div class="precio"><b>153,42 €</b> <s>169,99 €</s></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span></div>
+    <div class="pie">Básicos Día a Día · Hogar y Cocina · <code>B0FYFJJQZZ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="10" data-precio="187.91" data-val="0" data-opi="0" data-vend="0" data-grupo="Básicos Día a Día"
+         data-cat="💦 Hidrolimpiadora" data-marca="" data-marcas=" ok "
+         data-texto="kärcher hidrolimpiadora k 4 classic car, presión: 130 bar, caudal: 420 l/h, rendimiento: 30 m²/h, filtro de agua, 4,6 kg, pistola de alta presión, boquilla turbo, lanza vario power, kit para vehículos b0dq8f983k básicos día a día">
+  <label class="pick"><input type="checkbox" value="B0DQ8F983K" data-desc="Kärcher Hidrolimpiadora K 4 Classic Car… · 187,91 € · -10%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DQ8F983K?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/71Id-NI1wUL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DQ8F983K?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Kärcher Hidrolimpiadora K 4 Classic Car, presión: 130 bar, caudal: 420 l/h, rendimiento: 30 m²/h, filtro de agua, 4,6 kg, pistola de alta presión, boquilla turbo, lanza Vario Power, kit para vehículos</a>
+    <div class="precio"><b>187,91 €</b> <s>209,95 €</s></div>
+    
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -10% vs mín. 30 días (209,95 €)</span></div>
+    <div class="pie">Básicos Día a Día · <code>B0DQ8F983K</code></div>
+  </div>
+</article></main>
+<script>
+const lista = document.getElementById('lista');
+const cards = [...lista.querySelectorAll('.card')];
+const btn = document.getElementById('copiar');
+const $ = id => document.getElementById(id);
+function elegidos() { return cards.filter(c => c.querySelector('input').checked); }
+// Opciones marcadas en un desplegable múltiple (vacío = todas)
+function marcados(id) {
+  const d = $(id);
+  if (!d) return [];
+  const total = d.querySelectorAll('input[type=checkbox]').length;
+  let v = [...d.querySelectorAll('input:checked')].map(i => i.value);
+  if (v.length === total) v = [];            // todas marcadas = sin filtro
+  const faltan = total - v.length;
+  d.classList.toggle('activo', v.length > 0);
+  d.querySelector('summary').textContent =
+    !v.length ? d.dataset.todas
+    : v.length === 1 ? v[0]
+    : faltan <= 3 && v.length > faltan ? `Todas menos ${faltan}`
+    : `${v[0]} +${v.length - 1}`;
+  return v;
+}
+function filtrar() {
+  const q = $('q').value.toLowerCase().trim();
+  const g = $('grupo') ? $('grupo').value : '';
+  const d = +$('dtomin').value || 0;
+  const dmax = $('dtomax').value === '' ? 100 : +$('dtomax').value;
+  const cats = marcados('cat');
+  const marcasTop = marcados('marca');
+  // Botones de etiqueta: "on" = solo las que la tienen, "off" = sin ella
+  const con = [...document.querySelectorAll('.chip.on')].map(b => ` ${b.dataset.m} `);
+  const sin = [...document.querySelectorAll('.chip.off')].map(b => ` ${b.dataset.m} `);
+  let n = 0;
+  cards.forEach(c => {
+    const ver = (!q || c.dataset.texto.includes(q))
+      && con.every(m => c.dataset.marcas.includes(m))
+      && !sin.some(m => c.dataset.marcas.includes(m))
+      && (!cats.length || cats.includes(c.dataset.cat))
+      && (!marcasTop.length || marcasTop.includes(c.dataset.marca))
+      && (!g || c.dataset.grupo.split('|').map(s => s.trim()).includes(g))
+      && +c.dataset.dto >= d && +c.dataset.dto <= dmax;
+    c.hidden = !ver; if (ver) n++;
+  });
+  $('contador').textContent = `${n} de ${cards.length}`;
+}
+lista.addEventListener('change', e => {
+  e.target.closest('.card').classList.toggle('sel', e.target.checked);
+  const n = elegidos().length; btn.textContent = `Copiar ASIN (${n})`; btn.disabled = !n;
+});
+btn.onclick = async () => {
+  // ASIN + tabulador + descripción: en Excel cae en dos columnas (ASIN | DESCRIPCION)
+  const txt = elegidos().map(c => { const i = c.querySelector('input');
+                                     return i.value + '\t' + (i.dataset.desc || ''); }).join('\n');
+  try { await navigator.clipboard.writeText(txt); }
+  catch (e) { const t = document.createElement('textarea'); t.value = txt; document.body.append(t);
+               t.select(); document.execCommand('copy'); t.remove(); }
+  const antes = btn.textContent; btn.textContent = '¡Copiados! Pégalos en la columna ASIN (la descripción va a la de al lado)';
+  setTimeout(() => btn.textContent = antes, 2500);
+};
+// 1er clic: solo las que tienen la etiqueta · 2º: las que NO la tienen · 3º: quitar
+document.querySelectorAll('.chip').forEach(b => b.onclick = () => {
+  if (b.classList.contains('on')) { b.classList.replace('on', 'off'); b.title = 'Ocultando las que la tienen'; }
+  else if (b.classList.contains('off')) { b.classList.remove('off'); b.title = ''; }
+  else { b.classList.add('on'); b.title = 'Solo las que la tienen'; }
+  filtrar();
+});
+['q', 'cat', 'marca', 'grupo', 'dtomin', 'dtomax'].forEach(id => {
+  if (!$(id)) return;
+  $(id).addEventListener('input', filtrar);
+  $(id).addEventListener('change', filtrar);
+});
+// "Marcar todas" / "Desmarcar todas" de cada desplegable múltiple
+document.querySelectorAll('.multi [data-marcar]').forEach(b => b.onclick = () => {
+  b.closest('.multi').querySelectorAll('input[type=checkbox]').forEach(i => i.checked = b.dataset.marcar === '1');
+  filtrar();
+});
+// Cerrar los desplegables múltiples al pulsar fuera
+document.addEventListener('click', e => document.querySelectorAll('details.multi[open]')
+  .forEach(d => d.contains(e.target) || d.removeAttribute('open')));
+$('limpiar').onclick = () => {
+  $('q').value = ''; $('dtomin').value = 0; $('dtomax').value = 100;
+  $('grupo') && ($('grupo').value = '');
+  document.querySelectorAll('.multi input:checked').forEach(i => i.checked = false);
+  document.querySelectorAll('.chip').forEach(b => { b.classList.remove('on', 'off'); b.title = ''; });
+  filtrar(); window.scrollTo(0, 0);
+};
+$('orden').onchange = e => {
+  const k = e.target.value;
+  cards.sort((a, b) => k === 'dto' ? b.dataset.dto - a.dataset.dto
+    : k === 'opi' ? b.dataset.opi - a.dataset.opi
+    : k === 'vend' ? (b.dataset.vend - a.dataset.vend) || (b.dataset.opi - a.dataset.opi)
+    // mejor valorados: a igual nota, antes el que tiene más opiniones
+    : k === 'val' ? (b.dataset.val - a.dataset.val) || (b.dataset.opi - a.dataset.opi)
+    : k === 'asc' ? a.dataset.precio - b.dataset.precio : b.dataset.precio - a.dataset.precio)
+    .forEach(c => lista.append(c));
+};
+filtrar();
+</script>
+</body></html>
