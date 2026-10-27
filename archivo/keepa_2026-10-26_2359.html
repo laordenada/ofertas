@@ -62,7 +62,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
          padding:3px 7px; font-size:13px; cursor:pointer; border:1px solid var(--borde); }
 .foto { display:block; background:#fff; aspect-ratio:1; position:relative; overflow:hidden; }
 .foto img { position:absolute; inset:0; width:100%; height:100%; box-sizing:border-box; object-fit:contain; padding:14px; }
-.dto { position:absolute; top:8px; left:8px; background:var(--rojo); color:#fff; font-weight:700;
+.dto { position:absolute; z-index:1; top:8px; left:8px; background:var(--rojo); color:#fff; font-weight:700;
         padding:3px 8px; border-radius:6px; }
 .info { padding:12px; display:flex; flex-direction:column; gap:8px; flex:1; }
 .titulo { color:var(--txt); text-decoration:none; display:-webkit-box; -webkit-line-clamp:3;
@@ -85,7 +85,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
 </style></head><body>
 <header>
   <div><h1>Ofertas keepa</h1>
-  <div class="sub">677 ofertas del 26/10/2026 · marcas top en mínimo histórico · 27/10/2026 17:57</div></div>
+  <div class="sub">677 ofertas del 26/10/2026 · marcas top en mínimo histórico · 27/10/2026 18:13</div></div>
   <div class="ctrl">
     <input type="search" id="q" placeholder="Filtrar…">
     <details class="multi" id="cat" data-todas="Todas las categorías"><summary>Todas las categorías</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="Moda infantil"> Moda infantil <span>(4)</span></label><label><input type="checkbox" value="Moda mujer"> Moda mujer <span>(12)</span></label><label><input type="checkbox" value="Moda hombre"> Moda hombre <span>(15)</span></label><label><input type="checkbox" value="Moda"> Moda <span>(16)</span></label><label><input type="checkbox" value="Informática"> Informática <span>(16)</span></label><label><input type="checkbox" value="Electrónica"> Electrónica <span>(16)</span></label><label><input type="checkbox" value="Electrodomésticos"> Electrodomésticos <span>(2)</span></label><label><input type="checkbox" value="Iluminación"> Iluminación <span>(10)</span></label><label><input type="checkbox" value="Hogar y cocina"> Hogar y cocina <span>(142)</span></label><label><input type="checkbox" value="Belleza"> Belleza <span>(112)</span></label><label><input type="checkbox" value="Salud y cuidado personal"> Salud y cuidado personal <span>(20)</span></label><label><input type="checkbox" value="Bebé"> Bebé <span>(18)</span></label><label><input type="checkbox" value="Juguetes"> Juguetes <span>(84)</span></label><label><input type="checkbox" value="Deportes"> Deportes <span>(33)</span></label><label><input type="checkbox" value="Bricolaje"> Bricolaje <span>(76)</span></label><label><input type="checkbox" value="Coche y moto"> Coche y moto <span>(34)</span></label><label><input type="checkbox" value="Mascotas"> Mascotas <span>(23)</span></label><label><input type="checkbox" value="Oficina y papelería"> Oficina y papelería <span>(23)</span></label><label><input type="checkbox" value="Alimentación y bebidas"> Alimentación y bebidas <span>(13)</span></label><label><input type="checkbox" value="Otros"> Otros <span>(8)</span></label></div></details>
