@@ -60,8 +60,8 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
 .card.sel { outline:3px solid var(--acento); }
 .pick { position:absolute; top:8px; right:8px; z-index:2; background:var(--card); border-radius:6px;
          padding:3px 7px; font-size:13px; cursor:pointer; border:1px solid var(--borde); }
-.foto { display:block; background:#fff; aspect-ratio:1; position:relative; }
-.foto img { width:100%; height:100%; object-fit:contain; padding:14px; }
+.foto { display:block; background:#fff; aspect-ratio:1; position:relative; overflow:hidden; }
+.foto img { position:absolute; inset:0; width:100%; height:100%; box-sizing:border-box; object-fit:contain; padding:14px; }
 .dto { position:absolute; top:8px; left:8px; background:var(--rojo); color:#fff; font-weight:700;
         padding:3px 8px; border-radius:6px; }
 .info { padding:12px; display:flex; flex-direction:column; gap:8px; flex:1; }
@@ -76,6 +76,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
 .resenas .vendidos { white-space:nowrap; }
 .tag.talla { background:transparent; border:1px solid var(--suave); font-weight:600; }
 .tag.top, .chip.m-top { --c:var(--top); } .tag.top { background:var(--top); color:#fff; } .tag.nueva, .chip.m-nueva { --c:var(--nueva); } .tag.nueva { background:var(--nueva); color:#fff; } .tag.ok, .chip.m-ok { --c:var(--ok); } .tag.ok { background:var(--ok); color:#fff; } .tag.hist, .chip.m-hist { --c:var(--hist); } .tag.hist { background:var(--hist); color:#fff; } .tag.min90, .chip.m-min90 { --c:var(--min90); } .tag.min90 { background:var(--min90); color:#fff; } .tag.prime, .chip.m-prime { --c:var(--prime); } .tag.prime { background:var(--prime); color:#fff; } .tag.cupon, .chip.m-cupon { --c:var(--cupon); } .tag.cupon { background:var(--cupon); color:#fff; } .tag.sns, .chip.m-sns { --c:var(--sns); } .tag.sns { background:var(--sns); color:#fff; } .tag.cc, .chip.m-cc { --c:var(--cc); } .tag.cc { background:var(--cc); color:#fff; } .tag.rep, .chip.m-rep { --c:var(--rep); } .tag.rep { background:var(--rep); color:#fff; } .tag.oferta, .chip.m-oferta { --c:var(--oferta); } .tag.oferta { background:var(--oferta); color:#fff; } .tag.masvendido, .chip.m-masvendido { --c:var(--masvendido); } .tag.masvendido { background:var(--masvendido); color:#fff; } .tag.vendidos, .chip.m-vendidos { --c:var(--vendidos); } .tag.vendidos { background:var(--vendidos); color:#fff; } .tag.tallanormal, .chip.m-tallanormal { --c:var(--tallanormal); } .tag.tallanormal { background:var(--tallanormal); color:#fff; } 
+:root { --tallanormal:#0f766e; }  /* verde azulado oscuro: se lee con letras blancas en claro y en oscuro */
 .tag.prime, .chip.m-prime.on { color:#062a3a; }  /* azul Prime claro: texto oscuro para que se lea */
 .tag.top, .chip.m-top.on { color:var(--bg); font-weight:600; }  /* marca top: negro (blanco en modo oscuro) */
 .pie { margin-top:auto; color:var(--suave); font-size:12px; }
@@ -84,7 +85,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
 </style></head><body>
 <header>
   <div><h1>Ofertas keepa</h1>
-  <div class="sub">677 ofertas del 26/10/2026 · marcas top en mínimo histórico · 27/10/2026 00:30</div></div>
+  <div class="sub">677 ofertas del 26/10/2026 · marcas top en mínimo histórico · 27/10/2026 17:57</div></div>
   <div class="ctrl">
     <input type="search" id="q" placeholder="Filtrar…">
     <details class="multi" id="cat" data-todas="Todas las categorías"><summary>Todas las categorías</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="Moda infantil"> Moda infantil <span>(4)</span></label><label><input type="checkbox" value="Moda mujer"> Moda mujer <span>(12)</span></label><label><input type="checkbox" value="Moda hombre"> Moda hombre <span>(15)</span></label><label><input type="checkbox" value="Moda"> Moda <span>(16)</span></label><label><input type="checkbox" value="Informática"> Informática <span>(16)</span></label><label><input type="checkbox" value="Electrónica"> Electrónica <span>(16)</span></label><label><input type="checkbox" value="Electrodomésticos"> Electrodomésticos <span>(2)</span></label><label><input type="checkbox" value="Iluminación"> Iluminación <span>(10)</span></label><label><input type="checkbox" value="Hogar y cocina"> Hogar y cocina <span>(142)</span></label><label><input type="checkbox" value="Belleza"> Belleza <span>(112)</span></label><label><input type="checkbox" value="Salud y cuidado personal"> Salud y cuidado personal <span>(20)</span></label><label><input type="checkbox" value="Bebé"> Bebé <span>(18)</span></label><label><input type="checkbox" value="Juguetes"> Juguetes <span>(84)</span></label><label><input type="checkbox" value="Deportes"> Deportes <span>(33)</span></label><label><input type="checkbox" value="Bricolaje"> Bricolaje <span>(76)</span></label><label><input type="checkbox" value="Coche y moto"> Coche y moto <span>(34)</span></label><label><input type="checkbox" value="Mascotas"> Mascotas <span>(23)</span></label><label><input type="checkbox" value="Oficina y papelería"> Oficina y papelería <span>(23)</span></label><label><input type="checkbox" value="Alimentación y bebidas"> Alimentación y bebidas <span>(13)</span></label><label><input type="checkbox" value="Otros"> Otros <span>(8)</span></label></div></details>
@@ -109,7 +110,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <span id="contador"></span>
     <button id="copiar" disabled>Copiar ASIN (0)</button>
   </div>
-  <div class="chips"><button type="button" class="chip m-top" data-m="top">Marca top <span>677</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>164</span></button><button type="button" class="chip m-cc" data-m="cc">💰 Creator Connections <span>13</span></button><button type="button" class="chip m-tallanormal" data-m="tallanormal">📏 Tallas habituales <span>677</span></button></div>
+  <div class="chips"><button type="button" class="chip m-top" data-m="top">Marca top <span>677</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>164</span></button><button type="button" class="chip m-cc" data-m="cc">💰 Creator Connections <span>12</span></button></div>
 </header>
 <main id="lista">
 <article class="card" data-dto="73" data-epc="0" data-precio="12.65" data-val="0" data-opi="0" data-vend="0" data-grupo="Keepa"
@@ -2759,16 +2760,16 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="39" data-epc="0" data-precio="6.85" data-val="4.5" data-opi="2476" data-vend="0" data-grupo="Keepa"
-         data-cat="Salud y cuidado personal" data-marca="Himalaya" data-marcas=" tallanormal top "
+         data-cat="Salud y cuidado personal" data-marca="Himalaya" data-marcas=" cc tallanormal top "
          data-texto="himalaya botanique whitening toothpaste - all natural fluoride free sls, gluten &amp; carrageenan free - removes plaque, bad breath, prevents tooth decay &amp; bleeding gums - simply peppermint 150g b00755o9za keepa 06:31">
-  <label class="pick"><input type="checkbox" value="B00755O9ZA" data-desc="Himalaya Botanique Whitening Toothpaste… · 6,85 € · -39%" data-enlace=""> Elegir</label>
+  <label class="pick"><input type="checkbox" value="B00755O9ZA" data-desc="Himalaya Botanique Whitening Toothpaste… · 6,85 € · -39%" data-enlace="https://www.amazon.es/dp/B00755O9ZA?ref=t_ac_spc_accepted_tile&amp;linkCode=tr1&amp;tag=evaruizrodrig-21&amp;linkId=B00755O9ZA_1791960010646"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B00755O9ZA?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-39%</span>
     <img src="https://m.media-amazon.com/images/I/413Z-aWpJUS._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B00755O9ZA?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Himalaya Botanique Whitening Toothpaste - All Natural Fluoride Free SLS, Gluten &amp; Carrageenan Free - Removes Plaque, Bad Breath, Prevents Tooth Decay &amp; Bleeding Gums - Simply Peppermint 150g</a>
     <div class="precio"><b>6,85 €</b> <s>11,17 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (2.476)</div>
-    <div class="tags"><span class="tag top">🏷️ Himalaya</span></div>
+    <div class="tags"><span class="tag top">🏷️ Himalaya</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,14 €</span></div>
     <div class="pie">Keepa 06:31 · <code>B00755O9ZA</code></div>
   </div>
 </article>
@@ -3053,16 +3054,16 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="38" data-epc="0" data-precio="17.69" data-val="4.0" data-opi="3862" data-vend="0" data-grupo="Keepa"
-         data-cat="Coche y moto" data-marca="Furniture Clinic" data-marcas=" cc tallanormal top "
+         data-cat="Coche y moto" data-marca="Furniture Clinic" data-marcas=" tallanormal top "
          data-texto="furniture clinic, masilla de reparación de cueros: para rellenar agujeros, rozaduras, arañazos, grietas (negro, 50 ml) b08mwk1cp3 keepa 09:06">
-  <label class="pick"><input type="checkbox" value="B08MWK1CP3" data-desc="Furniture Clinic, Masilla de Reparación… · 17,69 € · -38%" data-enlace="https://www.amazon.es/dp/B08MWK1CP3?ref=t_ac_spc_accepted_tile&amp;linkCode=tr1&amp;tag=evaruizrodrig-21&amp;linkId=B08MWK1CP3_1792711811286"> Elegir</label>
+  <label class="pick"><input type="checkbox" value="B08MWK1CP3" data-desc="Furniture Clinic, Masilla de Reparación… · 17,69 € · -38%" data-enlace=""> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B08MWK1CP3?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-38%</span>
     <img src="https://m.media-amazon.com/images/I/31krtbRjneL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B08MWK1CP3?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Furniture Clinic, Masilla de Reparación de Cueros: Para Rellenar Agujeros, Rozaduras, Arañazos, Grietas (negro, 50 ml)</a>
     <div class="precio"><b>17,69 €</b> <s>28,46 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,0 (3.862)</div>
-    <div class="tags"><span class="tag top">🏷️ Furniture Clinic</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,12 €</span></div>
+    <div class="tags"><span class="tag top">🏷️ Furniture Clinic</span></div>
     <div class="pie">Keepa 09:06 · <code>B08MWK1CP3</code></div>
   </div>
 </article>
@@ -4224,7 +4225,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <a class="titulo" href="https://www.amazon.es/dp/B083774535?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">JOVIRA PINTURAS Impermeabilizante Transparente, 5L, Líquido. Hidrofugante Invisible, No Genera Película, Protección Total en Fachadas, Hormigón,Terrazas, Tejados. Waterproof. (5 Litros, Hidrofugante)</a>
     <div class="precio"><b>20,19 €</b> <s>30,33 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,0 (2.049)</div>
-    <div class="tags"><span class="tag top">🏷️ JOVIRA PINTURAS</span><span class="tag min90">Mínimo 3 meses</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,12 €</span></div>
+    <div class="tags"><span class="tag top">🏷️ JOVIRA PINTURAS</span><span class="tag min90">Mínimo 3 meses</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,10 €</span></div>
     <div class="pie">Keepa 09:06 · <code>B083774535</code></div>
   </div>
 </article>
@@ -4798,7 +4799,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <a class="titulo" href="https://www.amazon.es/dp/B09HV4V2NM?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Finish Ultimate Infinity Shine Pastillas para lavavajillas aroma Limón - 80</a>
     <div class="precio"><b>14,23 €</b> <s>20,59 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★★</span> 4,8 (14.656)</div>
-    <div class="tags"><span class="tag top">🏷️ Finish</span><span class="tag min90">Mínimo 3 meses</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,78 €</span></div>
+    <div class="tags"><span class="tag top">🏷️ Finish</span><span class="tag min90">Mínimo 3 meses</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,74 €</span></div>
     <div class="pie">Keepa 06:31 · <code>B09HV4V2NM</code></div>
   </div>
 </article>
@@ -4943,16 +4944,16 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="31" data-epc="0" data-precio="63.04" data-val="4.5" data-opi="3437" data-vend="0" data-grupo="Keepa"
-         data-cat="Hogar y cocina" data-marca="Braun" data-marcas=" cc tallanormal top "
+         data-cat="Hogar y cocina" data-marca="Braun" data-marcas=" tallanormal top "
          data-texto="braun multiquick 5 - minipimer de 1000w vaso batidor 1250ml blanco b086hypp5k keepa 07:32">
-  <label class="pick"><input type="checkbox" value="B086HYPP5K" data-desc="Braun MultiQuick 5 - Minipimer de 1000W… · 63,04 € · -31%" data-enlace="https://www.amazon.es/dp/B086HYPP5K?ref=t_ac_spc_accepted_tile&amp;linkCode=tr1&amp;tag=evaruizrodrig-21&amp;linkId=B086HYPP5K_1792983776512"> Elegir</label>
+  <label class="pick"><input type="checkbox" value="B086HYPP5K" data-desc="Braun MultiQuick 5 - Minipimer de 1000W… · 63,04 € · -31%" data-enlace=""> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B086HYPP5K?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-31%</span>
     <img src="https://m.media-amazon.com/images/I/31a0u4gEvVL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B086HYPP5K?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Braun MultiQuick 5 - Minipimer de 1000W Vaso Batidor 1250ml Blanco</a>
     <div class="precio"><b>63,04 €</b> <s>91,43 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (3.437)</div>
-    <div class="tags"><span class="tag top">🏷️ Braun</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,23 €</span></div>
+    <div class="tags"><span class="tag top">🏷️ Braun</span></div>
     <div class="pie">Keepa 07:32 · <code>B086HYPP5K</code></div>
   </div>
 </article>
@@ -5666,7 +5667,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <a class="titulo" href="https://www.amazon.es/dp/B0BVR7BD59?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Finish Ultimate Plus Infinity Shine Pastillas lavavajillas - 73 cápsulas</a>
     <div class="precio"><b>14,23 €</b> <s>20,06 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★★</span> 4,7 (3.929)</div>
-    <div class="tags"><span class="tag top">🏷️ Finish</span><span class="tag min90">Mínimo 3 meses</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,72 €</span></div>
+    <div class="tags"><span class="tag top">🏷️ Finish</span><span class="tag min90">Mínimo 3 meses</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,71 €</span></div>
     <div class="pie">Keepa 06:31 · <code>B0BVR7BD59</code></div>
   </div>
 </article>
@@ -7127,16 +7128,16 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="27" data-epc="0" data-precio="19.47" data-val="4.3" data-opi="450" data-vend="0" data-grupo="Keepa"
-         data-cat="Belleza" data-marca="BELLA AURORA" data-marcas=" cc min90 tallanormal top "
+         data-cat="Belleza" data-marca="BELLA AURORA" data-marcas=" min90 tallanormal top "
          data-texto="bella aurora - bio 10 forte piel sensible 30 ml, tratamiento antimanchas intensivo, protección spf20, tecnología b-core221 y betaína, actúa y previene manchas, antioxidante b086rgt5hk keepa 06:31">
-  <label class="pick"><input type="checkbox" value="B086RGT5HK" data-desc="BELLA AURORA - BIO 10 Forte Piel Sensib… · 19,47 € · -27%" data-enlace="https://www.amazon.es/dp/B086RGT5HK?ref=t_ac_spc_accepted_tile&amp;linkCode=tr1&amp;tag=evaruizrodrig-21&amp;linkId=B086RGT5HK_1792464919606"> Elegir</label>
+  <label class="pick"><input type="checkbox" value="B086RGT5HK" data-desc="BELLA AURORA - BIO 10 Forte Piel Sensib… · 19,47 € · -27%" data-enlace=""> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B086RGT5HK?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-27%</span>
     <img src="https://m.media-amazon.com/images/I/4124AuxMH2L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B086RGT5HK?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">BELLA AURORA - BIO 10 Forte Piel Sensible 30 ml, Tratamiento Antimanchas Intensivo, Protección SPF20, Tecnología B-CORE221 y Betaína, Actúa y Previene Manchas, Antioxidante</a>
     <div class="precio"><b>19,47 €</b> <s>26,57 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (450)</div>
-    <div class="tags"><span class="tag top">🏷️ BELLA AURORA</span><span class="tag min90">Mínimo 3 meses</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,57 €</span></div>
+    <div class="tags"><span class="tag top">🏷️ BELLA AURORA</span><span class="tag min90">Mínimo 3 meses</span></div>
     <div class="pie">Keepa 06:31 · <code>B086RGT5HK</code></div>
   </div>
 </article>
@@ -7477,16 +7478,16 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="27" data-epc="0" data-precio="6.59" data-val="4.5" data-opi="877" data-vend="0" data-grupo="Keepa"
-         data-cat="Bricolaje" data-marca="Högert Technik" data-marcas=" hist tallanormal top "
+         data-cat="Bricolaje" data-marca="Högert Technik" data-marcas=" cc hist tallanormal top "
          data-texto="högert technik - llave torx i juego de 9 piezas i tamaños t10 a t50 i hecho de acero al cromo vanadio i resistente a la deformación y la abrasión i ht1w818 - plata b08lb75kvd keepa 09:06">
-  <label class="pick"><input type="checkbox" value="B08LB75KVD" data-desc="Högert Technik - Llave TORX I Juego de… · 6,59 € · -27%" data-enlace=""> Elegir</label>
+  <label class="pick"><input type="checkbox" value="B08LB75KVD" data-desc="Högert Technik - Llave TORX I Juego de… · 6,59 € · -27%" data-enlace="https://www.amazon.es/dp/B08LB75KVD?ref=t_ac_spc_accepted_tile&amp;linkCode=tr1&amp;tag=evaruizrodrig-21&amp;linkId=B08LB75KVD_1793070188100"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B08LB75KVD?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-27%</span>
     <img src="https://m.media-amazon.com/images/I/317dTXYwHFL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B08LB75KVD?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Högert Technik - Llave TORX I Juego de 9 piezas I Tamaños T10 a T50 I Hecho de acero al cromo vanadio I Resistente a la deformación y la abrasión I HT1W818 - Plata</a>
     <div class="precio"><b>6,59 €</b> <s>9,08 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (877)</div>
-    <div class="tags"><span class="tag top">🏷️ Högert Technik</span><span class="tag hist">⭐ Mínimo histórico</span></div>
+    <div class="tags"><span class="tag top">🏷️ Högert Technik</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,06 €</span></div>
     <div class="pie">Keepa 09:06 · <code>B08LB75KVD</code></div>
   </div>
 </article>
