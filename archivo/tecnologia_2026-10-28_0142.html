@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Ofertas tecnología</title>
+<style>
+:root { --bg:#f6f4f1; --card:#fff; --txt:#2b2522; --suave:#7a6f69; --borde:#e6e0da;
+         --acento:#e4913a; --rojo:#c8372d; --tag:#f1ece6;
+         --ok:#2e7d4f; --r20:#1b5e37; --hist:#a66a00; --min90:#be185d;
+         --cupon:#2f6db5; --sns:#6d28d9; --cc:#a16207; --prime:#00a8e1; --top:#111111; --rep:#64748b; --nueva:#ea580c; --oferta:#c8372d; --masvendido:#b45309; --vendidos:#0f766e;
+         --reciente:#0369a1; --inflada:#9a3412; --sinstock:#b91c1c; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#1b1917; --card:#26231f; --txt:#eee8e2; --suave:#a89d95; --borde:#3a3530; --tag:#332e29;
+           --ok:#3f9e68; --r20:#2f8a55; --hist:#c98a1a; --min90:#db2777;
+           --cupon:#4a86cf; --sns:#8b5cf6; --cc:#d4a017; --prime:#00a8e1; --top:#f2f2f2; --rep:#7c8aa0; --nueva:#f97316; --oferta:#e05a4f; --masvendido:#d97706; --vendidos:#14b8a6;
+           --reciente:#0e7490; --inflada:#c2410c; --sinstock:#dc2626; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--txt);
+        font:15px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif; }
+header { position:sticky; top:0; z-index:5; background:var(--bg); border-bottom:1px solid var(--borde);
+          padding:14px 20px; display:flex; flex-wrap:wrap; gap:10px 16px; align-items:center; }
+h1 { font-size:19px; margin:0; }
+.sub { color:var(--suave); font-size:13px; }
+.ctrl { margin-left:auto; display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+input, select, button { font:inherit; padding:7px 10px; border-radius:8px;
+          border:1px solid var(--borde); background:var(--card); color:var(--txt); }
+#dtomin, #dtomax { width:64px; }
+#pmin, #pmax { width:72px; }
+button.sec.activo { background:var(--acento); color:#fff; border-color:var(--acento); }
+.chips { flex-basis:100%; display:flex; flex-wrap:wrap; gap:6px; }
+.chip { --c:var(--suave); background:var(--card); color:var(--txt); border:1.5px solid var(--c);
+         border-radius:999px; padding:4px 12px; font-weight:500; font-size:13px; }
+.chip span { opacity:.7; }
+.chip.on { background:var(--c); color:#fff; }
+.chip.off { border-style:dashed; color:var(--suave); text-decoration:line-through; }
+.chip.off::before { content:"Sin "; text-decoration:none; display:inline-block; margin-right:3px; }
+.multi { position:relative; }
+.multi summary { list-style:none; cursor:pointer; padding:7px 28px 7px 10px; border-radius:8px;
+                  border:1px solid var(--borde); background:var(--card); white-space:nowrap; position:relative; }
+.multi summary::-webkit-details-marker { display:none; }
+.multi summary::after { content:"▾"; position:absolute; right:10px; color:var(--suave); }
+.multi.activo summary { border-color:var(--acento); font-weight:600; }
+.multi .opciones { position:absolute; z-index:10; top:calc(100% + 4px); left:0; min-width:230px;
+                    max-height:60vh; overflow:auto; background:var(--card); border:1px solid var(--borde);
+                    border-radius:8px; padding:6px; box-shadow:0 6px 20px rgba(0,0,0,.15); }
+.multi .opciones label { display:flex; gap:8px; align-items:center; padding:5px 6px; border-radius:6px;
+                          cursor:pointer; white-space:nowrap; }
+.multi .opciones label:hover { background:var(--tag); }
+.multi .opciones span { color:var(--suave); }
+.multi .acciones { display:flex; gap:6px; padding:2px 2px 8px; margin-bottom:4px;
+                    border-bottom:1px solid var(--borde); position:sticky; top:-6px; background:var(--card); }
+.multi .acciones button { flex:1; padding:5px 8px; font-size:13px; }
+button { background:var(--acento); border-color:var(--acento); color:#fff; font-weight:600; cursor:pointer; }
+button:disabled { opacity:.5; cursor:default; }
+button.sec { background:var(--card); color:var(--txt); border-color:var(--borde); font-weight:500; }
+#contador { color:var(--suave); font-size:13px; }
+main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); }
+.card { background:var(--card); border:1px solid var(--borde); border-radius:12px; overflow:hidden;
+         display:flex; flex-direction:column; position:relative;
+         content-visibility:auto; contain-intrinsic-size:auto 460px; }
+.card[hidden] { display:none; }
+.card.sel { outline:3px solid var(--acento); }
+.pick { position:absolute; top:8px; right:8px; z-index:2; background:var(--card); border-radius:6px;
+         padding:3px 7px; font-size:13px; cursor:pointer; border:1px solid var(--borde); }
+.foto { display:block; background:#fff; aspect-ratio:1; position:relative; overflow:hidden; }
+.foto img { position:absolute; inset:0; width:100%; height:100%; box-sizing:border-box; object-fit:contain; padding:14px; }
+.dto { position:absolute; z-index:1; top:8px; left:8px; background:var(--rojo); color:#fff; font-weight:700;
+        padding:3px 8px; border-radius:6px; }
+.info { padding:12px; display:flex; flex-direction:column; gap:8px; flex:1; }
+.titulo { color:var(--txt); text-decoration:none; display:-webkit-box; -webkit-line-clamp:3;
+           -webkit-box-orient:vertical; overflow:hidden; }
+.titulo:hover { text-decoration:underline; }
+.precio b { font-size:20px; } .precio s { color:var(--suave); margin-left:6px; }
+.tags { display:flex; flex-wrap:wrap; gap:5px; }
+.tag { background:var(--tag); border-radius:5px; padding:2px 7px; font-size:12px; }
+.resenas { font-size:13px; color:var(--suave); margin:-2px 0 6px; }
+.resenas .estrellas { color:#f5a623; letter-spacing:1px; }
+.resenas .vendidos { white-space:nowrap; }
+.kp { font-size:12px; color:var(--suave); line-height:1.35; display:flex; flex-direction:column; gap:1px; }
+.kp b { color:var(--txt); } .kp i { font-style:normal; opacity:.8; }
+.kp .bien { color:var(--ok); font-weight:600; } .kp .mal { color:var(--inflada); font-weight:600; }
+.spark { width:100%; height:38px; margin-bottom:3px; overflow:visible; }
+.spark polyline { fill:none; stroke:var(--acento); stroke-width:1.6; vector-effect:non-scaling-stroke; stroke-linejoin:round; }
+.spark .min { stroke:var(--ok); stroke-width:1; stroke-dasharray:3 3; vector-effect:non-scaling-stroke; opacity:.8; }
+.spark circle { fill:var(--rojo); }
+.tag.talla { background:transparent; border:1px solid var(--suave); font-weight:600; }
+.tag.top, .chip.m-top { --c:var(--top); } .tag.top { background:var(--top); color:#fff; } .tag.nueva, .chip.m-nueva { --c:var(--nueva); } .tag.nueva { background:var(--nueva); color:#fff; } .tag.ok, .chip.m-ok { --c:var(--ok); } .tag.ok { background:var(--ok); color:#fff; } .tag.reciente, .chip.m-reciente { --c:var(--reciente); } .tag.reciente { background:var(--reciente); color:#fff; } .tag.inflada, .chip.m-inflada { --c:var(--inflada); } .tag.inflada { background:var(--inflada); color:#fff; } .tag.sinstock, .chip.m-sinstock { --c:var(--sinstock); } .tag.sinstock { background:var(--sinstock); color:#fff; } .tag.hist, .chip.m-hist { --c:var(--hist); } .tag.hist { background:var(--hist); color:#fff; } .tag.min90, .chip.m-min90 { --c:var(--min90); } .tag.min90 { background:var(--min90); color:#fff; } .tag.prime, .chip.m-prime { --c:var(--prime); } .tag.prime { background:var(--prime); color:#fff; } .tag.cupon, .chip.m-cupon { --c:var(--cupon); } .tag.cupon { background:var(--cupon); color:#fff; } .tag.sns, .chip.m-sns { --c:var(--sns); } .tag.sns { background:var(--sns); color:#fff; } .tag.cc, .chip.m-cc { --c:var(--cc); } .tag.cc { background:var(--cc); color:#fff; } .tag.rep, .chip.m-rep { --c:var(--rep); } .tag.rep { background:var(--rep); color:#fff; } .tag.oferta, .chip.m-oferta { --c:var(--oferta); } .tag.oferta { background:var(--oferta); color:#fff; } .tag.masvendido, .chip.m-masvendido { --c:var(--masvendido); } .tag.masvendido { background:var(--masvendido); color:#fff; } .tag.vendidos, .chip.m-vendidos { --c:var(--vendidos); } .tag.vendidos { background:var(--vendidos); color:#fff; } .tag.tallanormal, .chip.m-tallanormal { --c:var(--tallanormal); } .tag.tallanormal { background:var(--tallanormal); color:#fff; } 
+:root { --tallanormal:#0f766e; }  /* verde azulado oscuro: se lee con letras blancas en claro y en oscuro */
+.tag.prime, .chip.m-prime.on { color:#062a3a; }  /* azul Prime claro: texto oscuro para que se lea */
+.tag.top, .chip.m-top.on { color:var(--bg); font-weight:600; }  /* marca top: negro (blanco en modo oscuro) */
+.pie { margin-top:auto; color:var(--suave); font-size:12px; }
+@media (max-width:600px) { header { padding:12px 16px; } main { padding:16px; gap:12px;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); } .ctrl { margin-left:0; } }
+</style></head><body>
+<header>
+  <div><h1>Ofertas tecnología</h1>
+  <div class="sub">8 ofertas · 28/10/2026 01:42</div></div>
+  <div class="ctrl">
+    <input type="search" id="q" placeholder="Filtrar…">
+    <details class="multi" id="cat" data-todas="Todas las categorías"><summary>Todas las categorías</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="📺 TV"> 📺 TV <span>(2)</span></label><label><input type="checkbox" value="📱 Móvil"> 📱 Móvil <span>(5)</span></label><label><input type="checkbox" value="⌚ Smartwatch"> ⌚ Smartwatch <span>(1)</span></label></div></details>
+    
+    <select id="grupo"><option value="">Todas las búsquedas</option><option value="Moviles">Moviles</option><option value="TV">TV</option></select>
+    
+    
+    <label>Dto. <input type="number" id="dtomin" min="0" max="100" step="5" value="0" title="mínimo">
+      a <input type="number" id="dtomax" min="0" max="100" step="5" value="100" title="máximo"> %</label>
+    <label>Precio <input type="number" id="pmin" min="0" step="1" placeholder="mín" title="precio mínimo">
+      a <input type="number" id="pmax" min="0" step="1" placeholder="máx" title="precio máximo"> €</label>
+    <button type="button" class="sec" data-pmax="20">Hasta 20 €</button>
+    <button type="button" class="sec" data-pmax="30">Hasta 30 €</button>
+    <select id="orden">
+      <option value="dto">Más descuento</option>
+      <option value="asc">Precio más bajo</option>
+      <option value="desc">Precio más alto</option>
+      <option value="vend">Más vendidos</option>
+      
+      
+      <option value="opi">Más opiniones</option>
+      <option value="val">Mejor valorados</option>
+    </select>
+    <button id="limpiar" class="sec" type="button">Quitar filtros</button>
+    <span id="contador"></span>
+    <button id="copiar" disabled>Copiar ASIN (0)</button>
+  </div>
+  <div class="chips"><button type="button" class="chip m-nueva" data-m="nueva">Oferta nueva <span>1</span></button><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>2</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>3</span></button><button type="button" class="chip m-rep" data-m="rep">3+ días en oferta <span>7</span></button></div>
+</header>
+<main id="lista">
+<article class="card" data-dto="31" data-epc="0" data-precio="969.0" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="TV"
+         data-cat="📺 TV" data-marca="" data-marcas=" hist rep tallanormal "
+         data-texto="hisense 85e7s pro - hi-qled smart tv 85 pulgadas, modo juego 144 hz nativos - color, dolby vison.atmos, imágenes ia, smooth motion amd freesync premium hdr10+gaming b0gr6krxbj tv">
+  <label class="pick"><input type="checkbox" value="B0GR6KRXBJ" data-desc="Hisense 85E7S Pro - Hi-QLED Smart TV 85… · 969,00 € · -31%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GR6KRXBJ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-31%</span>
+    <img src="https://m.media-amazon.com/images/I/81iu2qp4zdL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GR6KRXBJ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Hisense 85E7S Pro - Hi-QLED Smart TV 85 Pulgadas, Modo Juego 144 Hz Nativos - Color, Dolby Vison.Atmos, Imágenes IA, Smooth Motion AMD FreeSync Premium HDR10+Gaming</a>
+    <div class="precio"><b>969,00 €</b> <s>1.399,00 €</s></div>
+    
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-3% vs mín. 30 días (995,00 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">TV · <code>B0GR6KRXBJ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="19" data-epc="0" data-precio="524.07" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" rep tallanormal "
+         data-texto="oppo smartphone reno16 fs 5g, 8 gb de ram + 512 gb, blanco pop | pantalla de 6,57 pulgadas a 120 hz, cámara selfie ultra gran angular de 50 mp, protección ip69k, smartphone 5g libre b0h9lhxnqc moviles">
+  <label class="pick"><input type="checkbox" value="B0H9LHXNQC" data-desc="OPPO Smartphone Reno16 FS 5G, 8 GB de R… · 524,07 € · -19%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H9LHXNQC?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-19%</span>
+    <img src="https://m.media-amazon.com/images/I/71fNtCMZL3L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H9LHXNQC?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">OPPO Smartphone Reno16 FS 5G, 8 GB de RAM + 512 GB, Blanco Pop | Pantalla de 6,57 pulgadas a 120 Hz, cámara selfie ultra gran angular de 50 MP, protección IP69K, smartphone 5G libre</a>
+    <div class="precio"><b>524,07 €</b> <s>649,00 €</s></div>
+    
+    
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Moviles · <code>B0H9LHXNQC</code></div>
+  </div>
+</article>
+<article class="card" data-dto="16" data-epc="0" data-precio="1799.0" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" ok rep tallanormal "
+         data-texto="oppo find x10 pro max 512gb titanium + pad 5 wifi 128gb black b0hn7frd2b moviles">
+  <label class="pick"><input type="checkbox" value="B0HN7FRD2B" data-desc="OPPO Find X10 Pro MAX 512GB Titanium +… · 1.799,00 € · -16%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HN7FRD2B?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-16%</span>
+    <img src="https://m.media-amazon.com/images/I/61J7Gpq8mAL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HN7FRD2B?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">OPPO Find X10 Pro MAX 512GB Titanium + Pad 5 WiFi 128GB Black</a>
+    <div class="precio"><b>1.799,00 €</b> <s>2.147,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag ok">Bajada real: -16% vs mín. 30 días (2147,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Moviles · <code>B0HN7FRD2B</code></div>
+  </div>
+</article>
+<article class="card" data-dto="12" data-epc="0" data-precio="449.0" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Moviles"
+         data-cat="⌚ Smartwatch" data-marca="" data-marcas=" nueva ok tallanormal "
+         data-texto="huawei watch d3 smartwatch negro + scale 3, compatible con ios y android | monitorización ambulatoria de presión arterial, gestión integral de salud, ecg, gps, nfc, ligero y cómodo, garantía 42 meses b0hfs1z7h4 moviles">
+  <label class="pick"><input type="checkbox" value="B0HFS1Z7H4" data-desc="HUAWEI WATCH D3 Smartwatch Negro + Scal… · 449,00 € · -12%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HFS1Z7H4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-12%</span>
+    <img src="https://m.media-amazon.com/images/I/712TEqif5eL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HFS1Z7H4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">HUAWEI WATCH D3 Smartwatch Negro + Scale 3, Compatible con iOS y Android | Monitorización Ambulatoria de Presión Arterial, Gestión Integral de Salud, ECG, GPS, NFC, Ligero y Cómodo, Garantía 42 meses</a>
+    <div class="precio"><b>449,00 €</b> <s>508,90 €</s></div>
+    
+    
+    <div class="tags"><span class="tag ok">Bajada real: -12% vs mín. 30 días (508,90 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Moviles · <code>B0HFS1Z7H4</code></div>
+  </div>
+</article>
+<article class="card" data-dto="11" data-epc="0" data-precio="151.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" rep tallanormal "
+         data-texto="blackview wave 10 telefono movil baratos buenos android 16,6.88&quot; 120hz,32+13mp 32+128gb/2tb tf celulares,smartphone libres oferta 5000mah/3.5mm/wifi 5g/face id/bloqueo huella dactilare,3 años garantía b0fx9hrg3b moviles">
+  <label class="pick"><input type="checkbox" value="B0FX9HRG3B" data-desc="Blackview WAVE 10 Telefono Movil Barato… · 151,99 € · -11%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FX9HRG3B?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-11%</span>
+    <img src="https://m.media-amazon.com/images/I/71h3fTAr5kL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FX9HRG3B?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Blackview WAVE 10 Telefono Movil Baratos Buenos Android 16,6.88&quot; 120Hz,32+13MP 32+128GB/2TB TF Celulares,Smartphone Libres Oferta 5000mAh/3.5mm/WiFi 5G/Face ID/Bloqueo Huella Dactilare,3 Años Garantía</a>
+    <div class="precio"><b>151,99 €</b> <s>169,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (161,71 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Moviles · <code>B0FX9HRG3B</code></div>
+  </div>
+</article>
+<article class="card" data-dto="10" data-epc="0" data-precio="206.09" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" rep tallanormal "
+         data-texto="oppo a6 smartphone, 6 gb de ram y 256 gb de almacenamiento, negro zafiro b0hhyl8t55 moviles">
+  <label class="pick"><input type="checkbox" value="B0HHYL8T55" data-desc="OPPO A6 Smartphone, 6 GB de RAM y 256 G… · 206,09 € · -10%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HHYL8T55?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/715bEM4RCLL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HHYL8T55?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">OPPO A6 Smartphone, 6 GB de RAM y 256 GB de Almacenamiento, Negro Zafiro</a>
+    <div class="precio"><b>206,09 €</b> <s>228,90 €</s></div>
+    
+    
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Moviles · <code>B0HHYL8T55</code></div>
+  </div>
+</article>
+<article class="card" data-dto="10" data-epc="0" data-precio="225.62" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" hist rep tallanormal "
+         data-texto="hotwav hyper 7 5g rugged mobile phone 2025, 20gb+256gb+2tb tf, 10800mah ip68 smartphone, 64mp+32mp, 6.6&quot; fhd+, 280lm camping, android 14 mobile phone anti-shock, gps, nfc, otg, amarillo b0cff8c2h4 moviles">
+  <label class="pick"><input type="checkbox" value="B0CFF8C2H4" data-desc="HOTWAV Hyper 7 5G Rugged Mobile Phone 2… · 225,62 € · -10%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CFF8C2H4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/71Tf-2-H4gL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CFF8C2H4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">HOTWAV Hyper 7 5G Rugged Mobile Phone 2025, 20GB+256GB+2TB TF, 10800mAh IP68 Smartphone, 64MP+32MP, 6.6&quot; FHD+, 280LM Camping, Android 14 Mobile Phone Anti-Shock, GPS, NFC, OTG, Amarillo</a>
+    <div class="precio"><b>225,62 €</b> <s>249,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Moviles · <code>B0CFF8C2H4</code></div>
+  </div>
+</article>
+<article class="card" data-dto="10" data-epc="0" data-precio="1195.0" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="TV"
+         data-cat="📺 TV" data-marca="" data-marcas=" hist rep tallanormal "
+         data-texto="hisense 85u7se - miniled 85 pulgadas smart tv 4k, quantum dot color, 144 hz | subwoofer integrado, hi-view ai engine, imax enhanced, filmmaker mode, dolby vision iq, hdr 10+, 4 x hdmi 2.1, 2 x usb b0gkpz6mq6 tv">
+  <label class="pick"><input type="checkbox" value="B0GKPZ6MQ6" data-desc="Hisense 85U7SE - MiniLED 85 Pulgadas Sm… · 1.195,00 € · -10%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GKPZ6MQ6?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/81Kxw1LoQsL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GKPZ6MQ6?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Hisense 85U7SE - MiniLED 85 Pulgadas Smart TV 4K, Quantum Dot Color, 144 Hz | Subwoofer integrado, Hi-View AI Engine, IMAX Enhanced, Filmmaker Mode, Dolby Vision IQ, HDR 10+, 4 x HDMI 2.1, 2 X USB</a>
+    <div class="precio"><b>1.195,00 €</b> <s>1.329,00 €</s></div>
+    
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">TV · <code>B0GKPZ6MQ6</code></div>
+  </div>
+</article></main>
+<script>
+const lista = document.getElementById('lista');
+const cards = [...lista.querySelectorAll('.card')];
+const btn = document.getElementById('copiar');
+const $ = id => document.getElementById(id);
+function elegidos() { return cards.filter(c => c.querySelector('input').checked); }
+// Opciones marcadas en un desplegable múltiple (vacío = todas)
+function marcados(id) {
+  const d = $(id);
+  if (!d) return [];
+  const total = d.querySelectorAll('input[type=checkbox]').length;
+  let v = [...d.querySelectorAll('input:checked')].map(i => i.value);
+  if (v.length === total) v = [];            // todas marcadas = sin filtro
+  const faltan = total - v.length;
+  d.classList.toggle('activo', v.length > 0);
+  d.querySelector('summary').textContent =
+    !v.length ? d.dataset.todas
+    : v.length === 1 ? v[0]
+    : faltan <= 3 && v.length > faltan ? `Todas menos ${faltan}`
+    : `${v[0]} +${v.length - 1}`;
+  return v;
+}
+function filtrar() {
+  const q = $('q').value.toLowerCase().trim();
+  const g = $('grupo') ? $('grupo').value : '';
+  const d = +$('dtomin').value || 0;
+  const dmax = $('dtomax').value === '' ? 100 : +$('dtomax').value;
+  const pmin = parseFloat($('pmin').value), pmax = parseFloat($('pmax').value);
+  const valmin = $('valmin') ? +$('valmin').value : 0, vendmin = $('vendmin') ? +$('vendmin').value : 0;
+  document.querySelectorAll('[data-pmax]').forEach(b => b.classList.toggle('activo', +b.dataset.pmax === pmax));
+  const cats = marcados('cat');
+  const marcasTop = marcados('marca');
+  // Botones de etiqueta: "on" = solo las que la tienen, "off" = sin ella
+  const con = [...document.querySelectorAll('.chip.on')].map(b => ` ${b.dataset.m} `);
+  const sin = [...document.querySelectorAll('.chip.off')].map(b => ` ${b.dataset.m} `);
+  let n = 0;
+  cards.forEach(c => {
+    const ver = (!q || c.dataset.texto.includes(q))
+      && con.every(m => c.dataset.marcas.includes(m))
+      && !sin.some(m => c.dataset.marcas.includes(m))
+      && (!cats.length || cats.includes(c.dataset.cat))
+      && (!marcasTop.length || marcasTop.includes(c.dataset.marca))
+      && (!g || c.dataset.grupo.split('|').map(s => s.trim()).includes(g))
+      && +c.dataset.dto >= d && +c.dataset.dto <= dmax
+      && +c.dataset.val >= valmin && +c.dataset.vend >= vendmin
+      && (isNaN(pmin) || +c.dataset.precio >= pmin)
+      && (isNaN(pmax) || (+c.dataset.precio > 0 && +c.dataset.precio <= pmax));
+    c.hidden = !ver; if (ver) n++;
+  });
+  $('contador').textContent = `${n} de ${cards.length}`;
+}
+lista.addEventListener('change', e => {
+  e.target.closest('.card').classList.toggle('sel', e.target.checked);
+  const n = elegidos().length; btn.textContent = `Copiar ASIN (${n})`; btn.disabled = !n;
+});
+btn.onclick = async () => {
+  // ASIN + tab + descripción + tab + enlace: en Excel cae en tres columnas (ASIN | DESCRIPCION | ENLACE).
+  // El enlace solo va en los productos de Creator Connections (los demás lo dejan vacío)
+  const txt = elegidos().map(c => { const i = c.querySelector('input');
+                                     return i.value + '\t' + (i.dataset.desc || '') + '\t' + (i.dataset.enlace || ''); }).join('\n');
+  try { await navigator.clipboard.writeText(txt); }
+  catch (e) { const t = document.createElement('textarea'); t.value = txt; document.body.append(t);
+               t.select(); document.execCommand('copy'); t.remove(); }
+  const antes = btn.textContent; btn.textContent = '¡Copiados! Pégalos en la columna ASIN (descripción y enlace van a las de al lado)';
+  setTimeout(() => btn.textContent = antes, 2500);
+};
+// 1er clic: solo las que tienen la etiqueta · 2º: las que NO la tienen · 3º: quitar
+document.querySelectorAll('.chip').forEach(b => b.onclick = () => {
+  if (b.classList.contains('on')) { b.classList.replace('on', 'off'); b.title = 'Ocultando las que la tienen'; }
+  else if (b.classList.contains('off')) { b.classList.remove('off'); b.title = ''; }
+  else { b.classList.add('on'); b.title = 'Solo las que la tienen'; }
+  filtrar();
+});
+// "Hasta 10 €" / "Hasta 20 €": ponen el precio máximo; pulsarlo otra vez lo quita
+document.querySelectorAll('[data-pmax]').forEach(b => b.onclick = () => {
+  $('pmax').value = +$('pmax').value === +b.dataset.pmax ? '' : b.dataset.pmax;
+  filtrar();
+});
+['q', 'cat', 'marca', 'grupo', 'valmin', 'vendmin', 'dtomin', 'dtomax', 'pmin', 'pmax'].forEach(id => {
+  if (!$(id)) return;
+  $(id).addEventListener('input', filtrar);
+  $(id).addEventListener('change', filtrar);
+});
+// "Marcar todas" / "Desmarcar todas" de cada desplegable múltiple
+document.querySelectorAll('.multi [data-marcar]').forEach(b => b.onclick = () => {
+  b.closest('.multi').querySelectorAll('input[type=checkbox]').forEach(i => i.checked = b.dataset.marcar === '1');
+  filtrar();
+});
+// Cerrar los desplegables múltiples al pulsar fuera
+document.addEventListener('click', e => document.querySelectorAll('details.multi[open]')
+  .forEach(d => d.contains(e.target) || d.removeAttribute('open')));
+$('limpiar').onclick = () => {
+  $('q').value = ''; $('dtomin').value = 0; $('dtomax').value = 100;
+  $('pmin').value = ''; $('pmax').value = '';
+  $('grupo') && ($('grupo').value = '');
+  $('valmin') && ($('valmin').value = 0); $('vendmin') && ($('vendmin').value = 0);
+  document.querySelectorAll('.multi input:checked').forEach(i => i.checked = false);
+  document.querySelectorAll('.chip').forEach(b => { b.classList.remove('on', 'off'); b.title = ''; });
+  filtrar(); window.scrollTo(0, 0);
+};
+function ordenar(k) {
+  cards.sort((a, b) => k === 'dto' ? b.dataset.dto - a.dataset.dto
+    : k === 'epc' ? (b.dataset.epc - a.dataset.epc) || (b.dataset.dto - a.dataset.dto)
+    : k === 'real' ? (b.dataset.real - a.dataset.real) || (b.dataset.dto - a.dataset.dto)
+    : k === 'min' ? (a.dataset.sobremin - b.dataset.sobremin) || (b.dataset.dto - a.dataset.dto)
+    : k === 'rec' ? (a.dataset.cambio - b.dataset.cambio) || (b.dataset.dto - a.dataset.dto)
+    : k === 'opi' ? b.dataset.opi - a.dataset.opi
+    : k === 'vend' ? (b.dataset.vend - a.dataset.vend) || (b.dataset.opi - a.dataset.opi)
+    // mejor valorados: a igual nota, antes el que tiene más opiniones
+    : k === 'val' ? (b.dataset.val - a.dataset.val) || (b.dataset.opi - a.dataset.opi)
+    : k === 'asc' ? a.dataset.precio - b.dataset.precio : b.dataset.precio - a.dataset.precio);
+  // El orden se aplica con la propiedad CSS "order" (la rejilla ya es de CSS): mover miles de tarjetas
+  // de sitio en la página tardaba seis segundos, y así es instantáneo
+  cards.forEach((c, i) => c.style.order = i);
+}
+$('orden').onchange = e => ordenar(e.target.value);
+// Al abrir la página, el orden es el que marca el desplegable ("Más descuento"), no el del orden en que llegaron
+ordenar($('orden').value);
+filtrar();
+</script>
+</body></html>
