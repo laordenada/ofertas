@@ -94,13 +94,13 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
 </style></head><body>
 <header>
   <div><h1>Ofertas tecnología</h1>
-  <div class="sub">49 ofertas · 28/10/2026 11:33</div></div>
+  <div class="sub">44 ofertas · 29/10/2026 01:53</div></div>
   <div class="ctrl">
     <input type="search" id="q" placeholder="Filtrar…">
-    <details class="multi" id="cat" data-todas="Todas las categorías"><summary>Todas las categorías</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="💻 Portátil"> 💻 Portátil <span>(11)</span></label><label><input type="checkbox" value="📲 Tablet"> 📲 Tablet <span>(17)</span></label><label><input type="checkbox" value="🖥️ Monitor"> 🖥️ Monitor <span>(6)</span></label><label><input type="checkbox" value="📶 Router"> 📶 Router <span>(5)</span></label><label><input type="checkbox" value="📺 TV"> 📺 TV <span>(2)</span></label><label><input type="checkbox" value="📱 Móvil"> 📱 Móvil <span>(5)</span></label><label><input type="checkbox" value="💾 Disco / SSD"> 💾 Disco / SSD <span>(2)</span></label><label><input type="checkbox" value="⌚ Smartwatch"> ⌚ Smartwatch <span>(1)</span></label></div></details>
+    <details class="multi" id="cat" data-todas="Todas las categorías"><summary>Todas las categorías</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="💻 Portátil"> 💻 Portátil <span>(8)</span></label><label><input type="checkbox" value="📲 Tablet"> 📲 Tablet <span>(17)</span></label><label><input type="checkbox" value="🖥️ Monitor"> 🖥️ Monitor <span>(6)</span></label><label><input type="checkbox" value="📶 Router"> 📶 Router <span>(3)</span></label><label><input type="checkbox" value="📺 TV"> 📺 TV <span>(2)</span></label><label><input type="checkbox" value="📱 Móvil"> 📱 Móvil <span>(5)</span></label><label><input type="checkbox" value="💾 Disco / SSD"> 💾 Disco / SSD <span>(2)</span></label><label><input type="checkbox" value="⌚ Smartwatch"> ⌚ Smartwatch <span>(1)</span></label></div></details>
     
     <select id="grupo"><option value="">Todas las búsquedas</option><option value="Informatica">Informatica</option><option value="Moviles">Moviles</option><option value="TV">TV</option></select>
-    
+    <select id="valmin" title="Valoración mínima"><option value="0">Cualquier valoración</option><option value="4">4,0★ o más</option><option value="4.3">4,3★ o más</option><option value="4.5">4,5★ o más</option></select>
     <select id="vendmin" title="Comprados el mes pasado"><option value="0">Cualquier venta</option><option value="50">50+ al mes</option><option value="100">100+ al mes</option><option value="300">300+ al mes</option><option value="1000">1.000+ al mes</option></select>
     <label>Dto. <input type="number" id="dtomin" min="0" max="100" step="5" value="0" title="mínimo">
       a <input type="number" id="dtomax" min="0" max="100" step="5" value="100" title="máximo"> %</label>
@@ -122,55 +122,25 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <span id="contador"></span>
     <button id="copiar" disabled>Copiar ASIN (0)</button>
   </div>
-  <div class="chips"><button type="button" class="chip m-nueva" data-m="nueva">Oferta nueva <span>7</span></button><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>24</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>16</span></button><button type="button" class="chip m-cupon" data-m="cupon">Cupón <span>3</span></button><button type="button" class="chip m-rep" data-m="rep">3+ días en oferta <span>37</span></button><button type="button" class="chip m-vendidos" data-m="vendidos">🛒 Comprados el mes pasado <span>1</span></button></div>
+  <div class="chips"><button type="button" class="chip m-nueva" data-m="nueva">Oferta nueva <span>7</span></button><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>22</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>15</span></button><button type="button" class="chip m-cupon" data-m="cupon">Cupón <span>1</span></button><button type="button" class="chip m-cc" data-m="cc">💰 Creator Connections <span>1</span></button><button type="button" class="chip m-rep" data-m="rep">3+ días en oferta <span>31</span></button><button type="button" class="chip m-vendidos" data-m="vendidos">🛒 Comprados el mes pasado <span>1</span></button></div>
 </header>
 <main id="lista">
-<article class="card" data-dto="74" data-epc="0" data-precio="389.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+<article class="card" data-dto="80" data-epc="0" data-precio="380.99" data-val="4.8" data-opi="19" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
          data-cat="💻 Portátil" data-marca="" data-marcas=" nueva ok tallanormal "
-         data-texto="mituntun portátil 15,6&quot; laptop, m3-6y30（2.2ghz）,16gb ram, 256gb ssd, win 11 | procesador de 2 núcleos y 4 hilos, de 0,9ghz a 2,2ghz, ideal para navegar, documentos, estudio y tareas diarias. b0hll9b2b7 informatica">
-  <label class="pick"><input type="checkbox" value="B0HLL9B2B7" data-desc="MITUNTUN Portátil 15,6&quot; Laptop, M3-6Y30… · 389,99 € · -74%" data-enlace=""> Elegir</label>
-  <a class="foto" href="https://www.amazon.es/dp/B0HLL9B2B7?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-74%</span>
-    <img src="https://m.media-amazon.com/images/I/71H5s32dzJL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+         data-texto="mituntun ordenador portátil 15,6&quot; laptop,cpu 4425y, 16gb ram, 256gb ssd,fhd | bisagra de 180°, wifi 5 de doble banda y bt 4.2 para estudiar, ver vídeos, hacer videollamadas y usarlo cómodamente en casa. b0hll88659 informatica">
+  <label class="pick"><input type="checkbox" value="B0HLL88659" data-desc="MITUNTUN Ordenador Portátil 15,6&quot; Lapto… · 380,99 € · -80%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HLL88659?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-80%</span>
+    <img src="https://m.media-amazon.com/images/I/71SHuL0Q9EL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
   <div class="info">
-    <a class="titulo" href="https://www.amazon.es/dp/B0HLL9B2B7?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">MITUNTUN Portátil 15,6&quot; Laptop, M3-6Y30（2.2GHz）,16GB RAM, 256GB SSD, Win 11 | Procesador de 2 núcleos y 4 hilos, de 0,9GHz a 2,2GHz, ideal para navegar, documentos, estudio y tareas diarias.</a>
-    <div class="precio"><b>389,99 €</b> <s>1.499,99 €</s></div>
+    <a class="titulo" href="https://www.amazon.es/dp/B0HLL88659?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">MITUNTUN Ordenador Portátil 15,6&quot; Laptop,CPU 4425Y, 16GB RAM, 256GB SSD,FHD | Bisagra de 180°, WiFi 5 de doble banda y BT 4.2 para estudiar, ver vídeos, hacer videollamadas y usarlo cómodamente en casa.</a>
+    <div class="precio"><b>380,99 €</b> <s>1.899,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,8 (19)</div>
     
-    
-    <div class="tags"><span class="tag ok">Bajada real: -74% vs mín. 30 días (1499,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
-    <div class="pie">Informatica · <code>B0HLL9B2B7</code></div>
+    <div class="tags"><span class="tag ok">Bajada real: -80% vs mín. 30 días (1899,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Informatica · <code>B0HLL88659</code></div>
   </div>
 </article>
-<article class="card" data-dto="74" data-epc="0" data-precio="419.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
-         data-cat="💻 Portátil" data-marca="" data-marcas=" nueva ok tallanormal "
-         data-texto="mituntun portátil 15,6&quot; laptop,cpu m3-6y30, 16gb ram, 512gb ssd,fhd,win 11 | pantalla de 15,6 pulgadas y 1920 x 1080 ofrece textos claros e imágenes detalladas para clases, vídeos y navegación. b0hllgdndp informatica">
-  <label class="pick"><input type="checkbox" value="B0HLLGDNDP" data-desc="MITUNTUN Portátil 15,6&quot; Laptop,CPU M3-6… · 419,99 € · -74%" data-enlace=""> Elegir</label>
-  <a class="foto" href="https://www.amazon.es/dp/B0HLLGDNDP?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-74%</span>
-    <img src="https://m.media-amazon.com/images/I/71H5s32dzJL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
-  <div class="info">
-    <a class="titulo" href="https://www.amazon.es/dp/B0HLLGDNDP?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">MITUNTUN Portátil 15,6&quot; Laptop,CPU M3-6Y30, 16GB RAM, 512GB SSD,FHD,Win 11 | Pantalla de 15,6 pulgadas y 1920 x 1080 ofrece textos claros e imágenes detalladas para clases, vídeos y navegación.</a>
-    <div class="precio"><b>419,99 €</b> <s>1.599,99 €</s></div>
-    
-    
-    <div class="tags"><span class="tag ok">Bajada real: -74% vs mín. 30 días (1599,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
-    <div class="pie">Informatica · <code>B0HLLGDNDP</code></div>
-  </div>
-</article>
-<article class="card" data-dto="73" data-epc="0" data-precio="549.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
-         data-cat="💻 Portátil" data-marca="" data-marcas=" nueva ok tallanormal "
-         data-texto="mituntun portátil 17,3&quot; inch , core i5-7y57, 16gb ram, 512gb ssd,fhd,win 11 | 2 núcleos, 4 hilos, hasta 3,2ghz, pantalla fhd ips, teclado retroiluminado, teclado numérico, bisagra 180° y usb 3.0/type-c. b0hllll5cq informatica">
-  <label class="pick"><input type="checkbox" value="B0HLLLL5CQ" data-desc="MITUNTUN Portátil 17,3&quot; inch , Core i5-… · 549,99 € · -73%" data-enlace=""> Elegir</label>
-  <a class="foto" href="https://www.amazon.es/dp/B0HLLLL5CQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-73%</span>
-    <img src="https://m.media-amazon.com/images/I/71WBqBBv2YL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
-  <div class="info">
-    <a class="titulo" href="https://www.amazon.es/dp/B0HLLLL5CQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">MITUNTUN Portátil 17,3&quot; inch , Core i5-7Y57, 16GB RAM, 512GB SSD,FHD,Win 11 | 2 núcleos, 4 hilos, hasta 3,2GHz, pantalla FHD IPS, teclado retroiluminado, teclado numérico, bisagra 180° y USB 3.0/Type-C.</a>
-    <div class="precio"><b>549,99 €</b> <s>1.999,99 €</s></div>
-    
-    
-    <div class="tags"><span class="tag ok">Bajada real: -73% vs mín. 30 días (1999,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
-    <div class="pie">Informatica · <code>B0HLLLL5CQ</code></div>
-  </div>
-</article>
-<article class="card" data-dto="70" data-epc="0" data-precio="289.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+<article class="card" data-dto="70" data-epc="0" data-precio="289.99" data-val="5.0" data-opi="15" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
          data-cat="💻 Portátil" data-marca="" data-marcas=" cupon ok rep tallanormal "
          data-texto="ordenador portátil 14 pulgadas celeron n5095 upto 2,9 ghz portatiles 8gb ram 256gb ssd tf 1tb lpddr4 win11 5g wifi 1920*1080 fhd mini hdml laptop película protectora español - oro cuerpo metálico b0hgr3p5gw informatica">
   <label class="pick"><input type="checkbox" value="B0HGR3P5GW" data-desc="Ordenador Portátil 14 Pulgadas Celeron… · 289,99 € · -70%" data-enlace=""> Elegir</label>
@@ -179,13 +149,13 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0HGR3P5GW?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Ordenador Portátil 14 Pulgadas Celeron N5095 Upto 2,9 GHz Portatiles 8GB RAM 256GB SSD TF 1TB LPDDR4 Win11 5G WiFi 1920*1080 FHD mini HDMl Laptop Película Protectora Español - Oro Cuerpo Metálico</a>
     <div class="precio"><b>289,99 €</b> <s>899,99 €</s></div>
-    
+    <div class="resenas"><span class="estrellas">★★★★★</span> 5,0 (15)</div>
     
     <div class="tags"><span class="tag cupon">Con cupón 269,99 €</span><span class="tag ok">Bajada real: -70% vs mín. 30 días (899,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Informatica · <code>B0HGR3P5GW</code></div>
   </div>
 </article>
-<article class="card" data-dto="58" data-epc="0" data-precio="249.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+<article class="card" data-dto="58" data-epc="0" data-precio="249.99" data-val="4.6" data-opi="16" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
          data-cat="💻 Portátil" data-marca="" data-marcas=" ok rep tallanormal "
          data-texto="ordenador portátil 14&quot; pulgadas 256gb ssd pc portátil soporta 1tb ssd | celeron hasta 2,8 ghz, ssd ampliable hasta 1tb, ratón inalámbrico, 1920×1080, bt4.2, 5g wifi, 2 usb, oro b0h334bg14 informatica">
   <label class="pick"><input type="checkbox" value="B0H334BG14" data-desc="Ordenador Portátil 14&quot; Pulgadas 256GB S… · 249,99 € · -58%" data-enlace=""> Elegir</label>
@@ -194,7 +164,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0H334BG14?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Ordenador Portátil 14&quot; Pulgadas 256GB SSD PC Portátil Soporta 1TB SSD | Celeron hasta 2,8 GHz, SSD ampliable hasta 1TB, Ratón inalámbrico, 1920×1080, BT4.2, 5G WiFi, 2 USB, Oro</a>
     <div class="precio"><b>249,99 €</b> <s>599,99 €</s></div>
-    
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (16)</div>
     
     <div class="tags"><span class="tag ok">Bajada real: -58% vs mín. 30 días (599,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Informatica · <code>B0H334BG14</code></div>
@@ -215,7 +185,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="pie">Informatica · <code>B0H5WKJ2PH</code></div>
   </div>
 </article>
-<article class="card" data-dto="52" data-epc="0" data-precio="95.97" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+<article class="card" data-dto="52" data-epc="0" data-precio="95.97" data-val="3.4" data-opi="17" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
          data-cat="📲 Tablet" data-marca="" data-marcas=" hist ok rep tallanormal "
          data-texto="último tablet android gemini ai, tablet 10 pulgadas, 22gb+128gb/tf 1tb, octa-core 2.0ghz, 5g wifi, bluetooth5.0, 8000mah batería, 8mp+5mp, widevine l1, gps, tablet con funda, teclado y ratón - dorado b0gy94hbgl informatica">
   <label class="pick"><input type="checkbox" value="B0GY94HBGL" data-desc="Último Tablet Android Gemini AI, Tablet… · 95,97 € · -52%" data-enlace=""> Elegir</label>
@@ -224,13 +194,13 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0GY94HBGL?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Último Tablet Android Gemini AI, Tablet 10 Pulgadas, 22GB+128GB/TF 1TB, Octa-Core 2.0GHz, 5G WiFi, Bluetooth5.0, 8000mAh Batería, 8MP+5MP, Widevine L1, GPS, Tablet con Funda, Teclado y Ratón - Dorado</a>
     <div class="precio"><b>95,97 €</b> <s>199,99 €</s></div>
-    
+    <div class="resenas"><span class="estrellas">★★★☆☆</span> 3,4 (17)</div>
     
     <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ok">Bajada real: -52% vs mín. 30 días (199,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Informatica · <code>B0GY94HBGL</code></div>
   </div>
 </article>
-<article class="card" data-dto="50" data-epc="0" data-precio="79.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+<article class="card" data-dto="50" data-epc="0" data-precio="79.99" data-val="4.9" data-opi="16" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
          data-cat="📲 Tablet" data-marca="" data-marcas=" hist rep tallanormal "
          data-texto="tablet para niños 9&quot; android15 gemini ai 32gb+2tb tf face id funda eva rojo | tableta táctil 1340*800 bt5 octa-core 8mp+5mp 5000mah tipo c widevine l1 control parental tableta soporte 360° giratorio rojo b0gvy84j5s informatica">
   <label class="pick"><input type="checkbox" value="B0GVY84J5S" data-desc="Tablet para niños 9&quot; Android15 Gemini A… · 79,99 € · -50%" data-enlace=""> Elegir</label>
@@ -239,7 +209,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0GVY84J5S?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Tablet para niños 9&quot; Android15 Gemini AI 32GB+2TB TF Face ID Funda EVA Rojo | Tableta táctil 1340*800 BT5 Octa-Core 8MP+5MP 5000mAh Tipo C Widevine L1 Control Parental Tableta Soporte 360° Giratorio Rojo</a>
     <div class="precio"><b>79,99 €</b> <s>159,99 €</s></div>
-    
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,9 (16)</div>
     
     <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Informatica · <code>B0GVY84J5S</code></div>
@@ -260,7 +230,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="pie">Informatica · <code>B0HJZPF8XY</code></div>
   </div>
 </article>
-<article class="card" data-dto="45" data-epc="0" data-precio="109.98" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+<article class="card" data-dto="45" data-epc="0" data-precio="109.98" data-val="4.3" data-opi="274" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
          data-cat="📲 Tablet" data-marca="" data-marcas=" hist ok rep tallanormal "
          data-texto="tablet 10 pulgadas android 15 con gemini ai, 22gb ram + 128gb rom (ampliable 2tb), tablet con teclado y ratón, widevine l1, wifi 5g, batería 8000mah, pantalla ips hd, cuerpo metálico – gris espacial b0df4ydcb3 informatica">
   <label class="pick"><input type="checkbox" value="B0DF4YDCB3" data-desc="Tablet 10 Pulgadas Android 15 con Gemin… · 109,98 € · -45%" data-enlace=""> Elegir</label>
@@ -269,10 +239,25 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0DF4YDCB3?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Tablet 10 Pulgadas Android 15 con Gemini AI, 22GB RAM + 128GB ROM (Ampliable 2TB), Tablet con Teclado y Ratón, Widevine L1, WiFi 5G, Batería 8000mAh, Pantalla IPS HD, Cuerpo Metálico – Gris Espacial</a>
     <div class="precio"><b>109,98 €</b> <s>199,99 €</s></div>
-    
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (274)</div>
     
     <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ok">Bajada real: -45% vs mín. 30 días (199,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Informatica · <code>B0DF4YDCB3</code></div>
+  </div>
+</article>
+<article class="card" data-dto="44" data-epc="0" data-precio="89.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+         data-cat="📲 Tablet" data-marca="" data-marcas=" nueva ok tallanormal "
+         data-texto="último tablet niños 9 pulgadas, tablet android 16 con gemini ai 3.8, 32gb+tf 2tb, control parental tablet con eva funda, wifi 6, bt 5.0, 5000mah, 1340*800 píxeles, widevine l1, gms certified - azul b0hk35jj69 informatica">
+  <label class="pick"><input type="checkbox" value="B0HK35JJ69" data-desc="Último Tablet Niños 9 Pulgadas, Tablet… · 89,99 € · -44%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HK35JJ69?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-44%</span>
+    <img src="https://m.media-amazon.com/images/I/719DYHWMu4L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HK35JJ69?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Último Tablet Niños 9 Pulgadas, Tablet Android 16 Con Gemini AI 3.8, 32GB+TF 2TB, Control Parental Tablet con EVA Funda, WiFi 6, BT 5.0, 5000mAh, 1340*800 Píxeles, Widevine L1, GMS Certified - Azul</a>
+    <div class="precio"><b>89,99 €</b> <s>159,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -44% vs mín. 30 días (159,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Informatica · <code>B0HK35JJ69</code></div>
   </div>
 </article>
 <article class="card" data-dto="44" data-epc="0" data-precio="95.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
@@ -290,8 +275,8 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="pie">Informatica · <code>B0H55BJRSN</code></div>
   </div>
 </article>
-<article class="card" data-dto="43" data-epc="0" data-precio="159.98" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
-         data-cat="📲 Tablet" data-marca="" data-marcas=" ok tallanormal "
+<article class="card" data-dto="43" data-epc="0" data-precio="159.98" data-val="4.7" data-opi="29" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+         data-cat="📲 Tablet" data-marca="" data-marcas=" ok rep tallanormal "
          data-texto="doogeetab u11 pro tablet 11 pulgadas, 30gb ram+256gb rom+2tb tf, 8580mah tableta, unisoc t7200 octa-core tablet android 16, 90hz hd, gemini ai, widevine l1, cámara 13mp/5g wifi/3.5mm audio/gps b0gz37sm58 informatica">
   <label class="pick"><input type="checkbox" value="B0GZ37SM58" data-desc="DOOGEETab U11 Pro Tablet 11 Pulgadas, 3… · 159,98 € · -43%" data-enlace=""> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0GZ37SM58?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-43%</span>
@@ -299,14 +284,14 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0GZ37SM58?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">DOOGEETab U11 Pro Tablet 11 Pulgadas, 30GB RAM+256GB ROM+2TB TF, 8580mAh Tableta, Unisoc T7200 Octa-Core Tablet Android 16, 90Hz HD, Gemini AI, Widevine L1, Cámara 13MP/5G WiFi/3.5mm Audio/GPS</a>
     <div class="precio"><b>159,98 €</b> <s>279,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,7 (29)</div>
     
-    
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -11% vs mín. 30 días (179,99 €)</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -11% vs mín. 30 días (179,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Informatica · <code>B0GZ37SM58</code></div>
   </div>
 </article>
-<article class="card" data-dto="42" data-epc="0" data-precio="109.98" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
-         data-cat="📲 Tablet" data-marca="" data-marcas=" ok rep tallanormal "
+<article class="card" data-dto="42" data-epc="0" data-precio="109.98" data-val="4.4" data-opi="77" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+         data-cat="📲 Tablet" data-marca="" data-marcas=" hist ok rep tallanormal "
          data-texto="tablet 10 pulgadas android 15 con gemini ai, 30gb ram+128gb rom ampliable 2tb, octa-core, wifi 6, widevine l1, batería 8000mah, 5g wifi 6 &amp; bt 5.0, gps, otg, cámara 5+8mp, teclado, ratón y funda-negro b0h3p6vm41 informatica">
   <label class="pick"><input type="checkbox" value="B0H3P6VM41" data-desc="Tablet 10 Pulgadas Android 15 con Gemin… · 109,98 € · -42%" data-enlace=""> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0H3P6VM41?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-42%</span>
@@ -314,13 +299,13 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0H3P6VM41?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Tablet 10 Pulgadas Android 15 con Gemini AI, 30GB RAM+128GB ROM Ampliable 2TB, Octa-Core, WiFi 6, Widevine L1, Batería 8000mAh, 5G WiFi 6 &amp; BT 5.0, GPS, OTG, Cámara 5+8MP, Teclado, Ratón y Funda-Negro</a>
     <div class="precio"><b>109,98 €</b> <s>189,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (77)</div>
     
-    
-    <div class="tags"><span class="tag ok">Bajada real: -42% vs mín. 30 días (189,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ok">Bajada real: -42% vs mín. 30 días (189,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Informatica · <code>B0H3P6VM41</code></div>
   </div>
 </article>
-<article class="card" data-dto="41" data-epc="0" data-precio="99.97" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+<article class="card" data-dto="41" data-epc="0" data-precio="99.97" data-val="4.4" data-opi="225" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
          data-cat="📲 Tablet" data-marca="" data-marcas=" hist ok rep tallanormal "
          data-texto="tablets 10 pulgadas tablet android 15 con 20 gb ram + 128 gb rom(tf/1tb), octa-core, 5g wifi 6, widevine l1, gms, 5mp+8mp, 1280 x 800, bluetooth 5.0, tablet táctil con teclado+ratón y caso-(silver) b0fxxz7r7p informatica">
   <label class="pick"><input type="checkbox" value="B0FXXZ7R7P" data-desc="Tablets 10 pulgadas Tablet Android 15 c… · 99,97 € · -41%" data-enlace=""> Elegir</label>
@@ -329,13 +314,13 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0FXXZ7R7P?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Tablets 10 pulgadas Tablet Android 15 con 20 GB RAM + 128 GB ROM(TF/1TB), Octa-Core, 5G WiFi 6, Widevine L1, GMS, 5MP+8MP, 1280 x 800, Bluetooth 5.0, Tablet táctil con teclado+ratón y caso-(silver)</a>
     <div class="precio"><b>99,97 €</b> <s>169,99 €</s></div>
-    
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (225)</div>
     
     <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ok">Bajada real: -41% vs mín. 30 días (169,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Informatica · <code>B0FXXZ7R7P</code></div>
   </div>
 </article>
-<article class="card" data-dto="40" data-epc="0" data-precio="119.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+<article class="card" data-dto="40" data-epc="0" data-precio="119.99" data-val="4.7" data-opi="52" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
          data-cat="🖥️ Monitor" data-marca="" data-marcas=" min90 rep tallanormal "
          data-texto="philips evnia 27m2c5200w gaming monitor 27 pulgadas 280hz panel fast va, 1ms gtg, hdr10, altura ajustable, (1920x1080 hdmi 2x 2.0) gris oscuro b0dblwh57v informatica">
   <label class="pick"><input type="checkbox" value="B0DBLWH57V" data-desc="PHILIPS Evnia 27M2C5200W Gaming Monitor… · 119,99 € · -40%" data-enlace=""> Elegir</label>
@@ -344,28 +329,13 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0DBLWH57V?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">PHILIPS Evnia 27M2C5200W Gaming Monitor 27 Pulgadas 280Hz Panel Fast VA, 1ms GtG, HDR10, Altura Ajustable, (1920x1080 HDMI 2X 2.0) Gris Oscuro</a>
     <div class="precio"><b>119,99 €</b> <s>199,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,7 (52)</div>
     
-    
-    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-8% vs mín. 30 días (129,90 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Informatica · <code>B0DBLWH57V</code></div>
   </div>
 </article>
-<article class="card" data-dto="38" data-epc="0" data-precio="109.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
-         data-cat="📲 Tablet" data-marca="" data-marcas=" hist ok rep tallanormal "
-         data-texto="tablet android 15, 30gb ram 128gb rom(tf 2tb expandible), 10 pulgadas, 8000mah, wifi 5g, gps/bt5.0/otg, face id, widevine l1, tableta de cuerpo metálico con teclado, mouse y funda protectora -gris b0gmqv3pqx informatica">
-  <label class="pick"><input type="checkbox" value="B0GMQV3PQX" data-desc="Tablet Android 15, 30GB RAM 128GB ROM(T… · 109,99 € · -38%" data-enlace=""> Elegir</label>
-  <a class="foto" href="https://www.amazon.es/dp/B0GMQV3PQX?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-38%</span>
-    <img src="https://m.media-amazon.com/images/I/81FM6qegA3L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
-  <div class="info">
-    <a class="titulo" href="https://www.amazon.es/dp/B0GMQV3PQX?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Tablet Android 15, 30GB RAM 128GB ROM(TF 2TB Expandible), 10 Pulgadas, 8000mAh, WIFI 5G, GPS/BT5.0/OTG, Face ID, Widevine L1, Tableta de Cuerpo Metálico con Teclado, Mouse y Funda Protectora -Gris</a>
-    <div class="precio"><b>109,99 €</b> <s>176,99 €</s></div>
-    
-    
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ok">Bajada real: -38% vs mín. 30 días (176,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
-    <div class="pie">Informatica · <code>B0GMQV3PQX</code></div>
-  </div>
-</article>
-<article class="card" data-dto="35" data-epc="0" data-precio="109.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+<article class="card" data-dto="35" data-epc="0" data-precio="109.99" data-val="4.3" data-opi="135" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
          data-cat="📲 Tablet" data-marca="" data-marcas=" min90 ok rep tallanormal "
          data-texto="skyegg tablet 10 pulgadas android 15 con gemini ai, 30gb ram + 128gb rom ampliable 2tb, octa-core, wifi 6 bt 5.0, widevine l1, 8000mah, cámara 8/5 mp, teclado, ratón y funda, cuerpo metálico - negro b0frm6t93s informatica">
   <label class="pick"><input type="checkbox" value="B0FRM6T93S" data-desc="SKYEGG Tablet 10 Pulgadas Android 15 co… · 109,99 € · -35%" data-enlace=""> Elegir</label>
@@ -374,28 +344,13 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0FRM6T93S?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SKYEGG Tablet 10 Pulgadas Android 15 con Gemini AI, 30GB RAM + 128GB ROM Ampliable 2TB, Octa-Core, WiFi 6 BT 5.0, Widevine L1, 8000mAh, Cámara 8/5 MP, Teclado, Ratón y Funda, Cuerpo Metálico - Negro</a>
     <div class="precio"><b>109,99 €</b> <s>169,99 €</s></div>
-    
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (135)</div>
     
     <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -35% vs mín. 30 días (169,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Informatica · <code>B0FRM6T93S</code></div>
   </div>
 </article>
-<article class="card" data-dto="34" data-epc="0" data-precio="309.5" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
-         data-cat="💻 Portátil" data-marca="" data-marcas=" rep tallanormal "
-         data-texto="mituntun portátil 15,6&quot;, m3-6y30, 16gb ram, 512gb ssd, fhd, win 11 pro | pantalla de 15,6 pulgadas y 1920 x 1080 ofrece textos claros e imágenes detalladas para clases, vídeos y navegación. b0hgqj74cr informatica">
-  <label class="pick"><input type="checkbox" value="B0HGQJ74CR" data-desc="MITUNTUN Portátil 15,6&quot;, M3-6Y30, 16GB… · 309,50 € · -34%" data-enlace=""> Elegir</label>
-  <a class="foto" href="https://www.amazon.es/dp/B0HGQJ74CR?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-34%</span>
-    <img src="https://m.media-amazon.com/images/I/718w7ZuOpzL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
-  <div class="info">
-    <a class="titulo" href="https://www.amazon.es/dp/B0HGQJ74CR?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">MITUNTUN Portátil 15,6&quot;, M3-6Y30, 16GB RAM, 512GB SSD, FHD, Win 11 Pro | Pantalla de 15,6 pulgadas y 1920 x 1080 ofrece textos claros e imágenes detalladas para clases, vídeos y navegación.</a>
-    <div class="precio"><b>309,50 €</b> <s>469,99 €</s></div>
-    
-    
-    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag rep">🔁 3+ días en oferta</span></div>
-    <div class="pie">Informatica · <code>B0HGQJ74CR</code></div>
-  </div>
-</article>
-<article class="card" data-dto="33" data-epc="0" data-precio="79.99" data-val="0" data-opi="0" data-vend="50" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+<article class="card" data-dto="33" data-epc="0" data-precio="79.99" data-val="4.3" data-opi="625" data-vend="50" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
          data-cat="📶 Router" data-marca="" data-marcas=" min90 rep tallanormal vendidos "
          data-texto="cudy router 4g cat 6 ac1200 con wi-fi 5, vpn completa, lt700 | cat. 6, 300 mbps de descarga (2ca), wi-fi 5 ac1200 (867/300), 4 puertos gbe, antena desmontable, vpn completa, solución profe b0bn2vhzv2 informatica">
   <label class="pick"><input type="checkbox" value="B0BN2VHZV2" data-desc="Cudy Router 4G Cat 6 AC1200 con Wi-Fi 5… · 79,99 € · -33%" data-enlace=""> Elegir</label>
@@ -404,13 +359,13 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0BN2VHZV2?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Cudy Router 4G Cat 6 AC1200 con Wi-Fi 5, VPN completa, LT700 | Cat. 6, 300 Mbps de descarga (2CA), Wi-Fi 5 AC1200 (867/300), 4 puertos GbE, antena desmontable, VPN completa, solución profe</a>
     <div class="precio"><b>79,99 €</b> <s>119,90 €</s></div>
-    <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (625) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
     
     <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Informatica · <code>B0BN2VHZV2</code></div>
   </div>
 </article>
-<article class="card" data-dto="33" data-epc="0" data-precio="99.98" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+<article class="card" data-dto="33" data-epc="0" data-precio="99.98" data-val="3.1" data-opi="14" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
          data-cat="📲 Tablet" data-marca="" data-marcas=" min90 ok rep tallanormal "
          data-texto="tablet 10 pulgadas con 30gb ram+tf 2tb, octa-core 2.0ghz/gms, widevine l1/5g wifi/bluetooth 5.0, juegos educativos, 5mp+8mp/1280*800, tablet android 15 tablet niños con funda eva+360° giratorio, negro b0fxxxzwvs informatica">
   <label class="pick"><input type="checkbox" value="B0FXXXZWVS" data-desc="Tablet 10 Pulgadas con 30GB RAM+TF 2TB,… · 99,98 € · -33%" data-enlace=""> Elegir</label>
@@ -419,13 +374,13 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0FXXXZWVS?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Tablet 10 Pulgadas con 30GB RAM+TF 2TB, Octa-Core 2.0Ghz/GMS, Widevine L1/5G WiFi/Bluetooth 5.0, Juegos Educativos, 5MP+8MP/1280*800, Tablet Android 15 tablet Niños con Funda EVA+360° Giratorio, Negro</a>
     <div class="precio"><b>99,98 €</b> <s>149,99 €</s></div>
-    
+    <div class="resenas"><span class="estrellas">★★★☆☆</span> 3,1 (14)</div>
     
     <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -33% vs mín. 30 días (149,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Informatica · <code>B0FXXXZWVS</code></div>
   </div>
 </article>
-<article class="card" data-dto="31" data-epc="0" data-precio="89.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+<article class="card" data-dto="31" data-epc="0" data-precio="89.99" data-val="5.0" data-opi="7" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
          data-cat="📲 Tablet" data-marca="" data-marcas=" rep tallanormal "
          data-texto="nidubio tablet android de 11 pulgadas, 24gb ram 128 gb rom ampliable hasta 1 tb, octa-core, batería de gran capacidad de 6800 mah, certificación widevine l1, cámara dual, desbloqueo facial (negro) b0hlddhgch informatica">
   <label class="pick"><input type="checkbox" value="B0HLDDHGCH" data-desc="NIDUBIO Tablet Android de 11 Pulgadas,… · 89,99 € · -31%" data-enlace=""> Elegir</label>
@@ -434,13 +389,13 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0HLDDHGCH?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">NIDUBIO Tablet Android de 11 Pulgadas, 24GB RAM 128 GB ROM Ampliable hasta 1 TB, Octa-Core, Batería de Gran Capacidad de 6800 mAh, Certificación Widevine L1, Cámara Dual, Desbloqueo Facial (Negro)</a>
     <div class="precio"><b>89,99 €</b> <s>129,99 €</s></div>
-    
+    <div class="resenas"><span class="estrellas">★★★★★</span> 5,0 (7)</div>
     
     <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Informatica · <code>B0HLDDHGCH</code></div>
   </div>
 </article>
-<article class="card" data-dto="31" data-epc="0" data-precio="969.0" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="TV"
+<article class="card" data-dto="31" data-epc="0" data-precio="969.0" data-val="4.1" data-opi="55" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="TV"
          data-cat="📺 TV" data-marca="" data-marcas=" hist rep tallanormal "
          data-texto="hisense 85e7s pro - hi-qled smart tv 85 pulgadas, modo juego 144 hz nativos - color, dolby vison.atmos, imágenes ia, smooth motion amd freesync premium hdr10+gaming b0gr6krxbj tv">
   <label class="pick"><input type="checkbox" value="B0GR6KRXBJ" data-desc="Hisense 85E7S Pro - Hi-QLED Smart TV 85… · 969,00 € · -31%" data-enlace=""> Elegir</label>
@@ -449,13 +404,13 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0GR6KRXBJ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Hisense 85E7S Pro - Hi-QLED Smart TV 85 Pulgadas, Modo Juego 144 Hz Nativos - Color, Dolby Vison.Atmos, Imágenes IA, Smooth Motion AMD FreeSync Premium HDR10+Gaming</a>
     <div class="precio"><b>969,00 €</b> <s>1.399,00 €</s></div>
-    
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,1 (55)</div>
     
     <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-3% vs mín. 30 días (995,00 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">TV · <code>B0GR6KRXBJ</code></div>
   </div>
 </article>
-<article class="card" data-dto="29" data-epc="0" data-precio="99.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+<article class="card" data-dto="29" data-epc="0" data-precio="99.99" data-val="4.5" data-opi="15" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
          data-cat="📲 Tablet" data-marca="" data-marcas=" rep tallanormal "
          data-texto="2026 tablet android 16, octa-core, 34gb ram 128gb rom ampliable hasta 1tb, batería 6000mah, tablet 10 pulgadas pantalla táctil ips 1280x800, wifi6 bt5.4, desbloqueo facial, cámaras duales, negro b0h71f2pv8 informatica">
   <label class="pick"><input type="checkbox" value="B0H71F2PV8" data-desc="2026 Tablet Android 16, Octa-Core, 34GB… · 99,99 € · -29%" data-enlace=""> Elegir</label>
@@ -464,13 +419,13 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0H71F2PV8?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">2026 Tablet Android 16, Octa-Core, 34GB RAM 128GB ROM ampliable hasta 1TB, batería 6000mAh, Tablet 10 pulgadas pantalla táctil IPS 1280x800, WiFi6 BT5.4, desbloqueo facial, cámaras duales, Negro</a>
     <div class="precio"><b>99,99 €</b> <s>139,99 €</s></div>
-    
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (15)</div>
     
     <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Informatica · <code>B0H71F2PV8</code></div>
   </div>
 </article>
-<article class="card" data-dto="27" data-epc="0" data-precio="109.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+<article class="card" data-dto="27" data-epc="0" data-precio="109.99" data-val="4.7" data-opi="10" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
          data-cat="📲 Tablet" data-marca="" data-marcas=" rep tallanormal "
          data-texto="nidubio tablet 10 pulgadas android 16, 36gb ram 256gb rom, octa core | ampliable hasta 1tb con tf, batería 6000mah, wifi6+bt5.2, widevine l1, 5mp+8mp, pantalla ips 1280×800 de 10,1&quot; b0h71hj95q informatica">
   <label class="pick"><input type="checkbox" value="B0H71HJ95Q" data-desc="NIDUBIO Tablet 10 Pulgadas Android 16,… · 109,99 € · -27%" data-enlace=""> Elegir</label>
@@ -479,28 +434,13 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0H71HJ95Q?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">NIDUBIO Tablet 10 Pulgadas Android 16, 36GB RAM 256GB ROM, Octa Core | Ampliable hasta 1TB con TF, Batería 6000mAh, WIFI6+BT5.2, Widevine L1, 5MP+8MP, Pantalla IPS 1280×800 de 10,1&quot;</a>
     <div class="precio"><b>109,99 €</b> <s>149,99 €</s></div>
-    
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,7 (10)</div>
     
     <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Informatica · <code>B0H71HJ95Q</code></div>
   </div>
 </article>
-<article class="card" data-dto="27" data-epc="0" data-precio="219.49" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
-         data-cat="📶 Router" data-marca="" data-marcas=" hist rep tallanormal "
-         data-texto="tp-link archer ge550 - router gaming wifi 7, be9300, puertos multigigabit | router gaming wifi 7. puertos 2.5g. baja latencia para juegos. qos avanzado. control app tether. b0djsv2w43 informatica">
-  <label class="pick"><input type="checkbox" value="B0DJSV2W43" data-desc="TP-Link Archer GE550 - Router gaming Wi… · 219,49 € · -27%" data-enlace=""> Elegir</label>
-  <a class="foto" href="https://www.amazon.es/dp/B0DJSV2W43?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-27%</span>
-    <img src="https://m.media-amazon.com/images/I/81JczgwtsAL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
-  <div class="info">
-    <a class="titulo" href="https://www.amazon.es/dp/B0DJSV2W43?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">TP-Link Archer GE550 - Router gaming WiFi 7, BE9300, puertos multigigabit | Router Gaming WiFi 7. Puertos 2.5G. Baja Latencia para Juegos. QoS Avanzado. Control App Tether.</a>
-    <div class="precio"><b>219,49 €</b> <s>299,99 €</s></div>
-    
-    
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (231,40 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
-    <div class="pie">Informatica · <code>B0DJSV2W43</code></div>
-  </div>
-</article>
-<article class="card" data-dto="25" data-epc="0" data-precio="225.62" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+<article class="card" data-dto="25" data-epc="0" data-precio="225.62" data-val="4.5" data-opi="446" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
          data-cat="🖥️ Monitor" data-marca="" data-marcas=" rep tallanormal "
          data-texto="gawfolk monitor gaming curvo 34 pulgadas, uwqhd, 3440×1440p, 200hz | pantalla ultraancha, curvatura 1500r, 120% srgb, sinc. adaptativa, altavoces integrados, hdmi2.0/dp1.4, montaje vesa, negro b0ghx9y2g6 informatica">
   <label class="pick"><input type="checkbox" value="B0GHX9Y2G6" data-desc="Gawfolk Monitor Gaming Curvo 34 Pulgada… · 225,62 € · -25%" data-enlace=""> Elegir</label>
@@ -509,7 +449,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0GHX9Y2G6?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Gawfolk Monitor Gaming Curvo 34 Pulgadas, UWQHD, 3440×1440p, 200Hz | Pantalla ultraancha, curvatura 1500R, 120% sRGB, sinc. adaptativa, altavoces integrados, HDMI2.0/DP1.4, montaje VESA, negro</a>
     <div class="precio"><b>225,62 €</b> <s>299,99 €</s></div>
-    
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (446)</div>
     
     <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Informatica · <code>B0GHX9Y2G6</code></div>
@@ -530,7 +470,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="pie">Informatica · <code>B00PS1QZQO</code></div>
   </div>
 </article>
-<article class="card" data-dto="24" data-epc="0" data-precio="251.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+<article class="card" data-dto="24" data-epc="0" data-precio="251.99" data-val="4.4" data-opi="624" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
          data-cat="📶 Router" data-marca="" data-marcas=" hist rep tallanormal "
          data-texto="tp-link deco x50-poe(3-pack)- ax3000 dual band wi-fi 6 mesh, soporta alimentación poe y dc, puerto 2.5gbps, alcance hasta 600m², wpa3, ideal para casas grandes b0bnkklyyy informatica">
   <label class="pick"><input type="checkbox" value="B0BNKKLYYY" data-desc="TP-Link Deco X50-PoE(3-Pack)- AX3000 Du… · 251,99 € · -24%" data-enlace=""> Elegir</label>
@@ -539,43 +479,13 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0BNKKLYYY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">TP-Link Deco X50-PoE(3-Pack)- AX3000 Dual Band Wi-Fi 6 Mesh, Soporta alimentación PoE y DC, Puerto 2.5Gbps, Alcance hasta 600m², WPA3, Ideal para Casas Grandes</a>
     <div class="precio"><b>251,99 €</b> <s>329,99 €</s></div>
-    
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (624)</div>
     
     <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Informatica · <code>B0BNKKLYYY</code></div>
   </div>
 </article>
-<article class="card" data-dto="23" data-epc="0" data-precio="109.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
-         data-cat="📲 Tablet" data-marca="" data-marcas=" cupon rep tallanormal "
-         data-texto="teclast m50t tablet 10.1 pulgadas android 16 tableta gemini ai, 32gb ram+128gb rom+5tb tf, 2ghz octa-core, 7000mah, 2.4g+5g wifi, bt 5.4/widevine l1/13mp+5mp/3.5mm/face id/otg, tablets con lápiz, 2026 b09fl1tk77 informatica">
-  <label class="pick"><input type="checkbox" value="B09FL1TK77" data-desc="TECLAST M50T Tablet 10.1 Pulgadas Andro… · 109,99 € · -23%" data-enlace=""> Elegir</label>
-  <a class="foto" href="https://www.amazon.es/dp/B09FL1TK77?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-23%</span>
-    <img src="https://m.media-amazon.com/images/I/71Y4v1z5D+L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
-  <div class="info">
-    <a class="titulo" href="https://www.amazon.es/dp/B09FL1TK77?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">TECLAST M50T Tablet 10.1 Pulgadas Android 16 Tableta Gemini AI, 32GB RAM+128GB ROM+5TB TF, 2GHz Octa-Core, 7000mAh, 2.4G+5G WiFi, BT 5.4/Widevine L1/13MP+5MP/3.5MM/Face ID/OTG, Tablets con Lápiz, 2026</a>
-    <div class="precio"><b>109,99 €</b> <s>129,99 €</s></div>
-    
-    
-    <div class="tags"><span class="tag cupon">Con cupón 99,99 €</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
-    <div class="pie">Informatica · <code>B09FL1TK77</code></div>
-  </div>
-</article>
-<article class="card" data-dto="19" data-epc="0" data-precio="113.62" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
-         data-cat="📶 Router" data-marca="" data-marcas=" hist rep tallanormal "
-         data-texto="cudy router wi-fi industrial 4g lte cat 4 n300, rs232/422/485, e/s, ir04 | 4g cat. 4 a 150 mbps, wi-fi 4 n300, 4 puertos poe de 100 m, 2 ranuras sim, rs232/422/485/adc/e/s/usb, ip30, de -40 a 75 °c b0fjlssjqj informatica">
-  <label class="pick"><input type="checkbox" value="B0FJLSSJQJ" data-desc="Cudy Router Wi-Fi industrial 4G LTE Cat… · 113,62 € · -19%" data-enlace=""> Elegir</label>
-  <a class="foto" href="https://www.amazon.es/dp/B0FJLSSJQJ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-19%</span>
-    <img src="https://m.media-amazon.com/images/I/51fHheJeUGL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
-  <div class="info">
-    <a class="titulo" href="https://www.amazon.es/dp/B0FJLSSJQJ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Cudy Router Wi-Fi industrial 4G LTE Cat 4 N300, RS232/422/485, E/S, IR04 | 4G Cat. 4 a 150 Mbps, Wi-Fi 4 N300, 4 puertos PoE de 100 M, 2 ranuras SIM, RS232/422/485/ADC/E/S/USB, IP30, de -40 a 75 °C</a>
-    <div class="precio"><b>113,62 €</b> <s>139,90 €</s></div>
-    
-    
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag rep">🔁 3+ días en oferta</span></div>
-    <div class="pie">Informatica · <code>B0FJLSSJQJ</code></div>
-  </div>
-</article>
-<article class="card" data-dto="19" data-epc="0" data-precio="524.07" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Moviles"
+<article class="card" data-dto="19" data-epc="0" data-precio="524.07" data-val="5.0" data-opi="3" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Moviles"
          data-cat="📱 Móvil" data-marca="" data-marcas=" rep tallanormal "
          data-texto="oppo smartphone reno16 fs 5g, 8 gb de ram + 512 gb, blanco pop | pantalla de 6,57 pulgadas a 120 hz, cámara selfie ultra gran angular de 50 mp, protección ip69k, smartphone 5g libre b0h9lhxnqc moviles">
   <label class="pick"><input type="checkbox" value="B0H9LHXNQC" data-desc="OPPO Smartphone Reno16 FS 5G, 8 GB de R… · 524,07 € · -19%" data-enlace=""> Elegir</label>
@@ -584,29 +494,29 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0H9LHXNQC?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">OPPO Smartphone Reno16 FS 5G, 8 GB de RAM + 512 GB, Blanco Pop | Pantalla de 6,57 pulgadas a 120 Hz, cámara selfie ultra gran angular de 50 MP, protección IP69K, smartphone 5G libre</a>
     <div class="precio"><b>524,07 €</b> <s>649,00 €</s></div>
-    
+    <div class="resenas"><span class="estrellas">★★★★★</span> 5,0 (3)</div>
     
     <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Moviles · <code>B0H9LHXNQC</code></div>
   </div>
 </article>
-<article class="card" data-dto="18" data-epc="0" data-precio="123.49" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+<article class="card" data-dto="17" data-epc="0" data-precio="132.99" data-val="4.0" data-opi="31" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
          data-cat="📲 Tablet" data-marca="" data-marcas=" hist tallanormal "
-         data-texto="u11 android 16 tablet 11 pulgadas gemini ai, 16gb ram+128gb rom/2tb tf, batería 8580 mah,unisoc t7200 octa-core，90hz, 13mp+5 mp/wifi 5g/face id/widevine l1/gms/gps/otg/audio 3.5mm b0gyw584nk informatica">
-  <label class="pick"><input type="checkbox" value="B0GYW584NK" data-desc="U11 Android 16 Tablet 11 Pulgadas Gemin… · 123,49 € · -18%" data-enlace=""> Elegir</label>
-  <a class="foto" href="https://www.amazon.es/dp/B0GYW584NK?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-18%</span>
-    <img src="https://m.media-amazon.com/images/I/71iCLACNMPL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+         data-texto="u11 android 16 tablet 11 pulgadas gemini ai, 16gb ram+128gb rom/2tb tf, 8580mah, tablet con teclado, lápiz, unisoc t7200 octa-core，90hz, 13mp+5mp/wifi 5g/face id/widevine l1/gms/gps/otg/audio 3.5mm b0gywhb743 informatica">
+  <label class="pick"><input type="checkbox" value="B0GYWHB743" data-desc="U11 Android 16 Tablet 11 Pulgadas Gemin… · 132,99 € · -17%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GYWHB743?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-17%</span>
+    <img src="https://m.media-amazon.com/images/I/71u4RxKWDoL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
   <div class="info">
-    <a class="titulo" href="https://www.amazon.es/dp/B0GYW584NK?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">U11 Android 16 Tablet 11 Pulgadas Gemini AI, 16GB RAM+128GB ROM/2TB TF, Batería 8580 mAh,Unisoc T7200 Octa-Core，90Hz, 13MP+5 MP/WiFi 5G/Face ID/Widevine L1/GMS/GPS/OTG/Audio 3.5mm</a>
-    <div class="precio"><b>123,49 €</b> <s>149,99 €</s></div>
+    <a class="titulo" href="https://www.amazon.es/dp/B0GYWHB743?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">U11 Android 16 Tablet 11 Pulgadas Gemini AI, 16GB RAM+128GB ROM/2TB TF, 8580mAh, Tablet con Teclado, Lápiz, Unisoc T7200 Octa-Core，90Hz, 13MP+5MP/WiFi 5G/Face ID/Widevine L1/GMS/GPS/OTG/Audio 3.5mm</a>
+    <div class="precio"><b>132,99 €</b> <s>159,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,0 (31)</div>
     
-    
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (129,99 €)</span></div>
-    <div class="pie">Informatica · <code>B0GYW584NK</code></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span></div>
+    <div class="pie">Informatica · <code>B0GYWHB743</code></div>
   </div>
 </article>
-<article class="card" data-dto="17" data-epc="0" data-precio="189.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
-         data-cat="🖥️ Monitor" data-marca="" data-marcas=" hist nueva tallanormal "
+<article class="card" data-dto="17" data-epc="0" data-precio="189.99" data-val="4.2" data-opi="80" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+         data-cat="🖥️ Monitor" data-marca="" data-marcas=" hist tallanormal "
          data-texto="av access docking station dual monitor for laptop &amp; desktop, kvm switch 2 monitors 2 computers with ethernet, edid, 4k@60hz dual display, 4xusb-a, 1xusb-c, power supply for laptop, audio, sd b0fcxn5p3t informatica">
   <label class="pick"><input type="checkbox" value="B0FCXN5P3T" data-desc="AV Access Docking Station Dual Monitor… · 189,99 € · -17%" data-enlace=""> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0FCXN5P3T?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-17%</span>
@@ -614,25 +524,10 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0FCXN5P3T?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">AV Access Docking Station Dual Monitor for Laptop &amp; Desktop, KVM Switch 2 Monitors 2 Computers with Ethernet, EDID, 4K@60Hz Dual Display, 4xUSB-A, 1xUSB-C, Power Supply for Laptop, Audio, SD</a>
     <div class="precio"><b>189,99 €</b> <s>229,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (80)</div>
     
-    
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (199,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (199,99 €)</span></div>
     <div class="pie">Informatica · <code>B0FCXN5P3T</code></div>
-  </div>
-</article>
-<article class="card" data-dto="17" data-epc="0" data-precio="503.49" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
-         data-cat="💻 Portátil" data-marca="" data-marcas=" cupon rep tallanormal "
-         data-texto="chifuyou ordenador portátil 17,3&quot;, i5-7y57, 16gb ram 512gb ssd, win 11 pro | teclado retroiluminado completo con bloque numérico y touchpad amplio b0hfn56q17 informatica">
-  <label class="pick"><input type="checkbox" value="B0HFN56Q17" data-desc="CHIFUYOU Ordenador Portátil 17,3&quot;, i5-7… · 503,49 € · -17%" data-enlace=""> Elegir</label>
-  <a class="foto" href="https://www.amazon.es/dp/B0HFN56Q17?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-17%</span>
-    <img src="https://m.media-amazon.com/images/I/71WAxM2G6rL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
-  <div class="info">
-    <a class="titulo" href="https://www.amazon.es/dp/B0HFN56Q17?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">CHIFUYOU Ordenador Portátil 17,3&quot;, i5-7Y57, 16GB RAM 512GB SSD, Win 11 Pro | Teclado retroiluminado completo con bloque numérico y touchpad amplio</a>
-    <div class="precio"><b>503,49 €</b> <s>569,98 €</s></div>
-    
-    
-    <div class="tags"><span class="tag cupon">Con cupón 473,49 €</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (529,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
-    <div class="pie">Informatica · <code>B0HFN56Q17</code></div>
   </div>
 </article>
 <article class="card" data-dto="16" data-epc="0" data-precio="1349.0" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
@@ -665,7 +560,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="pie">Moviles · <code>B0HN7FRD2B</code></div>
   </div>
 </article>
-<article class="card" data-dto="15" data-epc="0" data-precio="169.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+<article class="card" data-dto="15" data-epc="0" data-precio="169.99" data-val="4.4" data-opi="104" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
          data-cat="🖥️ Monitor" data-marca="" data-marcas=" ok tallanormal "
          data-texto="av access conmutador kvm docking para 2 monitores 2 pcs, 4k dual monitor laptop/escritorio, edid, ethernet 1g, carga usb-c 100w, 3 usb 3.0, ideal oficina hogar y gaming b0ddtddhqk informatica">
   <label class="pick"><input type="checkbox" value="B0DDTDDHQK" data-desc="AV Access Conmutador KVM Docking para 2… · 169,99 € · -15%" data-enlace=""> Elegir</label>
@@ -674,7 +569,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0DDTDDHQK?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">AV Access Conmutador KVM Docking para 2 Monitores 2 PCs, 4K Dual Monitor Laptop/Escritorio, EDID, Ethernet 1G, Carga USB-C 100W, 3 USB 3.0, Ideal Oficina Hogar y Gaming</a>
     <div class="precio"><b>169,99 €</b> <s>199,99 €</s></div>
-    
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (104)</div>
     
     <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -15% vs mín. 30 días (199,99 €)</span></div>
     <div class="pie">Informatica · <code>B0DDTDDHQK</code></div>
@@ -695,7 +590,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="pie">Informatica · <code>B0H2W7WY5W</code></div>
   </div>
 </article>
-<article class="card" data-dto="14" data-epc="0" data-precio="189.98" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+<article class="card" data-dto="14" data-epc="0" data-precio="189.98" data-val="4.6" data-opi="57" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
          data-cat="💾 Disco / SSD" data-marca="" data-marcas=" min90 rep tallanormal "
          data-texto="lexar eq790 ps5 ssd 1tb, ssd interno nvme m.2 con disipador de calor, 2280 pcie gen4x4 nvme 1.4 ssd interno, lectura hasta 7.000 mb/s, compatible con ps5, pc de escritorio y portátil b0gsvzxyf5 informatica">
   <label class="pick"><input type="checkbox" value="B0GSVZXYF5" data-desc="Lexar EQ790 PS5 SSD 1TB, SSD Interno NV… · 189,98 € · -14%" data-enlace=""> Elegir</label>
@@ -704,14 +599,14 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0GSVZXYF5?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Lexar EQ790 PS5 SSD 1TB, SSD Interno NVMe M.2 con Disipador de Calor, 2280 PCIe Gen4x4 NVMe 1.4 SSD Interno, Lectura hasta 7.000 MB/s, Compatible con PS5, PC de Escritorio y Portátil</a>
     <div class="precio"><b>189,98 €</b> <s>219,99 €</s></div>
-    
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (57)</div>
     
     <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (199,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Informatica · <code>B0GSVZXYF5</code></div>
   </div>
 </article>
-<article class="card" data-dto="14" data-epc="0" data-precio="189.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
-         data-cat="💾 Disco / SSD" data-marca="" data-marcas=" min90 nueva ok tallanormal "
+<article class="card" data-dto="14" data-epc="0" data-precio="189.99" data-val="4.7" data-opi="369" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+         data-cat="💾 Disco / SSD" data-marca="" data-marcas=" min90 ok tallanormal "
          data-texto="corsair mp600 core xt 1tb m.2 pcie gen4 nvme ssd – hasta 5900 mb/s – qlc nand – m.2 2280 – para ordenadores portátiles y de sobremesa pcie 4.0 – negro b0dvc8z8cv informatica">
   <label class="pick"><input type="checkbox" value="B0DVC8Z8CV" data-desc="Corsair MP600 Core XT 1TB M.2 PCIe Gen4… · 189,99 € · -14%" data-enlace=""> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0DVC8Z8CV?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-14%</span>
@@ -719,13 +614,13 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0DVC8Z8CV?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Corsair MP600 Core XT 1TB M.2 PCIe Gen4 NVMe SSD – hasta 5900 MB/s – QLC NAND – M.2 2280 – para Ordenadores Portátiles y de Sobremesa PCIe 4.0 – Negro</a>
     <div class="precio"><b>189,99 €</b> <s>219,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,7 (369)</div>
     
-    
-    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ok">Bajada real: -14% vs mín. 30 días (219,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ok">Bajada real: -14% vs mín. 30 días (219,99 €)</span></div>
     <div class="pie">Informatica · <code>B0DVC8Z8CV</code></div>
   </div>
 </article>
-<article class="card" data-dto="14" data-epc="0" data-precio="214.33" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+<article class="card" data-dto="14" data-epc="0" data-precio="214.33" data-val="3.5" data-opi="17" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
          data-cat="📲 Tablet" data-marca="" data-marcas=" hist rep tallanormal "
          data-texto="beynivan tablet 14 pulgadas android 15 tableta con 4g lte y 5g wifi,11580mah y 20w,36gb ram+256gb rom/2000 * 1200 fhd/face id/gps/bt 5.0/tüv/usb-c,tablet con lapiz,nero b0ffg15bs2 informatica">
   <label class="pick"><input type="checkbox" value="B0FFG15BS2" data-desc="BEYNIVAN Tablet 14 Pulgadas Android 15… · 214,33 € · -14%" data-enlace=""> Elegir</label>
@@ -734,13 +629,13 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0FFG15BS2?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">BEYNIVAN Tablet 14 Pulgadas Android 15 Tableta con 4G LTE y 5G WiFi,11580mAh y 20W,36GB RAM+256GB ROM/2000 * 1200 FHD/Face ID/GPS/BT 5.0/TÜV/USB-C,Tablet con Lapiz,Nero</a>
     <div class="precio"><b>214,33 €</b> <s>249,98 €</s></div>
-    
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 3,5 (17)</div>
     
     <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Informatica · <code>B0FFG15BS2</code></div>
   </div>
 </article>
-<article class="card" data-dto="12" data-epc="0" data-precio="189.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+<article class="card" data-dto="12" data-epc="0" data-precio="189.99" data-val="4.2" data-opi="47" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
          data-cat="🖥️ Monitor" data-marca="" data-marcas=" tallanormal "
          data-texto="av access estación de acoplamiento kvm para 2 monitores y 2 laptops, kvm 4k dual monitor, 100w pd por pc, ethernet 1g, emulación edid, ideal para oficina en casa y gaming b0f388863n informatica">
   <label class="pick"><input type="checkbox" value="B0F388863N" data-desc="AV Access Estación de Acoplamiento KVM… · 189,99 € · -12%" data-enlace=""> Elegir</label>
@@ -749,13 +644,13 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0F388863N?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">AV Access Estación de Acoplamiento KVM para 2 Monitores y 2 Laptops, KVM 4K Dual Monitor, 100W PD por PC, Ethernet 1G, Emulación EDID, Ideal para Oficina en Casa y Gaming</a>
     <div class="precio"><b>189,99 €</b> <s>215,99 €</s></div>
-    
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (47)</div>
     
     <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (199,99 €)</span></div>
     <div class="pie">Informatica · <code>B0F388863N</code></div>
   </div>
 </article>
-<article class="card" data-dto="12" data-epc="0" data-precio="449.0" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Moviles"
+<article class="card" data-dto="12" data-epc="0" data-precio="449.0" data-val="3.0" data-opi="1" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Moviles"
          data-cat="⌚ Smartwatch" data-marca="" data-marcas=" nueva ok tallanormal "
          data-texto="huawei watch d3 smartwatch negro + scale 3, compatible con ios y android | monitorización ambulatoria de presión arterial, gestión integral de salud, ecg, gps, nfc, ligero y cómodo, garantía 42 meses b0hfs1z7h4 moviles">
   <label class="pick"><input type="checkbox" value="B0HFS1Z7H4" data-desc="HUAWEI WATCH D3 Smartwatch Negro + Scal… · 449,00 € · -12%" data-enlace=""> Elegir</label>
@@ -764,13 +659,28 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0HFS1Z7H4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">HUAWEI WATCH D3 Smartwatch Negro + Scale 3, Compatible con iOS y Android | Monitorización Ambulatoria de Presión Arterial, Gestión Integral de Salud, ECG, GPS, NFC, Ligero y Cómodo, Garantía 42 meses</a>
     <div class="precio"><b>449,00 €</b> <s>508,90 €</s></div>
-    
+    <div class="resenas"><span class="estrellas">★★★☆☆</span> 3,0 (1)</div>
     
     <div class="tags"><span class="tag ok">Bajada real: -12% vs mín. 30 días (508,90 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
     <div class="pie">Moviles · <code>B0HFS1Z7H4</code></div>
   </div>
 </article>
-<article class="card" data-dto="11" data-epc="0" data-precio="151.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Moviles"
+<article class="card" data-dto="12" data-epc="0" data-precio="503.49" data-val="4.7" data-opi="14" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" rep tallanormal "
+         data-texto="chifuyou ordenador portátil 17,3&quot;, i5-7y57, 16gb ram 512gb ssd, win 11 pro | teclado retroiluminado completo con bloque numérico y touchpad amplio b0hfn56q17 informatica">
+  <label class="pick"><input type="checkbox" value="B0HFN56Q17" data-desc="CHIFUYOU Ordenador Portátil 17,3&quot;, i5-7… · 503,49 € · -12%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HFN56Q17?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-12%</span>
+    <img src="https://m.media-amazon.com/images/I/71WAxM2G6rL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HFN56Q17?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">CHIFUYOU Ordenador Portátil 17,3&quot;, i5-7Y57, 16GB RAM 512GB SSD, Win 11 Pro | Teclado retroiluminado completo con bloque numérico y touchpad amplio</a>
+    <div class="precio"><b>503,49 €</b> <s>569,98 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,7 (14)</div>
+    
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (529,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Informatica · <code>B0HFN56Q17</code></div>
+  </div>
+</article>
+<article class="card" data-dto="11" data-epc="0" data-precio="151.99" data-val="4.2" data-opi="274" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Moviles"
          data-cat="📱 Móvil" data-marca="" data-marcas=" rep tallanormal "
          data-texto="blackview wave 10 telefono movil baratos buenos android 16,6.88&quot; 120hz,32+13mp 32+128gb/2tb tf celulares,smartphone libres oferta 5000mah/3.5mm/wifi 5g/face id/bloqueo huella dactilare,3 años garantía b0fx9hrg3b moviles">
   <label class="pick"><input type="checkbox" value="B0FX9HRG3B" data-desc="Blackview WAVE 10 Telefono Movil Barato… · 151,99 € · -11%" data-enlace=""> Elegir</label>
@@ -779,13 +689,13 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0FX9HRG3B?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Blackview WAVE 10 Telefono Movil Baratos Buenos Android 16,6.88&quot; 120Hz,32+13MP 32+128GB/2TB TF Celulares,Smartphone Libres Oferta 5000mAh/3.5mm/WiFi 5G/Face ID/Bloqueo Huella Dactilare,3 Años Garantía</a>
     <div class="precio"><b>151,99 €</b> <s>169,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (274)</div>
     
-    
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (161,71 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Moviles · <code>B0FX9HRG3B</code></div>
   </div>
 </article>
-<article class="card" data-dto="11" data-epc="0" data-precio="239.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+<article class="card" data-dto="11" data-epc="0" data-precio="239.99" data-val="4.0" data-opi="139" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
          data-cat="🖥️ Monitor" data-marca="" data-marcas=" ok tallanormal "
          data-texto="av access docking station kvm switch monitor dual para laptop&amp;desktop, carga tipo-c 60w para laptop,ethernet,edid,con hdmi &amp; displayport, usb-c mst dual 4k @60hz,1080p@240hz,2k@144hz,usb 3.0,aluminio b0cmzzl64p informatica">
   <label class="pick"><input type="checkbox" value="B0CMZZL64P" data-desc="AV Access Docking Station KVM Switch Mo… · 239,99 € · -11%" data-enlace=""> Elegir</label>
@@ -794,28 +704,28 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0CMZZL64P?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">AV Access Docking Station KVM Switch Monitor Dual para Laptop&amp;Desktop, Carga Tipo-C 60W para Laptop,Ethernet,EDID,con HDMI &amp; DisplayPort, USB-C MST Dual 4K @60Hz,1080P@240Hz,2K@144Hz,USB 3.0,Aluminio</a>
     <div class="precio"><b>239,99 €</b> <s>269,99 €</s></div>
-    
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,0 (139)</div>
     
     <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -11% vs mín. 30 días (269,99 €)</span></div>
     <div class="pie">Informatica · <code>B0CMZZL64P</code></div>
   </div>
 </article>
-<article class="card" data-dto="10" data-epc="0" data-precio="206.09" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Moviles"
-         data-cat="📱 Móvil" data-marca="" data-marcas=" rep tallanormal "
-         data-texto="oppo a6 smartphone, 6 gb de ram y 256 gb de almacenamiento, negro zafiro b0hhyl8t55 moviles">
-  <label class="pick"><input type="checkbox" value="B0HHYL8T55" data-desc="OPPO A6 Smartphone, 6 GB de RAM y 256 G… · 206,09 € · -10%" data-enlace=""> Elegir</label>
-  <a class="foto" href="https://www.amazon.es/dp/B0HHYL8T55?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
-    <img src="https://m.media-amazon.com/images/I/715bEM4RCLL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+<article class="card" data-dto="10" data-epc="0" data-precio="80.2" data-val="3.7" data-opi="130" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+         data-cat="📲 Tablet" data-marca="" data-marcas=" hist nueva tallanormal "
+         data-texto="sumtab tablet para niños 10 pulgadas android 15 con 30gb ram 128gb rom (mpliable 2 tb), control parental, pantalla ips hd, gms certified, 5g wifi 6, protective antichoque eva &amp; estilete b0gt4fx7bv informatica">
+  <label class="pick"><input type="checkbox" value="B0GT4FX7BV" data-desc="SUMTAB Tablet para Niños 10 Pulgadas An… · 80,20 € · -10%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GT4FX7BV?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/71C4EhWijoL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
   <div class="info">
-    <a class="titulo" href="https://www.amazon.es/dp/B0HHYL8T55?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">OPPO A6 Smartphone, 6 GB de RAM y 256 GB de Almacenamiento, Negro Zafiro</a>
-    <div class="precio"><b>206,09 €</b> <s>228,90 €</s></div>
+    <a class="titulo" href="https://www.amazon.es/dp/B0GT4FX7BV?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SUMTAB Tablet para Niños 10 Pulgadas Android 15 con 30GB RAM 128GB ROM (mpliable 2 TB), Control Parental, Pantalla IPS HD, GMS Certified, 5G WiFi 6, Protective Antichoque Eva &amp; Estilete</a>
+    <div class="precio"><b>80,20 €</b> <s>89,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 3,7 (130)</div>
     
-    
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
-    <div class="pie">Moviles · <code>B0HHYL8T55</code></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (84,68 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Informatica · <code>B0GT4FX7BV</code></div>
   </div>
 </article>
-<article class="card" data-dto="10" data-epc="0" data-precio="225.62" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Moviles"
+<article class="card" data-dto="10" data-epc="0" data-precio="225.62" data-val="5.0" data-opi="1" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Moviles"
          data-cat="📱 Móvil" data-marca="" data-marcas=" hist rep tallanormal "
          data-texto="hotwav hyper 7 5g rugged mobile phone 2025, 20gb+256gb+2tb tf, 10800mah ip68 smartphone, 64mp+32mp, 6.6&quot; fhd+, 280lm camping, android 14 mobile phone anti-shock, gps, nfc, otg, amarillo b0cff8c2h4 moviles">
   <label class="pick"><input type="checkbox" value="B0CFF8C2H4" data-desc="HOTWAV Hyper 7 5G Rugged Mobile Phone 2… · 225,62 € · -10%" data-enlace=""> Elegir</label>
@@ -824,28 +734,43 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0CFF8C2H4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">HOTWAV Hyper 7 5G Rugged Mobile Phone 2025, 20GB+256GB+2TB TF, 10800mAh IP68 Smartphone, 64MP+32MP, 6.6&quot; FHD+, 280LM Camping, Android 14 Mobile Phone Anti-Shock, GPS, NFC, OTG, Amarillo</a>
     <div class="precio"><b>225,62 €</b> <s>249,99 €</s></div>
-    
+    <div class="resenas"><span class="estrellas">★★★★★</span> 5,0 (1)</div>
     
     <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Moviles · <code>B0CFF8C2H4</code></div>
   </div>
 </article>
-<article class="card" data-dto="10" data-epc="0" data-precio="460.26" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
-         data-cat="💻 Portátil" data-marca="" data-marcas=" rep tallanormal "
-         data-texto="mituntun portátil 17,3&quot;, core i5-7y57, 16gb ram, 512gb ssd,fhd,win 11 pro | 2 núcleos, 4 hilos, hasta 3,2ghz, pantalla fhd ips, teclado retroiluminado, teclado numérico, bisagra 180° y usb 3.0/type-c. b0hgyzn1y9 informatica">
-  <label class="pick"><input type="checkbox" value="B0HGYZN1Y9" data-desc="MITUNTUN Portátil 17,3&quot;, Core i5-7Y57,… · 460,26 € · -10%" data-enlace=""> Elegir</label>
-  <a class="foto" href="https://www.amazon.es/dp/B0HGYZN1Y9?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
-    <img src="https://m.media-amazon.com/images/I/71dcmXJYyCL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+<article class="card" data-dto="10" data-epc="0" data-precio="315.87" data-val="4.7" data-opi="12" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Informatica"
+         data-cat="💻 Portátil" data-marca="" data-marcas=" nueva tallanormal "
+         data-texto="mituntun ordenador portátil 15.6” ram 16gb ssd 256gb  4425y win11 pro | soporta tf card 1tb 1920x1080 fhd 2 cores portatil con wifi5, bt4.2, usb3.0x2, hdmi, type-c b0hgx95jzg informatica">
+  <label class="pick"><input type="checkbox" value="B0HGX95JZG" data-desc="MITUNTUN Ordenador Portátil 15.6” RAM 1… · 315,87 € · -10%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HGX95JZG?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/71rm+J5bSlL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
   <div class="info">
-    <a class="titulo" href="https://www.amazon.es/dp/B0HGYZN1Y9?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">MITUNTUN Portátil 17,3&quot;, Core i5-7Y57, 16GB RAM, 512GB SSD,FHD,Win 11 Pro | 2 núcleos, 4 hilos, hasta 3,2GHz, pantalla FHD IPS, teclado retroiluminado, teclado numérico, bisagra 180° y USB 3.0/Type-C.</a>
-    <div class="precio"><b>460,26 €</b> <s>509,99 €</s></div>
+    <a class="titulo" href="https://www.amazon.es/dp/B0HGX95JZG?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">MITUNTUN Ordenador Portátil 15.6” RAM 16GB SSD 256GB  4425Y Win11 Pro | Soporta TF Card 1TB 1920x1080 FHD 2 Cores Portatil con WIFI5, BT4.2, USB3.0x2, HDMI, Type-C</a>
+    <div class="precio"><b>315,87 €</b> <s>349,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,7 (12)</div>
     
-    
-    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag rep">🔁 3+ días en oferta</span></div>
-    <div class="pie">Informatica · <code>B0HGYZN1Y9</code></div>
+    <div class="tags"><span class="tag ">-10% vs mín. 30 días (349,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Informatica · <code>B0HGX95JZG</code></div>
   </div>
 </article>
-<article class="card" data-dto="10" data-epc="0" data-precio="1195.0" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="TV"
+<article class="card" data-dto="10" data-epc="0" data-precio="450.35" data-val="4.7" data-opi="4" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" cc nueva tallanormal "
+         data-texto="infinix note 60 pro smartphone 5g 12 gb+256 gb, procesador snapdragon 7s gen4, pantalla active‑matrix trasera, carga rápida 90w +30w inalámbrica, cámara 50mp ois, batería 6000 mah, xos 16 android b0h5vjgwpq moviles">
+  <label class="pick"><input type="checkbox" value="B0H5VJGWPQ" data-desc="Infinix Note 60 Pro Smartphone 5G 12 GB… · 450,35 € · -10%" data-enlace="https://www.amazon.es/dp/B0H5VJGWPQ?ref=t_ac_spc_accepted_tile&amp;linkCode=tr1&amp;tag=evaruizrodrig-21&amp;linkId=B0H5VJGWPQ_1791959521210"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H5VJGWPQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/916aYLi3zIL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H5VJGWPQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Infinix Note 60 Pro Smartphone 5G 12 GB+256 GB, Procesador Snapdragon 7s Gen4, Pantalla Active‑Matrix Trasera, Carga rápida 90W +30W inalámbrica, Cámara 50MP OIS, Batería 6000 mAh, XOS 16 Android</a>
+    <div class="precio"><b>450,35 €</b> <s>499,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,7 (4)</div>
+    
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (474,05 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,16 €</span></div>
+    <div class="pie">Moviles · <code>B0H5VJGWPQ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="10" data-epc="0" data-precio="1195.0" data-val="4.4" data-opi="206" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="TV"
          data-cat="📺 TV" data-marca="" data-marcas=" hist rep tallanormal "
          data-texto="hisense 85u7se - miniled 85 pulgadas smart tv 4k, quantum dot color, 144 hz | subwoofer integrado, hi-view ai engine, imax enhanced, filmmaker mode, dolby vision iq, hdr 10+, 4 x hdmi 2.1, 2 x usb b0gkpz6mq6 tv">
   <label class="pick"><input type="checkbox" value="B0GKPZ6MQ6" data-desc="Hisense 85U7SE - MiniLED 85 Pulgadas Sm… · 1.195,00 € · -10%" data-enlace=""> Elegir</label>
@@ -854,7 +779,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   <div class="info">
     <a class="titulo" href="https://www.amazon.es/dp/B0GKPZ6MQ6?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Hisense 85U7SE - MiniLED 85 Pulgadas Smart TV 4K, Quantum Dot Color, 144 Hz | Subwoofer integrado, Hi-View AI Engine, IMAX Enhanced, Filmmaker Mode, Dolby Vision IQ, HDR 10+, 4 x HDMI 2.1, 2 X USB</a>
     <div class="precio"><b>1.195,00 €</b> <s>1.329,00 €</s></div>
-    
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (206)</div>
     
     <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">TV · <code>B0GKPZ6MQ6</code></div>
