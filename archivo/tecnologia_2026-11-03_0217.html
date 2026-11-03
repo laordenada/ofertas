@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Ofertas tecnología</title>
+<style>
+:root { --bg:#f6f4f1; --card:#fff; --txt:#2b2522; --suave:#7a6f69; --borde:#e6e0da;
+         --acento:#e4913a; --rojo:#c8372d; --tag:#f1ece6;
+         --ok:#2e7d4f; --r20:#1b5e37; --hist:#a66a00; --min90:#be185d;
+         --cupon:#2f6db5; --sns:#6d28d9; --cc:#a16207; --prime:#00a8e1; --top:#111111; --rep:#64748b; --nueva:#ea580c; --oferta:#c8372d; --masvendido:#b45309; --vendidos:#0f766e;
+         --reciente:#0369a1; --inflada:#9a3412; --sinstock:#b91c1c; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#1b1917; --card:#26231f; --txt:#eee8e2; --suave:#a89d95; --borde:#3a3530; --tag:#332e29;
+           --ok:#3f9e68; --r20:#2f8a55; --hist:#c98a1a; --min90:#db2777;
+           --cupon:#4a86cf; --sns:#8b5cf6; --cc:#d4a017; --prime:#00a8e1; --top:#f2f2f2; --rep:#7c8aa0; --nueva:#f97316; --oferta:#e05a4f; --masvendido:#d97706; --vendidos:#14b8a6;
+           --reciente:#0e7490; --inflada:#c2410c; --sinstock:#dc2626; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--txt);
+        font:15px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif; }
+header { position:sticky; top:0; z-index:5; background:var(--bg); border-bottom:1px solid var(--borde);
+          padding:14px 20px; display:flex; flex-wrap:wrap; gap:10px 16px; align-items:center; }
+h1 { font-size:19px; margin:0; }
+.sub { color:var(--suave); font-size:13px; }
+.ctrl { margin-left:auto; display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+input, select, button { font:inherit; padding:7px 10px; border-radius:8px;
+          border:1px solid var(--borde); background:var(--card); color:var(--txt); }
+#dtomin, #dtomax { width:64px; }
+#pmin, #pmax { width:72px; }
+button.sec.activo { background:var(--acento); color:#fff; border-color:var(--acento); }
+.chips { flex-basis:100%; display:flex; flex-wrap:wrap; gap:6px; }
+.chip { --c:var(--suave); background:var(--card); color:var(--txt); border:1.5px solid var(--c);
+         border-radius:999px; padding:4px 12px; font-weight:500; font-size:13px; }
+.chip span { opacity:.7; }
+.chip.on { background:var(--c); color:#fff; }
+.chip.off { border-style:dashed; color:var(--suave); text-decoration:line-through; }
+.chip.off::before { content:"Sin "; text-decoration:none; display:inline-block; margin-right:3px; }
+.multi { position:relative; }
+.multi summary { list-style:none; cursor:pointer; padding:7px 28px 7px 10px; border-radius:8px;
+                  border:1px solid var(--borde); background:var(--card); white-space:nowrap; position:relative; }
+.multi summary::-webkit-details-marker { display:none; }
+.multi summary::after { content:"▾"; position:absolute; right:10px; color:var(--suave); }
+.multi.activo summary { border-color:var(--acento); font-weight:600; }
+.multi .opciones { position:absolute; z-index:10; top:calc(100% + 4px); left:0; min-width:230px;
+                    max-height:60vh; overflow:auto; background:var(--card); border:1px solid var(--borde);
+                    border-radius:8px; padding:6px; box-shadow:0 6px 20px rgba(0,0,0,.15); }
+.multi .opciones label { display:flex; gap:8px; align-items:center; padding:5px 6px; border-radius:6px;
+                          cursor:pointer; white-space:nowrap; }
+.multi .opciones label:hover { background:var(--tag); }
+.multi .opciones span { color:var(--suave); }
+.multi .acciones { display:flex; gap:6px; padding:2px 2px 8px; margin-bottom:4px;
+                    border-bottom:1px solid var(--borde); position:sticky; top:-6px; background:var(--card); }
+.multi .acciones button { flex:1; padding:5px 8px; font-size:13px; }
+button { background:var(--acento); border-color:var(--acento); color:#fff; font-weight:600; cursor:pointer; }
+button:disabled { opacity:.5; cursor:default; }
+button.sec { background:var(--card); color:var(--txt); border-color:var(--borde); font-weight:500; }
+#contador { color:var(--suave); font-size:13px; }
+main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); }
+.card { background:var(--card); border:1px solid var(--borde); border-radius:12px; overflow:hidden;
+         display:flex; flex-direction:column; position:relative;
+         content-visibility:auto; contain-intrinsic-size:auto 460px; }
+.card[hidden] { display:none; }
+.card.sel { outline:3px solid var(--acento); }
+.pick { position:absolute; top:8px; right:8px; z-index:2; background:var(--card); border-radius:6px;
+         padding:3px 7px; font-size:13px; cursor:pointer; border:1px solid var(--borde); }
+.foto { display:block; background:#fff; aspect-ratio:1; position:relative; overflow:hidden; }
+.foto img { position:absolute; inset:0; width:100%; height:100%; box-sizing:border-box; object-fit:contain; padding:14px; }
+.dto { position:absolute; z-index:1; top:8px; left:8px; background:var(--rojo); color:#fff; font-weight:700;
+        padding:3px 8px; border-radius:6px; }
+.info { padding:12px; display:flex; flex-direction:column; gap:8px; flex:1; }
+.titulo { color:var(--txt); text-decoration:none; display:-webkit-box; -webkit-line-clamp:3;
+           -webkit-box-orient:vertical; overflow:hidden; }
+.titulo:hover { text-decoration:underline; }
+.precio b { font-size:20px; } .precio s { color:var(--suave); margin-left:6px; }
+.tags { display:flex; flex-wrap:wrap; gap:5px; }
+.tag { background:var(--tag); border-radius:5px; padding:2px 7px; font-size:12px; }
+.resenas { font-size:13px; color:var(--suave); margin:-2px 0 6px; }
+.resenas .estrellas { color:#f5a623; letter-spacing:1px; }
+.resenas .vendidos { white-space:nowrap; }
+.kp { font-size:12px; color:var(--suave); line-height:1.35; display:flex; flex-direction:column; gap:1px; }
+.kp b { color:var(--txt); } .kp i { font-style:normal; opacity:.8; }
+.kp .bien { color:var(--ok); font-weight:600; } .kp .mal { color:var(--inflada); font-weight:600; }
+.spark { width:100%; height:38px; margin-bottom:3px; overflow:visible; }
+.spark polyline { fill:none; stroke:var(--acento); stroke-width:1.6; vector-effect:non-scaling-stroke; stroke-linejoin:round; }
+.spark .min { stroke:var(--ok); stroke-width:1; stroke-dasharray:3 3; vector-effect:non-scaling-stroke; opacity:.8; }
+.spark circle { fill:var(--rojo); }
+.tag.talla { background:transparent; border:1px solid var(--suave); font-weight:600; }
+.tag.top, .chip.m-top { --c:var(--top); } .tag.top { background:var(--top); color:#fff; } .tag.nueva, .chip.m-nueva { --c:var(--nueva); } .tag.nueva { background:var(--nueva); color:#fff; } .tag.ok, .chip.m-ok { --c:var(--ok); } .tag.ok { background:var(--ok); color:#fff; } .tag.reciente, .chip.m-reciente { --c:var(--reciente); } .tag.reciente { background:var(--reciente); color:#fff; } .tag.inflada, .chip.m-inflada { --c:var(--inflada); } .tag.inflada { background:var(--inflada); color:#fff; } .tag.sinstock, .chip.m-sinstock { --c:var(--sinstock); } .tag.sinstock { background:var(--sinstock); color:#fff; } .tag.hist, .chip.m-hist { --c:var(--hist); } .tag.hist { background:var(--hist); color:#fff; } .tag.min90, .chip.m-min90 { --c:var(--min90); } .tag.min90 { background:var(--min90); color:#fff; } .tag.prime, .chip.m-prime { --c:var(--prime); } .tag.prime { background:var(--prime); color:#fff; } .tag.cupon, .chip.m-cupon { --c:var(--cupon); } .tag.cupon { background:var(--cupon); color:#fff; } .tag.sns, .chip.m-sns { --c:var(--sns); } .tag.sns { background:var(--sns); color:#fff; } .tag.cc, .chip.m-cc { --c:var(--cc); } .tag.cc { background:var(--cc); color:#fff; } .tag.rep, .chip.m-rep { --c:var(--rep); } .tag.rep { background:var(--rep); color:#fff; } .tag.oferta, .chip.m-oferta { --c:var(--oferta); } .tag.oferta { background:var(--oferta); color:#fff; } .tag.masvendido, .chip.m-masvendido { --c:var(--masvendido); } .tag.masvendido { background:var(--masvendido); color:#fff; } .tag.vendidos, .chip.m-vendidos { --c:var(--vendidos); } .tag.vendidos { background:var(--vendidos); color:#fff; } .tag.tallanormal, .chip.m-tallanormal { --c:var(--tallanormal); } .tag.tallanormal { background:var(--tallanormal); color:#fff; } 
+:root { --tallanormal:#0f766e; }  /* verde azulado oscuro: se lee con letras blancas en claro y en oscuro */
+.tag.prime, .chip.m-prime.on { color:#062a3a; }  /* azul Prime claro: texto oscuro para que se lea */
+.tag.top, .chip.m-top.on { color:var(--bg); font-weight:600; }  /* marca top: negro (blanco en modo oscuro) */
+.pie { margin-top:auto; color:var(--suave); font-size:12px; }
+@media (max-width:600px) { header { padding:12px 16px; } main { padding:16px; gap:12px;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); } .ctrl { margin-left:0; } }
+</style></head><body>
+<header>
+  <div><h1>Ofertas tecnología</h1>
+  <div class="sub">36 ofertas · 03/11/2026 02:17</div></div>
+  <div class="ctrl">
+    <input type="search" id="q" placeholder="Filtrar…">
+    <details class="multi" id="cat" data-todas="Todas las categorías"><summary>Todas las categorías</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="🔋 Powerbank"> 🔋 Powerbank <span>(13)</span></label><label><input type="checkbox" value="📺 TV"> 📺 TV <span>(13)</span></label><label><input type="checkbox" value="📱 Móvil"> 📱 Móvil <span>(7)</span></label><label><input type="checkbox" value="🎧 Auriculares"> 🎧 Auriculares <span>(1)</span></label><label><input type="checkbox" value="🔊 Altavoz"> 🔊 Altavoz <span>(1)</span></label><label><input type="checkbox" value="⌚ Smartwatch"> ⌚ Smartwatch <span>(1)</span></label></div></details>
+    
+    <select id="grupo"><option value="">Todas las búsquedas</option><option value="Auriculares">Auriculares</option><option value="Moviles">Moviles</option><option value="Powerbanks (accesorios móvil)">Powerbanks (accesorios móvil)</option><option value="TV">TV</option></select>
+    <select id="valmin" title="Valoración mínima"><option value="0">Cualquier valoración</option><option value="4">4,0★ o más</option><option value="4.3">4,3★ o más</option><option value="4.5">4,5★ o más</option></select>
+    <select id="vendmin" title="Comprados el mes pasado"><option value="0">Cualquier venta</option><option value="50">50+ al mes</option><option value="100">100+ al mes</option><option value="300">300+ al mes</option><option value="1000">1.000+ al mes</option></select>
+    <label>Dto. <input type="number" id="dtomin" min="0" max="100" step="5" value="0" title="mínimo">
+      a <input type="number" id="dtomax" min="0" max="100" step="5" value="100" title="máximo"> %</label>
+    <label>Precio <input type="number" id="pmin" min="0" step="1" placeholder="mín" title="precio mínimo">
+      a <input type="number" id="pmax" min="0" step="1" placeholder="máx" title="precio máximo"> €</label>
+    <button type="button" class="sec" data-pmax="20">Hasta 20 €</button>
+    <button type="button" class="sec" data-pmax="30">Hasta 30 €</button>
+    <select id="orden">
+      <option value="dto">Más descuento</option>
+      <option value="asc">Precio más bajo</option>
+      <option value="desc">Precio más alto</option>
+      <option value="vend">Más vendidos</option>
+      
+      
+      <option value="opi">Más opiniones</option>
+      <option value="val">Mejor valorados</option>
+    </select>
+    <button id="limpiar" class="sec" type="button">Quitar filtros</button>
+    <span id="contador"></span>
+    <button id="copiar" disabled>Copiar ASIN (0)</button>
+  </div>
+  <div class="chips"><button type="button" class="chip m-nueva" data-m="nueva">Oferta nueva <span>11</span></button><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>9</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>10</span></button><button type="button" class="chip m-cupon" data-m="cupon">Cupón <span>1</span></button><button type="button" class="chip m-cc" data-m="cc">💰 Creator Connections <span>2</span></button><button type="button" class="chip m-rep" data-m="rep">3+ días en oferta <span>14</span></button><button type="button" class="chip m-vendidos" data-m="vendidos">🛒 Comprados el mes pasado <span>3</span></button></div>
+</header>
+<main id="lista">
+<article class="card" data-dto="49" data-epc="0" data-precio="25.71" data-val="4.6" data-opi="870" data-vend="50" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Powerbanks (accesorios móvil)"
+         data-cat="🔋 Powerbank" data-marca="" data-marcas=" hist tallanormal vendidos "
+         data-texto="iniu para magsafe qi2 15w power bank, ultrafino 10000mah bateria portatil | carga rápida por cable de 45w, magnética certificada qi2 15w original, soporte, inalámbrica bateria para serie iphone 17-18 b0dr8nf1gx powerbanks (accesorios móvil)">
+  <label class="pick"><input type="checkbox" value="B0DR8NF1GX" data-desc="INIU para MagSafe Qi2 15W Power Bank, U… · 25,71 € · -49%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DR8NF1GX?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-49%</span>
+    <img src="https://m.media-amazon.com/images/I/7194O0GepAL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DR8NF1GX?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">INIU para MagSafe Qi2 15W Power Bank, Ultrafino 10000mAh Bateria Portatil | Carga Rápida por Cable de 45W, Magnética Certificada Qi2 15W Original, Soporte, Inalámbrica Bateria para Serie iPhone 17-18</a>
+    <div class="precio"><b>25,71 €</b> <s>49,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (870) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-3% vs mín. 30 días (26,38 €)</span></div>
+    <div class="pie">Powerbanks (accesorios móvil) · <code>B0DR8NF1GX</code></div>
+  </div>
+</article>
+<article class="card" data-dto="39" data-epc="0" data-precio="24.36" data-val="4.6" data-opi="870" data-vend="1000" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Powerbanks (accesorios móvil)"
+         data-cat="🔋 Powerbank" data-marca="" data-marcas=" rep tallanormal vendidos "
+         data-texto="iniu 45w power bank, fino 10000mah inalámbrico magnético batería externa | carga rápida por magsafe, magnética certificada qi2 15w original, soporte, inalámbrica bateria para serie iphone 17-18 b0flpcm6cb powerbanks (accesorios móvil)">
+  <label class="pick"><input type="checkbox" value="B0FLPCM6CB" data-desc="INIU 45W Power Bank, Fino 10000mAh Inal… · 24,36 € · -39%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FLPCM6CB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-39%</span>
+    <img src="https://m.media-amazon.com/images/I/71hE2uSwm5L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FLPCM6CB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">INIU 45W Power Bank, Fino 10000mAh Inalámbrico Magnético Batería Externa | Carga Rápida por Magsafe, Magnética Certificada Qi2 15W Original, Soporte, Inalámbrica Bateria para Serie iPhone 17-18</a>
+    <div class="precio"><b>24,36 €</b> <s>39,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (870) · <span class="vendidos">🛒 1.000+ comprados el mes pasado</span></div>
+    
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-3% vs mín. 30 días (24,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Powerbanks (accesorios móvil) · <code>B0FLPCM6CB</code></div>
+  </div>
+</article>
+<article class="card" data-dto="39" data-epc="0" data-precio="729.0" data-val="4.5" data-opi="17" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="TV"
+         data-cat="📺 TV" data-marca="" data-marcas=" hist tallanormal "
+         data-texto="hisense 65u7s pro - miniled smart tv 65 pulgadas, hi-qled modo juego 165 hz nativos, sonido envolvente 2.1.2, anti reflection &amp; glare free, imax enhanced, dolby vision iq, hdr 10+ b0gt2hy84t tv">
+  <label class="pick"><input type="checkbox" value="B0GT2HY84T" data-desc="Hisense 65U7S Pro - MiniLED Smart TV 65… · 729,00 € · -39%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GT2HY84T?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-39%</span>
+    <img src="https://m.media-amazon.com/images/I/81j0HSS3+tL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GT2HY84T?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Hisense 65U7S Pro - MiniLED Smart TV 65 Pulgadas, Hi-QLED Modo Juego 165 Hz Nativos, Sonido Envolvente 2.1.2, Anti Reflection &amp; Glare Free, IMAX Enhanced, Dolby Vision IQ, HDR 10+</a>
+    <div class="precio"><b>729,00 €</b> <s>1.199,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (17)</div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-9% vs mín. 30 días (799,00 €)</span></div>
+    <div class="pie">TV · <code>B0GT2HY84T</code></div>
+  </div>
+</article>
+<article class="card" data-dto="33" data-epc="0" data-precio="99.97" data-val="4.4" data-opi="433" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Auriculares | Powerbanks (accesorios móvil)"
+         data-cat="🔋 Powerbank" data-marca="" data-marcas=" hist rep tallanormal "
+         data-texto="ugreen nexode pro qi2 15w power bank 20000mah batería externa usb c pd 100w | apto para avión, charge magsafe, 3 puertos 2c1a, tft, cargador portátil pc compatible con iphone 18 17 pro max galaxy s26 b0d4f34sb4 auriculares · powerbanks (accesorios móvil)">
+  <label class="pick"><input type="checkbox" value="B0D4F34SB4" data-desc="UGREEN Nexode Pro Qi2 15W Power Bank 20… · 99,97 € · -33%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0D4F34SB4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-33%</span>
+    <img src="https://m.media-amazon.com/images/I/61DgIx5ZmSL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0D4F34SB4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">UGREEN Nexode Pro Qi2 15W Power Bank 20000mAh Batería Externa USB C PD 100W | Apto para Avión, Charge MagSafe, 3 Puertos 2C1A, TFT, Cargador Portátil PC Compatible con iPhone 18 17 Pro Max Galaxy S26</a>
+    <div class="precio"><b>99,97 €</b> <s>149,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (433)</div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Auriculares · Powerbanks (accesorios móvil) · <code>B0D4F34SB4</code></div>
+  </div>
+</article>
+<article class="card" data-dto="32" data-epc="0" data-precio="27.07" data-val="4.2" data-opi="139" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Powerbanks (accesorios móvil)"
+         data-cat="🔋 Powerbank" data-marca="" data-marcas=" rep tallanormal "
+         data-texto="baseus picogo am31 20w bateria externa magsafe, 5000mah ultra fino power bank magsafe con cable usb c, bateria portatil magnetica, para iphone 17/16/15/14/13/12, gris b0gv3nftcb powerbanks (accesorios móvil)">
+  <label class="pick"><input type="checkbox" value="B0GV3NFTCB" data-desc="Baseus Picogo AM31 20W Bateria Externa… · 27,07 € · -32%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GV3NFTCB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-32%</span>
+    <img src="https://m.media-amazon.com/images/I/71IgQqYx+HL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GV3NFTCB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Baseus Picogo AM31 20W Bateria Externa Magsafe, 5000mAh Ultra Fino Power Bank Magsafe con Cable USB C, Bateria Portatil Magnetica, para iPhone 17/16/15/14/13/12, Gris</a>
+    <div class="precio"><b>27,07 €</b> <s>39,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (139)</div>
+    
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Powerbanks (accesorios móvil) · <code>B0GV3NFTCB</code></div>
+  </div>
+</article>
+<article class="card" data-dto="32" data-epc="0" data-precio="88.99" data-val="4.0" data-opi="94" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Auriculares | Powerbanks (accesorios móvil)"
+         data-cat="🔋 Powerbank" data-marca="" data-marcas=" min90 rep tallanormal "
+         data-texto="vention power bank 27000 mah 200w, batería externa carga rápida con pantalla digital y animación emoji, cable usb-c integrado, 2× usb-c + usb-a, para macbook pro, dell/hp, iphone 17/16/15, galaxy b0fd35c88x auriculares · powerbanks (accesorios móvil)">
+  <label class="pick"><input type="checkbox" value="B0FD35C88X" data-desc="VENTION Power Bank 27000 mAh 200W, bate… · 88,99 € · -32%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FD35C88X?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-32%</span>
+    <img src="https://m.media-amazon.com/images/I/71kymRhvIiL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FD35C88X?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">VENTION Power Bank 27000 mAh 200W, batería Externa Carga rápida con Pantalla Digital y animación Emoji, Cable USB-C Integrado, 2× USB-C + USB-A, para MacBook Pro, DELL/HP, iPhone 17/16/15, Galaxy</a>
+    <div class="precio"><b>88,99 €</b> <s>129,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,0 (94)</div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Auriculares · Powerbanks (accesorios móvil) · <code>B0FD35C88X</code></div>
+  </div>
+</article>
+<article class="card" data-dto="32" data-epc="0" data-precio="180.03" data-val="4.1" data-opi="4" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" cupon tallanormal "
+         data-texto="note56 plus andriod 16 telefono movil, 48gb+256gb/2tb smartphone octa core 6.56&quot; hd+ 90hz móvil, batería 6150mah, 50mp+8mp, teléfono móvil 8.5mm, dual sim 4g/ gps/nfc/huella dactilar/face id b0h296bdn2 moviles">
+  <label class="pick"><input type="checkbox" value="B0H296BDN2" data-desc="Note56 Plus Andriod 16 Telefono Movil,… · 180,03 € · -32%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H296BDN2?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-32%</span>
+    <img src="https://m.media-amazon.com/images/I/71PDvWFLByL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H296BDN2?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Note56 Plus Andriod 16 Telefono Movil, 48GB+256GB/2TB Smartphone Octa Core 6.56&quot; HD+ 90Hz Móvil, Batería 6150mAh, 50MP+8MP, Teléfono Móvil 8.5mm, Dual SIM 4G/ GPS/NFC/Huella Dactilar/Face ID</a>
+    <div class="precio"><b>180,03 €</b> <s>239,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,1 (4)</div>
+    
+    <div class="tags"><span class="tag cupon">Con cupón 162,03 €</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-10% vs mín. 30 días (199,49 €)</span></div>
+    <div class="pie">Moviles · <code>B0H296BDN2</code></div>
+  </div>
+</article>
+<article class="card" data-dto="29" data-epc="0" data-precio="199.0" data-val="4.5" data-opi="143" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Auriculares | Moviles"
+         data-cat="🎧 Auriculares" data-marca="" data-marcas=" nueva ok tallanormal "
+         data-texto="sony wh-1000xm4c auriculares inalambricos con cancelación de ruido -lavanda | auriculares de diadema, bluetooth, hi-res, procesador noise cancelling qn1, batería 34h, conexión multipunto, ios y android b0hbxhb1tl auriculares · moviles">
+  <label class="pick"><input type="checkbox" value="B0HBXHB1TL" data-desc="Sony WH-1000XM4C Auriculares inalambric… · 199,00 € · -29%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HBXHB1TL?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-29%</span>
+    <img src="https://m.media-amazon.com/images/I/61mDynam9+L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HBXHB1TL?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Sony WH-1000XM4C Auriculares inalambricos con cancelación de Ruido -Lavanda | Auriculares de diadema, bluetooth, Hi-Res, Procesador Noise Cancelling QN1, Batería 34h, Conexión multipunto, iOS y Android</a>
+    <div class="precio"><b>199,00 €</b> <s>279,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (143)</div>
+    
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -13% vs mín. 30 días (228,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Auriculares · Moviles · <code>B0HBXHB1TL</code></div>
+  </div>
+</article>
+<article class="card" data-dto="25" data-epc="0" data-precio="59.99" data-val="4.6" data-opi="886" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Auriculares | Powerbanks (accesorios móvil)"
+         data-cat="🔋 Powerbank" data-marca="" data-marcas=" hist rep tallanormal "
+         data-texto="ugreen magflow air qi2 15w power bank magsafe 10000mah pd 30w (azul pavón) | ultra fino batería externa portatil magnético carga rápida compatible con magsafe iphone 18 pro max 17 16 15 14 13 12 b0gsvp1pfb auriculares · powerbanks (accesorios móvil)">
+  <label class="pick"><input type="checkbox" value="B0GSVP1PFB" data-desc="UGREEN MagFlow Air Qi2 15W Power Bank M… · 59,99 € · -25%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GSVP1PFB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-25%</span>
+    <img src="https://m.media-amazon.com/images/I/612rMVCnsmL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GSVP1PFB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">UGREEN MagFlow Air Qi2 15W Power Bank Magsafe 10000mAh PD 30W (Azul Pavón) | Ultra Fino Batería Externa Portatil Magnético Carga Rápida Compatible con Magsafe iPhone 18 Pro Max 17 16 15 14 13 12</a>
+    <div class="precio"><b>59,99 €</b> <s>79,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (886)</div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Auriculares · Powerbanks (accesorios móvil) · <code>B0GSVP1PFB</code></div>
+  </div>
+</article>
+<article class="card" data-dto="25" data-epc="0" data-precio="59.99" data-val="4.5" data-opi="518" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Auriculares | Powerbanks (accesorios móvil)"
+         data-cat="🔋 Powerbank" data-marca="" data-marcas=" min90 ok rep tallanormal "
+         data-texto="cuktech 15 ultra power bank 20000mah, 3 puertos 210w max potencia total, batería portátil con pps pd3.1 y pantalla tft, bateria externa carga rapida para macbook air/pro/ipad/iphone 16/samsung/xiaomi b0dm1rgzhd auriculares · powerbanks (accesorios móvil)">
+  <label class="pick"><input type="checkbox" value="B0DM1RGZHD" data-desc="CUKTECH 15 Ultra Power Bank 20000mAh, 3… · 59,99 € · -25%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DM1RGZHD?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-25%</span>
+    <img src="https://m.media-amazon.com/images/I/61s1QEaKPvL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DM1RGZHD?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">CUKTECH 15 Ultra Power Bank 20000mAh, 3 Puertos 210W MAX Potencia Total, Batería Portátil con PPS PD3.1 y Pantalla TFT, Bateria Externa Carga Rapida para MacBook Air/Pro/iPad/iPhone 16/Samsung/Xiaomi</a>
+    <div class="precio"><b>59,99 €</b> <s>79,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (518)</div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -14% vs mín. 30 días (69,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Auriculares · Powerbanks (accesorios móvil) · <code>B0DM1RGZHD</code></div>
+  </div>
+</article>
+<article class="card" data-dto="24" data-epc="0" data-precio="1599.0" data-val="4.6" data-opi="32" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="TV"
+         data-cat="📺 TV" data-marca="" data-marcas=" tallanormal "
+         data-texto="tcl 85c7l 85 pulgadas sqd-mini led 4k hdr10+ smart tv, 3.000 nits | 1.624 zonas de atenuación, dolby vision iq &amp; atmos, audio by bang &amp; olufsen, game master, 144hz vrr, apple airplay 2 b0gvt5hyb3 tv">
+  <label class="pick"><input type="checkbox" value="B0GVT5HYB3" data-desc="TCL 85C7L 85 Pulgadas SQD-Mini LED 4K H… · 1.599,00 € · -24%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GVT5HYB3?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-24%</span>
+    <img src="https://m.media-amazon.com/images/I/71e+hepHGeL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GVT5HYB3?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">TCL 85C7L 85 Pulgadas SQD-Mini LED 4K HDR10+ Smart TV, 3.000 Nits | 1.624 Zonas de Atenuación, Dolby Vision IQ &amp; Atmos, Audio by Bang &amp; Olufsen, Game Master, 144Hz VRR, Apple AirPlay 2</a>
+    <div class="precio"><b>1.599,00 €</b> <s>2.099,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (32)</div>
+    
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (1699,00 €)</span></div>
+    <div class="pie">TV · <code>B0GVT5HYB3</code></div>
+  </div>
+</article>
+<article class="card" data-dto="24" data-epc="0" data-precio="2848.9" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="TV"
+         data-cat="📺 TV" data-marca="" data-marcas=" nueva tallanormal "
+         data-texto="cecotec vqu30098+ tv 98&quot; qled 4k uhd, 120hz, full array local dimming 192 zonas, smart tv android 11, hdmi 2.1, google voice assistant, dolby visiotmos, subwoofer 60w, wi-fi, bt, pvr b0bq2r61zb tv">
+  <label class="pick"><input type="checkbox" value="B0BQ2R61ZB" data-desc="Cecotec VQU30098+ TV 98&quot; QLED 4K UHD, 1… · 2.848,90 € · -24%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0BQ2R61ZB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-24%</span>
+    <img src="https://m.media-amazon.com/images/I/61OvBS8xzQL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0BQ2R61ZB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Cecotec VQU30098+ TV 98&quot; QLED 4K UHD, 120Hz, Full Array Local Dimming 192 Zonas, Smart TV Android 11, HDMI 2.1, Google Voice Assistant, Dolby Visiotmos, SubWoofer 60W, Wi-Fi, BT, PVR</a>
+    <div class="precio"><b>2.848,90 €</b> <s>3.762,30 €</s></div>
+    
+    
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (2999,00 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">TV · <code>B0BQ2R61ZB</code></div>
+  </div>
+</article>
+<article class="card" data-dto="23" data-epc="0" data-precio="19.32" data-val="4.5" data-opi="1063" data-vend="100" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Powerbanks (accesorios móvil)"
+         data-cat="🔋 Powerbank" data-marca="" data-marcas=" cc min90 rep tallanormal vendidos "
+         data-texto="iniu 45w carga rapida tablet power bank, pequeño 10000mah batería externa | cable usb c integrado, apto para avión, esenciales de viaje, portatil movil para iphone 18 17 16, ipad, samsung etc b0dcjt1tpg powerbanks (accesorios móvil)">
+  <label class="pick"><input type="checkbox" value="B0DCJT1TPG" data-desc="INIU 45W Carga Rapida Tablet Power Bank… · 19,32 € · -23%" data-enlace="https://www.amazon.es/dp/B0DCJT1TPG?ref=t_ac_spc_accepted_tile&amp;linkCode=tr1&amp;tag=evaruizrodrig-21&amp;linkId=B0DCJT1TPG_1793588583654"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DCJT1TPG?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-23%</span>
+    <img src="https://m.media-amazon.com/images/I/61S2zTMsiNL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DCJT1TPG?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">INIU 45W Carga Rapida Tablet Power Bank, Pequeño 10000mAh Batería Externa | Cable USB C Integrado, Apto para Avión, Esenciales de Viaje, Portatil Movil para iPhone 18 17 16, iPad, Samsung etc</a>
+    <div class="precio"><b>19,32 €</b> <s>24,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (1.063) · <span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (20,34 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,17 €</span></div>
+    <div class="pie">Powerbanks (accesorios móvil) · <code>B0DCJT1TPG</code></div>
+  </div>
+</article>
+<article class="card" data-dto="23" data-epc="0" data-precio="20.89" data-val="4.6" data-opi="533" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Powerbanks (accesorios móvil)"
+         data-cat="🔋 Powerbank" data-marca="" data-marcas=" hist rep tallanormal "
+         data-texto="iniu 45w carga rapida tablet power bank, pequeño 10000mah batería externa | cable usb c integrado, apto para avión, esenciales de viaje, portatil movil para iphone 18 17 16, ipad, samsung etc b0dp2lpl7h powerbanks (accesorios móvil)">
+  <label class="pick"><input type="checkbox" value="B0DP2LPL7H" data-desc="INIU 45W Carga Rapida Tablet Power Bank… · 20,89 € · -23%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DP2LPL7H?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-23%</span>
+    <img src="https://m.media-amazon.com/images/I/614XUsg3nDL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DP2LPL7H?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">INIU 45W Carga Rapida Tablet Power Bank, Pequeño 10000mAh Batería Externa | Cable USB C Integrado, Apto para Avión, Esenciales de Viaje, Portatil Movil para iPhone 18 17 16, iPad, Samsung etc</a>
+    <div class="precio"><b>20,89 €</b> <s>26,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (533)</div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (21,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Powerbanks (accesorios móvil) · <code>B0DP2LPL7H</code></div>
+  </div>
+</article>
+<article class="card" data-dto="21" data-epc="0" data-precio="94.99" data-val="4.0" data-opi="23" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Auriculares | Powerbanks (accesorios móvil)"
+         data-cat="🔊 Altavoz" data-marca="" data-marcas=" min90 tallanormal "
+         data-texto="ultimate ears boom 4 - altavoz bluetooth portátil impermeable con 360 grados, audaz, inmersivo, sonido cristalino, altavoz flotante con batería de 15 horas y alcance de 45 m, usb-c, lila b0d3wqqh89 auriculares · powerbanks (accesorios móvil)">
+  <label class="pick"><input type="checkbox" value="B0D3WQQH89" data-desc="Ultimate Ears Boom 4 - Altavoz Bluetoot… · 94,99 € · -21%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0D3WQQH89?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-21%</span>
+    <img src="https://m.media-amazon.com/images/I/81+ViHTSh9L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0D3WQQH89?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Ultimate Ears Boom 4 - Altavoz Bluetooth portátil Impermeable con 360 Grados, audaz, inmersivo, Sonido cristalino, Altavoz Flotante con batería de 15 Horas y Alcance de 45 m, USB-C, Lila</a>
+    <div class="precio"><b>94,99 €</b> <s>119,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,0 (23)</div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (99,99 €)</span></div>
+    <div class="pie">Auriculares · Powerbanks (accesorios móvil) · <code>B0D3WQQH89</code></div>
+  </div>
+</article>
+<article class="card" data-dto="20" data-epc="0" data-precio="39.99" data-val="4.6" data-opi="918" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Powerbanks (accesorios móvil)"
+         data-cat="🔋 Powerbank" data-marca="" data-marcas=" min90 rep tallanormal "
+         data-texto="ugreen nexode pro 55w power bank 10000mah batería externa 45w (azul) | apto para avión, cable usb c, 2 puertos 1c1a, cargador portátil pc, compatible con xiaomi note 15 14 iphone 18 17 pro galaxy b0fjmft169 powerbanks (accesorios móvil)">
+  <label class="pick"><input type="checkbox" value="B0FJMFT169" data-desc="UGREEN Nexode Pro 55W Power Bank 10000m… · 39,99 € · -20%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FJMFT169?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-20%</span>
+    <img src="https://m.media-amazon.com/images/I/61skWMUn7qL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FJMFT169?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">UGREEN Nexode Pro 55W Power Bank 10000mAh Batería Externa 45W (Azul) | Apto para Avión, Cable USB C, 2 Puertos 1C1A, Cargador Portátil PC, Compatible con Xiaomi Note 15 14 iPhone 18 17 Pro Galaxy</a>
+    <div class="precio"><b>39,99 €</b> <s>49,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (918)</div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Powerbanks (accesorios móvil) · <code>B0FJMFT169</code></div>
+  </div>
+</article>
+<article class="card" data-dto="20" data-epc="0" data-precio="55.97" data-val="4.5" data-opi="114" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Auriculares | Powerbanks (accesorios móvil)"
+         data-cat="🔋 Powerbank" data-marca="" data-marcas=" hist nueva ok tallanormal "
+         data-texto="ugreen nexode 30w power bank 10000mah batería externa usb c carga rápida | apto para avión, cable tipo c integrado, 2 puertos 1c1a, carga magsafe para iwatch, compatible con iphone 18 17 pro galaxy b0dqd2s49x auriculares · powerbanks (accesorios móvil)">
+  <label class="pick"><input type="checkbox" value="B0DQD2S49X" data-desc="UGREEN Nexode 30W Power Bank 10000mAh B… · 55,97 € · -20%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DQD2S49X?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-20%</span>
+    <img src="https://m.media-amazon.com/images/I/51rZ7Qm3CzL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DQD2S49X?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">UGREEN Nexode 30W Power Bank 10000mAh Batería Externa USB C Carga Rápida | Apto para Avión, Cable Tipo C Integrado, 2 Puertos 1C1A, Carga MagSafe para iWatch, Compatible con iPhone 18 17 Pro Galaxy</a>
+    <div class="precio"><b>55,97 €</b> <s>69,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (114)</div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -20% vs mín. 30 días (69,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Auriculares · Powerbanks (accesorios móvil) · <code>B0DQD2S49X</code></div>
+  </div>
+</article>
+<article class="card" data-dto="17" data-epc="0" data-precio="314.44" data-val="4.0" data-opi="15" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" hist rep tallanormal "
+         data-texto="blackview bl7000 pro 5g móvil irrompible android 16, 32gb+256gb/tf 2tb ai teléfono móvil, 6,78&quot; fhd+120hz, 7500mah móvil indestructible, 50mp+32mp, móvil rugerizado ip68, otg, nfc, gps, fm, naranja b0h458y1rb moviles">
+  <label class="pick"><input type="checkbox" value="B0H458Y1RB" data-desc="Blackview BL7000 Pro 5G Móvil Irrompibl… · 314,44 € · -17%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H458Y1RB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-17%</span>
+    <img src="https://m.media-amazon.com/images/I/61bl7VPjybL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H458Y1RB?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Blackview BL7000 Pro 5G Móvil Irrompible Android 16, 32GB+256GB/TF 2TB AI Teléfono Móvil, 6,78&quot; FHD+120Hz, 7500mAh Móvil Indestructible, 50MP+32MP, Móvil Rugerizado IP68, OTG, NFC, GPS, FM, Naranja</a>
+    <div class="precio"><b>314,44 €</b> <s>379,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,0 (15)</div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (330,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Moviles · <code>B0H458Y1RB</code></div>
+  </div>
+</article>
+<article class="card" data-dto="17" data-epc="0" data-precio="749.0" data-val="4.6" data-opi="36" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="TV"
+         data-cat="📺 TV" data-marca="" data-marcas=" hist ok tallanormal "
+         data-texto="sony bravia 3 ii 55 pulgadas tv 4k smart tv (google tv), procesador xr con inteligencia artificial, 120 hz, dolby vision y dolby atmos, compatible con ps5, 55xr32m2, modelo 2026 b0gzpv9js8 tv">
+  <label class="pick"><input type="checkbox" value="B0GZPV9JS8" data-desc="Sony BRAVIA 3 II 55 Pulgadas TV 4K Smar… · 749,00 € · -17%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GZPV9JS8?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-17%</span>
+    <img src="https://m.media-amazon.com/images/I/81pOZOAwyNL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GZPV9JS8?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Sony BRAVIA 3 II 55 Pulgadas TV 4K Smart TV (Google TV), Procesador XR con Inteligencia Artificial, 120 Hz, Dolby Vision y Dolby Atmos, Compatible con PS5, 55XR32M2, Modelo 2026</a>
+    <div class="precio"><b>749,00 €</b> <s>899,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (36)</div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -12% vs mín. 30 días (849,00 €)</span></div>
+    <div class="pie">TV · <code>B0GZPV9JS8</code></div>
+  </div>
+</article>
+<article class="card" data-dto="16" data-epc="0" data-precio="150.9" data-val="4.0" data-opi="36" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="TV"
+         data-cat="📺 TV" data-marca="" data-marcas=" min90 nueva tallanormal "
+         data-texto="cecotec smart tv, televisor led de 32 pulgadas resolución hd a4 series alh40032s. sistema operativo google tv, dolby audio, hdr10, 16 gb de rom, bluetooth, google voice assitant y chromecast b0bq1p7nhr tv">
+  <label class="pick"><input type="checkbox" value="B0BQ1P7NHR" data-desc="Cecotec Smart TV, Televisor LED de 32 P… · 150,90 € · -16%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0BQ1P7NHR?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-16%</span>
+    <img src="https://m.media-amazon.com/images/I/71EtyPREjCL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0BQ1P7NHR?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Cecotec Smart TV, Televisor LED de 32 Pulgadas Resolución HD A4 Series ALH40032S. Sistema Operativo Google TV, Dolby Audio, HDR10, 16 GB de ROM, Bluetooth, Google Voice Assitant y Chromecast</a>
+    <div class="precio"><b>150,90 €</b> <s>179,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,0 (36)</div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (159,00 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">TV · <code>B0BQ1P7NHR</code></div>
+  </div>
+</article>
+<article class="card" data-dto="16" data-epc="0" data-precio="1799.0" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" ok rep tallanormal "
+         data-texto="oppo find x10 pro max 512gb titanium + pad 5 wifi 128gb black b0hn7frd2b moviles">
+  <label class="pick"><input type="checkbox" value="B0HN7FRD2B" data-desc="OPPO Find X10 Pro MAX 512GB Titanium +… · 1.799,00 € · -16%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HN7FRD2B?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-16%</span>
+    <img src="https://m.media-amazon.com/images/I/61J7Gpq8mAL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HN7FRD2B?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">OPPO Find X10 Pro MAX 512GB Titanium + Pad 5 WiFi 128GB Black</a>
+    <div class="precio"><b>1.799,00 €</b> <s>2.147,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag ok">Bajada real: -16% vs mín. 30 días (2147,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Moviles · <code>B0HN7FRD2B</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-epc="0" data-precio="1099.0" data-val="4.5" data-opi="169" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="TV"
+         data-cat="📺 TV" data-marca="" data-marcas=" min90 tallanormal "
+         data-texto="tcl 85t8d 85 pulgadas qd-mini led 4k hdr10+ smart tv gaming 144hz vrr | freesync premium, game master, dolby vision &amp; atmos, sonido onkyo 2.1, apple airplay 2 b0gr982tph tv">
+  <label class="pick"><input type="checkbox" value="B0GR982TPH" data-desc="TCL 85T8D 85 Pulgadas QD-Mini LED 4K HD… · 1.099,00 € · -15%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GR982TPH?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/713XowbHtiL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GR982TPH?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">TCL 85T8D 85 Pulgadas QD-Mini LED 4K HDR10+ Smart TV Gaming 144Hz VRR | FreeSync Premium, Game Master, Dolby Vision &amp; Atmos, Sonido Onkyo 2.1, Apple AirPlay 2</a>
+    <div class="precio"><b>1.099,00 €</b> <s>1.299,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (169)</div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-8% vs mín. 30 días (1199,00 €)</span></div>
+    <div class="pie">TV · <code>B0GR982TPH</code></div>
+  </div>
+</article>
+<article class="card" data-dto="14" data-epc="0" data-precio="57.44" data-val="4.5" data-opi="5328" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Auriculares"
+         data-cat="🔋 Powerbank" data-marca="" data-marcas=" nueva tallanormal "
+         data-texto="iniu laptop power bank, pequeño 25000mah 100w carga rapida batteria externa | cable usb c desmontable, apto para avión de viaje, bateria portatil para macbook, steam deck, iphone 18 17, plata metálica b0gj8l7hvh auriculares">
+  <label class="pick"><input type="checkbox" value="B0GJ8L7HVH" data-desc="INIU Laptop Power Bank, Pequeño 25000mA… · 57,44 € · -14%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GJ8L7HVH?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-14%</span>
+    <img src="https://m.media-amazon.com/images/I/81iLDJmgsqL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GJ8L7HVH?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">INIU Laptop Power Bank, Pequeño 25000mAh 100W Carga Rapida Batteria Externa | Cable USB C Desmontable, Apto para Avión de Viaje, Bateria Portatil para MacBook, Steam Deck, iPhone 18 17, Plata metálica</a>
+    <div class="precio"><b>57,44 €</b> <s>66,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (5.328)</div>
+    
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (60,46 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Auriculares · <code>B0GJ8L7HVH</code></div>
+  </div>
+</article>
+<article class="card" data-dto="14" data-epc="0" data-precio="284.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" nueva tallanormal "
+         data-texto="blade 20 plus telefono movil irrompible, 48gb+256gb/2tb móvil resistente 11800mah/33w, helio g100 teléfono nfc, 6,6&quot; 120hz moviles rugerizado android 16, 64mp+20mp+16mp, 4g dual sim/face id movils b0hf7xw2zm moviles">
+  <label class="pick"><input type="checkbox" value="B0HF7XW2ZM" data-desc="BLADE 20 PLUS Telefono Movil Irrompible… · 284,99 € · -14%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HF7XW2ZM?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-14%</span>
+    <img src="https://m.media-amazon.com/images/I/81PVPy4wWzL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HF7XW2ZM?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">BLADE 20 PLUS Telefono Movil Irrompible, 48GB+256GB/2TB Móvil Resistente 11800mAh/33W, Helio G100 Teléfono NFC, 6,6&quot; 120Hz Moviles Rugerizado Android 16, 64MP+20MP+16MP, 4G Dual SIM/Face ID Movils</a>
+    <div class="precio"><b>284,99 €</b> <s>329,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (299,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Moviles · <code>B0HF7XW2ZM</code></div>
+  </div>
+</article>
+<article class="card" data-dto="14" data-epc="0" data-precio="829.0" data-val="4.3" data-opi="109" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="TV"
+         data-cat="📺 TV" data-marca="" data-marcas=" nueva tallanormal "
+         data-texto="hisense 75e8s - miniled 75 pulgadas smart tv 4k, quantum dot color, 144 hz | mini led, subwoofer integrado, hi-view ai engine, total hdr solution, filmmaker mode, amd freesync premium b0gqcxp6vm tv">
+  <label class="pick"><input type="checkbox" value="B0GQCXP6VM" data-desc="Hisense 75E8S - MiniLED 75 Pulgadas Sma… · 829,00 € · -14%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GQCXP6VM?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-14%</span>
+    <img src="https://m.media-amazon.com/images/I/81SxVzd1+4L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GQCXP6VM?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Hisense 75E8S - MiniLED 75 Pulgadas Smart TV 4K, Quantum Dot Color, 144 Hz | Mini LED, Subwoofer integrado, Hi-View AI Engine, Total HDR Solution, Filmmaker Mode, AMD FreeSync Premium</a>
+    <div class="precio"><b>829,00 €</b> <s>959,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (109)</div>
+    
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ">-2% vs mín. 30 días (849,00 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">TV · <code>B0GQCXP6VM</code></div>
+  </div>
+</article>
+<article class="card" data-dto="14" data-epc="0" data-precio="1812.9" data-val="1.0" data-opi="1" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="TV"
+         data-cat="📺 TV" data-marca="" data-marcas=" nueva tallanormal "
+         data-texto="cecotec vqu30085+ tv 85&quot; qled 4k uhd, 120hz, full array local dimming 144 zonas, smart tv android 11, hdmi 2.1, google voice assistant, dolby visiotmos, subwoofer 60w, wi-fi, bt, pvr b0bq1jdz3h tv">
+  <label class="pick"><input type="checkbox" value="B0BQ1JDZ3H" data-desc="Cecotec VQU30085+ TV 85&quot; QLED 4K UHD, 1… · 1.812,90 € · -14%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0BQ1JDZ3H?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-14%</span>
+    <img src="https://m.media-amazon.com/images/I/612lyEReo9L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0BQ1JDZ3H?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Cecotec VQU30085+ TV 85&quot; QLED 4K UHD, 120Hz, Full Array Local Dimming 144 Zonas, Smart TV Android 11, HDMI 2.1, Google Voice Assistant, Dolby Visiotmos, SubWoofer 60W, Wi-Fi, BT, PVR</a>
+    <div class="precio"><b>1.812,90 €</b> <s>2.119,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★☆☆☆☆</span> 1,0 (1)</div>
+    
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (1909,00 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">TV · <code>B0BQ1JDZ3H</code></div>
+  </div>
+</article>
+<article class="card" data-dto="13" data-epc="0" data-precio="449.0" data-val="4.2" data-opi="31" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="TV"
+         data-cat="📺 TV" data-marca="" data-marcas=" hist nueva ok tallanormal "
+         data-texto="sony bravia 2 ii 43 pulgadas tv 4k smart tv (google tv), procesador x1, escalado 4k, dolby atmos y dts:x, compatible con ps5, 43s20m2, modelo 2026 b0gzl6gmfj tv">
+  <label class="pick"><input type="checkbox" value="B0GZL6GMFJ" data-desc="Sony BRAVIA 2 II 43 Pulgadas TV 4K Smar… · 449,00 € · -13%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GZL6GMFJ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-13%</span>
+    <img src="https://m.media-amazon.com/images/I/81iMY0LnqQL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GZL6GMFJ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Sony BRAVIA 2 II 43 Pulgadas TV 4K Smart TV (Google TV), Procesador X1, Escalado 4K, Dolby Atmos y DTS:X, Compatible con PS5, 43S20M2, Modelo 2026</a>
+    <div class="precio"><b>449,00 €</b> <s>519,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (31)</div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -10% vs mín. 30 días (499,00 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">TV · <code>B0GZL6GMFJ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="13" data-epc="0" data-precio="999.0" data-val="4.4" data-opi="101" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="TV"
+         data-cat="📺 TV" data-marca="" data-marcas=" min90 ok tallanormal "
+         data-texto="hisense 85e7q pro - qled smart tv, gaming tv, modo juego 144hz, amd freesync premium dolby vision iq + dolby atmos, hi-concerto, procesador -view engine smart tv, 2025 b0f1n6rkfq tv">
+  <label class="pick"><input type="checkbox" value="B0F1N6RKFQ" data-desc="Hisense 85E7Q Pro - QLED Smart TV, Gami… · 999,00 € · -13%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0F1N6RKFQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-13%</span>
+    <img src="https://m.media-amazon.com/images/I/816PM7rNLpL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0F1N6RKFQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Hisense 85E7Q Pro - QLED Smart TV, Gaming TV, Modo Juego 144Hz, AMD Freesync Premium Dolby Vision IQ + Dolby Atmos, Hi-Concerto, Procesador -View Engine Smart TV, 2025</a>
+    <div class="precio"><b>999,00 €</b> <s>1.146,77 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (101)</div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ok">Bajada real: -13% vs mín. 30 días (1146,77 €)</span></div>
+    <div class="pie">TV · <code>B0F1N6RKFQ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="13" data-epc="0" data-precio="1399.0" data-val="4.5" data-opi="24" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="TV"
+         data-cat="📺 TV" data-marca="" data-marcas=" ok tallanormal "
+         data-texto="sony bravia 6 oled google-tv, 65 pulgadas | 4k smart tv (google tv), 120hz televisor con dolby vision/atmos, 6562 b0hd87b246 tv">
+  <label class="pick"><input type="checkbox" value="B0HD87B246" data-desc="Sony BRAVIA 6 OLED Google-TV, 65 Pulgad… · 1.399,00 € · -13%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HD87B246?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-13%</span>
+    <img src="https://m.media-amazon.com/images/I/71+7L6aY-jL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HD87B246?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Sony BRAVIA 6 OLED Google-TV, 65 Pulgadas | 4K Smart TV (Google TV), 120hz Televisor con Dolby Vision/Atmos, 6562</a>
+    <div class="precio"><b>1.399,00 €</b> <s>1.599,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (24)</div>
+    
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -13% vs mín. 30 días (1599,00 €)</span></div>
+    <div class="pie">TV · <code>B0HD87B246</code></div>
+  </div>
+</article>
+<article class="card" data-dto="12" data-epc="0" data-precio="113.99" data-val="3.2" data-opi="17" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" hist nueva tallanormal "
+         data-texto="oukitel c5 moviles baratos y buenos 16gb +128gb, 6.56&quot; pantalla smartphone | batería de 5000mah telefonos moviles libres, cámara 13mp+5mp, 4g dual sim, face id, otg, gps, 3.5mm jack b0h829cwcy moviles">
+  <label class="pick"><input type="checkbox" value="B0H829CWCY" data-desc="OUKITEL C5 Moviles Baratos y Buenos 16G… · 113,99 € · -12%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H829CWCY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-12%</span>
+    <img src="https://m.media-amazon.com/images/I/71BJCfQ6u6L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H829CWCY?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">OUKITEL C5 Moviles Baratos y Buenos 16GB +128GB, 6.56&quot; Pantalla Smartphone | Batería de 5000mAh Telefonos Moviles Libres, Cámara 13MP+5MP, 4G Dual SIM, Face ID, OTG, GPS, 3.5mm Jack</a>
+    <div class="precio"><b>113,99 €</b> <s>129,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★☆☆</span> 3,2 (17)</div>
+    
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (119,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Moviles · <code>B0H829CWCY</code></div>
+  </div>
+</article>
+<article class="card" data-dto="12" data-epc="0" data-precio="449.0" data-val="3.0" data-opi="1" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Moviles"
+         data-cat="⌚ Smartwatch" data-marca="" data-marcas=" ok rep tallanormal "
+         data-texto="huawei watch d3 smartwatch negro + scale 3, compatible con ios y android | monitorización ambulatoria de presión arterial, gestión integral de salud, ecg, gps, nfc, ligero y cómodo, garantía 42 meses b0hfs1z7h4 moviles">
+  <label class="pick"><input type="checkbox" value="B0HFS1Z7H4" data-desc="HUAWEI WATCH D3 Smartwatch Negro + Scal… · 449,00 € · -12%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0HFS1Z7H4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-12%</span>
+    <img src="https://m.media-amazon.com/images/I/712TEqif5eL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0HFS1Z7H4?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">HUAWEI WATCH D3 Smartwatch Negro + Scale 3, Compatible con iOS y Android | Monitorización Ambulatoria de Presión Arterial, Gestión Integral de Salud, ECG, GPS, NFC, Ligero y Cómodo, Garantía 42 meses</a>
+    <div class="precio"><b>449,00 €</b> <s>508,90 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★☆☆</span> 3,0 (1)</div>
+    
+    <div class="tags"><span class="tag ok">Bajada real: -12% vs mín. 30 días (508,90 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Moviles · <code>B0HFS1Z7H4</code></div>
+  </div>
+</article>
+<article class="card" data-dto="12" data-epc="0" data-precio="1939.0" data-val="4.5" data-opi="12" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="TV"
+         data-cat="📺 TV" data-marca="" data-marcas=" min90 nueva tallanormal "
+         data-texto="hisense 85ur8s - rgb miniled 85 pulgadas smart tv 4k, 180 hz nativos | 100% bt.2020, modo juego 180 hz, anti-reflection &amp; glare-free, 2.1.2 sonido multicanal, dolby vision iq, hdr10+ b0gx9bk2nh tv">
+  <label class="pick"><input type="checkbox" value="B0GX9BK2NH" data-desc="Hisense 85UR8S - RGB MiniLED 85 Pulgada… · 1.939,00 € · -12%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GX9BK2NH?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-12%</span>
+    <img src="https://m.media-amazon.com/images/I/81fXJdbaKrL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GX9BK2NH?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Hisense 85UR8S - RGB MiniLED 85 Pulgadas Smart TV 4K, 180 Hz Nativos | 100% BT.2020, Modo Juego 180 Hz, Anti-Reflection &amp; Glare-Free, 2.1.2 Sonido Multicanal, Dolby Vision IQ, HDR10+</a>
+    <div class="precio"><b>1.939,00 €</b> <s>2.199,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (12)</div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-3% vs mín. 30 días (1994,00 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">TV · <code>B0GX9BK2NH</code></div>
+  </div>
+</article>
+<article class="card" data-dto="11" data-epc="0" data-precio="151.99" data-val="4.2" data-opi="275" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" min90 rep tallanormal "
+         data-texto="blackview wave 10 telefono movil baratos buenos android 16,6.88&quot; 120hz,32+13mp 32+128gb/2tb tf celulares,smartphone libres oferta 5000mah/3.5mm/wifi 5g/face id/bloqueo huella dactilare,3 años garantía b0fx9hrg3b moviles">
+  <label class="pick"><input type="checkbox" value="B0FX9HRG3B" data-desc="Blackview WAVE 10 Telefono Movil Barato… · 151,99 € · -11%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FX9HRG3B?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-11%</span>
+    <img src="https://m.media-amazon.com/images/I/71h3fTAr5kL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FX9HRG3B?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Blackview WAVE 10 Telefono Movil Baratos Buenos Android 16,6.88&quot; 120Hz,32+13MP 32+128GB/2TB TF Celulares,Smartphone Libres Oferta 5000mAh/3.5mm/WiFi 5G/Face ID/Bloqueo Huella Dactilare,3 Años Garantía</a>
+    <div class="precio"><b>151,99 €</b> <s>169,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (275)</div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Moviles · <code>B0FX9HRG3B</code></div>
+  </div>
+</article>
+<article class="card" data-dto="10" data-epc="0" data-precio="89.99" data-val="4.5" data-opi="449" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Auriculares"
+         data-cat="🔋 Powerbank" data-marca="" data-marcas=" min90 tallanormal "
+         data-texto="ugreen magflow qi2 25w power bank inalámbrico 20000mah cable usb c pd 45w | batería externa magsafe carga rápida magnético con pntalla digital compatible con iphone 18 pro max 17 16 15 14 13 12 b0f37qvbnm auriculares">
+  <label class="pick"><input type="checkbox" value="B0F37QVBNM" data-desc="UGREEN Magflow Qi2 25W Power Bank Inalá… · 89,99 € · -10%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0F37QVBNM?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/51rqZkrsvPL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0F37QVBNM?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">UGREEN Magflow Qi2 25W Power Bank Inalámbrico 20000mAh Cable USB C PD 45W | Batería Externa Magsafe Carga Rápida Magnético con Pntalla Digital Compatible con iPhone 18 Pro Max 17 16 15 14 13 12</a>
+    <div class="precio"><b>89,99 €</b> <s>99,99 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (449)</div>
+    
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (94,99 €)</span></div>
+    <div class="pie">Auriculares · <code>B0F37QVBNM</code></div>
+  </div>
+</article>
+<article class="card" data-dto="10" data-epc="0" data-precio="450.35" data-val="4.7" data-opi="4" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Moviles"
+         data-cat="📱 Móvil" data-marca="" data-marcas=" cc rep tallanormal "
+         data-texto="infinix note 60 pro smartphone 5g 12 gb+256 gb, procesador snapdragon 7s gen4, pantalla active‑matrix trasera, carga rápida 90w +30w inalámbrica, cámara 50mp ois, batería 6000 mah, xos 16 android b0h5vjgwpq moviles">
+  <label class="pick"><input type="checkbox" value="B0H5VJGWPQ" data-desc="Infinix Note 60 Pro Smartphone 5G 12 GB… · 450,35 € · -10%" data-enlace="https://www.amazon.es/dp/B0H5VJGWPQ?ref=t_ac_spc_accepted_tile&amp;linkCode=tr1&amp;tag=evaruizrodrig-21&amp;linkId=B0H5VJGWPQ_1791959521210"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H5VJGWPQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/916aYLi3zIL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H5VJGWPQ?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Infinix Note 60 Pro Smartphone 5G 12 GB+256 GB, Procesador Snapdragon 7s Gen4, Pantalla Active‑Matrix Trasera, Carga rápida 90W +30W inalámbrica, Cámara 50MP OIS, Batería 6000 mAh, XOS 16 Android</a>
+    <div class="precio"><b>450,35 €</b> <s>499,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★★</span> 4,7 (4)</div>
+    
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (474,05 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,16 €</span></div>
+    <div class="pie">Moviles · <code>B0H5VJGWPQ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="10" data-epc="0" data-precio="899.0" data-val="4.4" data-opi="209" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="TV"
+         data-cat="📺 TV" data-marca="" data-marcas=" tallanormal "
+         data-texto="hisense 75u7se - miniled 75 pulgadas smart tv 4k, quantum dot color, 144 hz | subwoofer integrado, hi-view ai engine, imax enhanced, filmmaker mode, dolby vision iq, hdr 10+, 4 x hdmi 2.1, 2 x usb b0gkpmtbmc tv">
+  <label class="pick"><input type="checkbox" value="B0GKPMTBMC" data-desc="Hisense 75U7SE - MiniLED 75 Pulgadas Sm… · 899,00 € · -10%" data-enlace=""> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GKPMTBMC?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-10%</span>
+    <img src="https://m.media-amazon.com/images/I/71Azrp121pL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GKPMTBMC?tag=telegramlaordenada-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Hisense 75U7SE - MiniLED 75 Pulgadas Smart TV 4K, Quantum Dot Color, 144 Hz | Subwoofer integrado, Hi-View AI Engine, IMAX Enhanced, Filmmaker Mode, Dolby Vision IQ, HDR 10+, 4 x HDMI 2.1, 2 X USB</a>
+    <div class="precio"><b>899,00 €</b> <s>999,00 €</s></div>
+    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (209)</div>
+    
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ">-5% vs mín. 30 días (949,00 €)</span></div>
+    <div class="pie">TV · <code>B0GKPMTBMC</code></div>
+  </div>
+</article></main>
+<script>
+const lista = document.getElementById('lista');
+const cards = [...lista.querySelectorAll('.card')];
+const btn = document.getElementById('copiar');
+const $ = id => document.getElementById(id);
+function elegidos() { return cards.filter(c => c.querySelector('input').checked); }
+// Opciones marcadas en un desplegable múltiple (vacío = todas)
+function marcados(id) {
+  const d = $(id);
+  if (!d) return [];
+  const total = d.querySelectorAll('input[type=checkbox]').length;
+  let v = [...d.querySelectorAll('input:checked')].map(i => i.value);
+  if (v.length === total) v = [];            // todas marcadas = sin filtro
+  const faltan = total - v.length;
+  d.classList.toggle('activo', v.length > 0);
+  d.querySelector('summary').textContent =
+    !v.length ? d.dataset.todas
+    : v.length === 1 ? v[0]
+    : faltan <= 3 && v.length > faltan ? `Todas menos ${faltan}`
+    : `${v[0]} +${v.length - 1}`;
+  return v;
+}
+function filtrar() {
+  const q = $('q').value.toLowerCase().trim();
+  const g = $('grupo') ? $('grupo').value : '';
+  const d = +$('dtomin').value || 0;
+  const dmax = $('dtomax').value === '' ? 100 : +$('dtomax').value;
+  const pmin = parseFloat($('pmin').value), pmax = parseFloat($('pmax').value);
+  const valmin = $('valmin') ? +$('valmin').value : 0, vendmin = $('vendmin') ? +$('vendmin').value : 0;
+  document.querySelectorAll('[data-pmax]').forEach(b => b.classList.toggle('activo', +b.dataset.pmax === pmax));
+  const cats = marcados('cat');
+  const marcasTop = marcados('marca');
+  // Botones de etiqueta: "on" = solo las que la tienen, "off" = sin ella
+  const con = [...document.querySelectorAll('.chip.on')].map(b => ` ${b.dataset.m} `);
+  const sin = [...document.querySelectorAll('.chip.off')].map(b => ` ${b.dataset.m} `);
+  let n = 0;
+  cards.forEach(c => {
+    const ver = (!q || c.dataset.texto.includes(q))
+      && con.every(m => c.dataset.marcas.includes(m))
+      && !sin.some(m => c.dataset.marcas.includes(m))
+      && (!cats.length || cats.includes(c.dataset.cat))
+      && (!marcasTop.length || marcasTop.includes(c.dataset.marca))
+      && (!g || c.dataset.grupo.split('|').map(s => s.trim()).includes(g))
+      && +c.dataset.dto >= d && +c.dataset.dto <= dmax
+      && +c.dataset.val >= valmin && +c.dataset.vend >= vendmin
+      && (isNaN(pmin) || +c.dataset.precio >= pmin)
+      && (isNaN(pmax) || (+c.dataset.precio > 0 && +c.dataset.precio <= pmax));
+    c.hidden = !ver; if (ver) n++;
+  });
+  $('contador').textContent = `${n} de ${cards.length}`;
+}
+lista.addEventListener('change', e => {
+  e.target.closest('.card').classList.toggle('sel', e.target.checked);
+  const n = elegidos().length; btn.textContent = `Copiar ASIN (${n})`; btn.disabled = !n;
+});
+btn.onclick = async () => {
+  // ASIN + tab + descripción + tab + enlace: en Excel cae en tres columnas (ASIN | DESCRIPCION | ENLACE).
+  // El enlace solo va en los productos de Creator Connections (los demás lo dejan vacío)
+  const txt = elegidos().map(c => { const i = c.querySelector('input');
+                                     return i.value + '\t' + (i.dataset.desc || '') + '\t' + (i.dataset.enlace || ''); }).join('\n');
+  try { await navigator.clipboard.writeText(txt); }
+  catch (e) { const t = document.createElement('textarea'); t.value = txt; document.body.append(t);
+               t.select(); document.execCommand('copy'); t.remove(); }
+  const antes = btn.textContent; btn.textContent = '¡Copiados! Pégalos en la columna ASIN (descripción y enlace van a las de al lado)';
+  setTimeout(() => btn.textContent = antes, 2500);
+};
+// 1er clic: solo las que tienen la etiqueta · 2º: las que NO la tienen · 3º: quitar
+document.querySelectorAll('.chip').forEach(b => b.onclick = () => {
+  if (b.classList.contains('on')) { b.classList.replace('on', 'off'); b.title = 'Ocultando las que la tienen'; }
+  else if (b.classList.contains('off')) { b.classList.remove('off'); b.title = ''; }
+  else { b.classList.add('on'); b.title = 'Solo las que la tienen'; }
+  filtrar();
+});
+// "Hasta 10 €" / "Hasta 20 €": ponen el precio máximo; pulsarlo otra vez lo quita
+document.querySelectorAll('[data-pmax]').forEach(b => b.onclick = () => {
+  $('pmax').value = +$('pmax').value === +b.dataset.pmax ? '' : b.dataset.pmax;
+  filtrar();
+});
+['q', 'cat', 'marca', 'grupo', 'valmin', 'vendmin', 'dtomin', 'dtomax', 'pmin', 'pmax'].forEach(id => {
+  if (!$(id)) return;
+  $(id).addEventListener('input', filtrar);
+  $(id).addEventListener('change', filtrar);
+});
+// "Marcar todas" / "Desmarcar todas" de cada desplegable múltiple
+document.querySelectorAll('.multi [data-marcar]').forEach(b => b.onclick = () => {
+  b.closest('.multi').querySelectorAll('input[type=checkbox]').forEach(i => i.checked = b.dataset.marcar === '1');
+  filtrar();
+});
+// Cerrar los desplegables múltiples al pulsar fuera
+document.addEventListener('click', e => document.querySelectorAll('details.multi[open]')
+  .forEach(d => d.contains(e.target) || d.removeAttribute('open')));
+$('limpiar').onclick = () => {
+  $('q').value = ''; $('dtomin').value = 0; $('dtomax').value = 100;
+  $('pmin').value = ''; $('pmax').value = '';
+  $('grupo') && ($('grupo').value = '');
+  $('valmin') && ($('valmin').value = 0); $('vendmin') && ($('vendmin').value = 0);
+  document.querySelectorAll('.multi input:checked').forEach(i => i.checked = false);
+  document.querySelectorAll('.chip').forEach(b => { b.classList.remove('on', 'off'); b.title = ''; });
+  filtrar(); window.scrollTo(0, 0);
+};
+function ordenar(k) {
+  cards.sort((a, b) => k === 'dto' ? b.dataset.dto - a.dataset.dto
+    : k === 'epc' ? (b.dataset.epc - a.dataset.epc) || (b.dataset.dto - a.dataset.dto)
+    : k === 'real' ? (b.dataset.real - a.dataset.real) || (b.dataset.dto - a.dataset.dto)
+    : k === 'min' ? (a.dataset.sobremin - b.dataset.sobremin) || (b.dataset.dto - a.dataset.dto)
+    : k === 'rec' ? (a.dataset.cambio - b.dataset.cambio) || (b.dataset.dto - a.dataset.dto)
+    : k === 'opi' ? b.dataset.opi - a.dataset.opi
+    : k === 'vend' ? (b.dataset.vend - a.dataset.vend) || (b.dataset.opi - a.dataset.opi)
+    // mejor valorados: a igual nota, antes el que tiene más opiniones
+    : k === 'val' ? (b.dataset.val - a.dataset.val) || (b.dataset.opi - a.dataset.opi)
+    : k === 'asc' ? a.dataset.precio - b.dataset.precio : b.dataset.precio - a.dataset.precio);
+  // El orden se aplica con la propiedad CSS "order" (la rejilla ya es de CSS): mover miles de tarjetas
+  // de sitio en la página tardaba seis segundos, y así es instantáneo
+  cards.forEach((c, i) => c.style.order = i);
+}
+$('orden').onchange = e => ordenar(e.target.value);
+// Al abrir la página, el orden es el que marca el desplegable ("Más descuento"), no el del orden en que llegaron
+ordenar($('orden').value);
+filtrar();
+</script>
+</body></html>
