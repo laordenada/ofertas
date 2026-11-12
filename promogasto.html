@@ -8,12 +8,12 @@
          --acento:#e4913a; --rojo:#c8372d; --tag:#f1ece6;
          --ok:#2e7d4f; --r20:#1b5e37; --hist:#a66a00; --min90:#be185d;
          --cupon:#2f6db5; --sns:#6d28d9; --cc:#a16207; --prime:#00a8e1; --top:#111111; --rep:#64748b; --nueva:#ea580c; --oferta:#c8372d; --masvendido:#b45309; --vendidos:#0f766e;
-         --reciente:#0369a1; --inflada:#9a3412; --sinstock:#b91c1c; }
+         --reciente:#0369a1; --inflada:#9a3412; --sinstock:#b91c1c; --tramitar:#15803d; }
 @media (prefers-color-scheme: dark) {
   :root { --bg:#1b1917; --card:#26231f; --txt:#eee8e2; --suave:#a89d95; --borde:#3a3530; --tag:#332e29;
            --ok:#3f9e68; --r20:#2f8a55; --hist:#c98a1a; --min90:#db2777;
            --cupon:#4a86cf; --sns:#8b5cf6; --cc:#d4a017; --prime:#00a8e1; --top:#f2f2f2; --rep:#7c8aa0; --nueva:#f97316; --oferta:#e05a4f; --masvendido:#d97706; --vendidos:#14b8a6;
-           --reciente:#0e7490; --inflada:#c2410c; --sinstock:#dc2626; } }
+           --reciente:#0e7490; --inflada:#c2410c; --sinstock:#dc2626; --tramitar:#22a65a; } }
 * { box-sizing:border-box; }
 body { margin:0; background:var(--bg); color:var(--txt);
         font:15px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif; }
@@ -84,7 +84,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
 .spark .min { stroke:var(--ok); stroke-width:1; stroke-dasharray:3 3; vector-effect:non-scaling-stroke; opacity:.8; }
 .spark circle { fill:var(--rojo); }
 .tag.talla { background:transparent; border:1px solid var(--suave); font-weight:600; }
-.tag.top, .chip.m-top { --c:var(--top); } .tag.top { background:var(--top); color:#fff; } .tag.nueva, .chip.m-nueva { --c:var(--nueva); } .tag.nueva { background:var(--nueva); color:#fff; } .tag.ok, .chip.m-ok { --c:var(--ok); } .tag.ok { background:var(--ok); color:#fff; } .tag.reciente, .chip.m-reciente { --c:var(--reciente); } .tag.reciente { background:var(--reciente); color:#fff; } .tag.inflada, .chip.m-inflada { --c:var(--inflada); } .tag.inflada { background:var(--inflada); color:#fff; } .tag.sinstock, .chip.m-sinstock { --c:var(--sinstock); } .tag.sinstock { background:var(--sinstock); color:#fff; } .tag.hist, .chip.m-hist { --c:var(--hist); } .tag.hist { background:var(--hist); color:#fff; } .tag.min90, .chip.m-min90 { --c:var(--min90); } .tag.min90 { background:var(--min90); color:#fff; } .tag.prime, .chip.m-prime { --c:var(--prime); } .tag.prime { background:var(--prime); color:#fff; } .tag.cupon, .chip.m-cupon { --c:var(--cupon); } .tag.cupon { background:var(--cupon); color:#fff; } .tag.sns, .chip.m-sns { --c:var(--sns); } .tag.sns { background:var(--sns); color:#fff; } .tag.cc, .chip.m-cc { --c:var(--cc); } .tag.cc { background:var(--cc); color:#fff; } .tag.rep, .chip.m-rep { --c:var(--rep); } .tag.rep { background:var(--rep); color:#fff; } .tag.oferta, .chip.m-oferta { --c:var(--oferta); } .tag.oferta { background:var(--oferta); color:#fff; } .tag.masvendido, .chip.m-masvendido { --c:var(--masvendido); } .tag.masvendido { background:var(--masvendido); color:#fff; } .tag.vendidos, .chip.m-vendidos { --c:var(--vendidos); } .tag.vendidos { background:var(--vendidos); color:#fff; } .tag.tallanormal, .chip.m-tallanormal { --c:var(--tallanormal); } .tag.tallanormal { background:var(--tallanormal); color:#fff; } 
+.tag.top, .chip.m-top { --c:var(--top); } .tag.top { background:var(--top); color:#fff; } .tag.nueva, .chip.m-nueva { --c:var(--nueva); } .tag.nueva { background:var(--nueva); color:#fff; } .tag.ok, .chip.m-ok { --c:var(--ok); } .tag.ok { background:var(--ok); color:#fff; } .tag.reciente, .chip.m-reciente { --c:var(--reciente); } .tag.reciente { background:var(--reciente); color:#fff; } .tag.inflada, .chip.m-inflada { --c:var(--inflada); } .tag.inflada { background:var(--inflada); color:#fff; } .tag.sinstock, .chip.m-sinstock { --c:var(--sinstock); } .tag.sinstock { background:var(--sinstock); color:#fff; } .tag.hist, .chip.m-hist { --c:var(--hist); } .tag.hist { background:var(--hist); color:#fff; } .tag.min90, .chip.m-min90 { --c:var(--min90); } .tag.min90 { background:var(--min90); color:#fff; } .tag.prime, .chip.m-prime { --c:var(--prime); } .tag.prime { background:var(--prime); color:#fff; } .tag.cupon, .chip.m-cupon { --c:var(--cupon); } .tag.cupon { background:var(--cupon); color:#fff; } .tag.tramitar, .chip.m-tramitar { --c:var(--tramitar); } .tag.tramitar { background:var(--tramitar); color:#fff; } .tag.sns, .chip.m-sns { --c:var(--sns); } .tag.sns { background:var(--sns); color:#fff; } .tag.cc, .chip.m-cc { --c:var(--cc); } .tag.cc { background:var(--cc); color:#fff; } .tag.rep, .chip.m-rep { --c:var(--rep); } .tag.rep { background:var(--rep); color:#fff; } .tag.oferta, .chip.m-oferta { --c:var(--oferta); } .tag.oferta { background:var(--oferta); color:#fff; } .tag.masvendido, .chip.m-masvendido { --c:var(--masvendido); } .tag.masvendido { background:var(--masvendido); color:#fff; } .tag.vendidos, .chip.m-vendidos { --c:var(--vendidos); } .tag.vendidos { background:var(--vendidos); color:#fff; } .tag.tallanormal, .chip.m-tallanormal { --c:var(--tallanormal); } .tag.tallanormal { background:var(--tallanormal); color:#fff; } 
 :root { --tallanormal:#0f766e; }  /* verde azulado oscuro: se lee con letras blancas en claro y en oscuro */
 .tag.prime, .chip.m-prime.on { color:#062a3a; }  /* azul Prime claro: texto oscuro para que se lea */
 .tag.top, .chip.m-top.on { color:var(--bg); font-weight:600; }  /* marca top: negro (blanco en modo oscuro) */
@@ -94,7 +94,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
 </style></head><body>
 <header>
   <div><h1>Promociones de gasto mínimo</h1>
-  <div class="sub">0 productos con el descuento de la promoción aplicado (precio final) · Ahorra un 20 % comprando al menos 75€ de productos elegibles · el &quot;antes&quot; es la media de 90 días de Keepa · 08/11/2026 00:57</div></div>
+  <div class="sub">0 productos con el descuento de la promoción aplicado (precio final) · Ahorra un 30 % comprando al menos 40€ de productos elegibles · el &quot;antes&quot; es la media de 90 días de Keepa · 13/11/2026 00:49</div></div>
   <div class="ctrl">
     <input type="search" id="q" placeholder="Filtrar…">
     
