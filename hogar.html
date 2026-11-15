@@ -94,7 +94,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
 </style></head><body>
 <header>
   <div><h1>Ofertas hogar: limpieza y cocina</h1>
-  <div class="sub">310 ofertas · 15/11/2026 10:41</div></div>
+  <div class="sub">310 ofertas · 15/11/2026 19:34</div></div>
   <div class="ctrl">
     <input type="search" id="q" placeholder="Filtrar…">
     <details class="multi" id="cat" data-todas="Todas las categorías"><summary>Todas las categorías</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="Otros"> Otros <span>(2)</span></label><label><input type="checkbox" value="🤖 Robot aspirador"> 🤖 Robot aspirador <span>(53)</span></label><label><input type="checkbox" value="🥤 Batidora / Licuadora"> 🥤 Batidora / Licuadora <span>(34)</span></label><label><input type="checkbox" value="🧹 Aspiradora"> 🧹 Aspiradora <span>(77)</span></label><label><input type="checkbox" value="☕ Cafetera"> ☕ Cafetera <span>(27)</span></label><label><input type="checkbox" value="🛋️ Tapicerías"> 🛋️ Tapicerías <span>(2)</span></label><label><input type="checkbox" value="🍟 Freidora de aire"> 🍟 Freidora de aire <span>(32)</span></label><label><input type="checkbox" value="🧽 Friegasuelos"> 🧽 Friegasuelos <span>(21)</span></label><label><input type="checkbox" value="📟 Microondas / Horno"> 📟 Microondas / Horno <span>(29)</span></label><label><input type="checkbox" value="♨️ Vapor"> ♨️ Vapor <span>(5)</span></label><label><input type="checkbox" value="🍲 Robot de cocina"> 🍲 Robot de cocina <span>(3)</span></label><label><input type="checkbox" value="♨️ Olla programable"> ♨️ Olla programable <span>(4)</span></label><label><input type="checkbox" value="💦 Hidrolimpiadora"> 💦 Hidrolimpiadora <span>(4)</span></label><label><input type="checkbox" value="🍞 Pequeño electro"> 🍞 Pequeño electro <span>(15)</span></label><label><input type="checkbox" value="🪟 Limpiacristales"> 🪟 Limpiacristales <span>(2)</span></label></div></details>
@@ -121,7 +121,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     </select>
     <button id="limpiar" class="sec" type="button">Quitar filtros</button>
     <span id="contador"></span>
-    <button id="copiar" disabled>Copiar ASIN (0)</button>
+    <button id="copiar" disabled>Añadir a la cola (0)</button>
   </div>
   <div class="chips"><button type="button" class="chip m-nueva" data-m="nueva">Oferta nueva <span>6</span></button><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>114</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>120</span></button><button type="button" class="chip m-cupon" data-m="cupon">Cupón <span>3</span></button><button type="button" class="chip m-cc" data-m="cc">💰 Creator Connections <span>72</span></button><button type="button" class="chip m-rep" data-m="rep">3+ días en oferta <span>217</span></button><button type="button" class="chip m-masvendido" data-m="masvendido">Top ventas <span>6</span></button><button type="button" class="chip m-vendidos" data-m="vendidos">🛒 Comprados el mes pasado <span>120</span></button></div>
 </header>
@@ -4829,18 +4829,30 @@ function filtrar() {
 }
 lista.addEventListener('change', e => {
   e.target.closest('.card').classList.toggle('sel', e.target.checked);
-  const n = elegidos().length; btn.textContent = `Copiar ASIN (${n})`; btn.disabled = !n;
+  const n = elegidos().length; btn.textContent = `Añadir a la cola (${n})`; btn.disabled = !n;
 });
+// 15/11/2026: ya no se copia al portapapeles para pegar en Excel; se manda directo a la cola de
+// servidor_ofertas.py (puerto 8766), que es quien lee publicar_grupo_eva.py.
+const SERVIDOR_COLA = 'http://100.87.234.47:8766/';
 btn.onclick = async () => {
-  // ASIN + tab + descripción: en Excel cae en dos columnas (ASIN | DESCRIPCION). 15/11/2026: ya no se copia
-  // el enlace (los de Creator Connections lo llevan automático, con el ID de cada canal).
-  const txt = elegidos().map(c => { const i = c.querySelector('input');
-                                     return i.value + '\t' + (i.dataset.desc || ''); }).join('\n');
-  try { await navigator.clipboard.writeText(txt); }
-  catch (e) { const t = document.createElement('textarea'); t.value = txt; document.body.append(t);
-               t.select(); document.execCommand('copy'); t.remove(); }
-  const antes = btn.textContent; btn.textContent = '¡Copiados! Pégalos en la columna ASIN (la descripción va a la de al lado)';
-  setTimeout(() => btn.textContent = antes, 2500);
+  const elegidas = elegidos();
+  const antes = btn.textContent;
+  let ok = 0, avisos = [];
+  for (const c of elegidas) {
+    const i = c.querySelector('input');
+    const img = c.querySelector('.foto img');
+    try {
+      const r = await fetch(SERVIDOR_COLA, {method: 'POST', headers: {'Content-Type': 'application/json', 'X-Panel': '1'},
+                                             body: JSON.stringify({accion: 'anadir', entrada: i.value, descripcion: i.dataset.desc || '',
+                                                                    imagen: img ? img.src : ''})});
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error || ('error ' + r.status));
+      ok++; if (d.aviso) avisos.push(i.value + ': ' + d.aviso);
+    } catch (e) { avisos.push(i.value + ': ' + e.message); }
+  }
+  btn.textContent = ok ? `Añadidas ${ok} de ${elegidas.length}` + (avisos.length ? ' (ver consola)' : '') : 'No se pudo añadir: ¿está arrancado servidor_ofertas.py?';
+  if (avisos.length) console.log('Avisos al añadir a la cola:\n' + avisos.join('\n'));
+  setTimeout(() => btn.textContent = antes, 3500);
 };
 // 1er clic: solo las que tienen la etiqueta · 2º: las que NO la tienen · 3º: quitar
 document.querySelectorAll('.chip').forEach(b => b.onclick = () => {
