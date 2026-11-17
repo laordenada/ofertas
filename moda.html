@@ -91,10 +91,22 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
 .pie { margin-top:auto; color:var(--suave); font-size:12px; }
 @media (max-width:600px) { header { padding:12px 16px; } main { padding:16px; gap:12px;
   grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); } .ctrl { margin-left:0; } }
+#modal_pub { position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:20; display:flex;
+  align-items:center; justify-content:center; padding:20px; }
+#modal_pub[hidden] { display:none; }
+#modal_pub .caja { background:var(--card); border-radius:12px; max-width:720px; width:100%;
+  max-height:80vh; overflow:auto; padding:18px 20px; }
+#modal_pub h2 { margin:0 0 4px; font-size:17px; }
+#modal_pub .cerrar { float:right; }
+#modal_pub table { width:100%; border-collapse:collapse; margin-top:10px; font-size:13px; }
+#modal_pub th, #modal_pub td { padding:5px 6px; border-bottom:1px solid var(--borde); text-align:left; }
+#modal_pub th { color:var(--suave); font-weight:600; }
+#modal_pub td.desc { max-width:260px; }
+#modal_pub a { color:var(--txt); }
 </style></head><body>
 <header>
   <div><h1>Ofertas moda</h1>
-  <div class="sub">2909 ofertas · 17/11/2026 08:27</div></div>
+  <div class="sub">2909 ofertas · 17/11/2026 12:36</div></div>
   <div class="ctrl">
     <input type="search" id="q" placeholder="Filtrar…">
     <details class="multi" id="cat" data-todas="Todas las categorías"><summary>Todas las categorías</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="Relojes y joyería"> Relojes y joyería <span>(90)</span></label><label><input type="checkbox" value="Maletas y viaje"> Maletas y viaje <span>(26)</span></label><label><input type="checkbox" value="Moda infantil"> Moda infantil <span>(415)</span></label><label><input type="checkbox" value="Moda mujer"> Moda mujer <span>(1017)</span></label><label><input type="checkbox" value="Moda hombre"> Moda hombre <span>(562)</span></label><label><input type="checkbox" value="Moda"> Moda <span>(781)</span></label><label><input type="checkbox" value="Informática"> Informática <span>(1)</span></label><label><input type="checkbox" value="Limpieza y planchado"> Limpieza y planchado <span>(1)</span></label><label><input type="checkbox" value="Salud y cuidado personal"> Salud y cuidado personal <span>(2)</span></label><label><input type="checkbox" value="Bebé"> Bebé <span>(1)</span></label><label><input type="checkbox" value="Deportes"> Deportes <span>(3)</span></label><label><input type="checkbox" value="Coche y moto"> Coche y moto <span>(1)</span></label><label><input type="checkbox" value="Oficina y papelería"> Oficina y papelería <span>(3)</span></label><label><input type="checkbox" value="Otros"> Otros <span>(6)</span></label></div></details>
@@ -121,6 +133,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     </select>
     <button id="limpiar" class="sec" type="button">Quitar filtros</button>
     <span id="contador"></span>
+    <button id="ver_pub" class="sec" type="button">📤 Publicado grupo Eva (7 días)</button>
     <button id="copiar" disabled>Añadir a la cola (0)</button>
   </div>
   <div class="chips"><button type="button" class="chip m-top" data-m="top">Marca top <span>2108</span></button><button type="button" class="chip m-nueva" data-m="nueva">Oferta nueva <span>71</span></button><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>908</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>303</span></button><button type="button" class="chip m-prime" data-m="prime">Oferta Prime <span>1</span></button><button type="button" class="chip m-cupon" data-m="cupon">Cupón <span>1</span></button><button type="button" class="chip m-cc" data-m="cc">💰 Creator Connections <span>12</span></button><button type="button" class="chip m-rep" data-m="rep">3+ días en oferta <span>837</span></button><button type="button" class="chip m-masvendido" data-m="masvendido">Top ventas <span>1</span></button><button type="button" class="chip m-vendidos" data-m="vendidos">🛒 Comprados el mes pasado <span>14</span></button><button type="button" class="chip m-tallanormal" data-m="tallanormal">📏 Tallas habituales <span>2747</span></button></div>
@@ -43761,6 +43774,15 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="pie">Ropa y zapatos · <code>B0CHXPQK7V</code></div>
   </div>
 </article></main>
+<div id="modal_pub" hidden>
+  <div class="caja">
+    <button class="sec cerrar" type="button" id="cerrar_pub">Cerrar</button>
+    <h2>📤 Publicado en el grupo de Eva</h2>
+    <div class="sub" id="pub_resumen">últimos 7 días</div>
+    <table><thead><tr><th>Fecha</th><th>ASIN</th><th>Título</th><th>Precio</th><th>Descuento</th></tr></thead>
+    <tbody id="pub_filas"></tbody></table>
+  </div>
+</div>
 <script>
 const lista = document.getElementById('lista');
 const cards = [...lista.querySelectorAll('.card')];
@@ -43839,6 +43861,33 @@ btn.onclick = async () => {
   if (avisos.length) console.log('Avisos al añadir a la cola:\n' + avisos.join('\n'));
   setTimeout(() => btn.textContent = antes, 3500);
 };
+// Qué se ha publicado ya en el grupo de Eva en los últimos 7 días (servidor_ofertas.py), para no
+// volver a elegir algo que ya se mandó.
+const esc2 = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+$('ver_pub').onclick = async () => {
+  $('modal_pub').hidden = false;
+  $('pub_resumen').textContent = 'Cargando…';
+  $('pub_filas').innerHTML = '';
+  try {
+    const r = await fetch(SERVIDOR_COLA + 'api/publicados?dias=7');
+    if (!r.ok) throw new Error('error ' + r.status);
+    const filas = await r.json();
+    $('pub_resumen').textContent = filas.length
+      ? `${filas.length} ofertas en los últimos 7 días`
+      : 'Nada publicado en los últimos 7 días.';
+    $('pub_filas').innerHTML = filas.map(x => `<tr>
+      <td>${esc2((x.fecha || '').slice(0, 16))}</td>
+      <td><a href="https://www.amazon.es/dp/${x.asin}" target="_blank">${x.asin}</a></td>
+      <td class="desc">${esc2(x.titulo)}</td>
+      <td>${esc2(x.precio)} €</td>
+      <td>${esc2(x.descuento)}</td>
+    </tr>`).join('');
+  } catch (e) {
+    $('pub_resumen').textContent = '⚠️ No se pudo consultar servidor_ofertas.py: ' + e.message;
+  }
+};
+$('cerrar_pub').onclick = () => $('modal_pub').hidden = true;
+$('modal_pub').addEventListener('click', e => { if (e.target.id === 'modal_pub') $('modal_pub').hidden = true; });
 // 1er clic: solo las que tienen la etiqueta · 2º: las que NO la tienen · 3º: quitar
 document.querySelectorAll('.chip').forEach(b => b.onclick = () => {
   if (b.classList.contains('on')) { b.classList.replace('on', 'off'); b.title = 'Ocultando las que la tienen'; }
