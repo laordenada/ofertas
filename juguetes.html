@@ -91,10 +91,22 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
 .pie { margin-top:auto; color:var(--suave); font-size:12px; }
 @media (max-width:600px) { header { padding:12px 16px; } main { padding:16px; gap:12px;
   grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); } .ctrl { margin-left:0; } }
+#modal_pub { position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:20; display:flex;
+  align-items:center; justify-content:center; padding:20px; }
+#modal_pub[hidden] { display:none; }
+#modal_pub .caja { background:var(--card); border-radius:12px; max-width:720px; width:100%;
+  max-height:80vh; overflow:auto; padding:18px 20px; }
+#modal_pub h2 { margin:0 0 4px; font-size:17px; }
+#modal_pub .cerrar { float:right; }
+#modal_pub table { width:100%; border-collapse:collapse; margin-top:10px; font-size:13px; }
+#modal_pub th, #modal_pub td { padding:5px 6px; border-bottom:1px solid var(--borde); text-align:left; }
+#modal_pub th { color:var(--suave); font-weight:600; }
+#modal_pub td.desc { max-width:260px; }
+#modal_pub a { color:var(--txt); }
 </style></head><body>
 <header>
   <div><h1>Ofertas de juguetes</h1>
-  <div class="sub">983 ofertas · 17/11/2026 08:20</div></div>
+  <div class="sub">983 ofertas · 17/11/2026 12:34</div></div>
   <div class="ctrl">
     <input type="search" id="q" placeholder="Filtrar…">
     <details class="multi" id="cat" data-todas="Todos los tipos de juguete"><summary>Todos los tipos de juguete</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="Playmobil y figuras de juego"> Playmobil y figuras de juego <span>(68)</span></label><label><input type="checkbox" value="Construcciones"> Construcciones <span>(69)</span></label><label><input type="checkbox" value="Manualidades y arte"> Manualidades y arte <span>(18)</span></label><label><input type="checkbox" value="Figuras y coleccionismo"> Figuras y coleccionismo <span>(78)</span></label><label><input type="checkbox" value="Aire libre y deportes"> Aire libre y deportes <span>(70)</span></label><label><input type="checkbox" value="Juegos de mesa"> Juegos de mesa <span>(151)</span></label><label><input type="checkbox" value="Muñecas"> Muñecas <span>(37)</span></label><label><input type="checkbox" value="Otros juguetes"> Otros juguetes <span>(105)</span></label><label><input type="checkbox" value="Juego simbólico"> Juego simbólico <span>(8)</span></label><label><input type="checkbox" value="Vehículos y radiocontrol"> Vehículos y radiocontrol <span>(69)</span></label><label><input type="checkbox" value="Primera infancia (0-3 años)"> Primera infancia (0-3 años) <span>(37)</span></label><label><input type="checkbox" value="Puzzles"> Puzzles <span>(163)</span></label><label><input type="checkbox" value="Educativos y ciencia"> Educativos y ciencia <span>(22)</span></label><label><input type="checkbox" value="Antiestrés y sensoriales"> Antiestrés y sensoriales <span>(10)</span></label><label><input type="checkbox" value="Disfraces y fiestas"> Disfraces y fiestas <span>(11)</span></label><label><input type="checkbox" value="Electrónicos y tecnología"> Electrónicos y tecnología <span>(28)</span></label><label><input type="checkbox" value="Peluches"> Peluches <span>(28)</span></label><label><input type="checkbox" value="Cartas coleccionables"> Cartas coleccionables <span>(5)</span></label><label><input type="checkbox" value="Calendarios de Adviento"> Calendarios de Adviento <span>(6)</span></label></div></details>
@@ -121,6 +133,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     </select>
     <button id="limpiar" class="sec" type="button">Quitar filtros</button>
     <span id="contador"></span>
+    <button id="ver_pub" class="sec" type="button">📤 Publicado grupo Eva (7 días)</button>
     <button id="copiar" disabled>Añadir a la cola (0)</button>
   </div>
   <div class="chips"><button type="button" class="chip m-top" data-m="top">Marca top <span>403</span></button><button type="button" class="chip m-nueva" data-m="nueva">Oferta nueva <span>139</span></button><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>446</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>266</span></button><button type="button" class="chip m-cupon" data-m="cupon">Cupón <span>28</span></button><button type="button" class="chip m-tramitar" data-m="tramitar">💳 Descuento al tramitar <span>2</span></button><button type="button" class="chip m-sns" data-m="sns">Suscríbete y ahorra <span>4</span></button><button type="button" class="chip m-cc" data-m="cc">💰 Creator Connections <span>35</span></button><button type="button" class="chip m-rep" data-m="rep">3+ días en oferta <span>510</span></button><button type="button" class="chip m-masvendido" data-m="masvendido">Top ventas <span>9</span></button><button type="button" class="chip m-vendidos" data-m="vendidos">🛒 Comprados el mes pasado <span>277</span></button></div>
@@ -14871,6 +14884,15 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="pie">Todas las edades · <code>B0FCYTB95W</code></div>
   </div>
 </article></main>
+<div id="modal_pub" hidden>
+  <div class="caja">
+    <button class="sec cerrar" type="button" id="cerrar_pub">Cerrar</button>
+    <h2>📤 Publicado en el grupo de Eva</h2>
+    <div class="sub" id="pub_resumen">últimos 7 días</div>
+    <table><thead><tr><th>Fecha</th><th>ASIN</th><th>Título</th><th>Precio</th><th>Descuento</th></tr></thead>
+    <tbody id="pub_filas"></tbody></table>
+  </div>
+</div>
 <script>
 const lista = document.getElementById('lista');
 const cards = [...lista.querySelectorAll('.card')];
@@ -14949,6 +14971,33 @@ btn.onclick = async () => {
   if (avisos.length) console.log('Avisos al añadir a la cola:\n' + avisos.join('\n'));
   setTimeout(() => btn.textContent = antes, 3500);
 };
+// Qué se ha publicado ya en el grupo de Eva en los últimos 7 días (servidor_ofertas.py), para no
+// volver a elegir algo que ya se mandó.
+const esc2 = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+$('ver_pub').onclick = async () => {
+  $('modal_pub').hidden = false;
+  $('pub_resumen').textContent = 'Cargando…';
+  $('pub_filas').innerHTML = '';
+  try {
+    const r = await fetch(SERVIDOR_COLA + 'api/publicados?dias=7');
+    if (!r.ok) throw new Error('error ' + r.status);
+    const filas = await r.json();
+    $('pub_resumen').textContent = filas.length
+      ? `${filas.length} ofertas en los últimos 7 días`
+      : 'Nada publicado en los últimos 7 días.';
+    $('pub_filas').innerHTML = filas.map(x => `<tr>
+      <td>${esc2((x.fecha || '').slice(0, 16))}</td>
+      <td><a href="https://www.amazon.es/dp/${x.asin}" target="_blank">${x.asin}</a></td>
+      <td class="desc">${esc2(x.titulo)}</td>
+      <td>${esc2(x.precio)} €</td>
+      <td>${esc2(x.descuento)}</td>
+    </tr>`).join('');
+  } catch (e) {
+    $('pub_resumen').textContent = '⚠️ No se pudo consultar servidor_ofertas.py: ' + e.message;
+  }
+};
+$('cerrar_pub').onclick = () => $('modal_pub').hidden = true;
+$('modal_pub').addEventListener('click', e => { if (e.target.id === 'modal_pub') $('modal_pub').hidden = true; });
 // 1er clic: solo las que tienen la etiqueta · 2º: las que NO la tienen · 3º: quitar
 document.querySelectorAll('.chip').forEach(b => b.onclick = () => {
   if (b.classList.contains('on')) { b.classList.replace('on', 'off'); b.title = 'Ocultando las que la tienen'; }
