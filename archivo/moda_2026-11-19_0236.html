@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Ofertas moda</title>
+<style>
+:root { --bg:#f6f4f1; --card:#fff; --txt:#2b2522; --suave:#7a6f69; --borde:#e6e0da;
+         --acento:#e4913a; --rojo:#c8372d; --tag:#f1ece6;
+         --ok:#2e7d4f; --r20:#1b5e37; --hist:#a66a00; --min90:#be185d;
+         --cupon:#2f6db5; --sns:#6d28d9; --cc:#a16207; --prime:#00a8e1; --top:#111111; --rep:#64748b; --nueva:#ea580c; --oferta:#c8372d; --masvendido:#b45309; --vendidos:#0f766e;
+         --reciente:#0369a1; --inflada:#9a3412; --sinstock:#b91c1c; --tramitar:#15803d; --eva:#0f766e; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#1b1917; --card:#26231f; --txt:#eee8e2; --suave:#a89d95; --borde:#3a3530; --tag:#332e29;
+           --ok:#3f9e68; --r20:#2f8a55; --hist:#c98a1a; --min90:#db2777;
+           --cupon:#4a86cf; --sns:#8b5cf6; --cc:#d4a017; --prime:#00a8e1; --top:#f2f2f2; --rep:#7c8aa0; --nueva:#f97316; --oferta:#e05a4f; --masvendido:#d97706; --vendidos:#14b8a6;
+           --reciente:#0e7490; --inflada:#c2410c; --sinstock:#dc2626; --tramitar:#22a65a; --eva:#14b8a6; } }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--txt);
+        font:15px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif; }
+header { position:sticky; top:0; z-index:5; background:var(--bg); border-bottom:1px solid var(--borde);
+          padding:14px 20px; display:flex; flex-wrap:wrap; gap:10px 16px; align-items:center; }
+h1 { font-size:19px; margin:0; }
+.sub { color:var(--suave); font-size:13px; }
+.ctrl { margin-left:auto; display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+input, select, button { font:inherit; padding:7px 10px; border-radius:8px;
+          border:1px solid var(--borde); background:var(--card); color:var(--txt); }
+#dtomin, #dtomax { width:64px; }
+#pmin, #pmax { width:72px; }
+button.sec.activo { background:var(--acento); color:#fff; border-color:var(--acento); }
+.chips { flex-basis:100%; display:flex; flex-wrap:wrap; gap:6px; }
+.chip { --c:var(--suave); background:var(--card); color:var(--txt); border:1.5px solid var(--c);
+         border-radius:999px; padding:4px 12px; font-weight:500; font-size:13px; }
+.chip span { opacity:.7; }
+.chip.on { background:var(--c); color:#fff; }
+.chip.off { border-style:dashed; color:var(--suave); text-decoration:line-through; }
+.chip.off::before { content:"Sin "; text-decoration:none; display:inline-block; margin-right:3px; }
+.multi { position:relative; }
+.multi summary { list-style:none; cursor:pointer; padding:7px 28px 7px 10px; border-radius:8px;
+                  border:1px solid var(--borde); background:var(--card); white-space:nowrap; position:relative; }
+.multi summary::-webkit-details-marker { display:none; }
+.multi summary::after { content:"▾"; position:absolute; right:10px; color:var(--suave); }
+.multi.activo summary { border-color:var(--acento); font-weight:600; }
+.multi .opciones { position:absolute; z-index:10; top:calc(100% + 4px); left:0; min-width:230px;
+                    max-height:60vh; overflow:auto; background:var(--card); border:1px solid var(--borde);
+                    border-radius:8px; padding:6px; box-shadow:0 6px 20px rgba(0,0,0,.15); }
+.multi .opciones label { display:flex; gap:8px; align-items:center; padding:5px 6px; border-radius:6px;
+                          cursor:pointer; white-space:nowrap; }
+.multi .opciones label:hover { background:var(--tag); }
+.multi .opciones span { color:var(--suave); }
+.multi .acciones { display:flex; gap:6px; padding:2px 2px 8px; margin-bottom:4px;
+                    border-bottom:1px solid var(--borde); position:sticky; top:-6px; background:var(--card); }
+.multi .acciones button { flex:1; padding:5px 8px; font-size:13px; }
+button { background:var(--acento); border-color:var(--acento); color:#fff; font-weight:600; cursor:pointer; }
+button:disabled { opacity:.5; cursor:default; }
+button.sec { background:var(--card); color:var(--txt); border-color:var(--borde); font-weight:500; }
+#contador { color:var(--suave); font-size:13px; }
+main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); }
+.card { background:var(--card); border:1px solid var(--borde); border-radius:12px; overflow:hidden;
+         display:flex; flex-direction:column; position:relative;
+         content-visibility:auto; contain-intrinsic-size:auto 460px; }
+.card[hidden] { display:none; }
+.card.sel { outline:3px solid var(--acento); }
+.pick { position:absolute; top:8px; right:8px; z-index:2; background:var(--card); border-radius:6px;
+         padding:3px 7px; font-size:13px; cursor:pointer; border:1px solid var(--borde); }
+.foto { display:block; background:#fff; aspect-ratio:1; position:relative; overflow:hidden; }
+.foto img { position:absolute; inset:0; width:100%; height:100%; box-sizing:border-box; object-fit:contain; padding:14px; }
+.dto { position:absolute; z-index:1; top:8px; left:8px; background:var(--rojo); color:#fff; font-weight:700;
+        padding:3px 8px; border-radius:6px; }
+.info { padding:12px; display:flex; flex-direction:column; gap:8px; flex:1; }
+.titulo { color:var(--txt); text-decoration:none; display:-webkit-box; -webkit-line-clamp:3;
+           -webkit-box-orient:vertical; overflow:hidden; }
+.titulo:hover { text-decoration:underline; }
+.precio b { font-size:20px; } .precio s { color:var(--suave); margin-left:6px; }
+.tags { display:flex; flex-wrap:wrap; gap:5px; }
+.tag { background:var(--tag); border-radius:5px; padding:2px 7px; font-size:12px; }
+.resenas { font-size:13px; color:var(--suave); margin:-2px 0 6px; }
+.resenas .estrellas { color:#f5a623; letter-spacing:1px; }
+.resenas .vendidos { white-space:nowrap; }
+.kp { font-size:12px; color:var(--suave); line-height:1.35; display:flex; flex-direction:column; gap:1px; }
+.kp b { color:var(--txt); } .kp i { font-style:normal; opacity:.8; }
+.kp .bien { color:var(--ok); font-weight:600; } .kp .mal { color:var(--inflada); font-weight:600; }
+.spark { width:100%; height:38px; margin-bottom:3px; overflow:visible; }
+.spark polyline { fill:none; stroke:var(--acento); stroke-width:1.6; vector-effect:non-scaling-stroke; stroke-linejoin:round; }
+.spark .min { stroke:var(--ok); stroke-width:1; stroke-dasharray:3 3; vector-effect:non-scaling-stroke; opacity:.8; }
+.spark circle { fill:var(--rojo); }
+.tag.talla { background:transparent; border:1px solid var(--suave); font-weight:600; }
+.tag.top, .chip.m-top { --c:var(--top); } .tag.top { background:var(--top); color:#fff; } .tag.nueva, .chip.m-nueva { --c:var(--nueva); } .tag.nueva { background:var(--nueva); color:#fff; } .tag.ok, .chip.m-ok { --c:var(--ok); } .tag.ok { background:var(--ok); color:#fff; } .tag.reciente, .chip.m-reciente { --c:var(--reciente); } .tag.reciente { background:var(--reciente); color:#fff; } .tag.inflada, .chip.m-inflada { --c:var(--inflada); } .tag.inflada { background:var(--inflada); color:#fff; } .tag.sinstock, .chip.m-sinstock { --c:var(--sinstock); } .tag.sinstock { background:var(--sinstock); color:#fff; } .tag.hist, .chip.m-hist { --c:var(--hist); } .tag.hist { background:var(--hist); color:#fff; } .tag.min90, .chip.m-min90 { --c:var(--min90); } .tag.min90 { background:var(--min90); color:#fff; } .tag.prime, .chip.m-prime { --c:var(--prime); } .tag.prime { background:var(--prime); color:#fff; } .tag.cupon, .chip.m-cupon { --c:var(--cupon); } .tag.cupon { background:var(--cupon); color:#fff; } .tag.tramitar, .chip.m-tramitar { --c:var(--tramitar); } .tag.tramitar { background:var(--tramitar); color:#fff; } .tag.sns, .chip.m-sns { --c:var(--sns); } .tag.sns { background:var(--sns); color:#fff; } .tag.cc, .chip.m-cc { --c:var(--cc); } .tag.cc { background:var(--cc); color:#fff; } .tag.rep, .chip.m-rep { --c:var(--rep); } .tag.rep { background:var(--rep); color:#fff; } .tag.oferta, .chip.m-oferta { --c:var(--oferta); } .tag.oferta { background:var(--oferta); color:#fff; } .tag.masvendido, .chip.m-masvendido { --c:var(--masvendido); } .tag.masvendido { background:var(--masvendido); color:#fff; } .tag.vendidos, .chip.m-vendidos { --c:var(--vendidos); } .tag.vendidos { background:var(--vendidos); color:#fff; } .tag.tallanormal, .chip.m-tallanormal { --c:var(--tallanormal); } .tag.tallanormal { background:var(--tallanormal); color:#fff; } .tag.eva, .chip.m-eva { --c:var(--eva); } .tag.eva { background:var(--eva); color:#fff; } 
+:root { --tallanormal:#0f766e; }  /* verde azulado oscuro: se lee con letras blancas en claro y en oscuro */
+.tag.prime, .chip.m-prime.on { color:#062a3a; }  /* azul Prime claro: texto oscuro para que se lea */
+.tag.top, .chip.m-top.on { color:var(--bg); font-weight:600; }  /* marca top: negro (blanco en modo oscuro) */
+.pie { margin-top:auto; color:var(--suave); font-size:12px; }
+@media (max-width:600px) { header { padding:12px 16px; } main { padding:16px; gap:12px;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); } .ctrl { margin-left:0; } }
+</style></head><body>
+<header>
+  <div><h1>Ofertas moda</h1>
+  <div class="sub">43 ofertas · 19/11/2026 02:36</div></div>
+  <div class="ctrl">
+    <input type="search" id="q" placeholder="Filtrar…">
+    <details class="multi" id="cat" data-todas="Todas las categorías"><summary>Todas las categorías</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="Moda mujer"> Moda mujer <span>(40)</span></label><label><input type="checkbox" value="Otros"> Otros <span>(3)</span></label></div></details>
+    <details class="multi" id="marca" data-todas="Todas las marcas"><summary>Todas las marcas</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="SINGULARU"> SINGULARU <span>(40)</span></label><label><input type="checkbox" value="Marks &amp; Spencer"> Marks &amp; Spencer <span>(1)</span></label><label><input type="checkbox" value="Only"> Only <span>(1)</span></label><label><input type="checkbox" value="Skechers"> Skechers <span>(1)</span></label></div></details>
+    
+    
+    <select id="vendmin" title="Comprados el mes pasado"><option value="0">Cualquier venta</option><option value="50">50+ al mes</option><option value="100">100+ al mes</option><option value="300">300+ al mes</option><option value="1000">1.000+ al mes</option></select>
+    <label>Dto. <input type="number" id="dtomin" min="0" max="100" step="5" value="0" title="mínimo">
+      a <input type="number" id="dtomax" min="0" max="100" step="5" value="100" title="máximo"> %</label>
+    <label>Precio <input type="number" id="pmin" min="0" step="1" placeholder="mín" title="precio mínimo">
+      a <input type="number" id="pmax" min="0" step="1" placeholder="máx" title="precio máximo"> €</label>
+    <button type="button" class="sec" data-pmax="20">Hasta 20 €</button>
+    <button type="button" class="sec" data-pmax="30">Hasta 30 €</button>
+    <button type="button" class="sec" data-pmax="50">Hasta 50 €</button>
+    <select id="orden">
+      <option value="dto">Más descuento</option>
+      <option value="asc">Precio más bajo</option>
+      <option value="desc">Precio más alto</option>
+      <option value="vend">Más vendidos</option>
+      
+      
+      <option value="opi">Más opiniones</option>
+      <option value="val">Mejor valorados</option>
+    </select>
+    <button id="limpiar" class="sec" type="button">Quitar filtros</button>
+    <span id="contador"></span>
+    <button id="copiar" disabled>Añadir a la cola (0)</button>
+  </div>
+  <div class="chips"><button type="button" class="chip m-top" data-m="top">Marca top <span>43</span></button><button type="button" class="chip m-nueva" data-m="nueva">Oferta nueva <span>30</span></button><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>24</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>29</span></button><button type="button" class="chip m-rep" data-m="rep">3+ días en oferta <span>1</span></button><button type="button" class="chip m-vendidos" data-m="vendidos">🛒 Comprados el mes pasado <span>17</span></button><button type="button" class="chip m-tallanormal" data-m="tallanormal">📏 Tallas habituales <span>41</span></button></div>
+</header>
+<main id="lista">
+<article class="card" data-dto="49" data-epc="0" data-precio="10.18" data-val="0" data-opi="0" data-vend="50" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist nueva ok tallanormal top vendidos "
+         data-asin="B0D7J427Y3" data-texto="singularu - pendientes aro bossa. acero y con forma ovalada. pendientes minimalistas con cierre congo/click. joyas para mujer b0d7j427y3 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0D7J427Y3" data-desc="SINGULARU - Pendientes Aro Bossa. Acero… · 10,18 € · -49%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0D7J427Y3?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-49%</span>
+    <img src="https://m.media-amazon.com/images/I/21PBDUgOrcL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0D7J427Y3?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Pendientes Aro Bossa. Acero y con Forma Ovalada. Pendientes Minimalistas con Cierre Congo/Click. Joyas para Mujer</a>
+    <div class="precio"><b>10,18 €</b> <s>19,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -22% vs mín. 30 días (12,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0D7J427Y3</code></div>
+  </div>
+</article>
+<article class="card" data-dto="57" data-epc="0" data-precio="10.72" data-val="0" data-opi="0" data-vend="100" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" min90 nueva ok tallanormal top vendidos "
+         data-asin="B0CCVXMXPG" data-texto="singularu - pulsera lisse s. acero con acabado en baño de oro de 18 kt. cadena plana. talla única 16 cm con alargador 3 cm. joyas para mujer b0ccvxmxpg ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0CCVXMXPG" data-desc="SINGULARU - Pulsera Lisse S. Acero con… · 10,72 € · -57%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CCVXMXPG?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-57%</span>
+    <img src="https://m.media-amazon.com/images/I/21kVoFJEPML._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CCVXMXPG?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Pulsera Lisse S. Acero con Acabado en Baño de Oro de 18 Kt. Cadena Plana. Talla Única 16 cm con Alargador 3 cm. Joyas para Mujer</a>
+    <div class="precio"><b>10,72 €</b> <s>24,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -28% vs mín. 30 días (14,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0CCVXMXPG</code></div>
+  </div>
+</article>
+<article class="card" data-dto="38" data-epc="0" data-precio="9.28" data-val="0" data-opi="0" data-vend="50" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist nueva ok tallanormal top vendidos "
+         data-asin="B09N7RXL6F" data-texto="singularu - pendientes aro lake. latón con acabado baño de rodio. ligeros de aro con cierre tuerca a presión. joyas para mujer b09n7rxl6f ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B09N7RXL6F" data-desc="SINGULARU - Pendientes Aro Lake. Latón… · 9,28 € · -38%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B09N7RXL6F?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-38%</span>
+    <img src="https://m.media-amazon.com/images/I/2121wl5+2YL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B09N7RXL6F?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Pendientes Aro Lake. Latón con Acabado Baño de Rodio. Ligeros de Aro con Cierre Tuerca a Presión. Joyas para Mujer</a>
+    <div class="precio"><b>9,28 €</b> <s>14,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -38% vs mín. 30 días (14,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B09N7RXL6F</code></div>
+  </div>
+</article>
+<article class="card" data-dto="48" data-epc="0" data-precio="8.36" data-val="0" data-opi="0" data-vend="50" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" min90 nueva tallanormal top vendidos "
+         data-asin="B09MKKW2HT" data-texto="singularu - pendiente suelto mini paw. plata de ley 925 con acabado baño de oro de 18 kt. cierre de rosca. joyas para mujer b09mkkw2ht ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B09MKKW2HT" data-desc="SINGULARU - Pendiente Suelto Mini Paw.… · 8,36 € · -48%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B09MKKW2HT?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-48%</span>
+    <img src="https://m.media-amazon.com/images/I/218t+n+-3EL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B09MKKW2HT?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Pendiente Suelto Mini Paw. Plata de Ley 925 con Acabado Baño de Oro de 18 Kt. Cierre de Rosca. Joyas para Mujer</a>
+    <div class="precio"><b>8,36 €</b> <s>15,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-2% vs mín. 30 días (8,57 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B09MKKW2HT</code></div>
+  </div>
+</article>
+<article class="card" data-dto="29" data-epc="0" data-precio="9.28" data-val="0" data-opi="0" data-vend="200" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist nueva ok tallanormal top vendidos "
+         data-asin="B0DQ975GH7" data-texto="singularu - pulsera polar colors. acero con acabado en baño oro de 18kt. largo de 16 + 3 cm y detalles en piedras de colores. joyas para mujer b0dq975gh7 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DQ975GH7" data-desc="SINGULARU - Pulsera Polar Colors. Acero… · 9,28 € · -29%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DQ975GH7?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-29%</span>
+    <img src="https://m.media-amazon.com/images/I/2147uqN6jBL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DQ975GH7?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Pulsera Polar Colors. Acero con Acabado en Baño Oro de 18Kt. Largo de 16 + 3 cm y Detalles en Piedras de Colores. Joyas para Mujer</a>
+    <div class="precio"><b>9,28 €</b> <s>12,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 200+ comprados el mes pasado</span></div>
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -29% vs mín. 30 días (12,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DQ975GH7</code></div>
+  </div>
+</article>
+<article class="card" data-dto="65" data-epc="0" data-precio="7.08" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist nueva ok tallanormal top "
+         data-asin="B0DHY5BK9F" data-texto="singularu - anillo mesh. acero con acabado en baño oro de 18kt. anillo ancho y maxi con altura de 8 mm y grosor de 1.9 mm. joyas para mujer. talla 12 b0dhy5bk9f ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DHY5BK9F" data-desc="SINGULARU - Anillo Mesh. Acero con Acab… · 7,08 € · -65%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DHY5BK9F?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-65%</span>
+    <img src="https://m.media-amazon.com/images/I/31RScSeqxfL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DHY5BK9F?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Anillo Mesh. Acero con Acabado en Baño Oro de 18Kt. Anillo Ancho y Maxi con Altura de 8 mm y Grosor de 1.9 mm. Joyas para Mujer. Talla 12</a>
+    <div class="precio"><b>7,08 €</b> <s>19,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -45% vs mín. 30 días (12,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DHY5BK9F</code></div>
+  </div>
+</article>
+<article class="card" data-dto="47" data-epc="0" data-precio="8.5" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" min90 nueva tallanormal top "
+         data-asin="B0CCS9211J" data-texto="singularu pendiente suelto mujer prawn enamel baño oro | pendiente suelto de latón con baño de oro de 18kt para un look atrevido con diseño de gamba y esmalte multicolor. b0ccs9211j ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0CCS9211J" data-desc="SINGULARU Pendiente suelto Mujer Prawn… · 8,50 € · -47%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CCS9211J?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-47%</span>
+    <img src="https://m.media-amazon.com/images/I/31sWCiGMpEL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CCS9211J?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU Pendiente suelto Mujer Prawn Enamel Baño Oro | Pendiente suelto de latón con baño de oro de 18kt para un look atrevido con diseño de gamba y esmalte multicolor.</a>
+    <div class="precio"><b>8,50 €</b> <s>15,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-3% vs mín. 30 días (8,72 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0CCS9211J</code></div>
+  </div>
+</article>
+<article class="card" data-dto="56" data-epc="0" data-precio="7.03" data-val="0" data-opi="0" data-vend="50" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist nueva ok tallanormal top vendidos "
+         data-asin="B0D8TB1HNY" data-texto="singularu - pendientes mila dots. acero con acabado en baño oro de 18kt. aro cuadrados con cierre congo/click. joyas para mujer b0d8tb1hny ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0D8TB1HNY" data-desc="SINGULARU - Pendientes Mila Dots. Acero… · 7,03 € · -56%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0D8TB1HNY?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-56%</span>
+    <img src="https://m.media-amazon.com/images/I/21Q-JY+iChL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0D8TB1HNY?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Pendientes Mila Dots. Acero con Acabado en Baño Oro de 18Kt. Aro Cuadrados con Cierre Congo/Click. Joyas para Mujer</a>
+    <div class="precio"><b>7,03 €</b> <s>15,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -41% vs mín. 30 días (11,94 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0D8TB1HNY</code></div>
+  </div>
+</article>
+<article class="card" data-dto="36" data-epc="0" data-precio="6.4" data-val="0" data-opi="0" data-vend="600" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist nueva ok tallanormal top vendidos "
+         data-asin="B0D7J4TJKH" data-texto="singularu pendientes mujer samba acero baño oro | pendientes de acero con baño de oro de 18kt ideales para el día a día con cierre click y diseño de aros midi ovalados. b0d7j4tjkh ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0D7J4TJKH" data-desc="SINGULARU Pendientes Mujer Samba Acero… · 6,40 € · -36%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0D7J4TJKH?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-36%</span>
+    <img src="https://m.media-amazon.com/images/I/21yGNaSpEVL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0D7J4TJKH?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU Pendientes Mujer Samba Acero Baño Oro | Pendientes de acero con baño de oro de 18kt ideales para el día a día con cierre click y diseño de aros midi ovalados.</a>
+    <div class="precio"><b>6,40 €</b> <s>9,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 600+ comprados el mes pasado</span></div>
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -36% vs mín. 30 días (9,97 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0D7J4TJKH</code></div>
+  </div>
+</article>
+<article class="card" data-dto="45" data-epc="0" data-precio="8.75" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" min90 nueva ok tallanormal top "
+         data-asin="B098TY853F" data-texto="singularu - pendiente suelto freesia spark plata. plata de ley 925 con acabado baño de rodio. cierre tuerca a presión. joyas para mujer b098ty853f ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B098TY853F" data-desc="SINGULARU - Pendiente Suelto Freesia Sp… · 8,75 € · -45%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B098TY853F?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-45%</span>
+    <img src="https://m.media-amazon.com/images/I/41OjOkt-FiL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B098TY853F?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Pendiente Suelto Freesia Spark Plata. Plata de Ley 925 con Acabado Baño de Rodio. Cierre Tuerca a Presión. Joyas para Mujer</a>
+    <div class="precio"><b>8,75 €</b> <s>15,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -29% vs mín. 30 días (12,34 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B098TY853F</code></div>
+  </div>
+</article>
+<article class="card" data-dto="45" data-epc="0" data-precio="8.79" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist nueva ok tallanormal top "
+         data-asin="B0DHSRBL51" data-texto="singularu - pendiente suelto aro point. latón con acabado de baño en oro de 18 kt y circonitas. joyas para mujer b0dhsrbl51 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DHSRBL51" data-desc="SINGULARU - Pendiente Suelto Aro Point.… · 8,79 € · -45%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DHSRBL51?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-45%</span>
+    <img src="https://m.media-amazon.com/images/I/21yZZUD01NL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DHSRBL51?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Pendiente Suelto Aro Point. Latón con acabado de Baño en Oro de 18 Kt y Circonitas. Joyas para Mujer</a>
+    <div class="precio"><b>8,79 €</b> <s>15,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -12% vs mín. 30 días (9,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DHSRBL51</code></div>
+  </div>
+</article>
+<article class="card" data-dto="29" data-epc="0" data-precio="9.28" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist nueva tallanormal top "
+         data-asin="B0DXQD8L1M" data-texto="singularu - pendiente suelto ear cuff triple cross. latón con acabado en baño de oro de 18 kt. joyas para mujer b0dxqd8l1m ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DXQD8L1M" data-desc="SINGULARU - Pendiente Suelto Ear Cuff T… · 9,28 € · -29%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DXQD8L1M?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-29%</span>
+    <img src="https://m.media-amazon.com/images/I/21xcNYSiANL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DXQD8L1M?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Pendiente Suelto Ear Cuff Triple Cross. Latón con Acabado en Baño de Oro de 18 kt. Joyas para Mujer</a>
+    <div class="precio"><b>9,28 €</b> <s>12,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-7% vs mín. 30 días (9,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DXQD8L1M</code></div>
+  </div>
+</article>
+<article class="card" data-dto="55" data-epc="0" data-precio="7.14" data-val="0" data-opi="0" data-vend="50" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist nueva ok tallanormal top vendidos "
+         data-asin="B0DBW2HMKK" data-texto="singularu - charm mini perro teckel enamel amarillo. latón con acabado en baño de oro de 18kt. colgante con esmalte de color. joyas para mujer b0dbw2hmkk ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DBW2HMKK" data-desc="SINGULARU - Charm Mini Perro Teckel Ena… · 7,14 € · -55%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DBW2HMKK?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-55%</span>
+    <img src="https://m.media-amazon.com/images/I/11ivr9QWsVL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DBW2HMKK?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Charm Mini Perro Teckel Enamel Amarillo. Latón con Acabado en Baño de Oro de 18kt. Colgante con Esmalte de Color. Joyas para Mujer</a>
+    <div class="precio"><b>7,14 €</b> <s>15,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -45% vs mín. 30 días (12,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DBW2HMKK</code></div>
+  </div>
+</article>
+<article class="card" data-dto="35" data-epc="0" data-precio="12.99" data-val="0" data-opi="0" data-vend="100" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" min90 tallanormal top vendidos "
+         data-asin="B0CXHYXRLJ" data-texto="singularu - pendientes jasmine. pendientes flor de acero inoxidable con baño en oro de 18kt. cierre tuerca a presión. joyas para mujer b0cxhyxrlj ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0CXHYXRLJ" data-desc="SINGULARU - Pendientes Jasmine. Pendien… · 12,99 € · -35%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CXHYXRLJ?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-35%</span>
+    <img src="https://m.media-amazon.com/images/I/31-7QrYoplL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CXHYXRLJ?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Pendientes Jasmine. Pendientes Flor de Acero Inoxidable con Baño en Oro de 18Kt. Cierre Tuerca a Presión. Joyas para Mujer</a>
+    <div class="precio"><b>12,99 €</b> <s>19,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0CXHYXRLJ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="44" data-epc="0" data-precio="8.36" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist nueva tallanormal top "
+         data-asin="B0F2JC1YQ4" data-texto="singularu anillo mujer estellar plata baño oro | latón con baño de oro de 18kt aporta elegancia con circonita central en forma de flor. tallas de la 10 a la 18 b0f2jc1yq4 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0F2JC1YQ4" data-desc="SINGULARU Anillo Mujer Estellar Plata B… · 8,36 € · -44%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0F2JC1YQ4?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-44%</span>
+    <img src="https://m.media-amazon.com/images/I/11BGNSZX-8L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0F2JC1YQ4?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU Anillo Mujer Estellar Plata Baño Oro | Latón con baño de Oro de 18kt aporta elegancia con circonita central en forma de flor. Tallas de la 10 a la 18</a>
+    <div class="precio"><b>8,36 €</b> <s>14,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-2% vs mín. 30 días (8,57 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0F2JC1YQ4</code></div>
+  </div>
+</article>
+<article class="card" data-dto="44" data-epc="0" data-precio="14.55" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist nueva tallanormal top "
+         data-asin="B0DKT79ZK8" data-texto="singularu pulsera mujer big rope acero | acero resistente al agua aporta un estilo atrevido con un diseño trenzado de eslabones maxi. b0dkt79zk8 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DKT79ZK8" data-desc="SINGULARU Pulsera Mujer Big Rope Acero… · 14,55 € · -44%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DKT79ZK8?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-44%</span>
+    <img src="https://m.media-amazon.com/images/I/31DeTtQVPdL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DKT79ZK8?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU Pulsera Mujer Big Rope Acero | Acero resistente al agua aporta un estilo atrevido con un diseño trenzado de eslabones maxi.</a>
+    <div class="precio"><b>14,55 €</b> <s>25,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-3% vs mín. 30 días (14,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DKT79ZK8</code></div>
+  </div>
+</article>
+<article class="card" data-dto="54" data-epc="0" data-precio="9.27" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist nueva tallanormal top "
+         data-asin="B0DNQZNWFS" data-texto="singularu - pendientes pirámide. acero con acabado en baño oro de 18kt. forma de triángulo con cierre congo/click joyas para mujer b0dnqznwfs ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DNQZNWFS" data-desc="SINGULARU - Pendientes Pirámide. Acero… · 9,27 € · -54%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DNQZNWFS?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-54%</span>
+    <img src="https://m.media-amazon.com/images/I/21E2O6C25LL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DNQZNWFS?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Pendientes Pirámide. Acero con Acabado en Baño Oro de 18Kt. Forma de Triángulo con Cierre Congo/click Joyas para Mujer</a>
+    <div class="precio"><b>9,27 €</b> <s>19,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-3% vs mín. 30 días (9,51 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DNQZNWFS</code></div>
+  </div>
+</article>
+<article class="card" data-dto="35" data-epc="0" data-precio="12.99" data-val="0" data-opi="0" data-vend="50" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist tallanormal top vendidos "
+         data-asin="B0D7J45X8Y" data-texto="singularu - pendientes aro bossa. acero con acabado en baño de oro de 18kt. cierre congo/click. joyas para mujer b0d7j45x8y ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0D7J45X8Y" data-desc="SINGULARU - Pendientes Aro Bossa. Acero… · 12,99 € · -35%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0D7J45X8Y?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-35%</span>
+    <img src="https://m.media-amazon.com/images/I/21e5mBuUx0L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0D7J45X8Y?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Pendientes Aro Bossa. Acero con Acabado en Baño de Oro de 18kt. Cierre Congo/Click. Joyas para Mujer</a>
+    <div class="precio"><b>12,99 €</b> <s>19,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0D7J45X8Y</code></div>
+  </div>
+</article>
+<article class="card" data-dto="29" data-epc="0" data-precio="9.28" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist nueva ok tallanormal top "
+         data-asin="B0BS1J4HTJ" data-texto="singularu pendiente suelto mujer rayo colors plata baño oro | piercing de plata de ley con baño de oro de 18kt ideal para uso diario con circonitas de colores y forma de rayo. b0bs1j4htj ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0BS1J4HTJ" data-desc="SINGULARU Pendiente suelto Mujer Rayo C… · 9,28 € · -29%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0BS1J4HTJ?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-29%</span>
+    <img src="https://m.media-amazon.com/images/I/31ms64ceo1L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0BS1J4HTJ?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU Pendiente suelto Mujer Rayo Colors Plata Baño Oro | Piercing de Plata de Ley con baño de oro de 18kt ideal para uso diario con circonitas de colores y forma de rayo.</a>
+    <div class="precio"><b>9,28 €</b> <s>12,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -25% vs mín. 30 días (12,34 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0BS1J4HTJ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="43" data-epc="0" data-precio="7.03" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist nueva tallanormal top "
+         data-asin="B0D1CRR6H4" data-texto="singularu - pendiente suelto pink daisy may. acero con acabado baño oro 18kt con motivo margarita rosa. cierre silicona. joyas para mujer b0d1crr6h4 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0D1CRR6H4" data-desc="SINGULARU - Pendiente Suelto Pink Daisy… · 7,03 € · -43%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0D1CRR6H4?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-43%</span>
+    <img src="https://m.media-amazon.com/images/I/21Fkp2naIVL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0D1CRR6H4?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Pendiente Suelto Pink Daisy May. Acero con Acabado Baño Oro 18Kt con Motivo Margarita Rosa. Cierre Silicona. Joyas para Mujer</a>
+    <div class="precio"><b>7,03 €</b> <s>12,34 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-2% vs mín. 30 días (7,21 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0D1CRR6H4</code></div>
+  </div>
+</article>
+<article class="card" data-dto="43" data-epc="0" data-precio="9.06" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" min90 nueva ok tallanormal top "
+         data-asin="B082MPZTVT" data-texto="singularu - pendiente suelto rayo plata. plata de ley 925 con acabado baño de rodio. cierre tuerca a presión. joyas para mujer b082mpztvt ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B082MPZTVT" data-desc="SINGULARU - Pendiente Suelto Rayo Plata… · 9,06 € · -43%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B082MPZTVT?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-43%</span>
+    <img src="https://m.media-amazon.com/images/I/21VahMpFGxL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B082MPZTVT?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Pendiente Suelto Rayo Plata. Plata de Ley 925 con Acabado Baño de Rodio. Cierre Tuerca a Presión. Joyas para Mujer</a>
+    <div class="precio"><b>9,06 €</b> <s>15,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -24% vs mín. 30 días (12,00 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B082MPZTVT</code></div>
+  </div>
+</article>
+<article class="card" data-dto="53" data-epc="0" data-precio="8.92" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist nueva ok tallanormal top "
+         data-asin="B0DP7T4NML" data-texto="singularu pendientes mujer chunky eslabón acero | pendientes de acero que elevan tu look diario con eslabones entrelazados. b0dp7t4nml ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DP7T4NML" data-desc="SINGULARU Pendientes Mujer Chunky Eslab… · 8,92 € · -53%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DP7T4NML?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-53%</span>
+    <img src="https://m.media-amazon.com/images/I/21nBcuMFD8L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DP7T4NML?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU Pendientes Mujer Chunky Eslabón Acero | Pendientes de acero que elevan tu look diario con eslabones entrelazados.</a>
+    <div class="precio"><b>8,92 €</b> <s>18,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -50% vs mín. 30 días (17,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DP7T4NML</code></div>
+  </div>
+</article>
+<article class="card" data-dto="35" data-epc="0" data-precio="12.99" data-val="0" data-opi="0" data-vend="50" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist tallanormal top vendidos "
+         data-asin="B0FH6XLQ3C" data-texto="singularu anillo mujer ajustable abbraccio white acero baño oro | anillos de acero bañado en oro 18kt ajustables con esmalte tono nácar. talla ajustable. b0fh6xlq3c ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0FH6XLQ3C" data-desc="SINGULARU Anillo Mujer Ajustable Abbrac… · 12,99 € · -35%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FH6XLQ3C?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-35%</span>
+    <img src="https://m.media-amazon.com/images/I/31rr8mXJKyL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FH6XLQ3C?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU Anillo Mujer Ajustable Abbraccio White Acero Baño Oro | Anillos de acero bañado en oro 18kt ajustables con esmalte tono nácar. Talla ajustable.</a>
+    <div class="precio"><b>12,99 €</b> <s>19,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0FH6XLQ3C</code></div>
+  </div>
+</article>
+<article class="card" data-dto="43" data-epc="0" data-precio="12.99" data-val="0" data-opi="0" data-vend="100" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" min90 tallanormal top vendidos "
+         data-asin="B0DHSBKZFZ" data-texto="singularu - pulsera double crystal summer - pulseras en acero con acabado en baño oro de 18kt - pulsera con detalles en cristales de colores - largo de 21 cm - joyas para mujer b0dhsbkzfz ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DHSBKZFZ" data-desc="SINGULARU - Pulsera Double Crystal Summ… · 12,99 € · -43%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DHSBKZFZ?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-43%</span>
+    <img src="https://m.media-amazon.com/images/I/31qGI9LM5-L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DHSBKZFZ?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Pulsera Double Crystal Summer - Pulseras en Acero con Acabado en Baño Oro de 18Kt - Pulsera con Detalles en Cristales de Colores - Largo de 21 cm - Joyas Para Mujer</a>
+    <div class="precio"><b>12,99 €</b> <s>22,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DHSBKZFZ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="43" data-epc="0" data-precio="12.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist ok tallanormal top "
+         data-asin="B0GD7MJ21T" data-texto="singularu pendientes mujer emma acero baño oro | pendientes de acero con baño de oro 18kt ideales para diario con diseño doble elegante. b0gd7mj21t ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0GD7MJ21T" data-desc="SINGULARU Pendientes Mujer Emma Acero B… · 12,99 € · -43%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GD7MJ21T?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-43%</span>
+    <img src="https://m.media-amazon.com/images/I/21YnX9ZRaSL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GD7MJ21T?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU Pendientes Mujer Emma Acero Baño Oro | Pendientes de acero con baño de oro 18kt ideales para diario con diseño doble elegante.</a>
+    <div class="precio"><b>12,99 €</b> <s>22,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -28% vs mín. 30 días (17,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0GD7MJ21T</code></div>
+  </div>
+</article>
+<article class="card" data-dto="29" data-epc="0" data-precio="9.28" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" min90 nueva ok tallanormal top "
+         data-asin="B0DP7SB92N" data-texto="singularu - pendiente suelto aro alma pink. latón con acabado en baño de oro de 18kt. detalles en circonitas rosas. cierre congo/click. joyas para mujer b0dp7sb92n ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DP7SB92N" data-desc="SINGULARU - Pendiente Suelto Aro Alma P… · 9,28 € · -29%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DP7SB92N?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-29%</span>
+    <img src="https://m.media-amazon.com/images/I/21NrP89BkNL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DP7SB92N?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Pendiente Suelto Aro Alma Pink. Latón con acabado en Baño de Oro de 18kt. Detalles en Circonitas Rosas. Cierre Congo/Click. Joyas para Mujer</a>
+    <div class="precio"><b>9,28 €</b> <s>12,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -29% vs mín. 30 días (12,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DP7SB92N</code></div>
+  </div>
+</article>
+<article class="card" data-dto="52" data-epc="0" data-precio="12.43" data-val="0" data-opi="0" data-vend="100" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist nueva ok top vendidos "
+         data-asin="B0CS3GRM9P" data-texto="singularu - pulsera big rope. acero con acabado baño de oro de 18kt. maxi con cadena de eslaboles. largo de 20 cm. joyas para mujer b0cs3grm9p ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0CS3GRM9P" data-desc="SINGULARU - Pulsera Big Rope. Acero con… · 12,43 € · -52%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CS3GRM9P?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-52%</span>
+    <img src="https://m.media-amazon.com/images/I/311G9zvpMqL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CS3GRM9P?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Pulsera Big Rope. Acero con Acabado Baño de Oro de 18Kt. Maxi con Cadena de Eslaboles. Largo de 20 cm. Joyas para Mujer</a>
+    <div class="precio"><b>12,43 €</b> <s>25,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -17% vs mín. 30 días (14,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0CS3GRM9P</code></div>
+  </div>
+</article>
+<article class="card" data-dto="35" data-epc="0" data-precio="12.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist tallanormal top "
+         data-asin="B0G6ZBPF38" data-texto="singularu anillo mujer ajustable sello rosa acero baño oro | anillo de acero bañado en oro de 18kt ajustable con esmalte de tono oscuro. talla ajustable b0g6zbpf38 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0G6ZBPF38" data-desc="SINGULARU Anillo Mujer Ajustable Sello… · 12,99 € · -35%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0G6ZBPF38?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-35%</span>
+    <img src="https://m.media-amazon.com/images/I/21XUc72ZtqL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0G6ZBPF38?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU Anillo Mujer Ajustable Sello Rosa Acero Baño Oro | Anillo de acero bañado en oro de 18kt ajustable con esmalte de tono oscuro. Talla ajustable</a>
+    <div class="precio"><b>12,99 €</b> <s>19,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0G6ZBPF38</code></div>
+  </div>
+</article>
+<article class="card" data-dto="43" data-epc="0" data-precio="12.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist ok tallanormal top "
+         data-asin="B0FHW72W79" data-texto="singularu pulsera mujer doble dye dots pastel acero baño oro | acero resistente al agua con baño de oro de 18kt y perlas naturales. b0fhw72w79 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0FHW72W79" data-desc="SINGULARU Pulsera Mujer Doble Dye Dots… · 12,99 € · -43%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FHW72W79?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-43%</span>
+    <img src="https://m.media-amazon.com/images/I/31nN7xToPLL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FHW72W79?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU Pulsera Mujer Doble Dye Dots Pastel Acero Baño Oro | Acero resistente al agua con baño de Oro de 18kt y perlas naturales.</a>
+    <div class="precio"><b>12,99 €</b> <s>22,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -43% vs mín. 30 días (22,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0FHW72W79</code></div>
+  </div>
+</article>
+<article class="card" data-dto="42" data-epc="0" data-precio="9.28" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" min90 nueva ok tallanormal top "
+         data-asin="B0CXHVBBGM" data-texto="singularu - pendiente suelto margarita. plata de ley 925 con acabado baño oro 18kt y rodio. cierre tuerca de rosca. joyas para mujer b0cxhvbbgm ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0CXHVBBGM" data-desc="SINGULARU - Pendiente Suelto Margarita.… · 9,28 € · -42%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CXHVBBGM?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-42%</span>
+    <img src="https://m.media-amazon.com/images/I/21LYVFzHtlL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CXHVBBGM?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Pendiente Suelto Margarita. Plata de Ley 925 con Acabado Baño Oro 18Kt y Rodio. Cierre Tuerca de Rosca. Joyas para Mujer</a>
+    <div class="precio"><b>9,28 €</b> <s>15,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -25% vs mín. 30 días (12,34 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0CXHVBBGM</code></div>
+  </div>
+</article>
+<article class="card" data-dto="34" data-epc="0" data-precio="8.52" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist nueva ok tallanormal top "
+         data-asin="B0F19BX7GJ" data-texto="singularu pendiente suelto mujer hope baño oro | pendiente suelto de latón con baño de oro de 18kt ideal para tu ear-look con ópalo sintético. b0f19bx7gj ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0F19BX7GJ" data-desc="SINGULARU Pendiente suelto Mujer Hope B… · 8,52 € · -34%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0F19BX7GJ?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-34%</span>
+    <img src="https://m.media-amazon.com/images/I/21ponfMBvYL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0F19BX7GJ?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU Pendiente suelto Mujer Hope Baño Oro | Pendiente suelto de latón con baño de oro de 18kt ideal para tu ear-look con ópalo sintético.</a>
+    <div class="precio"><b>8,52 €</b> <s>12,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -34% vs mín. 30 días (12,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0F19BX7GJ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="28" data-epc="0" data-precio="12.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist tallanormal top "
+         data-asin="B0DJDJQBC8" data-texto="singularu pendientes mujer river l acero baño oro | pendientes de aro de acero con baño de oro de 18kt ideales para diario con forma orgánica super bohemia. b0djdjqbc8 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DJDJQBC8" data-desc="SINGULARU Pendientes Mujer River L Acer… · 12,99 € · -28%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DJDJQBC8?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-28%</span>
+    <img src="https://m.media-amazon.com/images/I/21KPLrUyudL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DJDJQBC8?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU Pendientes Mujer River L Acero Baño Oro | Pendientes de aro de acero con baño de oro de 18kt ideales para diario con forma orgánica super bohemia.</a>
+    <div class="precio"><b>12,99 €</b> <s>17,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DJDJQBC8</code></div>
+  </div>
+</article>
+<article class="card" data-dto="34" data-epc="0" data-precio="9.29" data-val="0" data-opi="0" data-vend="50" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist nueva tallanormal top vendidos "
+         data-asin="B0CX5NQBZK" data-texto="singularu - pulsera amulet rose quartz. acero bañado en oro 18kt y piedras naturales. joyas para mujer b0cx5nqbzk ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0CX5NQBZK" data-desc="SINGULARU - Pulsera Amulet Rose Quartz.… · 9,29 € · -34%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CX5NQBZK?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-34%</span>
+    <img src="https://m.media-amazon.com/images/I/21VIB5dcAsL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CX5NQBZK?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Pulsera Amulet Rose Quartz. Acero bañado en Oro 18Kt y Piedras Naturales. Joyas para Mujer</a>
+    <div class="precio"><b>9,29 €</b> <s>14,07 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-3% vs mín. 30 días (9,53 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0CX5NQBZK</code></div>
+  </div>
+</article>
+<article class="card" data-dto="27" data-epc="0" data-precio="18.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" min90 ok tallanormal top "
+         data-asin="B0CQMKVMGQ" data-texto="singularu collar mujer bling rainbow acero baño oro | collar de acero con baño de oro de 18kt duradero con medallón de circonitas multicolor en forma de estrella. b0cqmkvmgq ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0CQMKVMGQ" data-desc="SINGULARU Collar Mujer Bling Rainbow Ac… · 18,99 € · -27%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CQMKVMGQ?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-27%</span>
+    <img src="https://m.media-amazon.com/images/I/31XT2fbuNTL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CQMKVMGQ?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU Collar Mujer Bling Rainbow Acero Baño Oro | Collar de acero con baño de oro de 18kt duradero con medallón de circonitas multicolor en forma de estrella.</a>
+    <div class="precio"><b>18,99 €</b> <s>25,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -17% vs mín. 30 días (22,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0CQMKVMGQ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="33" data-epc="0" data-precio="6.72" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist nueva tallanormal top "
+         data-asin="B0D8TFWQGN" data-texto="singularu - pendiente suelto herradura. latón con acabado de baño de rodio. cierre de silicona. joyas para mujer b0d8tfwqgn ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0D8TFWQGN" data-desc="SINGULARU - Pendiente Suelto Herradura.… · 6,72 € · -33%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0D8TFWQGN?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-33%</span>
+    <img src="https://m.media-amazon.com/images/I/21X1EGMiv6L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0D8TFWQGN?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Pendiente Suelto Herradura. Latón con Acabado de Baño de Rodio. Cierre de Silicona. Joyas para Mujer</a>
+    <div class="precio"><b>6,72 €</b> <s>9,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-2% vs mín. 30 días (6,89 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0D8TFWQGN</code></div>
+  </div>
+</article>
+<article class="card" data-dto="33" data-epc="0" data-precio="8.75" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" min90 nueva tallanormal top "
+         data-asin="B09MKN8BWR" data-texto="singularu - pendiente suelto mini paw plata. plata de ley 925 con acabado baño de rodio. cierre de rosca. joyas para mujer b09mkn8bwr ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B09MKN8BWR" data-desc="SINGULARU - Pendiente Suelto Mini Paw P… · 8,75 € · -33%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B09MKN8BWR?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-33%</span>
+    <img src="https://m.media-amazon.com/images/I/21-VoySZpzL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B09MKN8BWR?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Pendiente Suelto Mini Paw Plata. Plata de Ley 925 con Acabado Baño de Rodio. Cierre de Rosca. Joyas para Mujer</a>
+    <div class="precio"><b>8,75 €</b> <s>12,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-2% vs mín. 30 días (8,97 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B09MKN8BWR</code></div>
+  </div>
+</article>
+<article class="card" data-dto="25" data-epc="0" data-precio="5.98" data-val="0" data-opi="0" data-vend="500" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist nueva ok tallanormal top vendidos "
+         data-asin="B0D8TCJGVL" data-texto="singularu - pendientes dana dots. acero con acabado en baño oro de 18kt. ovalados con cierre congo/click. joyas para mujer b0d8tcjgvl ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0D8TCJGVL" data-desc="SINGULARU - Pendientes Dana Dots. Acero… · 5,98 € · -25%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0D8TCJGVL?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-25%</span>
+    <img src="https://m.media-amazon.com/images/I/21Tgf57HFgL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0D8TCJGVL?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Pendientes Dana Dots. Acero con Acabado en Baño Oro de 18Kt. Ovalados con Cierre Congo/Click. Joyas para Mujer</a>
+    <div class="precio"><b>5,98 €</b> <s>7,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 500+ comprados el mes pasado</span></div>
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -25% vs mín. 30 días (7,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0D8TCJGVL</code></div>
+  </div>
+</article>
+<article class="card" data-dto="25" data-epc="0" data-precio="5.98" data-val="0" data-opi="0" data-vend="300" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist nueva ok tallanormal top vendidos "
+         data-asin="B0D8TDP8X8" data-texto="singularu - pendientes dana dots acero con acabado brillante. ovalados con cierre congo/click. joyas para mujer b0d8tdp8x8 ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0D8TDP8X8" data-desc="SINGULARU - Pendientes Dana Dots Acero… · 5,98 € · -25%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0D8TDP8X8?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-25%</span>
+    <img src="https://m.media-amazon.com/images/I/21O6Sn79PrL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0D8TDP8X8?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Pendientes Dana Dots Acero con Acabado Brillante. Ovalados con Cierre Congo/Click. Joyas para Mujer</a>
+    <div class="precio"><b>5,98 €</b> <s>7,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 300+ comprados el mes pasado</span></div>
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -25% vs mín. 30 días (7,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0D8TDP8X8</code></div>
+  </div>
+</article>
+<article class="card" data-dto="25" data-epc="0" data-precio="14.99" data-val="0" data-opi="0" data-vend="100" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" min90 ok top vendidos "
+         data-asin="B0DGQN1MKT" data-texto="singularu - brazalete line chain. acero con acabado en baño oro de 18kt. pulsera con estilo minimalista y forma rígida. joyas para mujer b0dgqn1mkt ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0DGQN1MKT" data-desc="SINGULARU - Brazalete Line Chain. Acero… · 14,99 € · -25%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DGQN1MKT?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-25%</span>
+    <img src="https://m.media-amazon.com/images/I/21ubFU5sVNL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DGQN1MKT?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU - Brazalete Line Chain. Acero con Acabado en Baño Oro de 18Kt. Pulsera con Estilo Minimalista y Forma Rígida. Joyas para Mujer</a>
+    <div class="precio"><b>14,99 €</b> <s>19,99 €</s></div>
+    <div class="resenas"><span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -25% vs mín. 30 días (19,99 €)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0DGQN1MKT</code></div>
+  </div>
+</article>
+<article class="card" data-dto="25" data-epc="0" data-precio="14.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Moda mujer" data-marca="SINGULARU" data-marcas=" hist tallanormal top "
+         data-asin="B0FTZBC1NS" data-texto="singularu pendiente suelto mujer gilda baño oro | latón con baño de oro de 18kt aporta estilo y originalidad con detalle de circonita. b0ftzbc1ns ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0FTZBC1NS" data-desc="SINGULARU Pendiente suelto Mujer Gilda… · 14,99 € · -25%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FTZBC1NS?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-25%</span>
+    <img src="https://m.media-amazon.com/images/I/31Mf5D32DvL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FTZBC1NS?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">SINGULARU Pendiente suelto Mujer Gilda Baño Oro | Latón con baño de Oro de 18kt aporta estilo y originalidad con detalle de circonita.</a>
+    <div class="precio"><b>14,99 €</b> <s>19,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ SINGULARU</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0FTZBC1NS</code></div>
+  </div>
+</article>
+<article class="card" data-dto="58" data-epc="0" data-precio="14.28" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Otros" data-marca="Marks &amp; Spencer" data-marcas=" hist ok rep talla tallanormal top "
+         data-asin="B0G96QCPJP" data-texto="marks &amp; spencer suéter 100% algodón con cuello redondo l b0g96qcpjp ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0G96QCPJP" data-desc="Marks &amp; Spencer Suéter 100% algodón con… · 14,28 € · -58%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0G96QCPJP?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-58%</span>
+    <img src="https://m.media-amazon.com/images/I/31Z5Ie8Z04L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0G96QCPJP?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Marks &amp; Spencer Suéter 100% algodón con Cuello Redondo L</a>
+    <div class="precio"><b>14,28 €</b> <s>34,00 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ Marks &amp; Spencer</span><span class="tag talla">📏 L · Medium Brown</span><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -58% vs mín. 30 días (34,00 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0G96QCPJP</code></div>
+  </div>
+</article>
+<article class="card" data-dto="37" data-epc="0" data-precio="56.04" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Otros" data-marca="Skechers" data-marcas=" talla tallanormal top "
+         data-asin="B0FDC5R2YJ" data-texto="skechers snoop ace cyber walker - tenis para mujer, color naranja, talla 3 b0fdc5r2yj ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0FDC5R2YJ" data-desc="Skechers Snoop Ace Cyber Walker - Tenis… · 56,04 € · -37%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0FDC5R2YJ?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-37%</span>
+    <img src="https://m.media-amazon.com/images/I/41cdOLTIpaL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0FDC5R2YJ?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Skechers Snoop Ace Cyber Walker - Tenis para Mujer, Color Naranja, Talla 3</a>
+    <div class="precio"><b>56,04 €</b> <s>89,63 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ Skechers</span><span class="tag talla">📏 36 EU · Orange Mesh Hot Melt</span><span class="tag ">Antes = precio recomendado</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0FDC5R2YJ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="21" data-epc="0" data-precio="55.39" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Ropa y zapatos"
+         data-cat="Otros" data-marca="Only" data-marcas=" nueva talla tallanormal top "
+         data-asin="B0CN2WHXPM" data-texto="only onlalvilda life wrap coat otw abrigo para mujer, simply taupe/detail:melange, m b0cn2whxpm ropa y zapatos">
+  <label class="pick"><input type="checkbox" value="B0CN2WHXPM" data-desc="ONLY Onlalvilda Life Wrap Coat OTW Abri… · 55,39 € · -21%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0CN2WHXPM?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-21%</span>
+    <img src="https://m.media-amazon.com/images/I/31mP2wzQcKL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0CN2WHXPM?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">ONLY Onlalvilda Life Wrap Coat OTW Abrigo para mujer, Simply Taupe/Detail:Melange, M</a>
+    <div class="precio"><b>55,39 €</b> <s>69,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ Only</span><span class="tag talla">📏 M · Simply Taupe</span><span class="tag ">Antes = precio recomendado</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="pie">Ropa y zapatos · <code>B0CN2WHXPM</code></div>
+  </div>
+</article></main>
+<script>
+const lista = document.getElementById('lista');
+const cards = [...lista.querySelectorAll('.card')];
+const btn = document.getElementById('copiar');
+const $ = id => document.getElementById(id);
+function elegidos() { return cards.filter(c => c.querySelector('input').checked); }
+// Opciones marcadas en un desplegable múltiple (vacío = todas)
+function marcados(id) {
+  const d = $(id);
+  if (!d) return [];
+  const total = d.querySelectorAll('input[type=checkbox]').length;
+  let v = [...d.querySelectorAll('input:checked')].map(i => i.value);
+  if (v.length === total) v = [];            // todas marcadas = sin filtro
+  const faltan = total - v.length;
+  d.classList.toggle('activo', v.length > 0);
+  d.querySelector('summary').textContent =
+    !v.length ? d.dataset.todas
+    : v.length === 1 ? v[0]
+    : faltan <= 3 && v.length > faltan ? `Todas menos ${faltan}`
+    : `${v[0]} +${v.length - 1}`;
+  return v;
+}
+function filtrar() {
+  const q = $('q').value.toLowerCase().trim();
+  const g = $('grupo') ? $('grupo').value : '';
+  const d = +$('dtomin').value || 0;
+  const dmax = $('dtomax').value === '' ? 100 : +$('dtomax').value;
+  const pmin = parseFloat($('pmin').value), pmax = parseFloat($('pmax').value);
+  const valmin = $('valmin') ? +$('valmin').value : 0, vendmin = $('vendmin') ? +$('vendmin').value : 0;
+  document.querySelectorAll('[data-pmax]').forEach(b => b.classList.toggle('activo', +b.dataset.pmax === pmax));
+  const cats = marcados('cat');
+  const marcasTop = marcados('marca');
+  // Botones de etiqueta: "on" = solo las que la tienen, "off" = sin ella
+  const con = [...document.querySelectorAll('.chip.on')].map(b => ` ${b.dataset.m} `);
+  const sin = [...document.querySelectorAll('.chip.off')].map(b => ` ${b.dataset.m} `);
+  let n = 0;
+  cards.forEach(c => {
+    const ver = (!q || c.dataset.texto.includes(q))
+      && con.every(m => c.dataset.marcas.includes(m))
+      && !sin.some(m => c.dataset.marcas.includes(m))
+      && (!cats.length || cats.includes(c.dataset.cat))
+      && (!marcasTop.length || marcasTop.includes(c.dataset.marca))
+      && (!g || c.dataset.grupo.split('|').map(s => s.trim()).includes(g))
+      && +c.dataset.dto >= d && +c.dataset.dto <= dmax
+      && +c.dataset.val >= valmin && +c.dataset.vend >= vendmin
+      && (isNaN(pmin) || +c.dataset.precio >= pmin)
+      && (isNaN(pmax) || (+c.dataset.precio > 0 && +c.dataset.precio <= pmax));
+    c.hidden = !ver; if (ver) n++;
+  });
+  $('contador').textContent = `${n} de ${cards.length}`;
+}
+lista.addEventListener('change', e => {
+  e.target.closest('.card').classList.toggle('sel', e.target.checked);
+  const n = elegidos().length; btn.textContent = `Añadir a la cola (${n})`; btn.disabled = !n;
+});
+// 15/11/2026: ya no se copia al portapapeles para pegar en Excel; se manda directo a la cola de
+// servidor_ofertas.py (puerto 8766), que es quien lee publicar_grupo_eva.py.
+const SERVIDOR_COLA = 'http://100.87.234.47:8766/';
+btn.onclick = async () => {
+  const elegidas = elegidos();
+  const antes = btn.textContent;
+  let ok = 0, avisos = [];
+  for (const c of elegidas) {
+    const i = c.querySelector('input');
+    const img = c.querySelector('.foto img');
+    try {
+      const r = await fetch(SERVIDOR_COLA, {method: 'POST', headers: {'Content-Type': 'application/json', 'X-Panel': '1'},
+                                             body: JSON.stringify({accion: 'anadir', entrada: i.value, descripcion: i.dataset.desc || '',
+                                                                    imagen: img ? img.src : ''})});
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error || ('error ' + r.status));
+      ok++; if (d.aviso) avisos.push(i.value + ': ' + d.aviso);
+    } catch (e) { avisos.push(i.value + ': ' + e.message); }
+  }
+  btn.textContent = ok ? `Añadidas ${ok} de ${elegidas.length}` + (avisos.length ? ' (ver consola)' : '') : 'No se pudo añadir: ¿está arrancado servidor_ofertas.py?';
+  if (avisos.length) console.log('Avisos al añadir a la cola:\n' + avisos.join('\n'));
+  setTimeout(() => btn.textContent = antes, 3500);
+};
+// 1er clic: solo las que tienen la etiqueta · 2º: las que NO la tienen · 3º: quitar
+document.querySelectorAll('.chip').forEach(b => b.onclick = () => {
+  if (b.classList.contains('on')) { b.classList.replace('on', 'off'); b.title = 'Ocultando las que la tienen'; }
+  else if (b.classList.contains('off')) { b.classList.remove('off'); b.title = ''; }
+  else { b.classList.add('on'); b.title = 'Solo las que la tienen'; }
+  filtrar();
+});
+// "Hasta 10 €" / "Hasta 20 €": ponen el precio máximo; pulsarlo otra vez lo quita
+document.querySelectorAll('[data-pmax]').forEach(b => b.onclick = () => {
+  $('pmax').value = +$('pmax').value === +b.dataset.pmax ? '' : b.dataset.pmax;
+  filtrar();
+});
+['q', 'cat', 'marca', 'grupo', 'valmin', 'vendmin', 'dtomin', 'dtomax', 'pmin', 'pmax'].forEach(id => {
+  if (!$(id)) return;
+  $(id).addEventListener('input', filtrar);
+  $(id).addEventListener('change', filtrar);
+});
+// "Marcar todas" / "Desmarcar todas" de cada desplegable múltiple
+document.querySelectorAll('.multi [data-marcar]').forEach(b => b.onclick = () => {
+  b.closest('.multi').querySelectorAll('input[type=checkbox]').forEach(i => i.checked = b.dataset.marcar === '1');
+  filtrar();
+});
+// Cerrar los desplegables múltiples al pulsar fuera
+document.addEventListener('click', e => document.querySelectorAll('details.multi[open]')
+  .forEach(d => d.contains(e.target) || d.removeAttribute('open')));
+$('limpiar').onclick = () => {
+  $('q').value = ''; $('dtomin').value = 0; $('dtomax').value = 100;
+  $('pmin').value = ''; $('pmax').value = '';
+  $('grupo') && ($('grupo').value = '');
+  $('valmin') && ($('valmin').value = 0); $('vendmin') && ($('vendmin').value = 0);
+  document.querySelectorAll('.multi input:checked').forEach(i => i.checked = false);
+  document.querySelectorAll('.chip').forEach(b => { b.classList.remove('on', 'off'); b.title = ''; });
+  filtrar(); window.scrollTo(0, 0);
+};
+function ordenar(k) {
+  cards.sort((a, b) => k === 'dto' ? b.dataset.dto - a.dataset.dto
+    : k === 'epc' ? (b.dataset.epc - a.dataset.epc) || (b.dataset.dto - a.dataset.dto)
+    : k === 'real' ? (b.dataset.real - a.dataset.real) || (b.dataset.dto - a.dataset.dto)
+    : k === 'min' ? (a.dataset.sobremin - b.dataset.sobremin) || (b.dataset.dto - a.dataset.dto)
+    : k === 'rec' ? (a.dataset.cambio - b.dataset.cambio) || (b.dataset.dto - a.dataset.dto)
+    : k === 'opi' ? b.dataset.opi - a.dataset.opi
+    : k === 'vend' ? (b.dataset.vend - a.dataset.vend) || (b.dataset.opi - a.dataset.opi)
+    // mejor valorados: a igual nota, antes el que tiene más opiniones
+    : k === 'val' ? (b.dataset.val - a.dataset.val) || (b.dataset.opi - a.dataset.opi)
+    : k === 'asc' ? a.dataset.precio - b.dataset.precio : b.dataset.precio - a.dataset.precio);
+  // El orden se aplica con la propiedad CSS "order" (la rejilla ya es de CSS): mover miles de tarjetas
+  // de sitio en la página tardaba seis segundos, y así es instantáneo
+  cards.forEach((c, i) => c.style.order = i);
+}
+$('orden').onchange = e => ordenar(e.target.value);
+// Al abrir la página, el orden es el que marca el desplegable ("Más descuento"), no el del orden en que llegaron
+ordenar($('orden').value);
+filtrar();
+</script>
+</body></html>
