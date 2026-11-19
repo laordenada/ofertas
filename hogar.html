@@ -94,11 +94,11 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
 </style></head><body>
 <header>
   <div><h1>Ofertas hogar: limpieza y cocina</h1>
-  <div class="sub">462 ofertas · 19/11/2026 04:41</div></div>
+  <div class="sub">465 ofertas · 19/11/2026 09:40</div></div>
   <div class="ctrl">
     <input type="search" id="q" placeholder="Filtrar…">
-    <details class="multi" id="cat" data-todas="Todas las categorías"><summary>Todas las categorías</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="Otros"> Otros <span>(2)</span></label><label><input type="checkbox" value="🤖 Robot aspirador"> 🤖 Robot aspirador <span>(65)</span></label><label><input type="checkbox" value="🍟 Freidora de aire"> 🍟 Freidora de aire <span>(57)</span></label><label><input type="checkbox" value="🥤 Batidora / Licuadora"> 🥤 Batidora / Licuadora <span>(49)</span></label><label><input type="checkbox" value="🍞 Pequeño electro"> 🍞 Pequeño electro <span>(35)</span></label><label><input type="checkbox" value="☕ Cafetera"> ☕ Cafetera <span>(57)</span></label><label><input type="checkbox" value="📟 Microondas / Horno"> 📟 Microondas / Horno <span>(36)</span></label><label><input type="checkbox" value="🧹 Aspiradora"> 🧹 Aspiradora <span>(118)</span></label><label><input type="checkbox" value="🍲 Robot de cocina"> 🍲 Robot de cocina <span>(6)</span></label><label><input type="checkbox" value="🛋️ Tapicerías"> 🛋️ Tapicerías <span>(4)</span></label><label><input type="checkbox" value="♨️ Vapor"> ♨️ Vapor <span>(5)</span></label><label><input type="checkbox" value="♨️ Olla programable"> ♨️ Olla programable <span>(8)</span></label><label><input type="checkbox" value="🧽 Friegasuelos"> 🧽 Friegasuelos <span>(17)</span></label><label><input type="checkbox" value="🪟 Limpiacristales"> 🪟 Limpiacristales <span>(3)</span></label></div></details>
-    
+    <details class="multi" id="cat" data-todas="Todas las categorías"><summary>Todas las categorías</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="Otros"> Otros <span>(6)</span></label><label><input type="checkbox" value="🤖 Robot aspirador"> 🤖 Robot aspirador <span>(65)</span></label><label><input type="checkbox" value="🍟 Freidora de aire"> 🍟 Freidora de aire <span>(56)</span></label><label><input type="checkbox" value="🥤 Batidora / Licuadora"> 🥤 Batidora / Licuadora <span>(49)</span></label><label><input type="checkbox" value="🍞 Pequeño electro"> 🍞 Pequeño electro <span>(35)</span></label><label><input type="checkbox" value="☕ Cafetera"> ☕ Cafetera <span>(57)</span></label><label><input type="checkbox" value="📟 Microondas / Horno"> 📟 Microondas / Horno <span>(36)</span></label><label><input type="checkbox" value="🧹 Aspiradora"> 🧹 Aspiradora <span>(118)</span></label><label><input type="checkbox" value="🍲 Robot de cocina"> 🍲 Robot de cocina <span>(6)</span></label><label><input type="checkbox" value="🛋️ Tapicerías"> 🛋️ Tapicerías <span>(4)</span></label><label><input type="checkbox" value="♨️ Vapor"> ♨️ Vapor <span>(5)</span></label><label><input type="checkbox" value="♨️ Olla programable"> ♨️ Olla programable <span>(8)</span></label><label><input type="checkbox" value="🧽 Friegasuelos"> 🧽 Friegasuelos <span>(17)</span></label><label><input type="checkbox" value="🪟 Limpiacristales"> 🪟 Limpiacristales <span>(3)</span></label></div></details>
+    <details class="multi" id="marca" data-todas="Todas las marcas"><summary>Todas las marcas</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="Under Armour"> Under Armour <span>(1)</span></label></div></details>
     <select id="grupo"><option value="">Todas las búsquedas</option><option value="Básicos Día a Día">Básicos Día a Día</option><option value="Hogar y Cocina">Hogar y Cocina</option><option value="Ofertas Prime">Ofertas Prime</option></select>
     <select id="valmin" title="Valoración mínima"><option value="0">Cualquier valoración</option><option value="4">4,0★ o más</option><option value="4.3">4,3★ o más</option><option value="4.5">4,5★ o más</option></select>
     <select id="vendmin" title="Comprados el mes pasado"><option value="0">Cualquier venta</option><option value="50">50+ al mes</option><option value="100">100+ al mes</option><option value="300">300+ al mes</option><option value="1000">1.000+ al mes</option></select>
@@ -123,11 +123,101 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <span id="contador"></span>
     <button id="copiar" disabled>Añadir a la cola (0)</button>
   </div>
-  <div class="chips"><button type="button" class="chip m-nueva" data-m="nueva">Oferta nueva <span>111</span></button><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>216</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>170</span></button><button type="button" class="chip m-cupon" data-m="cupon">Cupón <span>1</span></button><button type="button" class="chip m-cc" data-m="cc">💰 Creator Connections <span>63</span></button><button type="button" class="chip m-rep" data-m="rep">3+ días en oferta <span>172</span></button><button type="button" class="chip m-masvendido" data-m="masvendido">Top ventas <span>5</span></button><button type="button" class="chip m-vendidos" data-m="vendidos">🛒 Comprados el mes pasado <span>228</span></button></div>
+  <div class="chips"><button type="button" class="chip m-top" data-m="top">Marca top <span>1</span></button><button type="button" class="chip m-nueva" data-m="nueva">Oferta nueva <span>111</span></button><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>214</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>170</span></button><button type="button" class="chip m-cupon" data-m="cupon">Cupón <span>1</span></button><button type="button" class="chip m-cc" data-m="cc">💰 Creator Connections <span>73</span></button><button type="button" class="chip m-rep" data-m="rep">3+ días en oferta <span>171</span></button><button type="button" class="chip m-masvendido" data-m="masvendido">Top ventas <span>5</span></button><button type="button" class="chip m-vendidos" data-m="vendidos">🛒 Comprados el mes pasado <span>225</span></button><button type="button" class="chip m-eva" data-m="eva">Publicadas <span>21</span></button></div>
 </header>
 <main id="lista">
+<article class="card" data-dto="33" data-epc="0" data-precio="119.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo=""
+         data-cat="Otros" data-marca="" data-marcas=" cc tallanormal "
+         data-asin="B0H95PYTXM" data-texto="ninja crispi freidora de aire 4 en 1 de 3,8 l, 2,3 l: freír con aire, asar, mantener caliente, recuperar el crujiente, compacto, 6 porciones, 2 bandejas con tapa, 1700 w, piedra/dorado fn201eusd1 b0h95pytxm ">
+  <label class="pick"><input type="checkbox" value="B0H95PYTXM" data-desc="Ninja CRISPi Freidora de aire 4 en 1 de… · 119,99 € · -33%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H95PYTXM?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-33%</span>
+    <img src="https://m.media-amazon.com/images/I/41-uvZ8W5LL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H95PYTXM?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Ninja CRISPi Freidora de aire 4 en 1 de 3,8 l, 2,3 l: Freír con aire, asar, mantener caliente, recuperar el crujiente, compacto, 6 porciones, 2 bandejas con tapa, 1700 W, Piedra/dorado FN201EUSD1</a>
+    <div class="precio"><b>119,99 €</b> <s>179,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag cc">💰 Creator Connections · EPC hasta 1,26 €</span></div>
+    <div class="pie"> · <code>B0H95PYTXM</code></div>
+  </div>
+</article>
+<article class="card" data-dto="51" data-epc="0" data-precio="123.14" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo=""
+         data-cat="Otros" data-marca="" data-marcas=" cc eva tallanormal "
+         data-asin="B0GQVPSS9X" data-texto="irobot roomba 115 combo, robot aspirador y friegasuelos 2 en 1, potencia de succión de 15000 pascales, cepillo lateral flexible, mopa de fregado extendida, navegación clearview lidar, app, blanco b0gqvpss9x ">
+  <label class="pick"><input type="checkbox" value="B0GQVPSS9X" data-desc="iRobot Roomba 115 Combo, Robot Aspirado… · 123,14 € · -51%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GQVPSS9X?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-51%</span>
+    <img src="https://m.media-amazon.com/images/I/315N7UVcgUL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GQVPSS9X?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">iRobot Roomba 115 Combo, Robot Aspirador y friegasuelos 2 en 1, Potencia de succión de 15000 Pascales, Cepillo Lateral Flexible, Mopa de fregado extendida, Navegación Clearview LiDAR, App, Blanco</a>
+    <div class="precio"><b>123,14 €</b> <s>249,00 €</s></div>
+    
+    
+    <div class="tags"><span class="tag cc">💰 Creator Connections · EPC hasta 0,38 €</span><span class="tag eva">📤 Ya en Eva (2026-11-12 09:09)</span></div>
+    <div class="pie"> · <code>B0GQVPSS9X</code></div>
+  </div>
+</article>
+<article class="card" data-dto="25" data-epc="0" data-precio="17.95" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo=""
+         data-cat="Otros" data-marca="" data-marcas=" tallanormal "
+         data-asin="B0DT47H1XV" data-texto="amazon basics juego de funda nórdica cama 150/160 de microfibra, 3 piezas, funda de edredón 240 x 220 cm y 2 fundas de almohada 50 x 80 cm, beige, rayas b0dt47h1xv ">
+  <label class="pick"><input type="checkbox" value="B0DT47H1XV" data-desc="Amazon Basics Juego de Funda nórdica Ca… · 17,95 € · -25%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DT47H1XV?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-25%</span>
+    <img src="https://m.media-amazon.com/images/I/31rOIH5NQXL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DT47H1XV?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Amazon Basics Juego de Funda nórdica Cama 150/160 de Microfibra, 3 Piezas, Funda de edredón 240 x 220 cm y 2 Fundas de Almohada 50 x 80 cm, Beige, Rayas</a>
+    <div class="precio"><b>17,95 €</b> <s>23,93 €</s></div>
+    
+    
+    <div class="tags"></div>
+    <div class="pie"> · <code>B0DT47H1XV</code></div>
+  </div>
+</article>
+<article class="card" data-dto="66" data-epc="0" data-precio="17.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo=""
+         data-cat="Otros" data-marca="" data-marcas=" tallanormal "
+         data-asin="B01KLXG14O" data-texto="remington cepillo alisador straight brush, cerámica avanzada anti-estática, 3 temperaturas hasta 230°c, cabezal para facilitar el alisado, interruptor encendido/apagado, neceser, cb7400 b01klxg14o ">
+  <label class="pick"><input type="checkbox" value="B01KLXG14O" data-desc="Remington Cepillo Alisador Straight Bru… · 17,99 € · -66%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B01KLXG14O?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-66%</span>
+    <img src="https://m.media-amazon.com/images/I/41pK8hXrdhL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B01KLXG14O?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Remington Cepillo Alisador Straight Brush, Cerámica Avanzada Anti-estática, 3 Temperaturas hasta 230°C, Cabezal para Facilitar el Alisado, Interruptor Encendido/Apagado, Neceser, CB7400</a>
+    <div class="precio"><b>17,99 €</b> <s>52,99 €</s></div>
+    
+    
+    <div class="tags"></div>
+    <div class="pie"> · <code>B01KLXG14O</code></div>
+  </div>
+</article>
+<article class="card" data-dto="48" data-epc="0" data-precio="38.89" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo=""
+         data-cat="Otros" data-marca="Under Armour" data-marcas=" eva tallanormal top "
+         data-asin="B0876PFLFQ" data-texto="under armour hombre ua knit track suit shirt b0876pflfq ">
+  <label class="pick"><input type="checkbox" value="B0876PFLFQ" data-desc="Under Armour Hombre UA Knit Track Suit… · 38,89 € · -48%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0876PFLFQ?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-48%</span>
+    <img src="https://m.media-amazon.com/images/I/31QU0-HuQbL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0876PFLFQ?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Under Armour Hombre UA Knit Track Suit Shirt</a>
+    <div class="precio"><b>38,89 €</b> <s>75,00 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ Under Armour</span><span class="tag eva">📤 Ya en Eva (2026-11-18 09:34)</span></div>
+    <div class="pie"> · <code>B0876PFLFQ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="31" data-epc="0" data-precio="7.19" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo=""
+         data-cat="Otros" data-marca="" data-marcas=" cc eva tallanormal "
+         data-asin="B08BVDWBRQ" data-texto="vanish gold quitamanchas - nuestra mejor fórmula en polvo, sin lejía, 960gr b08bvdwbrq ">
+  <label class="pick"><input type="checkbox" value="B08BVDWBRQ" data-desc="Vanish Gold Quitamanchas - Nuestra Mejo… · 7,19 € · -31%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B08BVDWBRQ?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-31%</span>
+    <img src="https://m.media-amazon.com/images/I/51Xk9ku9ThL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B08BVDWBRQ?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Vanish Gold Quitamanchas - Nuestra Mejor Fórmula en Polvo, sin Lejía, 960gr</a>
+    <div class="precio"><b>7,19 €</b> <s>10,49 €</s></div>
+    
+    
+    <div class="tags"><span class="tag cc">💰 Creator Connections · EPC hasta 0,82 €</span><span class="tag eva">📤 Ya en Eva (2026-11-15 11:20)</span></div>
+    <div class="pie"> · <code>B08BVDWBRQ</code></div>
+  </div>
+</article>
 <article class="card" data-dto="70" data-epc="0" data-precio="299.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" nueva ok tallanormal "
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" eva nueva ok tallanormal "
          data-asin="B0GQHF3K41" data-texto="lefant robot aspirador y friegasuelos con base de autovaciado m3 max | navegación láser dtof, 20000 pa, 210 mins, base 4 en 1, mopas giratorias elevables, evasión de obstáculos psd, 2,4g &amp; 5g wifi b0gqhf3k41 hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0GQHF3K41" data-desc="Lefant Robot Aspirador y Friegasuelos c… · 299,99 € · -70%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0GQHF3K41?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-70%</span>
@@ -137,7 +227,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>299,99 €</b> <s>999,99 €</s></div>
     
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -70% vs mín. 30 días (999,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -70% vs mín. 30 días (999,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span><span class="tag eva">📤 Ya en Eva (2026-11-19 09:26)</span></div>
     <div class="pie">Hogar y Cocina · <code>B0GQHF3K41</code></div>
   </div>
 </article>
@@ -152,7 +242,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>189,99 €</b> <s>599,00 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (105) · <span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag ok">Bajada real: -68% vs mín. 30 días (599,00 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,43 €</span></div>
+    <div class="tags"><span class="tag ok">Bajada real: -68% vs mín. 30 días (599,00 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,44 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0G7V5G5NR</code></div>
   </div>
 </article>
@@ -199,21 +289,6 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     
     <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (239,99 €)</span></div>
     <div class="pie">Hogar y Cocina · <code>B0H4LH6GH2</code></div>
-  </div>
-</article>
-<article class="card" data-dto="66" data-epc="0" data-precio="17.99" data-val="0" data-opi="0" data-vend="50" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="Otros" data-marca="" data-marcas=" min90 ok tallanormal vendidos "
-         data-asin="B01KLXG14O" data-texto="remington cepillo alisador straight brush, cerámica avanzada anti-estática, 3 temperaturas hasta 230°c, cabezal para facilitar el alisado, interruptor encendido/apagado, neceser, cb7400 b01klxg14o hogar y cocina">
-  <label class="pick"><input type="checkbox" value="B01KLXG14O" data-desc="Remington Cepillo Alisador Straight Bru… · 17,99 € · -66%"> Elegir</label>
-  <a class="foto" href="https://www.amazon.es/dp/B01KLXG14O?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-66%</span>
-    <img src="https://m.media-amazon.com/images/I/41pK8hXrdhL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
-  <div class="info">
-    <a class="titulo" href="https://www.amazon.es/dp/B01KLXG14O?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Remington Cepillo Alisador Straight Brush, Cerámica Avanzada Anti-estática, 3 Temperaturas hasta 230°C, Cabezal para Facilitar el Alisado, Interruptor Encendido/Apagado, Neceser, CB7400</a>
-    <div class="precio"><b>17,99 €</b> <s>52,99 €</s></div>
-    <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
-    
-    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -52% vs mín. 30 días (37,76 €)</span></div>
-    <div class="pie">Hogar y Cocina · <code>B01KLXG14O</code></div>
   </div>
 </article>
 <article class="card" data-dto="66" data-epc="0" data-precio="239.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
@@ -347,7 +422,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>299,00 €</b> <s>699,00 €</s></div>
     <div class="resenas"><span class="vendidos">🛒 700+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 1,17 €</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 1,27 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0GZZHY5MC</code></div>
   </div>
 </article>
@@ -397,7 +472,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="52" data-epc="0" data-precio="299.0" data-val="5.0" data-opi="5" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" ok tallanormal "
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" eva ok tallanormal "
          data-asin="B0HHK6CK8S" data-texto="cecotec robot aspirador y friegasuelos conga q300 x-treme. 25000pa | mopas giratorias elevables. mopa derecha extensible 55mm, limpieza base automática con agua caliente, detergente y secado b0hhk6ck8s hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0HHK6CK8S" data-desc="Cecotec Robot Aspirador y Friegasuelos… · 299,00 € · -52%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0HHK6CK8S?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-52%</span>
@@ -407,12 +482,12 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>299,00 €</b> <s>623,90 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★★</span> 5,0 (5)</div>
     
-    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -14% vs mín. 30 días (349,00 €)</span></div>
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -14% vs mín. 30 días (349,00 €)</span><span class="tag eva">📤 Ya en Eva (2026-11-19 09:26)</span></div>
     <div class="pie">Hogar y Cocina · <code>B0HHK6CK8S</code></div>
   </div>
 </article>
 <article class="card" data-dto="51" data-epc="0" data-precio="128.59" data-val="4.8" data-opi="863" data-vend="700" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina | Ofertas Prime"
-         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" rep tallanormal vendidos "
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" cc rep tallanormal vendidos "
          data-asin="B0H6GD47Y5" data-texto="famivac fv5 aspiradora sin cable 70kpa/80min, base de carga, tubo plegable | cepillo antienredos, pantalla led, doble luz verde, autolimpieza, diseño autoportante, escoba aspiradora pelo mascotas b0h6gd47y5 hogar y cocina · ofertas prime">
   <label class="pick"><input type="checkbox" value="B0H6GD47Y5" data-desc="FAMIVAC FV5 Aspiradora sin Cable 70kPa/… · 128,59 € · -51%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0H6GD47Y5?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-51%</span>
@@ -422,7 +497,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>128,59 €</b> <s>259,99 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★★</span> 4,8 (863) · <span class="vendidos">🛒 700+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (135,36 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (135,36 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,39 €</span></div>
     <div class="pie">Hogar y Cocina · Ofertas Prime · <code>B0H6GD47Y5</code></div>
   </div>
 </article>
@@ -442,7 +517,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="50" data-epc="0" data-precio="49.99" data-val="4.0" data-opi="3163" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" min90 ok tallanormal "
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" eva min90 ok tallanormal "
          data-asin="B0B9NS4RVM" data-texto="vactidy v8 aspiradora sin cable 25kpa, 3-en-1 escoba aspiradora sin cable menor ruido, autonomía 35 mins, potente succión, 4 etapas de filtración, aspirador vertical para pelo de mascota b0b9ns4rvm hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0B9NS4RVM" data-desc="Vactidy V8 Aspiradora sin Cable 25KPa,… · 49,99 € · -50%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0B9NS4RVM?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-50%</span>
@@ -452,7 +527,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>49,99 €</b> <s>99,00 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,0 (3.163)</div>
     
-    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -31% vs mín. 30 días (72,20 €)</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -31% vs mín. 30 días (72,20 €)</span><span class="tag eva">📤 Ya en Eva (2026-11-19 09:09)</span></div>
     <div class="pie">Hogar y Cocina · <code>B0B9NS4RVM</code></div>
   </div>
 </article>
@@ -467,7 +542,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>94,99 €</b> <s>189,99 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,1 (63)</div>
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-4% vs mín. 30 días (99,00 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,65 €</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-4% vs mín. 30 días (99,00 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,44 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0GGZG8VSQ</code></div>
   </div>
 </article>
@@ -497,7 +572,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>179,99 €</b> <s>349,99 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (166)</div>
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -41% vs mín. 30 días (306,33 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,04 €</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -41% vs mín. 30 días (306,33 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,05 €</span></div>
     <div class="pie">Hogar y Cocina · Ofertas Prime · <code>B0GVVB5LQ7</code></div>
   </div>
 </article>
@@ -527,12 +602,12 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>109,00 €</b> <s>209,99 €</s></div>
     
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -16% vs mín. 30 días (129,00 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,65 €</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -16% vs mín. 30 días (129,00 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,44 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0GKB4DTF3</code></div>
   </div>
 </article>
 <article class="card" data-dto="48" data-epc="0" data-precio="109.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" hist nueva ok tallanormal "
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" eva hist nueva ok tallanormal "
          data-asin="B0FKLZZL6R" data-texto="eufy robot aspirador c10, base vaciado automático, 7,3 cm (reacondicionado) | limpieza de alfombras, cepillo lateral extensible para esquinas, vaciado automático, navegación láser e infrarrojos b0fklzzl6r hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0FKLZZL6R" data-desc="eufy Robot aspirador C10, base vaciado… · 109,99 € · -48%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0FKLZZL6R?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-48%</span>
@@ -542,7 +617,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>109,99 €</b> <s>209,99 €</s></div>
     
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -15% vs mín. 30 días (129,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -15% vs mín. 30 días (129,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span><span class="tag eva">📤 Ya en Eva (2026-11-19 09:28)</span></div>
     <div class="pie">Hogar y Cocina · <code>B0FKLZZL6R</code></div>
   </div>
 </article>
@@ -562,7 +637,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="47" data-epc="0" data-precio="89.0" data-val="4.1" data-opi="828" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" min90 nueva ok tallanormal "
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" eva min90 nueva ok tallanormal "
          data-asin="B0D96C62JX" data-texto="hoover hf1 plus aspiradora escoba sin cable | 45 min de autonomía | 2 modos (estándar y turbo), cepillo anti-twist, boquilla led, quickpark, todos los suelos, 165w b0d96c62jx hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0D96C62JX" data-desc="Hoover HF1 Plus Aspiradora Escoba Sin C… · 89,00 € · -47%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0D96C62JX?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-47%</span>
@@ -572,7 +647,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>89,00 €</b> <s>168,31 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,1 (828)</div>
     
-    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -18% vs mín. 30 días (109,00 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -18% vs mín. 30 días (109,00 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span><span class="tag eva">📤 Ya en Eva (2026-11-19 09:09)</span></div>
     <div class="pie">Hogar y Cocina · <code>B0D96C62JX</code></div>
   </div>
 </article>
@@ -602,7 +677,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>799,00 €</b> <s>1.499,00 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,1 (556) · <span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 1,74 €</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 1,75 €</span></div>
     <div class="pie">Hogar y Cocina · Ofertas Prime · <code>B0G4NC8KN7</code></div>
   </div>
 </article>
@@ -772,7 +847,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="44" data-epc="0" data-precio="69.9" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🛋️ Tapicerías" data-marca="" data-marcas=" ok tallanormal "
+         data-cat="🛋️ Tapicerías" data-marca="" data-marcas=" cc eva ok tallanormal "
          data-asin="B0HHS9GMBG" data-texto="cecotec limpiador alfombras conga 6000 carpet&amp;spot clean pro x-treme, 15kpa | limpiatapicerías, 600w, diseño compacto, depósito de agua limpia de 1000 ml y de agua sucia de 550 ml. spray b0hhs9gmbg hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0HHS9GMBG" data-desc="Cecotec Limpiador Alfombras Conga 6000… · 69,90 € · -44%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0HHS9GMBG?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-44%</span>
@@ -782,7 +857,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>69,90 €</b> <s>124,90 €</s></div>
     
     
-    <div class="tags"><span class="tag ok">Bajada real: -44% vs mín. 30 días (124,90 €)</span></div>
+    <div class="tags"><span class="tag ok">Bajada real: -44% vs mín. 30 días (124,90 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,07 €</span><span class="tag eva">📤 Ya en Eva (2026-11-19 09:27)</span></div>
     <div class="pie">Hogar y Cocina · <code>B0HHS9GMBG</code></div>
   </div>
 </article>
@@ -862,7 +937,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="43" data-epc="0" data-precio="120.02" data-val="4.9" data-opi="710" data-vend="700" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" hist nueva tallanormal vendidos "
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" eva hist nueva tallanormal vendidos "
          data-asin="B09BBX24CV" data-texto="aibirth aspiradora sin cable 60kpa/650w/70mins, escoba aspiradora de 1.8l, sistema de filtración de 8 etapas,autoportante, adecuada para pelo de mascotas, luz verde alfombras y suelos de madera b09bbx24cv hogar y cocina">
   <label class="pick"><input type="checkbox" value="B09BBX24CV" data-desc="AIBIRTH Aspiradora sin Cable 60Kpa/650W… · 120,02 € · -43%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B09BBX24CV?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-43%</span>
@@ -872,12 +947,12 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>120,02 €</b> <s>209,99 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★★</span> 4,9 (710) · <span class="vendidos">🛒 700+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (126,34 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (126,34 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span><span class="tag eva">📤 Ya en Eva (2026-11-19 09:08)</span></div>
     <div class="pie">Hogar y Cocina · <code>B09BBX24CV</code></div>
   </div>
 </article>
 <article class="card" data-dto="43" data-epc="0" data-precio="399.0" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" cc hist rep tallanormal "
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" hist rep tallanormal "
          data-asin="B0FL7GXSCV" data-texto="eufy c28 omni robot aspirador y fregasuelos, hydrojet 15.000 pa | rodillo autolimpiante, 5 en 1, diseño antienredos, evitación de obstáculos con ia b0fl7gxscv hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0FL7GXSCV" data-desc="eufy C28 Omni Robot Aspirador y fregasu… · 399,00 € · -43%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0FL7GXSCV?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-43%</span>
@@ -887,7 +962,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>399,00 €</b> <s>699,00 €</s></div>
     
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,41 €</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Hogar y Cocina · <code>B0FL7GXSCV</code></div>
   </div>
 </article>
@@ -1037,7 +1112,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>349,99 €</b> <s>589,99 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (658) · <span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 1,08 €</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 1,15 €</span></div>
     <div class="pie">Hogar y Cocina · Ofertas Prime · <code>B0GHN39ZGJ</code></div>
   </div>
 </article>
@@ -1057,7 +1132,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="41" data-epc="0" data-precio="529.0" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" hist ok tallanormal "
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" eva hist ok tallanormal "
          data-asin="B0GXWQP3RG" data-texto="irobot roomba max 775 combo base autowash multifunción y agua caliente, 30.000 pascales, rodillo powerspin extensible,cubierta protectora b0gxwqp3rg hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0GXWQP3RG" data-desc="iRobot Roomba MAX 775 Combo Base AutoWa… · 529,00 € · -41%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0GXWQP3RG?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-41%</span>
@@ -1067,7 +1142,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>529,00 €</b> <s>899,00 €</s></div>
     
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -12% vs mín. 30 días (599,00 €)</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -12% vs mín. 30 días (599,00 €)</span><span class="tag eva">📤 Ya en Eva (2026-11-19 09:29)</span></div>
     <div class="pie">Hogar y Cocina · <code>B0GXWQP3RG</code></div>
   </div>
 </article>
@@ -1127,7 +1202,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>74,00 €</b> <s>122,99 €</s></div>
     
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (78,98 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,14 €</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (78,98 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,16 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0HHNSNLCZ</code></div>
   </div>
 </article>
@@ -1147,7 +1222,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="40" data-epc="0" data-precio="119.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" nueva ok tallanormal "
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" eva nueva ok tallanormal "
          data-asin="B0GWCNSB42" data-texto="lefant v1 aspirador sin cable 60 kpa,gris espacial | antienredos, filtrado de 5 etapas, 50 min de autonomía, batería extraíble, 750 ml, para suelos, alfombras y pelo de mascotas b0gwcnsb42 hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0GWCNSB42" data-desc="Lefant V1 Aspirador Sin Cable 60 KPa,Gr… · 119,99 € · -40%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0GWCNSB42?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-40%</span>
@@ -1157,7 +1232,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>119,99 €</b> <s>199,99 €</s></div>
     
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -40% vs mín. 30 días (199,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -40% vs mín. 30 días (199,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span><span class="tag eva">📤 Ya en Eva (2026-11-19 09:07)</span></div>
     <div class="pie">Hogar y Cocina · <code>B0GWCNSB42</code></div>
   </div>
 </article>
@@ -1177,7 +1252,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="40" data-epc="0" data-precio="149.98" data-val="4.4" data-opi="478" data-vend="50" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" ok tallanormal vendidos "
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" eva ok tallanormal vendidos "
          data-asin="B0DPXQR418" data-texto="bissell powerclean furguard aspiradora sin cable 280w 4091n | aspiradora escoba, rodillo autolimpieza, luces furfinder, autosoportado, filtro hepa, 2500 mah batería extraíble, 50 min b0dpxqr418 hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0DPXQR418" data-desc="BISSELL PowerClean FurGuard Aspiradora… · 149,98 € · -40%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0DPXQR418?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-40%</span>
@@ -1187,7 +1262,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>149,98 €</b> <s>249,99 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (478) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -39% vs mín. 30 días (244,98 €)</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -39% vs mín. 30 días (244,98 €)</span><span class="tag eva">📤 Ya en Eva (2026-11-19 09:08)</span></div>
     <div class="pie">Hogar y Cocina · <code>B0DPXQR418</code></div>
   </div>
 </article>
@@ -1247,7 +1322,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>41,33 €</b> <s>66,90 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (5.675) · <span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,04 €</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,03 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0BQ1JSZSN</code></div>
   </div>
 </article>
@@ -1327,7 +1402,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="38" data-epc="0" data-precio="129.0" data-val="4.2" data-opi="676" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="📟 Microondas / Horno" data-marca="" data-marcas=" hist tallanormal "
+         data-cat="📟 Microondas / Horno" data-marca="" data-marcas=" cc hist tallanormal "
          data-asin="B0BV27FCFQ" data-texto="candy idea fidc n100, horno eléctrico, 70l, 1 bandeja y 1 rejilla, limpieza aquactiva, 4 funciones, 2 mandos mecánicos, puerta doble cristal, negro b0bv27fcfq hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0BV27FCFQ" data-desc="Candy Idea FIDC N100, Horno Eléctrico,… · 129,00 € · -38%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0BV27FCFQ?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-38%</span>
@@ -1337,7 +1412,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>129,00 €</b> <s>209,00 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (676)</div>
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-9% vs mín. 30 días (140,99 €)</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-9% vs mín. 30 días (140,99 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,62 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0BV27FCFQ</code></div>
   </div>
 </article>
@@ -1367,7 +1442,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>279,99 €</b> <s>449,99 €</s></div>
     
     
-    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (299,00 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,33 €</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (299,00 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,39 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0DFX3CCHV</code></div>
   </div>
 </article>
@@ -1397,7 +1472,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>499,00 €</b> <s>799,00 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (31)</div>
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -38% vs mín. 30 días (799,00 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span><span class="tag cc">💰 Creator Connections · EPC hasta 1,32 €</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -38% vs mín. 30 días (799,00 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span><span class="tag cc">💰 Creator Connections · EPC hasta 1,44 €</span></div>
     <div class="pie">Hogar y Cocina · Ofertas Prime · <code>B0H94KQLMJ</code></div>
   </div>
 </article>
@@ -1477,7 +1552,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="37" data-epc="0" data-precio="94.99" data-val="0" data-opi="0" data-vend="100" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🍟 Freidora de aire" data-marca="" data-marcas=" hist tallanormal vendidos "
+         data-cat="🍟 Freidora de aire" data-marca="" data-marcas=" cc hist tallanormal vendidos "
          data-asin="B0GSS73FLQ" data-texto="ninja max pro, freidora de aire sin aceite, 6,2l, piedra/dorado | cajón cuadrado grande, asar, hornear, familiar, digital, piezas antiadherentes y aptas para lavavajilla - af180eusd b0gss73flq hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0GSS73FLQ" data-desc="Ninja MAX PRO, Freidora de Aire sin Ace… · 94,99 € · -37%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0GSS73FLQ?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-37%</span>
@@ -1487,7 +1562,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>94,99 €</b> <s>149,99 €</s></div>
     <div class="resenas"><span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,24 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0GSS73FLQ</code></div>
   </div>
 </article>
@@ -1522,7 +1597,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="37" data-epc="0" data-precio="169.99" data-val="4.6" data-opi="342" data-vend="100" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🍟 Freidora de aire" data-marca="" data-marcas=" tallanormal vendidos "
+         data-cat="🍟 Freidora de aire" data-marca="" data-marcas=" cc tallanormal vendidos "
          data-asin="B0GSS34ZYM" data-texto="ninja foodi flexdrawer, freidora de aire con compartimento doble, 10,4l | no usa aceite, con divisor de cestas extraíble, piezas antiadherentes y aptas para lavavajillas, piedra dorada - af500eusd b0gss34zym hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0GSS34ZYM" data-desc="Ninja Foodi FlexDrawer, Freidora de Air… · 169,99 € · -37%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0GSS34ZYM?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-37%</span>
@@ -1532,7 +1607,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>169,99 €</b> <s>269,99 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★★</span> 4,6 (342) · <span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,91 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0GSS34ZYM</code></div>
   </div>
 </article>
@@ -1622,7 +1697,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>179,99 €</b> <s>279,99 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (6.327) · <span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -36% vs mín. 30 días (279,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,90 €</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -36% vs mín. 30 días (279,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,64 €</span></div>
     <div class="pie">Hogar y Cocina · Ofertas Prime · <code>B0CLDPGTYN</code></div>
   </div>
 </article>
@@ -1697,7 +1772,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>183,20 €</b> <s>279,99 €</s></div>
     <div class="resenas"><span class="vendidos">🛒 300+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-2% vs mín. 30 días (187,70 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,18 €</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-2% vs mín. 30 días (187,70 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,29 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0D8QQ2LY5</code></div>
   </div>
 </article>
@@ -1802,12 +1877,12 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>99,00 €</b> <s>149,00 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,1 (462) · <span class="vendidos">🛒 300+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,33 €</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,36 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0FY2Y2R5Q</code></div>
   </div>
 </article>
 <article class="card" data-dto="34" data-epc="0" data-precio="249.0" data-val="4.4" data-opi="411" data-vend="200" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" cc hist rep tallanormal vendidos "
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" cc eva hist rep tallanormal vendidos "
          data-asin="B0GVP7XY36" data-texto="dyson v8 origin aspiradora sin cable potente, aspiradora de mano | aspiradora sin bolsa, ligera e inalámbrica. succión de 130 aw¹, hasta 40 min de autonomía², cabezal antienredos b0gvp7xy36 hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0GVP7XY36" data-desc="Dyson V8 Origin Aspiradora sin Cable Po… · 249,00 € · -34%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0GVP7XY36?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-34%</span>
@@ -1817,7 +1892,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>249,00 €</b> <s>379,00 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (411) · <span class="vendidos">🛒 200+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-7% vs mín. 30 días (269,00 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,49 €</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-7% vs mín. 30 días (269,00 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,43 €</span><span class="tag eva">📤 Ya en Eva (2026-11-19 09:06)</span></div>
     <div class="pie">Hogar y Cocina · <code>B0GVP7XY36</code></div>
   </div>
 </article>
@@ -1927,7 +2002,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="33" data-epc="0" data-precio="99.99" data-val="4.2" data-opi="24041" data-vend="300" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina | Ofertas Prime"
-         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" masvendido ok rep tallanormal vendidos "
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" cc eva masvendido ok rep tallanormal vendidos "
          data-asin="B07GXS35PG" data-texto="bissell spotclean proheat aspiradora de agua tapicería 330w 36988 | lava aspiradora con tecnología heatwave, para alfombras, tapicería, sofá, auto y más b07gxs35pg hogar y cocina · ofertas prime">
   <label class="pick"><input type="checkbox" value="B07GXS35PG" data-desc="BISSELL SpotClean ProHeat Aspiradora de… · 99,99 € · -33%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B07GXS35PG?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-33%</span>
@@ -1937,7 +2012,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>99,99 €</b> <s>149,98 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (24.041) · <span class="vendidos">🛒 300+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag masvendido">🏆 Nº 39 más vendido en Hogar y cocina</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -33% vs mín. 30 días (149,98 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="tags"><span class="tag masvendido">🏆 Nº 39 más vendido en Hogar y cocina</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -33% vs mín. 30 días (149,98 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,53 €</span><span class="tag eva">📤 Ya en Eva (2026-11-19 09:28)</span></div>
     <div class="pie">Hogar y Cocina · Ofertas Prime · <code>B07GXS35PG</code></div>
   </div>
 </article>
@@ -1956,23 +2031,8 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="pie">Básicos Día a Día · <code>B0H1R4TV3M</code></div>
   </div>
 </article>
-<article class="card" data-dto="33" data-epc="0" data-precio="119.99" data-val="4.4" data-opi="35" data-vend="100" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina | Ofertas Prime"
-         data-cat="🍟 Freidora de aire" data-marca="" data-marcas=" cc rep tallanormal vendidos "
-         data-asin="B0H95PYTXM" data-texto="ninja crispi freidora de aire 4 en 1 de 3,8 l, 2,3 l: freír con aire, asar, mantener caliente, recuperar el crujiente, compacto, 6 porciones, 2 bandejas con tapa, 1700 w, piedra/dorado fn201eusd1 b0h95pytxm hogar y cocina · ofertas prime">
-  <label class="pick"><input type="checkbox" value="B0H95PYTXM" data-desc="Ninja CRISPi Freidora de aire 4 en 1 de… · 119,99 € · -33%"> Elegir</label>
-  <a class="foto" href="https://www.amazon.es/dp/B0H95PYTXM?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-33%</span>
-    <img src="https://m.media-amazon.com/images/I/71UWmkQIwML._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
-  <div class="info">
-    <a class="titulo" href="https://www.amazon.es/dp/B0H95PYTXM?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Ninja CRISPi Freidora de aire 4 en 1 de 3,8 l, 2,3 l: Freír con aire, asar, mantener caliente, recuperar el crujiente, compacto, 6 porciones, 2 bandejas con tapa, 1700 W, Piedra/dorado FN201EUSD1</a>
-    <div class="precio"><b>119,99 €</b> <s>179,99 €</s></div>
-    <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (35) · <span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
-    
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 1,22 €</span></div>
-    <div class="pie">Hogar y Cocina · Ofertas Prime · <code>B0H95PYTXM</code></div>
-  </div>
-</article>
 <article class="card" data-dto="33" data-epc="0" data-precio="119.99" data-val="4.7" data-opi="31" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="♨️ Olla programable" data-marca="" data-marcas=" ok rep tallanormal "
+         data-cat="♨️ Olla programable" data-marca="" data-marcas=" cc ok rep tallanormal "
          data-asin="B0GFN1TQSD" data-texto="ninja hyperheat, olla a presión 9 en 1, 6l, cocción lenta, arrocera, negro | rejilla para vapor y recipiente de cocción extraíble apto para lavavajillas - pc201eu b0gfn1tqsd hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0GFN1TQSD" data-desc="Ninja HyperHeat, Olla a Presión 9 en 1,… · 119,99 € · -33%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0GFN1TQSD?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-33%</span>
@@ -1982,7 +2042,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>119,99 €</b> <s>179,99 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★★</span> 4,7 (31)</div>
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -33% vs mín. 30 días (179,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -33% vs mín. 30 días (179,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,05 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0GFN1TQSD</code></div>
   </div>
 </article>
@@ -2002,7 +2062,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="33" data-epc="0" data-precio="149.0" data-val="5.0" data-opi="8" data-vend="100" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" ok rep tallanormal vendidos "
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" cc ok rep tallanormal vendidos "
          data-asin="B0HHK8L528" data-texto="cecotec aspiradora escoba sin cable conga rockstar rs100 pet flex detect x-treme b0hhk8l528 hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0HHK8L528" data-desc="Cecotec Aspiradora Escoba sin Cable Con… · 149,00 € · -33%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0HHK8L528?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-33%</span>
@@ -2012,7 +2072,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>149,00 €</b> <s>223,90 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★★</span> 5,0 (8) · <span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -17% vs mín. 30 días (179,00 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -17% vs mín. 30 días (179,00 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,05 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0HHK8L528</code></div>
   </div>
 </article>
@@ -2077,7 +2137,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="33" data-epc="0" data-precio="399.0" data-val="4.3" data-opi="734" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina | Ofertas Prime"
-         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" hist nueva ok tallanormal "
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" eva hist nueva ok tallanormal "
          data-asin="B0GCGVJD71" data-texto="ecovacs deebot t90 pro omni robot aspirador y fregasuelos,  30000 pa | powerboost, ozmo roller 3.0 con tecnología truedge 3.0, aplicación automática de la solución de limpieza, agente ia yiko b0gcgvjd71 hogar y cocina · ofertas prime">
   <label class="pick"><input type="checkbox" value="B0GCGVJD71" data-desc="ECOVACS DEEBOT T90 Pro Omni Robot Aspir… · 399,00 € · -33%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0GCGVJD71?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-33%</span>
@@ -2087,7 +2147,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>399,00 €</b> <s>599,00 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (734)</div>
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -25% vs mín. 30 días (529,00 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -25% vs mín. 30 días (529,00 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span><span class="tag eva">📤 Ya en Eva (2026-11-19 09:25)</span></div>
     <div class="pie">Hogar y Cocina · Ofertas Prime · <code>B0GCGVJD71</code></div>
   </div>
 </article>
@@ -2122,7 +2182,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="33" data-epc="0" data-precio="499.0" data-val="5.0" data-opi="4" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" ok rep tallanormal "
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" cc ok rep tallanormal "
          data-asin="B0HHK4FSYD" data-texto="cecotec robot aspirador con rodillo fregador conga r500 x-treme | 25000 pa, rodillo elevable y extensible, cepillo haircut, proai, agua y aire caliente en la base, detección de manchas, app b0hhk4fsyd hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0HHK4FSYD" data-desc="Cecotec Robot aspirador con Rodillo fre… · 499,00 € · -33%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0HHK4FSYD?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-33%</span>
@@ -2132,7 +2192,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>499,00 €</b> <s>748,90 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★★</span> 5,0 (4)</div>
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -33% vs mín. 30 días (749,90 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -33% vs mín. 30 días (749,90 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,13 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0HHK4FSYD</code></div>
   </div>
 </article>
@@ -2162,7 +2222,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>799,00 €</b> <s>1.199,00 €</s></div>
     <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,99 €</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,95 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0FVF575J4</code></div>
   </div>
 </article>
@@ -2257,7 +2317,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="31" data-epc="0" data-precio="68.63" data-val="0" data-opi="0" data-vend="100" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" hist rep tallanormal vendidos "
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" eva hist rep tallanormal vendidos "
          data-asin="B0D6YR6562" data-texto="vacmaster scb0501 aspirador de alfombras limpiador de manchas multisuperficie para alfombras, moquetas, tapicería, escaleras y coche 500w b0d6yr6562 hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0D6YR6562" data-desc="Vacmaster SCB0501 Aspirador de alfombra… · 68,63 € · -31%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0D6YR6562?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-31%</span>
@@ -2267,7 +2327,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>68,63 €</b> <s>99,99 €</s></div>
     <div class="resenas"><span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag eva">📤 Ya en Eva (2026-11-19 09:25)</span></div>
     <div class="pie">Hogar y Cocina · <code>B0D6YR6562</code></div>
   </div>
 </article>
@@ -2387,7 +2447,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>899,00 €</b> <s>1.299,00 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (87) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag cc">💰 Creator Connections · EPC hasta 1,18 €</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag cc">💰 Creator Connections · EPC hasta 1,25 €</span></div>
     <div class="pie">Hogar y Cocina · Ofertas Prime · <code>B0H83J9FWG</code></div>
   </div>
 </article>
@@ -2527,7 +2587,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="30" data-epc="0" data-precio="139.0" data-val="4.0" data-opi="250" data-vend="50" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" cc hist ok tallanormal vendidos "
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" hist ok tallanormal vendidos "
          data-asin="B0FY784L7H" data-texto="dreame r20 se-a, aspirador sin cable, 20.000 pa/150 aw, pantalla led | cepillo antienredos con luz, multisuperficie, 90 min de autonomía, depósito de polvo de 0,6 l, botón para desechar suciedad b0fy784l7h hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0FY784L7H" data-desc="DREAME R20 SE-A, Aspirador sin Cable, 2… · 139,00 € · -30%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0FY784L7H?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-30%</span>
@@ -2537,12 +2597,12 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>139,00 €</b> <s>199,00 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,0 (250) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -13% vs mín. 30 días (159,00 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,62 €</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -13% vs mín. 30 días (159,00 €)</span></div>
     <div class="pie">Hogar y Cocina · <code>B0FY784L7H</code></div>
   </div>
 </article>
 <article class="card" data-dto="30" data-epc="0" data-precio="159.99" data-val="4.7" data-opi="9982" data-vend="50" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🍟 Freidora de aire" data-marca="" data-marcas=" min90 rep tallanormal vendidos "
+         data-cat="🍟 Freidora de aire" data-marca="" data-marcas=" cc min90 rep tallanormal vendidos "
          data-asin="B0F6YV2C32" data-texto="ninja max, freidora de aire con 2 cajones independientes, 6 funciones, 9,5l | freír con aire, asar, hornear, gratinar, deshidratar y recalentar, con rejillas antiadherentes, piedra dorada - dz400eustgd b0f6yv2c32 hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0F6YV2C32" data-desc="Ninja MAX, Freidora de Aire con 2 Cajon… · 159,99 € · -30%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0F6YV2C32?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-30%</span>
@@ -2552,7 +2612,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>159,99 €</b> <s>229,99 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★★</span> 4,7 (9.982) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,99 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0F6YV2C32</code></div>
   </div>
 </article>
@@ -2737,7 +2797,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="29" data-epc="0" data-precio="169.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🧽 Friegasuelos" data-marca="" data-marcas=" hist ok rep tallanormal "
+         data-cat="🧽 Friegasuelos" data-marca="" data-marcas=" eva hist ok rep tallanormal "
          data-asin="B0H2D3H8RR" data-texto="ultenic fregona eléctrica aspirador lava y friega 3 en 1 | limpiador de borde derecho de 0 mm, autolimpieza, limpiador antienredos, ideal para suelos duros y hogares con mascotas b0h2d3h8rr hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0H2D3H8RR" data-desc="Ultenic Fregona Eléctrica Aspirador Lav… · 169,99 € · -29%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0H2D3H8RR?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-29%</span>
@@ -2747,12 +2807,12 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>169,99 €</b> <s>239,99 €</s></div>
     
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -11% vs mín. 30 días (189,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -11% vs mín. 30 días (189,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag eva">📤 Ya en Eva (2026-11-19 09:28)</span></div>
     <div class="pie">Hogar y Cocina · <code>B0H2D3H8RR</code></div>
   </div>
 </article>
 <article class="card" data-dto="29" data-epc="0" data-precio="199.0" data-val="0" data-opi="0" data-vend="100" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" cc rep tallanormal vendidos "
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" rep tallanormal vendidos "
          data-asin="B0F6NRJNTR" data-texto="dyson aspiradora de mano car+boat, inalámbrico, gris antracita, 6 celdas | succión de hasta 115 aw, motor digital 110 000 rpm, autonomía hasta 50 min, diseño compacto y ligero b0f6nrjntr hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0F6NRJNTR" data-desc="Dyson Aspiradora de Mano Car+Boat, Inal… · 199,00 € · -29%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0F6NRJNTR?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-29%</span>
@@ -2762,7 +2822,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>199,00 €</b> <s>279,00 €</s></div>
     <div class="resenas"><span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,14 €</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Hogar y Cocina · <code>B0F6NRJNTR</code></div>
   </div>
 </article>
@@ -2917,7 +2977,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="28" data-epc="0" data-precio="179.98" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🛋️ Tapicerías" data-marca="" data-marcas=" hist ok rep tallanormal "
+         data-cat="🛋️ Tapicerías" data-marca="" data-marcas=" eva hist ok rep tallanormal "
          data-asin="B0H944DVN4" data-texto="bissell spotclean c9 limpiador de manchas portátil 3911n | dispositivo portátil de limpieza profunda, limpiador de manchas, para alfombras, escaleras, tapicería b0h944dvn4 hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0H944DVN4" data-desc="BISSELL SpotClean C9 limpiador de manch… · 179,98 € · -28%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0H944DVN4?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-28%</span>
@@ -2927,7 +2987,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>179,98 €</b> <s>249,99 €</s></div>
     
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -17% vs mín. 30 días (217,01 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -17% vs mín. 30 días (217,01 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag eva">📤 Ya en Eva (2026-11-19 09:26)</span></div>
     <div class="pie">Hogar y Cocina · <code>B0H944DVN4</code></div>
   </div>
 </article>
@@ -2942,7 +3002,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>189,00 €</b> <s>261,90 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★★</span> 5,0 (4)</div>
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -28% vs mín. 30 días (261,90 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,08 €</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -28% vs mín. 30 días (261,90 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,06 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0HKWWQFCW</code></div>
   </div>
 </article>
@@ -2962,7 +3022,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="28" data-epc="0" data-precio="429.0" data-val="4.4" data-opi="531" data-vend="50" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina | Ofertas Prime"
-         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" cc hist rep tallanormal vendidos "
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" hist rep tallanormal vendidos "
          data-asin="B0GD78Z9JT" data-texto="dreame l50 ultra ae robot aspirado, autolimpia 100 °c, succión de 28.000 pa | limpieza profunda de bordes y esquinas, cepillo tricut, powerdock multifuncional inteligente, navegación lds y elusión láser b0gd78z9jt hogar y cocina · ofertas prime">
   <label class="pick"><input type="checkbox" value="B0GD78Z9JT" data-desc="dreame L50 Ultra Ae Robot Aspirado, Aut… · 429,00 € · -28%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0GD78Z9JT?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-28%</span>
@@ -2972,7 +3032,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>429,00 €</b> <s>599,00 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (531) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,58 €</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Hogar y Cocina · Ofertas Prime · <code>B0GD78Z9JT</code></div>
   </div>
 </article>
@@ -3047,7 +3107,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>399,00 €</b> <s>549,00 €</s></div>
     
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -11% vs mín. 30 días (449,00 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,68 €</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -11% vs mín. 30 días (449,00 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,63 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0HF1PK3TW</code></div>
   </div>
 </article>
@@ -3062,7 +3122,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>401,00 €</b> <s>549,99 €</s></div>
     <div class="resenas"><span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,72 €</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,84 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0DFCSXC1S</code></div>
   </div>
 </article>
@@ -3261,21 +3321,6 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="pie">Hogar y Cocina · Ofertas Prime · <code>B0DSKH73SJ</code></div>
   </div>
 </article>
-<article class="card" data-dto="25" data-epc="0" data-precio="17.95" data-val="0" data-opi="0" data-vend="50" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="Otros" data-marca="" data-marcas=" ok tallanormal vendidos "
-         data-asin="B0DT47H1XV" data-texto="amazon basics juego de funda nórdica cama 150/160 de microfibra, 3 piezas, funda de edredón 240 x 220 cm y 2 fundas de almohada 50 x 80 cm, beige, rayas b0dt47h1xv hogar y cocina">
-  <label class="pick"><input type="checkbox" value="B0DT47H1XV" data-desc="Amazon Basics Juego de Funda nórdica Ca… · 17,95 € · -25%"> Elegir</label>
-  <a class="foto" href="https://www.amazon.es/dp/B0DT47H1XV?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-25%</span>
-    <img src="https://m.media-amazon.com/images/I/31rOIH5NQXL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
-  <div class="info">
-    <a class="titulo" href="https://www.amazon.es/dp/B0DT47H1XV?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Amazon Basics Juego de Funda nórdica Cama 150/160 de Microfibra, 3 Piezas, Funda de edredón 240 x 220 cm y 2 Fundas de Almohada 50 x 80 cm, Beige, Rayas</a>
-    <div class="precio"><b>17,95 €</b> <s>23,93 €</s></div>
-    <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
-    
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -17% vs mín. 30 días (21,65 €)</span></div>
-    <div class="pie">Hogar y Cocina · <code>B0DT47H1XV</code></div>
-  </div>
-</article>
 <article class="card" data-dto="25" data-epc="0" data-precio="47.24" data-val="4.4" data-opi="326" data-vend="1000" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Básicos Día a Día"
          data-cat="🧹 Aspiradora" data-marca="" data-marcas=" hist masvendido tallanormal vendidos "
          data-asin="B0H3ZB6GJP" data-texto="momcozy 2-in-1 aspirador nasal bebe electrico con 4 niveles ajustables | aspirador nasal para bebe con pulverización y succión de 65kpa de grado hospitalario, silencioso y portátil, con luz y música b0h3zb6gjp básicos día a día">
@@ -3352,7 +3397,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="25" data-epc="0" data-precio="149.0" data-val="3.9" data-opi="2111" data-vend="50" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" hist rep tallanormal vendidos "
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" cc hist rep tallanormal vendidos "
          data-asin="B0DPHT4KB1" data-texto="roborock f25 gt gen 2 aspiradora en seco y húmedo de 20.000 pa | aspiradora-fregona sin cable, autolimpieza a 90 °c y secado, limpieza de bordes, diseño plano de 180°, compacta (12,5 cm) b0dpht4kb1 hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0DPHT4KB1" data-desc="roborock F25 GT Gen 2 Aspiradora en Sec… · 149,00 € · -25%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0DPHT4KB1?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-25%</span>
@@ -3362,12 +3407,12 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>149,00 €</b> <s>199,00 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 3,9 (2.111) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 1,25 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0DPHT4KB1</code></div>
   </div>
 </article>
 <article class="card" data-dto="25" data-epc="0" data-precio="149.98" data-val="4.4" data-opi="21076" data-vend="300" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina | Ofertas Prime"
-         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" min90 ok rep tallanormal vendidos "
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" cc eva min90 ok rep tallanormal vendidos "
          data-asin="B084PSXMQM" data-texto="bissell spotclean pet pro aspiradora de agua tapicería 750w 15585 | lava aspiradora ideal para dueños de mascotas, para alfombras, tapicería, sofá, auto y más b084psxmqm hogar y cocina · ofertas prime">
   <label class="pick"><input type="checkbox" value="B084PSXMQM" data-desc="BISSELL SpotClean Pet Pro Aspiradora de… · 149,98 € · -25%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B084PSXMQM?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-25%</span>
@@ -3377,7 +3422,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>149,98 €</b> <s>199,99 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (21.076) · <span class="vendidos">🛒 300+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -12% vs mín. 30 días (169,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -12% vs mín. 30 días (169,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,41 €</span><span class="tag eva">📤 Ya en Eva (2026-11-19 09:27)</span></div>
     <div class="pie">Hogar y Cocina · Ofertas Prime · <code>B084PSXMQM</code></div>
   </div>
 </article>
@@ -3692,12 +3737,12 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>189,00 €</b> <s>249,99 €</s></div>
     <div class="resenas"><span class="vendidos">🛒 700+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 1,09 €</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 1,15 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0GL2L4F2Q</code></div>
   </div>
 </article>
 <article class="card" data-dto="24" data-epc="0" data-precio="189.05" data-val="4.4" data-opi="700" data-vend="100" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina | Ofertas Prime"
-         data-cat="🍟 Freidora de aire" data-marca="" data-marcas=" hist ok rep tallanormal vendidos "
+         data-cat="🍟 Freidora de aire" data-marca="" data-marcas=" cc hist ok rep tallanormal vendidos "
          data-asin="B0GL27XFXV" data-texto="ninja crispi pro xl, freidora de aire con 2 recipientes, dorado piedra | 5 funciones de cocción predefinidas, recipientes de cristal cleancrisp de 5,7 y 2,3 l y tapas para almacenamiento - as090eusd b0gl27xfxv hogar y cocina · ofertas prime">
   <label class="pick"><input type="checkbox" value="B0GL27XFXV" data-desc="Ninja CRISPi PRO XL, Freidora de Aire c… · 189,05 € · -24%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0GL27XFXV?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-24%</span>
@@ -3707,7 +3752,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>189,05 €</b> <s>249,99 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (700) · <span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -24% vs mín. 30 días (249,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -24% vs mín. 30 días (249,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 1,53 €</span></div>
     <div class="pie">Hogar y Cocina · Ofertas Prime · <code>B0GL27XFXV</code></div>
   </div>
 </article>
@@ -3907,7 +3952,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="23" data-epc="0" data-precio="149.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🧽 Friegasuelos" data-marca="" data-marcas=" nueva ok tallanormal "
+         data-cat="🧽 Friegasuelos" data-marca="" data-marcas=" eva nueva ok tallanormal "
          data-asin="B0GC5CKXQZ" data-texto="tineco floor one i5 stretch aspirador lavador, 20000pa, plato de 180° | limpieza de dos bordes, tanques de agua de gran capacidad, diseño antienredos, limpieza con cepillo limpio constante b0gc5ckxqz hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0GC5CKXQZ" data-desc="Tineco Floor One i5 Stretch Aspirador L… · 149,99 € · -23%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0GC5CKXQZ?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-23%</span>
@@ -3917,7 +3962,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>149,99 €</b> <s>194,53 €</s></div>
     
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -25% vs mín. 30 días (199,00 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -25% vs mín. 30 días (199,00 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span><span class="tag eva">📤 Ya en Eva (2026-11-19 09:27)</span></div>
     <div class="pie">Hogar y Cocina · <code>B0GC5CKXQZ</code></div>
   </div>
 </article>
@@ -4177,7 +4222,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="22" data-epc="0" data-precio="279.0" data-val="4.2" data-opi="1098" data-vend="100" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina | Ofertas Prime"
-         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" cc tallanormal vendidos "
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" tallanormal vendidos "
          data-asin="B0D6ZB7CMY" data-texto="dreame z30, aspirador sin cable, 28 000 pa /310 aw, luz led celestect | herramienta para aseo de mascotas, diseño antienredos, control inteligente de la succión, eficiencia de filtrado del 99,99% b0d6zb7cmy hogar y cocina · ofertas prime">
   <label class="pick"><input type="checkbox" value="B0D6ZB7CMY" data-desc="dreame Z30, Aspirador sin Cable, 28 000… · 279,00 € · -22%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0D6ZB7CMY?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-22%</span>
@@ -4187,7 +4232,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>279,00 €</b> <s>359,00 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (1.098) · <span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-10% vs mín. 30 días (309,00 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,25 €</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-10% vs mín. 30 días (309,00 €)</span></div>
     <div class="pie">Hogar y Cocina · Ofertas Prime · <code>B0D6ZB7CMY</code></div>
   </div>
 </article>
@@ -4237,7 +4282,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="21" data-epc="0" data-precio="54.9" data-val="4.3" data-opi="1267" data-vend="200" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" cc min90 rep tallanormal vendidos "
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" min90 rep tallanormal vendidos "
          data-asin="B0C468TYML" data-texto="cecotec aspirador de sólidos y líquidos de 30 l conga rockstar wet &amp; dry steel pro. 1600 w, 23 kpa, sistema de drenado, aspirador y soplador, estructura metálica, ruedas, radio de acción 5m b0c468tyml hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0C468TYML" data-desc="Cecotec Aspirador de Sólidos y Líquidos… · 54,90 € · -21%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0C468TYML?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-21%</span>
@@ -4247,7 +4292,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>54,90 €</b> <s>69,90 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (1.267) · <span class="vendidos">🛒 200+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-8% vs mín. 30 días (59,90 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,07 €</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ">-8% vs mín. 30 días (59,90 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Hogar y Cocina · <code>B0C468TYML</code></div>
   </div>
 </article>
@@ -4417,7 +4462,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="21" data-epc="0" data-precio="549.0" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" cc rep tallanormal "
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" rep tallanormal "
          data-asin="B0H7BXGDX8" data-texto="anker eufy robot aspirador c30 edge, 35 000 pa, robot aspirador y fregador | filtración multiciclónica aeroturbo,limpieza de bordes mopmaster 3.0,cepillo antienredos,estación 6 en 1,navegación ipath 2.0 b0h7bxgdx8 hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0H7BXGDX8" data-desc="Anker eufy Robot aspirador C30 Edge, 35… · 549,00 € · -21%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0H7BXGDX8?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-21%</span>
@@ -4427,12 +4472,12 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>549,00 €</b> <s>699,00 €</s></div>
     
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,43 €</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Hogar y Cocina · <code>B0H7BXGDX8</code></div>
   </div>
 </article>
 <article class="card" data-dto="21" data-epc="0" data-precio="669.0" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" nueva ok tallanormal "
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" cc nueva ok tallanormal "
          data-asin="B0HF1SZCZL" data-texto="dyson r2 nurovi wash+dry robot aspirador y fregona con autovaciado | robot aspirador y fregona 2 en 1. mopas reuleaux para esquinas y succión twin-capture de 21.000 pa. b0hf1szczl hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0HF1SZCZL" data-desc="Dyson R2 Nurovi Wash+Dry Robot Aspirado… · 669,00 € · -21%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0HF1SZCZL?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-21%</span>
@@ -4442,7 +4487,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>669,00 €</b> <s>849,00 €</s></div>
     
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -11% vs mín. 30 días (749,00 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -11% vs mín. 30 días (749,00 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,22 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0HF1SZCZL</code></div>
   </div>
 </article>
@@ -4757,7 +4802,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>199,00 €</b> <s>249,99 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 3,9 (473) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,89 €</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio mediano</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,92 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0DWK6P2GH</code></div>
   </div>
 </article>
@@ -5092,7 +5137,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="18" data-epc="0" data-precio="131.0" data-val="4.0" data-opi="4454" data-vend="200" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="☕ Cafetera" data-marca="" data-marcas=" tallanormal vendidos "
+         data-cat="☕ Cafetera" data-marca="" data-marcas=" cc tallanormal vendidos "
          data-asin="B06X3ZWVZ7" data-texto="de&#x27;longhi dedica style - cafetera espresso manual con espumador manual | cafetera compacta, espresso y cappuccino, apta para monodosis ese, panel con botones, ancho 15cm, blanco, ec685.w b06x3zwvz7 hogar y cocina">
   <label class="pick"><input type="checkbox" value="B06X3ZWVZ7" data-desc="De&#x27;Longhi Dedica Style - Cafetera Espre… · 131,00 € · -18%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B06X3ZWVZ7?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-18%</span>
@@ -5102,7 +5147,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>131,00 €</b> <s>159,90 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,0 (4.454) · <span class="vendidos">🛒 200+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (138,61 €)</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (138,61 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,07 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B06X3ZWVZ7</code></div>
   </div>
 </article>
@@ -5332,7 +5377,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="17" data-epc="0" data-precio="49.99" data-val="4.2" data-opi="1955" data-vend="50" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🥤 Batidora / Licuadora" data-marca="" data-marcas=" tallanormal vendidos "
+         data-cat="🥤 Batidora / Licuadora" data-marca="" data-marcas=" cc tallanormal vendidos "
          data-asin="B0B8S9HG61" data-texto="lehmann chopsui batidora de mano multifunción 7 en 1, potencia 1200w, acero inoxidable, 8 velocidades ajustables + función turbo, 9 accesorios incluidos, libre de bpa, ideal para sopa, puré, salsa b0b8s9hg61 hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0B8S9HG61" data-desc="LEHMANN Chopsui Batidora de Mano multif… · 49,99 € · -17%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0B8S9HG61?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-17%</span>
@@ -5342,7 +5387,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>49,99 €</b> <s>59,99 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,2 (1.955) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-9% vs mín. 30 días (54,99 €)</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-9% vs mín. 30 días (54,99 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,05 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0B8S9HG61</code></div>
   </div>
 </article>
@@ -5422,7 +5467,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="17" data-epc="0" data-precio="91.15" data-val="0" data-opi="0" data-vend="50" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" hist rep tallanormal vendidos "
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" cc hist rep tallanormal vendidos "
          data-asin="B0BMF3LFC8" data-texto="vacmaster sca0801 aspirador de alfombras limpiador de manchas multisuperficie para alfombras, moquetas, tapicería, escaleras y coche | incluye fórmula y accesorios | 800 w b0bmf3lfc8 hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0BMF3LFC8" data-desc="Vacmaster SCA0801 Aspirador de alfombra… · 91,15 € · -17%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0BMF3LFC8?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-17%</span>
@@ -5432,7 +5477,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>91,15 €</b> <s>109,99 €</s></div>
     <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,17 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0BMF3LFC8</code></div>
   </div>
 </article>
@@ -5597,7 +5642,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>749,99 €</b> <s>899,99 €</s></div>
     
     
-    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -17% vs mín. 30 días (899,99 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,15 €</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -17% vs mín. 30 días (899,99 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,14 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0BRQL5Y7W</code></div>
   </div>
 </article>
@@ -5707,7 +5752,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="16" data-epc="0" data-precio="529.0" data-val="3.9" data-opi="157" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" cc hist tallanormal "
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" hist tallanormal "
          data-asin="B0DRBWKQ8Y" data-texto="anker eufy omni e25 robot aspirador y fregador 20.000 pa, negro | sistema hydrojet, cepillos desenredantes duospiral, brazo cornerrover, estación todo en uno b0drbwkq8y hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0DRBWKQ8Y" data-desc="Anker eufy Omni E25 Robot Aspirador y f… · 529,00 € · -16%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0DRBWKQ8Y?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-16%</span>
@@ -5717,7 +5762,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>529,00 €</b> <s>629,00 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 3,9 (157)</div>
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-9% vs mín. 30 días (579,00 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,46 €</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-9% vs mín. 30 días (579,00 €)</span></div>
     <div class="pie">Hogar y Cocina · <code>B0DRBWKQ8Y</code></div>
   </div>
 </article>
@@ -5927,7 +5972,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>84,90 €</b> <s>99,90 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,1 (10.667)</div>
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,04 €</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,05 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B07YLNBXK5</code></div>
   </div>
 </article>
@@ -6182,7 +6227,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>679,00 €</b> <s>799,00 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,0 (739)</div>
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,52 €</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,53 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0DSLK2P4J</code></div>
   </div>
 </article>
@@ -6202,7 +6247,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="14" data-epc="0" data-precio="35.9" data-val="4.3" data-opi="2434" data-vend="1000" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🥤 Batidora / Licuadora" data-marca="" data-marcas=" cc masvendido tallanormal vendidos "
+         data-cat="🥤 Batidora / Licuadora" data-marca="" data-marcas=" masvendido tallanormal vendidos "
          data-asin="B07M7CSP1S" data-texto="cecotec batidora de mano powergear 1500 xl pro. 1500w, 21 velocidades + turbo, acero/silicona, brazo xl, cuchilla de 4 hojas, recubrimiento titanio, engranaje de metal, incluye accesorios b07m7csp1s hogar y cocina">
   <label class="pick"><input type="checkbox" value="B07M7CSP1S" data-desc="Cecotec Batidora de Mano PowerGear 1500… · 35,90 € · -14%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B07M7CSP1S?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-14%</span>
@@ -6212,7 +6257,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>35,90 €</b> <s>41,90 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (2.434) · <span class="vendidos">🛒 1.000+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag masvendido">🏆 Nº 12 más vendido en Hogar y cocina</span><span class="tag ">Antes = precio recomendado</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,06 €</span></div>
+    <div class="tags"><span class="tag masvendido">🏆 Nº 12 más vendido en Hogar y cocina</span><span class="tag ">Antes = precio recomendado</span></div>
     <div class="pie">Hogar y Cocina · <code>B07M7CSP1S</code></div>
   </div>
 </article>
@@ -6232,7 +6277,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="14" data-epc="0" data-precio="49.9" data-val="4.5" data-opi="5420" data-vend="100" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🍟 Freidora de aire" data-marca="" data-marcas=" cc min90 ok tallanormal vendidos "
+         data-cat="🍟 Freidora de aire" data-marca="" data-marcas=" min90 ok tallanormal vendidos "
          data-asin="B0BFB3Q7SD" data-texto="cecotec freidora sin aceite de 5,5 l de aire caliente cecofry full inoxblack 5500 pro. 1700 w, dietética y digital, panel táctil, acabados en acero inox, tecnología perfectcook, termostato, 8 modos b0bfb3q7sd hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0BFB3Q7SD" data-desc="Cecotec Freidora sin Aceite de 5,5 L de… · 49,90 € · -14%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0BFB3Q7SD?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-14%</span>
@@ -6242,7 +6287,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>49,90 €</b> <s>57,90 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (5.420) · <span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -14% vs mín. 30 días (57,90 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,08 €</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -14% vs mín. 30 días (57,90 €)</span></div>
     <div class="pie">Hogar y Cocina · <code>B0BFB3Q7SD</code></div>
   </div>
 </article>
@@ -6437,7 +6482,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>52,90 €</b> <s>60,90 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (5.573) · <span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -12% vs mín. 30 días (59,90 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,08 €</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -12% vs mín. 30 días (59,90 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,07 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0BPZPFNM4</code></div>
   </div>
 </article>
@@ -6577,7 +6622,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="12" data-epc="0" data-precio="141.5" data-val="4.3" data-opi="813" data-vend="200" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" hist rep tallanormal vendidos "
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" cc hist rep tallanormal vendidos "
          data-asin="B0F4K1H6X5" data-texto="xiaomi s40c robot aspirador con fregado, 5000 pa, control app y voz | navegación lds, depósito 520 ml, tanque 260 ml, 3 niveles flujo agua, 4 modos limpieza b0f4k1h6x5 hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0F4K1H6X5" data-desc="XIAOMI S40C Robot Aspirador con Fregado… · 141,50 € · -12%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0F4K1H6X5?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-12%</span>
@@ -6587,7 +6632,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>141,50 €</b> <s>159,99 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,3 (813) · <span class="vendidos">🛒 200+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (148,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (148,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,25 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0F4K1H6X5</code></div>
   </div>
 </article>
@@ -6602,7 +6647,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>149,00 €</b> <s>169,00 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 3,9 (123) · <span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -12% vs mín. 30 días (169,00 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,05 €</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -12% vs mín. 30 días (169,00 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,04 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0FKT15NZ1</code></div>
   </div>
 </article>
@@ -6647,7 +6692,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>289,99 €</b> <s>329,99 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (718)</div>
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -12% vs mín. 30 días (329,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,17 €</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -12% vs mín. 30 días (329,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,33 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B08L7YFG52</code></div>
   </div>
 </article>
@@ -6722,7 +6767,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>79,00 €</b> <s>88,99 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (4.570) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -11% vs mín. 30 días (88,99 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,53 €</span></div>
+    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio mediano</span><span class="tag ok">Bajada real: -11% vs mín. 30 días (88,99 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,52 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B014SPNQV2</code></div>
   </div>
 </article>
@@ -6917,7 +6962,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>88,99 €</b> <s>98,46 €</s></div>
     <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -15% vs mín. 30 días (104,62 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,32 €</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -15% vs mín. 30 días (104,62 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,60 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0H2ZJLZPD</code></div>
   </div>
 </article>
