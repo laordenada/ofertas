@@ -94,11 +94,11 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
 </style></head><body>
 <header>
   <div><h1>Ofertas hogar: limpieza y cocina</h1>
-  <div class="sub">310 ofertas · 21/11/2026 08:19</div></div>
+  <div class="sub">311 ofertas · 21/11/2026 15:44</div></div>
   <div class="ctrl">
     <input type="search" id="q" placeholder="Filtrar…">
-    <details class="multi" id="cat" data-todas="Todas las categorías"><summary>Todas las categorías</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="Otros"> Otros <span>(1)</span></label><label><input type="checkbox" value="🤖 Robot aspirador"> 🤖 Robot aspirador <span>(50)</span></label><label><input type="checkbox" value="🥤 Batidora / Licuadora"> 🥤 Batidora / Licuadora <span>(39)</span></label><label><input type="checkbox" value="🍞 Pequeño electro"> 🍞 Pequeño electro <span>(22)</span></label><label><input type="checkbox" value="🧹 Aspiradora"> 🧹 Aspiradora <span>(70)</span></label><label><input type="checkbox" value="🍟 Freidora de aire"> 🍟 Freidora de aire <span>(36)</span></label><label><input type="checkbox" value="🍲 Robot de cocina"> 🍲 Robot de cocina <span>(6)</span></label><label><input type="checkbox" value="☕ Cafetera"> ☕ Cafetera <span>(30)</span></label><label><input type="checkbox" value="♨️ Olla programable"> ♨️ Olla programable <span>(7)</span></label><label><input type="checkbox" value="🧽 Friegasuelos"> 🧽 Friegasuelos <span>(15)</span></label><label><input type="checkbox" value="📟 Microondas / Horno"> 📟 Microondas / Horno <span>(19)</span></label><label><input type="checkbox" value="🛋️ Tapicerías"> 🛋️ Tapicerías <span>(2)</span></label><label><input type="checkbox" value="🪟 Limpiacristales"> 🪟 Limpiacristales <span>(4)</span></label><label><input type="checkbox" value="💦 Hidrolimpiadora"> 💦 Hidrolimpiadora <span>(2)</span></label><label><input type="checkbox" value="♨️ Vapor"> ♨️ Vapor <span>(7)</span></label></div></details>
-    
+    <details class="multi" id="cat" data-todas="Todas las categorías"><summary>Todas las categorías</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="Otros"> Otros <span>(4)</span></label><label><input type="checkbox" value="🤖 Robot aspirador"> 🤖 Robot aspirador <span>(49)</span></label><label><input type="checkbox" value="🥤 Batidora / Licuadora"> 🥤 Batidora / Licuadora <span>(39)</span></label><label><input type="checkbox" value="🍞 Pequeño electro"> 🍞 Pequeño electro <span>(22)</span></label><label><input type="checkbox" value="🧹 Aspiradora"> 🧹 Aspiradora <span>(70)</span></label><label><input type="checkbox" value="🍟 Freidora de aire"> 🍟 Freidora de aire <span>(35)</span></label><label><input type="checkbox" value="🍲 Robot de cocina"> 🍲 Robot de cocina <span>(6)</span></label><label><input type="checkbox" value="☕ Cafetera"> ☕ Cafetera <span>(30)</span></label><label><input type="checkbox" value="♨️ Olla programable"> ♨️ Olla programable <span>(7)</span></label><label><input type="checkbox" value="🧽 Friegasuelos"> 🧽 Friegasuelos <span>(15)</span></label><label><input type="checkbox" value="📟 Microondas / Horno"> 📟 Microondas / Horno <span>(19)</span></label><label><input type="checkbox" value="🛋️ Tapicerías"> 🛋️ Tapicerías <span>(2)</span></label><label><input type="checkbox" value="🪟 Limpiacristales"> 🪟 Limpiacristales <span>(4)</span></label><label><input type="checkbox" value="💦 Hidrolimpiadora"> 💦 Hidrolimpiadora <span>(2)</span></label><label><input type="checkbox" value="♨️ Vapor"> ♨️ Vapor <span>(7)</span></label></div></details>
+    <details class="multi" id="marca" data-todas="Todas las marcas"><summary>Todas las marcas</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="Under Armour"> Under Armour <span>(1)</span></label></div></details>
     <select id="grupo"><option value="">Todas las búsquedas</option><option value="Bricolaje (hidrolimpiadoras)">Bricolaje (hidrolimpiadoras)</option><option value="Básicos Día a Día">Básicos Día a Día</option><option value="Hogar y Cocina">Hogar y Cocina</option><option value="Ofertas Prime">Ofertas Prime</option></select>
     <select id="valmin" title="Valoración mínima"><option value="0">Cualquier valoración</option><option value="4">4,0★ o más</option><option value="4.3">4,3★ o más</option><option value="4.5">4,5★ o más</option></select>
     <select id="vendmin" title="Comprados el mes pasado"><option value="0">Cualquier venta</option><option value="50">50+ al mes</option><option value="100">100+ al mes</option><option value="300">300+ al mes</option><option value="1000">1.000+ al mes</option></select>
@@ -123,9 +123,69 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <span id="contador"></span>
     <button id="copiar" disabled>Añadir a la cola (0)</button>
   </div>
-  <div class="chips"><button type="button" class="chip m-nueva" data-m="nueva">Oferta nueva <span>21</span></button><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>127</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>102</span></button><button type="button" class="chip m-cc" data-m="cc">💰 Creator Connections <span>59</span></button><button type="button" class="chip m-rep" data-m="rep">3+ días en oferta <span>136</span></button><button type="button" class="chip m-masvendido" data-m="masvendido">Top ventas <span>7</span></button><button type="button" class="chip m-vendidos" data-m="vendidos">🛒 Comprados el mes pasado <span>161</span></button></div>
+  <div class="chips"><button type="button" class="chip m-top" data-m="top">Marca top <span>1</span></button><button type="button" class="chip m-nueva" data-m="nueva">Oferta nueva <span>21</span></button><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>126</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>102</span></button><button type="button" class="chip m-cc" data-m="cc">💰 Creator Connections <span>59</span></button><button type="button" class="chip m-rep" data-m="rep">3+ días en oferta <span>135</span></button><button type="button" class="chip m-masvendido" data-m="masvendido">Top ventas <span>7</span></button><button type="button" class="chip m-vendidos" data-m="vendidos">🛒 Comprados el mes pasado <span>158</span></button><button type="button" class="chip m-eva" data-m="eva">Publicadas <span>2</span></button></div>
 </header>
 <main id="lista">
+<article class="card" data-dto="33" data-epc="0" data-precio="119.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo=""
+         data-cat="Otros" data-marca="" data-marcas=" cc tallanormal "
+         data-asin="B0H95PYTXM" data-texto="ninja crispi freidora de aire 4 en 1 de 3,8 l, 2,3 l: freír con aire, asar, mantener caliente, recuperar el crujiente, compacto, 6 porciones, 2 bandejas con tapa, 1700 w, piedra/dorado fn201eusd1 b0h95pytxm ">
+  <label class="pick"><input type="checkbox" value="B0H95PYTXM" data-desc="Ninja CRISPi Freidora de aire 4 en 1 de… · 119,99 € · -33%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H95PYTXM?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-33%</span>
+    <img src="https://m.media-amazon.com/images/I/41-uvZ8W5LL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H95PYTXM?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Ninja CRISPi Freidora de aire 4 en 1 de 3,8 l, 2,3 l: Freír con aire, asar, mantener caliente, recuperar el crujiente, compacto, 6 porciones, 2 bandejas con tapa, 1700 W, Piedra/dorado FN201EUSD1</a>
+    <div class="precio"><b>119,99 €</b> <s>179,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag cc">💰 Creator Connections · EPC hasta 1,25 €</span></div>
+    <div class="pie"> · <code>B0H95PYTXM</code></div>
+  </div>
+</article>
+<article class="card" data-dto="48" data-epc="0" data-precio="129.0" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo=""
+         data-cat="Otros" data-marca="" data-marcas=" cc tallanormal "
+         data-asin="B0GQVPSS9X" data-texto="irobot roomba 115 combo, robot aspirador y friegasuelos 2 en 1, potencia de succión de 15000 pascales, cepillo lateral flexible, mopa de fregado extendida, navegación clearview lidar, app, blanco b0gqvpss9x ">
+  <label class="pick"><input type="checkbox" value="B0GQVPSS9X" data-desc="iRobot Roomba 115 Combo, Robot Aspirado… · 129,00 € · -48%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GQVPSS9X?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-48%</span>
+    <img src="https://m.media-amazon.com/images/I/315N7UVcgUL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GQVPSS9X?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">iRobot Roomba 115 Combo, Robot Aspirador y friegasuelos 2 en 1, Potencia de succión de 15000 Pascales, Cepillo Lateral Flexible, Mopa de fregado extendida, Navegación Clearview LiDAR, App, Blanco</a>
+    <div class="precio"><b>129,00 €</b> <s>249,00 €</s></div>
+    
+    
+    <div class="tags"><span class="tag cc">💰 Creator Connections · EPC hasta 0,35 €</span></div>
+    <div class="pie"> · <code>B0GQVPSS9X</code></div>
+  </div>
+</article>
+<article class="card" data-dto="66" data-epc="0" data-precio="17.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo=""
+         data-cat="Otros" data-marca="" data-marcas=" tallanormal "
+         data-asin="B01KLXG14O" data-texto="remington cepillo alisador straight brush, cerámica avanzada anti-estática, 3 temperaturas hasta 230°c, cabezal para facilitar el alisado, interruptor encendido/apagado, neceser, cb7400 b01klxg14o ">
+  <label class="pick"><input type="checkbox" value="B01KLXG14O" data-desc="Remington Cepillo Alisador Straight Bru… · 17,99 € · -66%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B01KLXG14O?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-66%</span>
+    <img src="https://m.media-amazon.com/images/I/41pK8hXrdhL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B01KLXG14O?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Remington Cepillo Alisador Straight Brush, Cerámica Avanzada Anti-estática, 3 Temperaturas hasta 230°C, Cabezal para Facilitar el Alisado, Interruptor Encendido/Apagado, Neceser, CB7400</a>
+    <div class="precio"><b>17,99 €</b> <s>52,99 €</s></div>
+    
+    
+    <div class="tags"></div>
+    <div class="pie"> · <code>B01KLXG14O</code></div>
+  </div>
+</article>
+<article class="card" data-dto="50" data-epc="0" data-precio="37.5" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo=""
+         data-cat="Otros" data-marca="Under Armour" data-marcas=" eva tallanormal top "
+         data-asin="B0876PFLFQ" data-texto="under armour hombre ua knit track suit shirt b0876pflfq ">
+  <label class="pick"><input type="checkbox" value="B0876PFLFQ" data-desc="Under Armour Hombre UA Knit Track Suit… · 37,50 € · -50%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0876PFLFQ?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-50%</span>
+    <img src="https://m.media-amazon.com/images/I/31QU0-HuQbL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0876PFLFQ?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Under Armour Hombre UA Knit Track Suit Shirt</a>
+    <div class="precio"><b>37,50 €</b> <s>75,00 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ Under Armour</span><span class="tag eva">📤 Ya en Eva (2026-11-18 09:34)</span></div>
+    <div class="pie"> · <code>B0876PFLFQ</code></div>
+  </div>
+</article>
 <article class="card" data-dto="70" data-epc="0" data-precio="119.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
          data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" cc hist ok tallanormal "
          data-asin="B0FQPD78WL" data-texto="lefant m1 robot aspirador y fregasuelos, 5500pa potente succión, 200mins, navegación láser con dtof, mapeo multinivel, limpieza personalizada, zonas de exclusión, alexa/app/apple watch/wif b0fqpd78wl hogar y cocina">
@@ -184,21 +244,6 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     
     <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (239,99 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Hogar y Cocina · <code>B0H4LH6GH2</code></div>
-  </div>
-</article>
-<article class="card" data-dto="66" data-epc="0" data-precio="17.99" data-val="0" data-opi="0" data-vend="50" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="Otros" data-marca="" data-marcas=" min90 ok tallanormal vendidos "
-         data-asin="B01KLXG14O" data-texto="remington cepillo alisador straight brush, cerámica avanzada anti-estática, 3 temperaturas hasta 230°c, cabezal para facilitar el alisado, interruptor encendido/apagado, neceser, cb7400 b01klxg14o hogar y cocina">
-  <label class="pick"><input type="checkbox" value="B01KLXG14O" data-desc="Remington Cepillo Alisador Straight Bru… · 17,99 € · -66%"> Elegir</label>
-  <a class="foto" href="https://www.amazon.es/dp/B01KLXG14O?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-66%</span>
-    <img src="https://m.media-amazon.com/images/I/41pK8hXrdhL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
-  <div class="info">
-    <a class="titulo" href="https://www.amazon.es/dp/B01KLXG14O?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Remington Cepillo Alisador Straight Brush, Cerámica Avanzada Anti-estática, 3 Temperaturas hasta 230°C, Cabezal para Facilitar el Alisado, Interruptor Encendido/Apagado, Neceser, CB7400</a>
-    <div class="precio"><b>17,99 €</b> <s>52,99 €</s></div>
-    <div class="resenas"><span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
-    
-    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -52% vs mín. 30 días (37,76 €)</span></div>
-    <div class="pie">Hogar y Cocina · <code>B01KLXG14O</code></div>
   </div>
 </article>
 <article class="card" data-dto="66" data-epc="0" data-precio="239.99" data-val="4.3" data-opi="807" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina | Ofertas Prime"
@@ -367,7 +412,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="51" data-epc="0" data-precio="121.99" data-val="3.9" data-opi="152" data-vend="500" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina | Ofertas Prime"
-         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" cc hist tallanormal vendidos "
+         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" cc eva hist tallanormal vendidos "
          data-asin="B0GQVBWMN8" data-texto="irobot roomba 115 combo, robot aspirador y friegasuelos 2en1, potencia de succión de 15.000 pascales, cepillo lateral flexible, mopa de fregado extendida, navegación clearview lidar, app, negro b0gqvbwmn8 hogar y cocina · ofertas prime">
   <label class="pick"><input type="checkbox" value="B0GQVBWMN8" data-desc="iRobot Roomba 115 Combo, Robot Aspirado… · 121,99 € · -51%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0GQVBWMN8?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-51%</span>
@@ -377,7 +422,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>121,99 €</b> <s>249,00 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 3,9 (152) · <span class="vendidos">🛒 500+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (129,00 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,41 €</span></div>
+    <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-5% vs mín. 30 días (129,00 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,41 €</span><span class="tag eva">📤 Ya en Eva (2026-11-21 10:44)</span></div>
     <div class="pie">Hogar y Cocina · Ofertas Prime · <code>B0GQVBWMN8</code></div>
   </div>
 </article>
@@ -484,21 +529,6 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     
     <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -16% vs mín. 30 días (129,00 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,44 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0GKB4DTF3</code></div>
-  </div>
-</article>
-<article class="card" data-dto="48" data-epc="0" data-precio="129.0" data-val="0" data-opi="0" data-vend="500" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" cc tallanormal vendidos "
-         data-asin="B0GQVPSS9X" data-texto="irobot roomba 115 combo, robot aspirador y friegasuelos 2 en 1, potencia de succión de 15000 pascales, cepillo lateral flexible, mopa de fregado extendida, navegación clearview lidar, app, blanco b0gqvpss9x hogar y cocina">
-  <label class="pick"><input type="checkbox" value="B0GQVPSS9X" data-desc="iRobot Roomba 115 Combo, Robot Aspirado… · 129,00 € · -48%"> Elegir</label>
-  <a class="foto" href="https://www.amazon.es/dp/B0GQVPSS9X?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-48%</span>
-    <img src="https://m.media-amazon.com/images/I/315N7UVcgUL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
-  <div class="info">
-    <a class="titulo" href="https://www.amazon.es/dp/B0GQVPSS9X?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">iRobot Roomba 115 Combo, Robot Aspirador y friegasuelos 2 en 1, Potencia de succión de 15000 Pascales, Cepillo Lateral Flexible, Mopa de fregado extendida, Navegación Clearview LiDAR, App, Blanco</a>
-    <div class="precio"><b>129,00 €</b> <s>249,00 €</s></div>
-    <div class="resenas"><span class="vendidos">🛒 500+ comprados el mes pasado</span></div>
-    
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,35 €</span></div>
-    <div class="pie">Hogar y Cocina · <code>B0GQVPSS9X</code></div>
   </div>
 </article>
 <article class="card" data-dto="48" data-epc="0" data-precio="389.0" data-val="4.3" data-opi="2746" data-vend="200" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina | Ofertas Prime"
@@ -1534,21 +1564,6 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     
     <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ok">Bajada real: -33% vs mín. 30 días (149,99 €)</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,23 €</span></div>
     <div class="pie">Básicos Día a Día · <code>B0H1R4TV3M</code></div>
-  </div>
-</article>
-<article class="card" data-dto="33" data-epc="0" data-precio="119.99" data-val="0" data-opi="0" data-vend="200" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🍟 Freidora de aire" data-marca="" data-marcas=" cc rep tallanormal vendidos "
-         data-asin="B0H95PYTXM" data-texto="ninja crispi freidora de aire 4 en 1 de 3,8 l, 2,3 l: freír con aire, asar, mantener caliente, recuperar el crujiente, compacto, 6 porciones, 2 bandejas con tapa, 1700 w, piedra/dorado fn201eusd1 b0h95pytxm hogar y cocina">
-  <label class="pick"><input type="checkbox" value="B0H95PYTXM" data-desc="Ninja CRISPi Freidora de aire 4 en 1 de… · 119,99 € · -33%"> Elegir</label>
-  <a class="foto" href="https://www.amazon.es/dp/B0H95PYTXM?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-33%</span>
-    <img src="https://m.media-amazon.com/images/I/41-uvZ8W5LL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
-  <div class="info">
-    <a class="titulo" href="https://www.amazon.es/dp/B0H95PYTXM?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Ninja CRISPi Freidora de aire 4 en 1 de 3,8 l, 2,3 l: Freír con aire, asar, mantener caliente, recuperar el crujiente, compacto, 6 porciones, 2 bandejas con tapa, 1700 W, Piedra/dorado FN201EUSD1</a>
-    <div class="precio"><b>119,99 €</b> <s>179,99 €</s></div>
-    <div class="resenas"><span class="vendidos">🛒 200+ comprados el mes pasado</span></div>
-    
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 1,25 €</span></div>
-    <div class="pie">Hogar y Cocina · <code>B0H95PYTXM</code></div>
   </div>
 </article>
 <article class="card" data-dto="33" data-epc="0" data-precio="119.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
