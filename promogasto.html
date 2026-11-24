@@ -94,7 +94,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
 </style></head><body>
 <header>
   <div><h1>Promociones de gasto mínimo</h1>
-  <div class="sub">0 productos con el descuento de la promoción aplicado (precio final) · Ahorra un 30 % comprando al menos 40€ de productos elegibles · el &quot;antes&quot; es la media de 90 días de Keepa · 23/11/2026 23:50</div></div>
+  <div class="sub">0 productos con el descuento de la promoción aplicado (precio final) · Ahorra un 30 % comprando al menos 40€ de productos elegibles · el &quot;antes&quot; es la media de 90 días de Keepa · 24/11/2026 12:10</div></div>
   <div class="ctrl">
     <input type="search" id="q" placeholder="Filtrar…">
     
@@ -183,7 +183,7 @@ lista.addEventListener('change', e => {
 });
 // 15/11/2026: ya no se copia al portapapeles para pegar en Excel; se manda directo a la cola de
 // servidor_ofertas.py (puerto 8766), que es quien lee publicar_grupo_eva.py.
-const SERVIDOR_COLA = 'http://100.87.234.47:8766/';
+const SERVIDOR_COLA = 'http://100.107.88.62:8766/';
 btn.onclick = async () => {
   const elegidas = elegidos();
   const antes = btn.textContent;
