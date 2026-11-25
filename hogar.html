@@ -94,11 +94,11 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
 </style></head><body>
 <header>
   <div><h1>Ofertas hogar: limpieza y cocina</h1>
-  <div class="sub">342 ofertas · 25/11/2026 06:53</div></div>
+  <div class="sub">345 ofertas · 25/11/2026 12:57</div></div>
   <div class="ctrl">
     <input type="search" id="q" placeholder="Filtrar…">
-    <details class="multi" id="cat" data-todas="Todas las categorías"><summary>Todas las categorías</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="Otros"> Otros <span>(5)</span></label><label><input type="checkbox" value="🤖 Robot aspirador"> 🤖 Robot aspirador <span>(53)</span></label><label><input type="checkbox" value="🥤 Batidora / Licuadora"> 🥤 Batidora / Licuadora <span>(45)</span></label><label><input type="checkbox" value="🍟 Freidora de aire"> 🍟 Freidora de aire <span>(37)</span></label><label><input type="checkbox" value="🍞 Pequeño electro"> 🍞 Pequeño electro <span>(20)</span></label><label><input type="checkbox" value="🧹 Aspiradora"> 🧹 Aspiradora <span>(87)</span></label><label><input type="checkbox" value="🍲 Robot de cocina"> 🍲 Robot de cocina <span>(7)</span></label><label><input type="checkbox" value="☕ Cafetera"> ☕ Cafetera <span>(28)</span></label><label><input type="checkbox" value="🧽 Friegasuelos"> 🧽 Friegasuelos <span>(13)</span></label><label><input type="checkbox" value="📟 Microondas / Horno"> 📟 Microondas / Horno <span>(27)</span></label><label><input type="checkbox" value="🛋️ Tapicerías"> 🛋️ Tapicerías <span>(2)</span></label><label><input type="checkbox" value="♨️ Olla programable"> ♨️ Olla programable <span>(7)</span></label><label><input type="checkbox" value="♨️ Vapor"> ♨️ Vapor <span>(6)</span></label><label><input type="checkbox" value="💦 Hidrolimpiadora"> 💦 Hidrolimpiadora <span>(2)</span></label><label><input type="checkbox" value="🪟 Limpiacristales"> 🪟 Limpiacristales <span>(3)</span></label></div></details>
-    
+    <details class="multi" id="cat" data-todas="Todas las categorías"><summary>Todas las categorías</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="Otros"> Otros <span>(10)</span></label><label><input type="checkbox" value="🤖 Robot aspirador"> 🤖 Robot aspirador <span>(52)</span></label><label><input type="checkbox" value="🥤 Batidora / Licuadora"> 🥤 Batidora / Licuadora <span>(45)</span></label><label><input type="checkbox" value="🍟 Freidora de aire"> 🍟 Freidora de aire <span>(36)</span></label><label><input type="checkbox" value="🍞 Pequeño electro"> 🍞 Pequeño electro <span>(20)</span></label><label><input type="checkbox" value="🧹 Aspiradora"> 🧹 Aspiradora <span>(87)</span></label><label><input type="checkbox" value="🍲 Robot de cocina"> 🍲 Robot de cocina <span>(7)</span></label><label><input type="checkbox" value="☕ Cafetera"> ☕ Cafetera <span>(28)</span></label><label><input type="checkbox" value="🧽 Friegasuelos"> 🧽 Friegasuelos <span>(13)</span></label><label><input type="checkbox" value="📟 Microondas / Horno"> 📟 Microondas / Horno <span>(27)</span></label><label><input type="checkbox" value="🛋️ Tapicerías"> 🛋️ Tapicerías <span>(2)</span></label><label><input type="checkbox" value="♨️ Olla programable"> ♨️ Olla programable <span>(7)</span></label><label><input type="checkbox" value="♨️ Vapor"> ♨️ Vapor <span>(6)</span></label><label><input type="checkbox" value="💦 Hidrolimpiadora"> 💦 Hidrolimpiadora <span>(2)</span></label><label><input type="checkbox" value="🪟 Limpiacristales"> 🪟 Limpiacristales <span>(3)</span></label></div></details>
+    <details class="multi" id="marca" data-todas="Todas las marcas"><summary>Todas las marcas</summary><div class="opciones"><div class="acciones"><button type="button" class="sec" data-marcar="1">Marcar todas</button><button type="button" class="sec" data-marcar="0">Desmarcar todas</button></div><label><input type="checkbox" value="Under Armour"> Under Armour <span>(1)</span></label></div></details>
     <select id="grupo"><option value="">Todas las búsquedas</option><option value="Bricolaje (hidrolimpiadoras)">Bricolaje (hidrolimpiadoras)</option><option value="Básicos Día a Día">Básicos Día a Día</option><option value="Hogar y Cocina">Hogar y Cocina</option><option value="Ofertas Prime">Ofertas Prime</option></select>
     <select id="valmin" title="Valoración mínima"><option value="0">Cualquier valoración</option><option value="4">4,0★ o más</option><option value="4.3">4,3★ o más</option><option value="4.5">4,5★ o más</option></select>
     <select id="vendmin" title="Comprados el mes pasado"><option value="0">Cualquier venta</option><option value="50">50+ al mes</option><option value="100">100+ al mes</option><option value="300">300+ al mes</option><option value="1000">1.000+ al mes</option></select>
@@ -123,9 +123,159 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <span id="contador"></span>
     <button id="copiar" disabled>Añadir a la cola (0)</button>
   </div>
-  <div class="chips"><button type="button" class="chip m-nueva" data-m="nueva">Oferta nueva <span>8</span></button><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>56</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>104</span></button><button type="button" class="chip m-cc" data-m="cc">💰 Creator Connections <span>55</span></button><button type="button" class="chip m-rep" data-m="rep">3+ días en oferta <span>171</span></button><button type="button" class="chip m-masvendido" data-m="masvendido">Top ventas <span>9</span></button><button type="button" class="chip m-vendidos" data-m="vendidos">🛒 Comprados el mes pasado <span>180</span></button></div>
+  <div class="chips"><button type="button" class="chip m-top" data-m="top">Marca top <span>1</span></button><button type="button" class="chip m-nueva" data-m="nueva">Oferta nueva <span>8</span></button><button type="button" class="chip m-ok" data-m="ok">Bajada real <span>56</span></button><button type="button" class="chip m-hist" data-m="hist">Mínimo histórico <span>104</span></button><button type="button" class="chip m-cc" data-m="cc">💰 Creator Connections <span>55</span></button><button type="button" class="chip m-rep" data-m="rep">3+ días en oferta <span>167</span></button><button type="button" class="chip m-masvendido" data-m="masvendido">Top ventas <span>9</span></button><button type="button" class="chip m-vendidos" data-m="vendidos">🛒 Comprados el mes pasado <span>174</span></button><button type="button" class="chip m-eva" data-m="eva">Publicadas <span>4</span></button></div>
 </header>
 <main id="lista">
+<article class="card" data-dto="33" data-epc="0" data-precio="119.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo=""
+         data-cat="Otros" data-marca="" data-marcas=" cc tallanormal "
+         data-asin="B0H95PYTXM" data-texto="ninja crispi freidora de aire 4 en 1 de 3,8 l, 2,3 l: freír con aire, asar, mantener caliente, recuperar el crujiente, compacto, 6 porciones, 2 bandejas con tapa, 1700 w, piedra/dorado fn201eusd1 b0h95pytxm ">
+  <label class="pick"><input type="checkbox" value="B0H95PYTXM" data-desc="Ninja CRISPi Freidora de aire 4 en 1 de… · 119,99 € · -33%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0H95PYTXM?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-33%</span>
+    <img src="https://m.media-amazon.com/images/I/41-uvZ8W5LL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0H95PYTXM?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Ninja CRISPi Freidora de aire 4 en 1 de 3,8 l, 2,3 l: Freír con aire, asar, mantener caliente, recuperar el crujiente, compacto, 6 porciones, 2 bandejas con tapa, 1700 W, Piedra/dorado FN201EUSD1</a>
+    <div class="precio"><b>119,99 €</b> <s>179,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag cc">💰 Creator Connections · EPC hasta 0,29 €</span></div>
+    <div class="pie"> · <code>B0H95PYTXM</code></div>
+  </div>
+</article>
+<article class="card" data-dto="48" data-epc="0" data-precio="129.0" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo=""
+         data-cat="Otros" data-marca="" data-marcas=" cc tallanormal "
+         data-asin="B0GQVPSS9X" data-texto="irobot roomba 115 combo, robot aspirador y friegasuelos 2 en 1, potencia de succión de 15000 pascales, cepillo lateral flexible, mopa de fregado extendida, navegación clearview lidar, app, blanco b0gqvpss9x ">
+  <label class="pick"><input type="checkbox" value="B0GQVPSS9X" data-desc="iRobot Roomba 115 Combo, Robot Aspirado… · 129,00 € · -48%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0GQVPSS9X?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-48%</span>
+    <img src="https://m.media-amazon.com/images/I/315N7UVcgUL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0GQVPSS9X?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">iRobot Roomba 115 Combo, Robot Aspirador y friegasuelos 2 en 1, Potencia de succión de 15000 Pascales, Cepillo Lateral Flexible, Mopa de fregado extendida, Navegación Clearview LiDAR, App, Blanco</a>
+    <div class="precio"><b>129,00 €</b> <s>249,00 €</s></div>
+    
+    
+    <div class="tags"><span class="tag cc">💰 Creator Connections · EPC hasta 0,35 €</span></div>
+    <div class="pie"> · <code>B0GQVPSS9X</code></div>
+  </div>
+</article>
+<article class="card" data-dto="13" data-epc="0" data-precio="20.89" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo=""
+         data-cat="Otros" data-marca="" data-marcas=" tallanormal "
+         data-asin="B0DT47H1XV" data-texto="amazon basics juego de funda nórdica cama 150/160 de microfibra, 3 piezas, funda de edredón 240 x 220 cm y 2 fundas de almohada 50 x 80 cm, beige, rayas b0dt47h1xv ">
+  <label class="pick"><input type="checkbox" value="B0DT47H1XV" data-desc="Amazon Basics Juego de Funda nórdica Ca… · 20,89 € · -13%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0DT47H1XV?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-13%</span>
+    <img src="https://m.media-amazon.com/images/I/31rOIH5NQXL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0DT47H1XV?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Amazon Basics Juego de Funda nórdica Cama 150/160 de Microfibra, 3 Piezas, Funda de edredón 240 x 220 cm y 2 Fundas de Almohada 50 x 80 cm, Beige, Rayas</a>
+    <div class="precio"><b>20,89 €</b> <s>23,93 €</s></div>
+    
+    
+    <div class="tags"></div>
+    <div class="pie"> · <code>B0DT47H1XV</code></div>
+  </div>
+</article>
+<article class="card" data-dto="66" data-epc="0" data-precio="17.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo=""
+         data-cat="Otros" data-marca="" data-marcas=" tallanormal "
+         data-asin="B01KLXG14O" data-texto="remington cepillo alisador straight brush, cerámica avanzada anti-estática, 3 temperaturas hasta 230°c, cabezal para facilitar el alisado, interruptor encendido/apagado, neceser, cb7400 b01klxg14o ">
+  <label class="pick"><input type="checkbox" value="B01KLXG14O" data-desc="Remington Cepillo Alisador Straight Bru… · 17,99 € · -66%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B01KLXG14O?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-66%</span>
+    <img src="https://m.media-amazon.com/images/I/41pK8hXrdhL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B01KLXG14O?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Remington Cepillo Alisador Straight Brush, Cerámica Avanzada Anti-estática, 3 Temperaturas hasta 230°C, Cabezal para Facilitar el Alisado, Interruptor Encendido/Apagado, Neceser, CB7400</a>
+    <div class="precio"><b>17,99 €</b> <s>52,99 €</s></div>
+    
+    
+    <div class="tags"></div>
+    <div class="pie"> · <code>B01KLXG14O</code></div>
+  </div>
+</article>
+<article class="card" data-dto="50" data-epc="0" data-precio="37.5" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo=""
+         data-cat="Otros" data-marca="Under Armour" data-marcas=" eva tallanormal top "
+         data-asin="B0876PFLFQ" data-texto="under armour hombre ua knit track suit shirt b0876pflfq ">
+  <label class="pick"><input type="checkbox" value="B0876PFLFQ" data-desc="Under Armour Hombre UA Knit Track Suit… · 37,50 € · -50%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0876PFLFQ?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-50%</span>
+    <img src="https://m.media-amazon.com/images/I/31QU0-HuQbL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0876PFLFQ?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Under Armour Hombre UA Knit Track Suit Shirt</a>
+    <div class="precio"><b>37,50 €</b> <s>75,00 €</s></div>
+    
+    
+    <div class="tags"><span class="tag top">🏷️ Under Armour</span><span class="tag eva">📤 Ya en Eva (2026-11-18 09:34)</span></div>
+    <div class="pie"> · <code>B0876PFLFQ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="41" data-epc="0" data-precio="6.49" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo=""
+         data-cat="Otros" data-marca="" data-marcas=" cc tallanormal "
+         data-asin="B0009JJZ94" data-texto="fackelmann espumador de leche portátil para café capuccino y té matcha 14.000 rpm b0009jjz94 ">
+  <label class="pick"><input type="checkbox" value="B0009JJZ94" data-desc="Fackelmann Espumador de Leche Portátil… · 6,49 € · -41%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0009JJZ94?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-41%</span>
+    <img src="https://m.media-amazon.com/images/I/21ZdAYeVMqL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0009JJZ94?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Fackelmann Espumador de Leche Portátil para Café Capuccino y Té Matcha 14.000 RPM</a>
+    <div class="precio"><b>6,49 €</b> <s>10,99 €</s></div>
+    
+    
+    <div class="tags"><span class="tag cc">💰 Creator Connections · EPC hasta 0,07 €</span></div>
+    <div class="pie"> · <code>B0009JJZ94</code></div>
+  </div>
+</article>
+<article class="card" data-dto="18" data-epc="0" data-precio="40.9" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo=""
+         data-cat="Otros" data-marca="" data-marcas=" tallanormal "
+         data-asin="B003TOL0J4" data-texto="bra efficient | plancha lisa aluminio fundido 45 cm, inducción | aluminio fundido con antiadherente, apta para todo tipo de cocinas incluida inducción, libre de pfoa b003tol0j4 ">
+  <label class="pick"><input type="checkbox" value="B003TOL0J4" data-desc="BRA Efficient | Plancha Lisa Aluminio F… · 40,90 € · -18%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B003TOL0J4?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-18%</span>
+    <img src="https://m.media-amazon.com/images/I/315FUQBR9tL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B003TOL0J4?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">BRA Efficient | Plancha Lisa Aluminio Fundido 45 Cm, inducción | Aluminio fundido con antiadherente, apta para todo tipo de cocinas incluida inducción, libre de PFOA</a>
+    <div class="precio"><b>40,90 €</b> <s>49,99 €</s></div>
+    
+    
+    <div class="tags"></div>
+    <div class="pie"> · <code>B003TOL0J4</code></div>
+  </div>
+</article>
+<article class="card" data-dto="8" data-epc="0" data-precio="40.37" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo=""
+         data-cat="Otros" data-marca="" data-marcas=" tallanormal "
+         data-asin="B08JM1HWMZ" data-texto="yaheetech árbol de navidad artificial grande 152cm de pvc 718 puntas verde | apariencia vital y exuberante, soporte metálico, resistente al fuego, para interiores y exteriores, decoración navideña b08jm1hwmz ">
+  <label class="pick"><input type="checkbox" value="B08JM1HWMZ" data-desc="Yaheetech Árbol de Navidad Artificial G… · 40,37 € · -8%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B08JM1HWMZ?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-8%</span>
+    <img src="https://m.media-amazon.com/images/I/51xoWc+WKKL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B08JM1HWMZ?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Yaheetech Árbol de Navidad Artificial Grande 152cm de PVC 718 Puntas Verde | Apariencia Vital y Exuberante, Soporte Metálico, Resistente al Fuego, para Interiores y Exteriores, Decoración Navideña</a>
+    <div class="precio"><b>40,37 €</b> <s>43,96 €</s></div>
+    
+    
+    <div class="tags"></div>
+    <div class="pie"> · <code>B08JM1HWMZ</code></div>
+  </div>
+</article>
+<article class="card" data-dto="15" data-epc="0" data-precio="30.46" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo=""
+         data-cat="Otros" data-marca="" data-marcas=" tallanormal "
+         data-asin="B07V126F2S" data-texto="amazon basics carrito de cocina o multiuso de 3 niveles con ruedas en rosa apagado b07v126f2s ">
+  <label class="pick"><input type="checkbox" value="B07V126F2S" data-desc="Amazon Basics Carrito de cocina o multi… · 30,46 € · -15%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B07V126F2S?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
+    <img src="https://m.media-amazon.com/images/I/31laNnPX35L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B07V126F2S?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Amazon Basics Carrito de cocina o multiuso de 3 niveles con ruedas en rosa apagado</a>
+    <div class="precio"><b>30,46 €</b> <s>35,84 €</s></div>
+    
+    
+    <div class="tags"></div>
+    <div class="pie"> · <code>B07V126F2S</code></div>
+  </div>
+</article>
+<article class="card" data-dto="50" data-epc="0" data-precio="29.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo=""
+         data-cat="Otros" data-marca="" data-marcas=" eva tallanormal "
+         data-asin="B0D3LBJD6P" data-texto="medisana ah 663 humidificador ultrasónico, nebulizador con higrómetro | ambientador silencioso con pantalla led, temporizador y modo sleep, umificador para bebes, oficina, dormitorio, salón b0d3lbjd6p ">
+  <label class="pick"><input type="checkbox" value="B0D3LBJD6P" data-desc="Medisana AH 663 humidificador ultrasóni… · 29,99 € · -50%"> Elegir</label>
+  <a class="foto" href="https://www.amazon.es/dp/B0D3LBJD6P?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-50%</span>
+    <img src="https://m.media-amazon.com/images/I/21fYuMmkCxL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
+  <div class="info">
+    <a class="titulo" href="https://www.amazon.es/dp/B0D3LBJD6P?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Medisana AH 663 humidificador ultrasónico, nebulizador con higrómetro | ambientador silencioso con pantalla LED, temporizador y modo sleep, umificador para bebes, oficina, dormitorio, salón</a>
+    <div class="precio"><b>29,99 €</b> <s>59,95 €</s></div>
+    
+    
+    <div class="tags"><span class="tag eva">📤 Ya en Eva (2026-11-25 12:51)</span></div>
+    <div class="pie"> · <code>B0D3LBJD6P</code></div>
+  </div>
+</article>
 <article class="card" data-dto="73" data-epc="0" data-precio="269.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
          data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" ok tallanormal "
          data-asin="B0GTLZX4N2" data-texto="lefant m3 max robot aspirador y friegasuelos con base 4 en 1 de autovaciado | navegación láser dtof, 20000 pa, 210 mins, mopas giratorias elevables, evasión de obstáculos psd, 2,4g &amp; 5g wifi, app/alexa b0gtlzx4n2 hogar y cocina">
@@ -154,21 +304,6 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     
     <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ok">Bajada real: -67% vs mín. 30 días (699,00 €)</span><span class="tag rep">🔁 3+ días en oferta</span></div>
     <div class="pie">Hogar y Cocina · Ofertas Prime · <code>B0H4LH6GH2</code></div>
-  </div>
-</article>
-<article class="card" data-dto="66" data-epc="0" data-precio="17.99" data-val="0" data-opi="0" data-vend="100" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="Otros" data-marca="" data-marcas=" min90 rep tallanormal vendidos "
-         data-asin="B01KLXG14O" data-texto="remington cepillo alisador straight brush, cerámica avanzada anti-estática, 3 temperaturas hasta 230°c, cabezal para facilitar el alisado, interruptor encendido/apagado, neceser, cb7400 b01klxg14o hogar y cocina">
-  <label class="pick"><input type="checkbox" value="B01KLXG14O" data-desc="Remington Cepillo Alisador Straight Bru… · 17,99 € · -66%"> Elegir</label>
-  <a class="foto" href="https://www.amazon.es/dp/B01KLXG14O?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-66%</span>
-    <img src="https://m.media-amazon.com/images/I/41pK8hXrdhL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
-  <div class="info">
-    <a class="titulo" href="https://www.amazon.es/dp/B01KLXG14O?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Remington Cepillo Alisador Straight Brush, Cerámica Avanzada Anti-estática, 3 Temperaturas hasta 230°C, Cabezal para Facilitar el Alisado, Interruptor Encendido/Apagado, Neceser, CB7400</a>
-    <div class="precio"><b>17,99 €</b> <s>52,99 €</s></div>
-    <div class="resenas"><span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
-    
-    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
-    <div class="pie">Hogar y Cocina · <code>B01KLXG14O</code></div>
   </div>
 </article>
 <article class="card" data-dto="65" data-epc="0" data-precio="139.99" data-val="0" data-opi="0" data-vend="50" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
@@ -484,21 +619,6 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     
     <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,20 €</span></div>
     <div class="pie">Hogar y Cocina · <code>B0GKB4DTF3</code></div>
-  </div>
-</article>
-<article class="card" data-dto="48" data-epc="0" data-precio="129.0" data-val="0" data-opi="0" data-vend="500" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🤖 Robot aspirador" data-marca="" data-marcas=" cc rep tallanormal vendidos "
-         data-asin="B0GQVPSS9X" data-texto="irobot roomba 115 combo, robot aspirador y friegasuelos 2 en 1, potencia de succión de 15000 pascales, cepillo lateral flexible, mopa de fregado extendida, navegación clearview lidar, app, blanco b0gqvpss9x hogar y cocina">
-  <label class="pick"><input type="checkbox" value="B0GQVPSS9X" data-desc="iRobot Roomba 115 Combo, Robot Aspirado… · 129,00 € · -48%"> Elegir</label>
-  <a class="foto" href="https://www.amazon.es/dp/B0GQVPSS9X?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-48%</span>
-    <img src="https://m.media-amazon.com/images/I/315N7UVcgUL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
-  <div class="info">
-    <a class="titulo" href="https://www.amazon.es/dp/B0GQVPSS9X?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">iRobot Roomba 115 Combo, Robot Aspirador y friegasuelos 2 en 1, Potencia de succión de 15000 Pascales, Cepillo Lateral Flexible, Mopa de fregado extendida, Navegación Clearview LiDAR, App, Blanco</a>
-    <div class="precio"><b>129,00 €</b> <s>249,00 €</s></div>
-    <div class="resenas"><span class="vendidos">🛒 500+ comprados el mes pasado</span></div>
-    
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,35 €</span></div>
-    <div class="pie">Hogar y Cocina · <code>B0GQVPSS9X</code></div>
   </div>
 </article>
 <article class="card" data-dto="47" data-epc="0" data-precio="319.99" data-val="0" data-opi="0" data-vend="50" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
@@ -846,21 +966,6 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="pie">Hogar y Cocina · <code>B0FVF575J4</code></div>
   </div>
 </article>
-<article class="card" data-dto="41" data-epc="0" data-precio="6.49" data-val="0" data-opi="0" data-vend="300" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="Otros" data-marca="" data-marcas=" cc min90 tallanormal vendidos "
-         data-asin="B0009JJZ94" data-texto="fackelmann espumador de leche portátil para café capuccino y té matcha 14.000 rpm b0009jjz94 hogar y cocina">
-  <label class="pick"><input type="checkbox" value="B0009JJZ94" data-desc="Fackelmann Espumador de Leche Portátil… · 6,49 € · -41%"> Elegir</label>
-  <a class="foto" href="https://www.amazon.es/dp/B0009JJZ94?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-41%</span>
-    <img src="https://m.media-amazon.com/images/I/21ZdAYeVMqL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
-  <div class="info">
-    <a class="titulo" href="https://www.amazon.es/dp/B0009JJZ94?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Fackelmann Espumador de Leche Portátil para Café Capuccino y Té Matcha 14.000 RPM</a>
-    <div class="precio"><b>6,49 €</b> <s>10,99 €</s></div>
-    <div class="resenas"><span class="vendidos">🛒 300+ comprados el mes pasado</span></div>
-    
-    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,07 €</span></div>
-    <div class="pie">Hogar y Cocina · <code>B0009JJZ94</code></div>
-  </div>
-</article>
 <article class="card" data-dto="41" data-epc="0" data-precio="41.24" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
          data-cat="🥤 Batidora / Licuadora" data-marca="" data-marcas=" min90 ok tallanormal "
          data-asin="B0GGTMCK84" data-texto="braun citrusquick 7 - exprimidor eléctrico con palanca, exprimidor de naranjas 160w con sistema antigoteo, boquilla para vasos altos, piezas aptas para lavavajillas, negro (cj7050bk) b0ggtmck84 hogar y cocina">
@@ -907,7 +1012,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="41" data-epc="0" data-precio="106.99" data-val="4.5" data-opi="5027" data-vend="50" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" nueva tallanormal vendidos "
+         data-cat="🧹 Aspiradora" data-marca="" data-marcas=" eva nueva tallanormal vendidos "
          data-asin="B0CHWL7B11" data-texto="levoit lvac200 aspiradora sin cable, anti-enredos, 4 en 1, ligero, blanco | aspirador escoba max 50min, batería extraíble, luz led, aspirador para mascotas/alfombras/coche, 99,9% de filtración b0chwl7b11 hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0CHWL7B11" data-desc="Levoit LVAC200 Aspiradora sin Cable, An… · 106,99 € · -41%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0CHWL7B11?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-41%</span>
@@ -917,7 +1022,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>106,99 €</b> <s>179,99 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★★</span> 4,5 (5.027) · <span class="vendidos">🛒 50+ comprados el mes pasado</span></div>
     
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (113,49 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag ">-6% vs mín. 30 días (113,49 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span><span class="tag eva">📤 Ya en Eva (2026-11-25 09:24)</span></div>
     <div class="pie">Hogar y Cocina · <code>B0CHWL7B11</code></div>
   </div>
 </article>
@@ -1699,21 +1804,6 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     
     <div class="tags"><span class="tag hist">⭐ Mínimo histórico</span><span class="tag ">Antes = precio recomendado</span></div>
     <div class="pie">Hogar y Cocina · <code>B0G7YDQ7W4</code></div>
-  </div>
-</article>
-<article class="card" data-dto="33" data-epc="0" data-precio="119.99" data-val="0" data-opi="0" data-vend="300" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="🍟 Freidora de aire" data-marca="" data-marcas=" cc rep tallanormal vendidos "
-         data-asin="B0H95PYTXM" data-texto="ninja crispi freidora de aire 4 en 1 de 3,8 l, 2,3 l: freír con aire, asar, mantener caliente, recuperar el crujiente, compacto, 6 porciones, 2 bandejas con tapa, 1700 w, piedra/dorado fn201eusd1 b0h95pytxm hogar y cocina">
-  <label class="pick"><input type="checkbox" value="B0H95PYTXM" data-desc="Ninja CRISPi Freidora de aire 4 en 1 de… · 119,99 € · -33%"> Elegir</label>
-  <a class="foto" href="https://www.amazon.es/dp/B0H95PYTXM?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-33%</span>
-    <img src="https://m.media-amazon.com/images/I/41-uvZ8W5LL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
-  <div class="info">
-    <a class="titulo" href="https://www.amazon.es/dp/B0H95PYTXM?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Ninja CRISPi Freidora de aire 4 en 1 de 3,8 l, 2,3 l: Freír con aire, asar, mantener caliente, recuperar el crujiente, compacto, 6 porciones, 2 bandejas con tapa, 1700 W, Piedra/dorado FN201EUSD1</a>
-    <div class="precio"><b>119,99 €</b> <s>179,99 €</s></div>
-    <div class="resenas"><span class="vendidos">🛒 300+ comprados el mes pasado</span></div>
-    
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span><span class="tag cc">💰 Creator Connections · EPC hasta 0,29 €</span></div>
-    <div class="pie">Hogar y Cocina · <code>B0H95PYTXM</code></div>
   </div>
 </article>
 <article class="card" data-dto="33" data-epc="0" data-precio="119.99" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
@@ -3307,7 +3397,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
   </div>
 </article>
 <article class="card" data-dto="21" data-epc="0" data-precio="47.49" data-val="4.4" data-opi="288" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="☕ Cafetera" data-marca="" data-marcas=" nueva tallanormal "
+         data-cat="☕ Cafetera" data-marca="" data-marcas=" eva nueva tallanormal "
          data-asin="B0GZNPNRJ2" data-texto="aigostar cafetera espresso portátil eléctrica, 20 bar, 7500 mah | eléctrica con calentamiento automático, café molido y cápsulas, depósito 80 ml, ideal para viaje, camping y oficina b0gznpnrj2 hogar y cocina">
   <label class="pick"><input type="checkbox" value="B0GZNPNRJ2" data-desc="Aigostar Cafetera Espresso Portátil Elé… · 47,49 € · -21%"> Elegir</label>
   <a class="foto" href="https://www.amazon.es/dp/B0GZNPNRJ2?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-21%</span>
@@ -3317,7 +3407,7 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="precio"><b>47,49 €</b> <s>59,99 €</s></div>
     <div class="resenas"><span class="estrellas">★★★★☆</span> 4,4 (288)</div>
     
-    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ">-3% vs mín. 30 días (48,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
+    <div class="tags"><span class="tag ">Antes = precio mediano</span><span class="tag ">-3% vs mín. 30 días (48,99 €)</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span><span class="tag eva">📤 Ya en Eva (2026-11-25 09:21)</span></div>
     <div class="pie">Hogar y Cocina · <code>B0GZNPNRJ2</code></div>
   </div>
 </article>
@@ -3936,21 +4026,6 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="pie">Hogar y Cocina · <code>B0GZL2P3WM</code></div>
   </div>
 </article>
-<article class="card" data-dto="18" data-epc="0" data-precio="40.9" data-val="0" data-opi="0" data-vend="100" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="Otros" data-marca="" data-marcas=" min90 tallanormal vendidos "
-         data-asin="B003TOL0J4" data-texto="bra efficient | plancha lisa aluminio fundido 45 cm, inducción | aluminio fundido con antiadherente, apta para todo tipo de cocinas incluida inducción, libre de pfoa b003tol0j4 hogar y cocina">
-  <label class="pick"><input type="checkbox" value="B003TOL0J4" data-desc="BRA Efficient | Plancha Lisa Aluminio F… · 40,90 € · -18%"> Elegir</label>
-  <a class="foto" href="https://www.amazon.es/dp/B003TOL0J4?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-18%</span>
-    <img src="https://m.media-amazon.com/images/I/315FUQBR9tL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
-  <div class="info">
-    <a class="titulo" href="https://www.amazon.es/dp/B003TOL0J4?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">BRA Efficient | Plancha Lisa Aluminio Fundido 45 Cm, inducción | Aluminio fundido con antiadherente, apta para todo tipo de cocinas incluida inducción, libre de PFOA</a>
-    <div class="precio"><b>40,90 €</b> <s>49,99 €</s></div>
-    <div class="resenas"><span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
-    
-    <div class="tags"><span class="tag min90">⭐ Precio más bajo en 3 meses</span><span class="tag ">Antes = precio recomendado</span><span class="tag ">-7% vs mín. 30 días (43,90 €)</span></div>
-    <div class="pie">Hogar y Cocina · <code>B003TOL0J4</code></div>
-  </div>
-</article>
 <article class="card" data-dto="18" data-epc="0" data-precio="45.0" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
          data-cat="🧹 Aspiradora" data-marca="" data-marcas=" rep tallanormal "
          data-asin="B0CN6RQBDY" data-texto="kärcher aspiradora de mano a batería cvh 2, compacta y ligera de uso rápido, depósito 0,15 l, peso 0,65 kg, incl. batería 7,2 v, cargador usb, boquilla para ranuras 2 en 1 b0cn6rqbdy hogar y cocina">
@@ -4401,21 +4476,6 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     <div class="pie">Hogar y Cocina · <code>B0FX2MMRK3</code></div>
   </div>
 </article>
-<article class="card" data-dto="15" data-epc="0" data-precio="30.46" data-val="0" data-opi="0" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="Otros" data-marca="" data-marcas=" tallanormal "
-         data-asin="B07V126F2S" data-texto="amazon basics carrito de cocina o multiuso de 3 niveles con ruedas en rosa apagado b07v126f2s hogar y cocina">
-  <label class="pick"><input type="checkbox" value="B07V126F2S" data-desc="Amazon Basics Carrito de cocina o multi… · 30,46 € · -15%"> Elegir</label>
-  <a class="foto" href="https://www.amazon.es/dp/B07V126F2S?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-15%</span>
-    <img src="https://m.media-amazon.com/images/I/31laNnPX35L._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
-  <div class="info">
-    <a class="titulo" href="https://www.amazon.es/dp/B07V126F2S?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Amazon Basics Carrito de cocina o multiuso de 3 niveles con ruedas en rosa apagado</a>
-    <div class="precio"><b>30,46 €</b> <s>35,84 €</s></div>
-    
-    
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span></div>
-    <div class="pie">Hogar y Cocina · <code>B07V126F2S</code></div>
-  </div>
-</article>
 <article class="card" data-dto="15" data-epc="0" data-precio="34.19" data-val="4.3" data-opi="25660" data-vend="100" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
          data-cat="🍞 Pequeño electro" data-marca="" data-marcas=" cc tallanormal vendidos "
          data-asin="B007HMTKU0" data-texto="severin tostadora automática, tostador con dos ranuras y soporte para panecillos, 1400 w, acero inoxidable cepillado y negro, at 2509 b007hmtku0 hogar y cocina">
@@ -4834,21 +4894,6 @@ main { display:grid; gap:16px; padding:20px; grid-template-columns:repeat(auto-f
     
     <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag nueva">🆕 Oferta nueva (bajó en las últimas 24 h)</span></div>
     <div class="pie">Hogar y Cocina · <code>B0DFCSJF35</code></div>
-  </div>
-</article>
-<article class="card" data-dto="13" data-epc="0" data-precio="20.89" data-val="0" data-opi="0" data-vend="100" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
-         data-cat="Otros" data-marca="" data-marcas=" rep tallanormal vendidos "
-         data-asin="B0DT47H1XV" data-texto="amazon basics juego de funda nórdica cama 150/160 de microfibra, 3 piezas, funda de edredón 240 x 220 cm y 2 fundas de almohada 50 x 80 cm, beige, rayas b0dt47h1xv hogar y cocina">
-  <label class="pick"><input type="checkbox" value="B0DT47H1XV" data-desc="Amazon Basics Juego de Funda nórdica Ca… · 20,89 € · -13%"> Elegir</label>
-  <a class="foto" href="https://www.amazon.es/dp/B0DT47H1XV?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener"><span class="dto">-13%</span>
-    <img src="https://m.media-amazon.com/images/I/31rOIH5NQXL._SL400_.jpg" alt="" loading="lazy" decoding="async"></a>
-  <div class="info">
-    <a class="titulo" href="https://www.amazon.es/dp/B0DT47H1XV?tag=canaltelegramelo-21&amp;th=1&amp;psc=1" target="_blank" rel="noopener">Amazon Basics Juego de Funda nórdica Cama 150/160 de Microfibra, 3 Piezas, Funda de edredón 240 x 220 cm y 2 Fundas de Almohada 50 x 80 cm, Beige, Rayas</a>
-    <div class="precio"><b>20,89 €</b> <s>23,93 €</s></div>
-    <div class="resenas"><span class="vendidos">🛒 100+ comprados el mes pasado</span></div>
-    
-    <div class="tags"><span class="tag ">Antes = precio recomendado</span><span class="tag rep">🔁 3+ días en oferta</span></div>
-    <div class="pie">Hogar y Cocina · <code>B0DT47H1XV</code></div>
   </div>
 </article>
 <article class="card" data-dto="13" data-epc="0" data-precio="59.9" data-val="4.1" data-opi="272" data-vend="0" data-sobremin="9999" data-real="-999" data-cambio="9999" data-grupo="Hogar y Cocina"
